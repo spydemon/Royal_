@@ -1,0 +1,25 @@
+Albums
+======
+
+Cette perpective présente la liste des albums et de nombreuses informations liées aux albums de la base de données locale, triée selon le critère séléctionné.
+
+$album.img$
+
+Les vues disponibles pour cette perspective sont :
+
+* Vue d'ensemble des albums, séries et/ou auteurs selon le tri sélectionné
+* Informations sur l'album sélectionné
+* Informations sur les auteurs de cet album et leur contribution
+* Gallerie d'images
+
+Depuis cette perspective, il est possible de :
+
+* $newalbum.link$
+* $editalbum.link$
+* $delalbum.link$
+
+newalbum.link := link new_album/new_album.html "Créer un nouvel album"
+editalbum.link := link edit_object.html "Editer la sélection"
+delalbum.link := link del_object.html "Supprimer la sélection"
+
+album.img := image ../../images/album_01.jpg

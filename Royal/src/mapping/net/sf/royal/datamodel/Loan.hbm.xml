@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="net.sf.royal.datamodel.Loan">
+		<id name="id">
+			<generator class="hilo">
+                <param name="table">hi_value</param>
+                <param name="column">next_value</param>
+                <param name="max_lo">100</param>
+        </generator>
+		</id>
+		
+		<property name="version"/>
+		<property name="maxDays"/>
+		<property name="begin" column="rbegin"/>
+		<property name="end" column="rend"/>
+		<property name="priceByDay"/>
+		<property name="penaltyByDay"/>
+		
+		<many-to-one name="album" column="albumID" not-null="true"/>
+		<many-to-one name="borrower" column="borrowerID" not-null="true"/>
+	</class>
+</hibernate-mapping>

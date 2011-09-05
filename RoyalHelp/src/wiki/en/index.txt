@@ -1,0 +1,26 @@
+Welcome to the help of Royal
+=======
+
+This application let you manage your comics collection.
+
+It is distributed under the GNU GPL licence,  You can copy and modify it under the terms of this licence. link http://www.gnu.org/licenses/gpl.html
+So, don't hesitate to $contribution.link$, like declare some bugs or ask for new functionalities !
+
+    Same if you encountered any writing mistake.
+
+Summary :
+
+* $add.link$
+* $edit.link$
+* $delete.link$
+* $importation.link$
+* $settings.link$
+* $faq.link$
+
+contribution.link := link faq/how_to_contribute.html "contribute"
+add.link := link albums/add.html "Add album"
+edit.link := link albums/edit.html "Edit Item"
+delete.link := link albums/delete.html "Delete Item"
+faq.link := link faq/faq.html "FAQ"
+importation.link := link utils/import.html "Database importation"
+settings.link := link utils/settings.html "Settings"

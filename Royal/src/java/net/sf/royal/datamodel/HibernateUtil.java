@@ -195,8 +195,11 @@ public class HibernateUtil
         cfg.addResource("net/sf/royal/datamodel/Type.hbm.xml");
         cfg.addResource("net/sf/royal/datamodel/Borrower.hbm.xml");
         cfg.addResource("net/sf/royal/datamodel/Loan.hbm.xml");
+<<<<<<< HEAD
         cfg.addResource("net/sf/royal/datamodel/Bibliotheque.hbm.xml");
         //cfg.addResource("net/sf/royal/datamodel/Location_Emprunt.hbm.xml");
+=======
+>>>>>>> 01b011e... Ajout des sources
         cfg.setProperty("hbm2ddl.auto", "update");
         cfg.setProperty("hibernate.connection.driver_class", db.getDriver());
        

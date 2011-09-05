@@ -81,11 +81,14 @@ public class SettingsTabbedDialog extends JDialog
 		jtp.addTab(LocaleManager.getInstance().getString("language"), clp);
 		settingsTabs.add(clp);
 		
+<<<<<<< HEAD
 		// 3rd tab : Change Mail
 		ChangeEmailPanel cep = new ChangeEmailPanel();
 		jtp.addTab(LocaleManager.getInstance().getString("email"), cep);
 		settingsTabs.add(cep);
 		
+=======
+>>>>>>> 01b011e... Ajout des sources
 		this.add(jtp, BorderLayout.CENTER);
 		this.add(jpButton, BorderLayout.SOUTH);
 

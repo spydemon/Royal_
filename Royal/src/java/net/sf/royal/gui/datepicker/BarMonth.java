@@ -15,8 +15,11 @@ import javax.swing.border.AbstractBorder;
 import net.sf.royal.gui.manager.LocaleManager;
 ;
 
+<<<<<<< HEAD
 //Plop. 
 
+=======
+>>>>>>> 01b011e... Ajout des sources
 public class BarMonth extends JPanel implements DatePlayer {
     
     private DatePickerButton next = new NextButton();

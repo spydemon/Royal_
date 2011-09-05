@@ -9,15 +9,21 @@ import java.awt.Insets;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+<<<<<<< HEAD
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+=======
+>>>>>>> 01b011e... Ajout des sources
 import java.io.File;
 import java.util.Date;
 import java.util.Set;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+<<<<<<< HEAD
 import javax.swing.JComboBox;
+=======
+>>>>>>> 01b011e... Ajout des sources
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
@@ -51,8 +57,11 @@ import net.sf.royal.gui.web.CoverWebChooser;
 import net.sf.royal.persistency.PersistencyManager;
 import net.sf.royal.persistency.SaveItemPersistency;
 
+<<<<<<< HEAD
 import net.sf.royal.gui.wizard.add_dialog.JLibraryPane;
 
+=======
+>>>>>>> 01b011e... Ajout des sources
 import org.apache.log4j.Logger;
 
 
@@ -61,7 +70,10 @@ import org.apache.log4j.Logger;
  * @author Unbekandt Léo
  * @author Steven Nguyen
  * @author Maxime Kientz
+<<<<<<< HEAD
  * @author Kevin Hagner
+=======
+>>>>>>> 01b011e... Ajout des sources
  *
  */
 
@@ -90,7 +102,10 @@ public class AlbumAddDialog extends JDialog
 	private RegexpTextField rtfTitle;
 	private JButtonPane jbpSerie;
 	private JAuthorPane japAuthor;
+<<<<<<< HEAD
 	private JComboBox buyOrNot;
+=======
+>>>>>>> 01b011e... Ajout des sources
 	private RegexpTextField rtfNumber;
 	private JLabel jlPages;
 	private RegexpTextField rtfPages;
@@ -103,8 +118,11 @@ public class AlbumAddDialog extends JDialog
 	private JTextArea jtaComment;
 	private JDatePicker jdpPurchaseDate;
 	private JDatePicker jdpReleaseDate;
+<<<<<<< HEAD
 	private JLabel libTitle;
 	private JLibraryPane libTextField;
+=======
+>>>>>>> 01b011e... Ajout des sources
 	
 	private Album currentAlbum = null;
 	private Serie albumSerie;
@@ -115,6 +133,7 @@ public class AlbumAddDialog extends JDialog
 	private JButton jbOk;
 	private JButton jbCancel;
 	
+<<<<<<< HEAD
 	private JLabel titreAchat;
 	
 	/**
@@ -137,6 +156,8 @@ public class AlbumAddDialog extends JDialog
 	
 	Item itm[] = new Item[]{new Item(LocaleManager.getInstance().getString("buy"), 1), new Item(LocaleManager.getInstance().getString("borrow"), 2)};
 	
+=======
+>>>>>>> 01b011e... Ajout des sources
 // Constructors
 	/**
 	 * Create a new AlbumAddDialog, specifying its parent component.<br/>
@@ -374,11 +395,18 @@ public class AlbumAddDialog extends JDialog
 				LocaleManager.getInstance().getString("author") + " : ",
 				LocaleManager.getInstance().getString("numero") + " : ", 
 				LocaleManager.getInstance().getString("width") + " : ", 
+<<<<<<< HEAD
 				LocaleManager.getInstance().getString("book") + " : ",
 				" ",
 				LocaleManager.getInstance().getString("collection") + " : ", 
 				LocaleManager.getInstance().getString("isbn") + " : ", 
 				LocaleManager.getInstance().getString("comment") + " : " 
+=======
+				LocaleManager.getInstance().getString("purchaseDate") + " : ",
+				LocaleManager.getInstance().getString("collection") + " : ", 
+				LocaleManager.getInstance().getString("isbn") + " : ", 
+				LocaleManager.getInstance().getString("comment") + " : "
+>>>>>>> 01b011e... Ajout des sources
 		};
 		gbc.insets = iLabel;
 		for(int i=0; i< labels.length; i++)
@@ -456,6 +484,7 @@ public class AlbumAddDialog extends JDialog
 		gbc.gridx -= 2;
 		gbc.gridy ++;
 		
+<<<<<<< HEAD
 		/* Livre acheté ou emprunté ?*/
 		this.buyOrNot = new JComboBox();
 		this.buyOrNot.setPreferredSize(new Dimension(100, 20));
@@ -471,12 +500,18 @@ public class AlbumAddDialog extends JDialog
 		titreAchat.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
 		this.add(titreAchat, gbc);
 		gbc.gridx++;
+=======
+		/* Date */
+>>>>>>> 01b011e... Ajout des sources
 		gbc.gridwidth = 1;
 		this.jdpPurchaseDate = new JDatePicker();
 		this.add(this.jdpPurchaseDate, gbc);
 		
+<<<<<<< HEAD
 		gbc.gridy++;
 		gbc.gridx-=4;
+=======
+>>>>>>> 01b011e... Ajout des sources
 		gbc.insets = iLabel;
 		gbc.gridx++;
 		JLabel jlReleaseDate = new JLabel(LocaleManager.getInstance().getString("releaseDate") + " : ");
@@ -488,6 +523,7 @@ public class AlbumAddDialog extends JDialog
 		this.jdpReleaseDate = new JDatePicker();
 		this.add(jdpReleaseDate,gbc);
 		
+<<<<<<< HEAD
 		/* Library */
 		//*
 		gbc.gridx++;
@@ -501,6 +537,8 @@ public class AlbumAddDialog extends JDialog
 		this.add(libTextField, gbc);
 		//*/
 		
+=======
+>>>>>>> 01b011e... Ajout des sources
 		gbc.gridwidth = GridBagConstraints.REMAINDER;
 		gbc.gridy++;
 		gbc.gridx -= 2;
@@ -572,6 +610,7 @@ public class AlbumAddDialog extends JDialog
 			}
 		});
 		
+<<<<<<< HEAD
 		this.buyOrNot.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
 				Item item = (Item) buyOrNot.getSelectedItem();
@@ -590,6 +629,8 @@ public class AlbumAddDialog extends JDialog
 			}
 		});
 		
+=======
+>>>>>>> 01b011e... Ajout des sources
 		this.jbpSerie.addActionListener(new ActionListener() 
 		{
 			@Override
