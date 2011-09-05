@@ -1,86 +1,0 @@
-10
-
-dir
-324
-svn://royal-project.org/Royal/trunk/Royal/src/java/net/sf/royal
-svn://royal-project.org/Royal
-
-
-
-2011-05-14T19:54:33.839273Z
-324
-leo
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-d33b43d4-a74a-4c4f-ae33-467521f0c798
-
-splasher
-dir
-
-macos
-dir
-
-gui
-dir
-
-Royal.java
-file
-
-
-
-
-2011-09-05T16:55:39.515311Z
-667914580e5d04785f98a95c7e72ccc5
-2011-01-30T21:50:40.121128Z
-317
-leo
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-6895
-
-persistency
-dir
-
-datamodel
-dir
-
-util
-dir
-
-web
-dir
-
-exception
-dir
-
