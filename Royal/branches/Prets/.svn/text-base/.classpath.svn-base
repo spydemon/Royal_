@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/java"/>
+	<classpathentry kind="src" path="src/mapping"/>
+	<classpathentry kind="src" path="test/java"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JDK 5.0"/>
+	<classpathentry kind="lib" path="lib/both/antlr.jar"/>
+	<classpathentry kind="lib" path="lib/both/ccl.jar"/>
+	<classpathentry kind="lib" path="lib/both/cobertura.jar"/>
+	<classpathentry kind="lib" path="lib/both/hibernate.jar"/>
+	<classpathentry kind="lib" path="lib/both/javancss.jar"/>
+	<classpathentry kind="lib" path="lib/both/jfreechart.jar"/>
+	<classpathentry kind="lib" path="lib/both/jfreechart-common.jar"/>
+	<classpathentry kind="lib" path="lib/both/jgoodies-look.jar"/>
+	<classpathentry kind="lib" path="lib/both/junit.jar"/>
+	<classpathentry kind="lib" path="lib/both/log4j.jar"/>
+	<classpathentry kind="lib" path="lib/both/oro.jar"/>
+	<classpathentry kind="lib" path="lib/execution/asm/asm.jar"/>
+	<classpathentry kind="lib" path="lib/execution/cglib.jar"/>
+	<classpathentry kind="lib" path="lib/execution/commons-collections.jar"/>
+	<classpathentry kind="lib" path="lib/execution/commons-logging.jar"/>
+	<classpathentry kind="lib" path="lib/execution/dom4j.jar"/>
+	<classpathentry kind="lib" path="lib/execution/ehcache.jar"/>
+    <classpathentry kind="lib" path="lib/execution/json-lib.jar"/>
+	<classpathentry kind="lib" path="lib/execution/mysql.jar"/>
+	<classpathentry kind="lib" path="lib/execution/hsqldb.jar"/>
+	<classpathentry kind="lib" path="lib/both/jh.jar"/>
+	<classpathentry kind="lib" path="lib/execution/postgresql.jar"/>
+	<classpathentry kind="lib" path="lib/both/commons-digester.jar"/>
+	<classpathentry kind="lib" path="lib/execution/commons-beanutils.jar"/>
+	<classpathentry kind="lib" path="lib/both/commons-httpclient.jar"/>
+	<classpathentry kind="lib" path="lib/execution/jbossall-client.jar"/>
+	<classpathentry kind="lib" path="lib/execution/commons-codec-1.3.jar"/>
+	<classpathentry kind="lib" path="lib/execution/jboss-aspect-library-jdk50.jar"/>
+	<classpathentry kind="lib" path="lib/execution/jboss-ejb3.jar"/>
+	<classpathentry kind="lib" path="lib/execution/lucene.jar"/>
+	<classpathentry sourcepath="/RoyalHelp" kind="lib" path="lib/both/help.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="net.sf.royal.datamodel.Work" table="work_table">
+		<id name="id">
+			<generator class="hilo">
+                <param name="table">hi_value</param>
+                <param name="column">next_value</param>
+                <param name="max_lo">100</param>
+        </generator>
+		</id>
+		
+		<property name="version"/>
+		<property name="tekId" />
+		<many-to-one name="author" column="workauthorID"/>
+		<many-to-one name="album" column="workalbumID"/>
+		
+		<union-subclass name="net.sf.royal.datamodel.Color">
+		</union-subclass>
+		<union-subclass name="net.sf.royal.datamodel.Illustration">
+		</union-subclass>
+		<union-subclass name="net.sf.royal.datamodel.Scenario">
+		</union-subclass>
+	</class>
+</hibernate-mapping>

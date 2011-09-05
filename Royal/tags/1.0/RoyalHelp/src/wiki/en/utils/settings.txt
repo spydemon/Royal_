@@ -1,0 +1,15 @@
+Settings
+=====
+
+In this window, you can choose your language and your database.
+
+Choose your language
+....................
+* Click on the "Language" tab and chosse your language. A reboot is necessery to save the changes.
+
+Choose your database
+....................
+* Click on the "Database" tab and choose your databade. After saving, the changing is immediate.
+* You also can create a new database or edit one of them.
+
+

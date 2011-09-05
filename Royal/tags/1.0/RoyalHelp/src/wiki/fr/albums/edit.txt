@@ -1,0 +1,13 @@
+Editer un Objet
+===============
+
+L'édition se fait à partir de l'interface principale. Elle est disponible soit en cliquant sur un objet puis en choisissant "Editer" dans la barre de menu, soit en faisant un clic droit sur l'objet en question et appuyer sur "Editer"
+
+Modifier des informations
+.........................
+
+* Une fenêtre s'ouvre, identique à celle de l'ajout concernant l'objet selectionné, les informations pré-remplissant les champs.
+* Modifiez les informations souhaitées
+* Validez en cliquant sur "Ok"
+
+

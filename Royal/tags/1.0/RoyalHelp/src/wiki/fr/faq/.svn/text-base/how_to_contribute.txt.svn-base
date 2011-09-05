@@ -1,0 +1,93 @@
+Comment contribuer à l'aide ?
+===========================
+
+Comme vous avez pu le constater, l'aide de Royal n'est pas complète. En effet, écrire une aide complète est un travail à part entière et 
+le développement de Royal nous prend déjà beaucoup de temps. 
+
+C'est pourquoi nous vous proposons de participer à l'élaboration de l'aide du logiciel.
+
+Pourquoi contribuer ?
+-------------------
+
+Bien entendu la contribution n'est pas obligatoire, mais voici une liste de raisons qui pourront vous motiver:
+
+* En contribuant à l'aide de Royal, votre nom apparaîtra dans les remerciements de l'installeur.
+* Vous êtes content de la gratuité de Royal, le meilleur moyen de rémunérer les auteurs, c'est d'apporter une petite pierre à l'édifice.
+* L'investissement n'est pas énorme, puisque l'écriture des fichiers d'aide est simplifiée grace au projet *EsTexte* (http://estexte.sourceforge.net).
+
+Comment contribuer ?
+------------------
+
+Il existe deux manières de contribuer:
+
+* Si vous avez trouvé des fautes d'ortographe. Rendez-vous sur le site http://trac.royal-project.org et soumettez un bug dans la categorie *Documentation*.
+* Vous savez ce qu'est un gestionnaire de version. Récupérez le module *RoyalHelp* pour modifier les fichiers d'aide.
+
+
+Ecrire un fichier d'aide
+------------------------
+
+1. Modifier un fichier d'aide 
+.............................
+
+Après avoir récupéré le module *RoyalHelp* :
+
+* Editez le fichier d'aide voulu (ouvrir uniquement les fichiers au format txt). 
+
+    Tous les fichiers se trouvent dans *RoyalHelp/src/wiki*. Les fichiers du répertoire *fr* sont en français, et ceux du répertoire *en* sont en anglais.
+
+* Utilisez la syntaxe définie par *EsTexte* pour le contenu des pages. Ne pas hésiter à se référer aux pages déja existantes ou au site http://estexte.sourceforge.net/guide.html 
+pour rédiger l'aide.
+
+
+* Sauvegardez les modifications.
+     
+
+2. Voir le rendu
+................
+
+    Pour pouvoir afficher le rendu final de l'aide, *ANT* doit être installé (http://ant.apache.org/).
+    
+* Ouvrez une fenêtre de commande DOS (ou un terminal).
+
+* Allez dans le répertoire *RoyalHelp*.
+
+
+* Saisissez les commandes suivantes:
+    * ant thirdparty (uniquement la première fois). 
+    * _ant -Dlocale=&lt;lang&gt; [-Dpage=&lt;page&gt;] dev run-demo_, avec &lt;lang&gt; qui vaut _fr_ ou _en_ (français ou anglais) et &lt;page&gt; un nom de page sans l'extension .html.
+* Lorsque le résultat est satisfaisant, copiez/collez le contenu du(des) fichier(s) texte sur le forum *Help Contribution* de Royal.
+
+    Un sujet par fichier d'aide et sa traduction, et ne pas oublier de signer pour les remerciements ;). Les modifications seront prises en compte 
+lors de la prochaine version de Royal. 
+
+
+3. Quelques règles de base.
+...........................
+
+Pour éviter que l'aide de Royal devienne inutilisable, 5 règles sont à respecter:
+
+* Limiter le nombre de fautes d'orthographe.
+* Les fautes de grammaire sont à bannir. Elles sont pires que les fautes d'orthographes.
+* Le langage SMS n'est pas supporté.
+* Veiller à respecter la structure commune des documents (titre, sous-titre, etc..).
+* L'auteur se réserve le droit de modifier le texte, les captures d'écrans.
+
+
+Si vous êtes arrivés jusque là, c'est que vous étiez vraiment décidé à nous aider. Nous vous en remercions.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

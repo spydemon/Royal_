@@ -1,0 +1,25 @@
+Ajouter une base de données
+===========================
+
+Dans la fenetre des préférences, dans l'onglet "Base de données", cliquez sur "Ajouter"
+Remplissez alors les champs apparus
+
+Nom
+...
+* Le nom de la nouvelle base de données
+
+Type
+....
+* Choisir entre HSQLDB (Bases locales, par défaut), PostgreSQL ou MySQL (bases à distances)
+
+URL
+...
+* Adresse de la base de données à distance
+
+Nom d'utilisateur
+.................
+* Votre pseudo pour accéder à la base.
+
+Mot de passe
+............
+* Votre mot de passe pour accéder à la base.

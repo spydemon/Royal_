@@ -1,0 +1,18 @@
+Nouvel album
+============
+
+Pour créer un nouvel album:
+
+# Cliquer sur le bouton Ajouter de la barre de menu.
+# Une nouvelle fenêtre apparaît. Il faut alors saisir les informations. 
+# Il faut au moins un titre pour pouvoir enregistrer un album
+# Vous pouvez également saisir des informations complémentaires sur les auteurs, collections, séries et éditeurs
+# Pour ajouter la couverture de la BD, cliquer sur le dossier
+# Pour finaliser, cliquer sur *Ok*.
+
+albumdata.link := link album_data.html "informations d'un album"
+seriedata.link := link serie_data.html "informations d'une série"
+collectiondata.link := link collection_data.html "informations d'une collection"
+authordata.link := link author_data.html "informations des auteurs"
+
+ 

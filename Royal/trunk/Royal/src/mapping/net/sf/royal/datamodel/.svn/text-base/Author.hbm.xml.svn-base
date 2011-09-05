@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="net.sf.royal.datamodel.Author">
+		<id name="id">
+			<generator class="hilo">
+                <param name="table">hi_value</param>
+                <param name="column">next_value</param>
+                <param name="max_lo">100</param>
+        </generator>
+		</id>
+		
+		<property name="version"/>
+		<property name="tekId" />
+		<property name="name"/>
+		<property name="web"/>
+		<property name="story" length="4100"/>
+		<property name="firstName"/>
+		<property name="nickName"/>
+		<property name="birth"/>
+		<property name="death"/>
+		<property name="photo"/>
+		
+		<set name="works" inverse="true">
+			<key column="workauthorID"/>
+			<one-to-many class="net.sf.royal.datamodel.Work"/>
+		</set>
+	</class>
+</hibernate-mapping>

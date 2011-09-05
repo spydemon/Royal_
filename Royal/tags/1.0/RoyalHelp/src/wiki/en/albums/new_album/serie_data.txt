@@ -1,0 +1,31 @@
+Serie Information
+=================
+
+This windows allows to select the serie of the current album. If a serie doesn't exist, it could be created in this window.
+
+$wizard.img$
+
+Name
+...
+
+* Serie's name.
+* This field is compulsory.
+
+Type
+....
+
+* Type of the serie.
+* Select one among those proposed, or create a new one by entering it's name.
+
+One shot
+........
+
+* Click on the box if the serie is a one shot.
+
+Description
+...........
+
+* Description relative to the serie.
+
+
+wizard.img := image ../../../images/new_album03.jpg

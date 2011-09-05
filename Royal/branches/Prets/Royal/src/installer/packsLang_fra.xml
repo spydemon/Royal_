@@ -1,0 +1,6 @@
+<langpack> 
+    <str id="package.core" txt="Royal"/>
+    <str id="package.core.description" txt="Installe l'application Royal sans données"/>
+	<str id="package.mac" txt="Mac Bundle"/>
+	<str id="package.mac.description" txt="Crée un bundle Mac Os X (conseillé)"/>
+</langpack>

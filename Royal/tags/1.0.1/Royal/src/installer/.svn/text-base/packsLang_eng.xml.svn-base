@@ -1,0 +1,6 @@
+<langpack> 
+    <str id="package.core" txt="Royal core"/>
+    <str id="package.core.description" txt="Installation of Royal core"/>
+	<str id="package.mac" txt="Mac Bundle"/>
+	<str id="package.mac.description" txt="Create a Mac Os X bundle (the best way to run java programs)"/>
+</langpack>

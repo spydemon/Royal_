@@ -1,0 +1,95 @@
+Informations d'un album
+=======================
+
+Cette fenêtre permet de saisir les données qui sont propres au nouvel album (titre, tome, ISBN, etc...).
+
+$wizard.img$
+
+Liste des informations à saisir
+----------------------------------------
+
+Titre
+.....
+
+* Titre du nouvel album.
+* Champ obligatoire.
+
+Série
+.....
+
+* Choisissez une série parmi celles présentes dans la base, dans la liste déroulante.
+* Vous pouvez aussi créer une nouvelle série soit en entrant juste son nom, soit en y apportant des informations complémentaires
+
+Auteur
+......
+
+* Choisissez un auteur parmi ceux présents dans la base, dans la liste déroulante.
+* Vous pouvez aussi créer un nouvel auteur soit en entrant juste son nom, soit en y apportant des informations complémentaires
+
+Numéro
+....
+
+* Tome du nouvel album.
+* Ce champ doit être nuémrique uniquement
+
+Nb. Pages
+.........
+
+* Nombre de pages du nouvel album.
+* Si le nombre de pages est mal saisi, vous ne pourrez pas continuer.
+
+
+Dimensions
+...........
+
+* Entrez les dimensions du nouvel album en définissant sa Largeur et sa Hauteur
+* Ces champ doivent être numériques uniquement.
+
+Dates propres à l'Album
+.......................
+
+* Cliquez sur les champs "Date d'achat" et "Date de parution" pour faire apparaître un calendrier et sélectionner la date.
+* Si vous rentrez les deux champs, vérifiez bien que la date de parution soit inférieure à la date d'achat.
+
+$calendar.iùg$
+
+Collection
+..........
+
+* Choisissez une collection parmi celles présentes dans la base, dans la liste déroulante.
+* Vous pouvez aussi créer une nouvelle collection soit en entrant juste son nom, soit en y apportant des informations complémentaires
+
+Couverture
+..........
+
+* Couverture de l'album.
+* Cliquer sur le dossier se trouvant sous la zone dédiée à la couverture dans la fenêtre d'ajout ou d'édition, et choisir le fichier.
+* Si le fichier ne se trouve pas dans le répertoire dédié aux images de Royal, il y sera automatiquement copié.
+
+ISBN
+....
+
+* Numéro International Normalisé du Livre. 
+
+Commentaire
+...........
+
+* Permet d'inserer un commentaire personnel sur cet album.
+
+
+Edition Originale
+........
+
+* Cocher la case si le nouvel album est une édition orinale
+
+
+wizard.img := image ../../../images/new_album02.jpg
+calendar.img := image ../../../images/calendar.png
+
+
+
+
+
+
+
+

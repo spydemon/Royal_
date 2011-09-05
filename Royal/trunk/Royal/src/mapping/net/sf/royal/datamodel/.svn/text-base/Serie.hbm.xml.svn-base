@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="net.sf.royal.datamodel.Serie">
+		<id name="id">
+			<generator class="hilo">
+				<param name="table">hi_value</param>
+				<param name="column">next_value</param>
+				<param name="max_lo">100</param>
+			</generator>
+		</id>
+		
+		<property name="version"/>
+		<property name="tekId" />
+		<property name="name"/>
+		<property name="description" length="4100"/>
+		<property name="web"/>
+		<property name="closed"/>
+		<property name="oneShot"/>
+		
+		<set name="albums" inverse="true" cascade="none">
+			<key column="serieID"/>
+			<one-to-many class="net.sf.royal.datamodel.Album"/>
+		</set>
+		
+		<many-to-one name="type" column="typeID" not-null="false"/>
+	</class>
+</hibernate-mapping>

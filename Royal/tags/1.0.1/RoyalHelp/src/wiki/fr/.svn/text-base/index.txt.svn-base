@@ -1,0 +1,27 @@
+Bienvenue dans l'aide de Royal
+=======
+
+Ce logiciel vous permet de gérer votre collection de bandes dessinées.
+
+Il est distriué sous licence GNU GPL, c'est-à-dire que vous pouvez le copier, et le modifier sous les termes de cette licence. link http://www.gnu.org/licenses/gpl.html
+Ainsi n'hésitez pas à $contribution.link$, comme déclarer des bugs, ou demander des fonctionnalités.
+
+
+    N'hésitez pas à poster un bug si vous rencontrez la moindre faute d'ortographe ou de grammaire.
+
+Sommaire :
+
+* $add.link$
+* $edit.link$
+* $delete.link$
+* $importation.link$
+* $settings.link$
+* $faq.link$
+
+contribution.link := link faq/how_to_contribute.html "contribuer"
+add.link := link add/album.html "Ajout d'album"
+edit.link := link albums/edit.html "Editer un objet"
+delete.link := link albums/delete.html "Supprimer un objet"
+faq.link := link faq/faq.html "FAQ"
+importation.link := link utils/import.html "Importation de base de données"
+settings.link := link utils/settings.html "Préférences"

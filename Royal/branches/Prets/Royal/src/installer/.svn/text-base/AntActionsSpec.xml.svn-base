@@ -1,0 +1,40 @@
+<antactions>
+	<pack name="Core">
+		<antcall logfile="$INSTALL_PATH/log_installer.txt" verbose="no" order="afterpack" buildfile="$INSTALL_PATH/build.xml">
+			<property value="$INSTALL_PATH" name="install-path"/>
+			<property value="$ISO3_LANG" name="iso3-lang"/>
+			<property value="Royal-trunk.jar" name="royal-jar"/>
+			<property value="$database" name="database"/>
+			<property value="$dbserver" name="dbserver"/>
+			<property value="$dbport" name="dbport"/>
+			<property value="$dbname" name="dbname"/>
+			<property value="$dbuser" name="dbuser"/>
+			<property value="$dbpassword" name="dbpassword"/>
+			<target name="install"/>
+		</antcall>
+		<antcall logfile="$INSTALL_PATH/log_installer.txt" verbose="no" order="afterpacks" buildfile="$INSTALL_PATH/build.xml">
+			<property value="$INSTALL_PATH" name="install-path"/>
+			<property value="Royal-trunk.jar" name="royal-jar"/>
+			<property value="$database" name="database"/>
+			<property value="$dbserver" name="dbserver"/>
+			<property value="$dbport" name="dbport"/>
+			<property value="$dbname" name="dbname"/>
+			<property value="$dbuser" name="dbuser"/>
+			<property value="$dbpassword" name="dbpassword"/>
+			<target name="end"/>
+		</antcall>
+	</pack>
+	<pack name="Core Mac">
+		<antcall verbose="no" order="afterpack" buildfile="$INSTALL_PATH/build.xml">
+			<property value="$INSTALL_PATH" name="install-path"/>
+			<property value="$ISO3_LANG" name="iso3-lang"/>
+			<property value="Royal-trunk.jar" name="royal-jar"/>
+			<property value="$database" name="database"/><property value="$dbserver" name="dbserver"/>
+			<property value="$dbport" name="dbport"/>
+			<property value="$dbname" name="dbname"/>
+			<property value="$dbuser" name="dbuser"/>
+			<property value="$dbpassword" name="dbpassword"/>
+			<target name="bundlify"/>
+		</antcall>
+	</pack>
+</antactions>

@@ -1,0 +1,628 @@
+<project name="Royal" basedir="." default="build">
+	
+	<!-- How to create an install of Royal.
+	         - ant build
+	         - ant installer
+	         
+	-->
+	<property environment="myenv"/>
+	<property file="build.properties"/>
+	<tstamp/>
+	<property name="database_home" value="${basedir}/resources/database"/>
+	<property name="meta-inf" value="lib/asm.jar lib/antlr.jar lib/ccl.jar lib/cobertura.jar lib/commons-digester.jar lib/commons-httpclient.jar lib/help.jar lib/hibernate.jar lib/javancss.jar lib/jfreechart-common.jar lib/jfreechart.jar lib/jgoodies-look.jar lib/jh.jar lib/junit.jar lib/log4j.jar lib/oro.jar lib/vldocking.jar lib/cglib.jar lib/commons-beanutils.jar lib/commons-codec-1.3.jar lib/commons-collections.jar lib/commons-logging.jar lib/daffodil-client.jar lib/daffodil-common.jar lib/daffodil-embedded.jar lib/dom4j.jar lib/ehcache.jar lib/hsqldb.jar lib/jbossall-client.jar lib/jboss-aspect-library-jdk50.jar lib/jboss-ejb3.jar lib/jta.zip lib/lucene.jar lib/mysql.jar lib/postgresql.jar lib/estexte.jar"/>
+    	
+	<target name="clean-lib">
+		<delete dir="${lib}"/>
+	</target>
+
+	<target name="clean">
+		<delete dir="${build}"/>
+	</target>
+
+	<target name="prepare">
+		<mkdir dir="${lib}"/>
+		<mkdir dir="${lib.both}"/>
+		<mkdir dir="${lib.execution}"/>
+		<mkdir dir="${lib.compilation}"/>
+		<mkdir dir="${lib.install}"/>
+		<mkdir dir="${lib.asm.hibernate}"/>
+
+		<mkdir dir="${build}"/>
+		<mkdir dir="${archives}"/>
+		<mkdir dir="${reports}"/>
+		<mkdir dir="${junit-report}"/>
+		<mkdir dir="${release}"/>
+		<delete dir="${classes}"/>
+		<mkdir dir="${classes}"/>
+		<mkdir dir="${classes}/test"/>
+
+		<mkdir dir="${tb.classes}"/>
+		<mkdir dir="${tb.reports}"/>
+		<mkdir dir="${tb.release}"/>
+	</target>
+
+      <target name="thirdparty-local">
+                <available file="../RoyalHelp/build/archives/help.jar" property="help.lib"/>
+                <fail unless="help.lib" message="You must checkout Help and build it"/>
+                <copy file="../RoyalHelp/build/archives/help.jar" todir="${lib.both}" overwrite="true"/>
+        </target>
+	
+	<target name="dev">
+		<property name="dev" value="true">	
+    	</property>
+    </target>
+	
+	<target name="thirdparty" depends="thirdparty-local" unless="dev" description="Get the libraries">
+		<echo>ThirdParty</echo>
+	
+        <available file="${lib.both}/junit.jar" property="junit.present"/>
+        <antcall target="junit.dl" />
+
+        <available file="${lib.both}/ccl.jar" property="ccl.present"/>
+        <antcall target="ccl.dl" />
+
+        <available file="${lib.both}/hibernate.jar" property="hibernate.present"/>
+        <antcall target="hibernate.dl" />
+
+        <available file="${lib.both}/antlr.jar" property="antlr.present"/>
+        <antcall target="antlr.dl" />
+
+        <available file="${lib.execution}/mysql.jar" property="mysql.present"/>
+        <antcall target="mysql.dl" />
+
+        <available file="${lib.execution}/dom4j.jar" property="dom4j.present"/>
+        <antcall target="dom4j.dl" />
+
+        <available file="${lib.execution}/commons-logging.jar" property="commons-logging.present"/>
+        <antcall target="commons-logging.dl" />
+
+        <available file="${lib.execution}/ehcache.jar" property="ehcache.present"/>
+        <antcall target="ehcache.dl" />
+
+        <available file="${lib.execution}/cglib.jar" property="cglib.present"/>
+        <antcall target="cglib.dl" />
+
+        <available file="${lib.asm.hibernate}/asm.jar" property="asm.hibernate.present"/>
+        <antcall target="asm.hibernate.dl" />
+
+        <available file="${lib.execution}/commons-collections.jar" property="commons-collections.present"/>
+        <antcall target="commons-collections.dl" />
+
+        <available file="${lib.both}/commons-digester.jar" property="commons-digester.present"/>
+        <antcall target="commons-digester.dl" />
+
+        <available file="${lib.execution}/commons-beanutils.jar" property="beanutils.present"/>
+        <antcall target="beanutils.dl" />
+
+		<available file="${lib.execution}/jta.zip" property="jta.present"/>
+        <antcall target="jta.dl" />
+
+        <available file="${lib.both}/log4j.jar" property="log4j.present"/>
+        <antcall target="log4j.dl" />
+
+        <available file="${lib.both}/jfreechart.jar" property="jfreechart.present"/>
+        <antcall target="jfreechart.dl" />
+
+        <available file="${lib.both}/jfreechart-common.jar" property="jfreechart-common.present"/>
+        <antcall target="jfreechart-common.dl" />
+
+        <available file="${lib.both}/jgoodies-look.jar" property="jgoodies-look.present"/>
+        <antcall target="jgoodies-look.dl" />
+
+        <available file="${lib.execution}/hsqldb.jar" property="hsqldb.present"/>
+        <antcall target="hsqldb.dl" />
+
+        <available file="${lib.execution}/postgresql.jar" property="postgresql.present"/>
+        <antcall target="postgresql.dl" />
+
+        <available file="${lib.both}/jh.jar" property="jh.present"/>
+        <antcall target="jh.dl" />
+
+        <available file="${lib.install}/jarbundler.jar" property="jarbundler.present"/>
+        <antcall target="jarbundler.dl" />
+
+        <available file="${lib.both}/commons-httpclient.jar" property="commons-httpclient.present"/>
+        <antcall target="commons-httpclient.dl" />
+
+        <available file="${lib.execution}/commons-codec.jar" property="commons-codec.present"/>
+        <antcall target="commons-codec.dl" />
+
+        <available file="${lib.execution}/jboss-aspect-library-jdk50.jar" property="jboss-aspect.present"/>
+        <antcall target="jboss-aspect.dl" />
+
+        <available file="${lib.execution}/jboss-ejb3.jar" property="jboss-ejb3.present"/>
+        <antcall target="jboss-ejb3.dl" />
+
+        <available file="${lib.execution}/jbossall-client.jar" property="jboss-all.present"/>
+        <antcall target="jboss-all.dl" />
+
+        <available file="${lib.execution}/lucene.jar" property="lucene.present"/>
+        <antcall target="lucene.dl" />
+
+		<available file="${lib.both}/estexte.jar" property="estexte.present"/>
+        <antcall target="estexte.dl" /> 
+
+        <!--<available file="${lib.}/.jar" property=".present"/>
+        <antcall target=".dl" /> -->
+
+		<copy todir="${lib.install}">
+			<fileset dir="${myenv.ANT_HOME}/lib">
+				<include name="ant.jar"/>
+				<include name="ant-launcher.jar"/>
+			</fileset>
+		</copy>
+	</target>
+
+    <target name="junit.dl" unless="junit.present">
+        <get dest="${lib.both}/junit.jar" src="${lib.junit.jar}"/>
+    </target>
+    <target name="ccl.dl" unless="ccl.present">
+		<get dest="${lib.both}/ccl.jar" src="${lib.ccl.jar}"/>
+    </target>
+    <target name="hibernate.dl" unless="hibernate.present">
+		<get dest="${lib.both}/hibernate.jar" src="${lib.hibernate.jar}"/>
+    </target>
+    <target name="antlr.dl" unless="antlr.present">
+		<get dest="${lib.both}/antlr.jar" src="${lib.antlr.jar}"/>
+    </target>
+    <target name="mysql.dl" unless="mysql.present">
+		<get dest="${lib.execution}/mysql.jar" src="${lib.jdbc.mysql.jar}"/>
+    </target>
+    <target name="dom4j.dl" unless="dom4j.present">
+		<get dest="${lib.execution}/dom4j.jar" src="${lib.dom4j.jar}"/>
+    </target>
+    <target name="commons-logging.dl" unless="commons-logging.present">
+		<get dest="${lib.execution}/commons-logging.jar" src="${lib.commons-logging.jar}"/>
+    </target>
+    <target name="ehcache.dl" unless="ehcache.present">
+		<get dest="${lib.execution}/ehcache.jar" src="${lib.ehcache.jar}"/>
+    </target>
+    <target name="cglib.dl" unless="cglib.present">
+		<get dest="${lib.execution}/cglib.jar" src="${lib.cglib.jar}"/>
+    </target>
+    <target name="asm.hibernate.dl" unless="asm.hibernate.present">
+		<get dest="${lib.asm.hibernate}/asm.jar" src="${lib.asm.hibernate.jar}"/>
+    </target>
+    <target name="commons-collections.dl" unless="commons-collections.present">
+		<get dest="${lib.execution}/commons-collections.jar" src="${lib.commons-collections.jar}"/>
+    </target>
+    <target name="commons-digester.dl" unless="commons-digester.present">
+		<get dest="${lib.both}/commons-digester.jar" src="${lib.commons-digester}"/>
+    </target>
+    <target name="beanutils.dl" unless="beanutils.present">
+		<get dest="${lib.execution}/commons-beanutils.jar" src="${lib.commons-beanutils}"/>
+    </target>
+    <target name="jta.dl" unless="jta.present">
+		<get dest="${lib.execution}/jta.zip" src="${lib.jta.zip}"/>
+    </target>
+    <target name="log4j.dl" unless="log4j.present">
+		<get dest="${lib.both}/log4j.jar" src="${lib.log4j.jar}"/>
+    </target>
+    <target name="jfreechart.dl" unless="jfreechart.present">
+		<get dest="${lib.both}/jfreechart.jar" src="${lib.jfreechart}"/>
+    </target>
+    <target name="jfreechart-common.dl" unless="jfreechart-common.present">
+		<get dest="${lib.both}/jfreechart-common.jar" src="${lib.jfreechart.common}"/>
+    </target>
+    <target name="jgoodies-look.dl" unless="jgoodies-look.present">
+		<get dest="${lib.both}/jgoodies-look.jar" src="${lib.jgoodies.look}"/>
+    </target>
+    <target name="hsqldb.dl" unless="hsqldb.present">
+		<get dest="${lib.execution}/hsqldb.jar" src="${lib.hsqldb}"/>
+    </target>
+    <target name="postgresql.dl" unless="postgresql.present">
+		<get dest="${lib.execution}/postgresql.jar" src="${lib.postgresql}"/>
+    </target>
+    <target name="jh.dl" unless="jh.present">
+		<get dest="${lib.both}/jh.jar" src="${lib.jh}"/>
+    </target>
+    <target name="jarbundler.dl" unless="jarbundler.present">
+		<get dest="${lib.install}/jarbundler.jar" src="${lib.jarbundler}"/>
+    </target>
+    <target name="commons-httpclient.dl" unless="commons-httpclient.present">
+		<get dest="${lib.both}/commons-httpclient.jar" src="${lib.commons-httpclient}"/>
+    </target>
+    <target name="commons-codec.dl" unless="commons-codec.present">
+		<get dest="${lib.execution}/commons-codec.jar" src="${lib.commons-codec}"/>
+    </target>
+    <target name="jboss-ejb3.dl" unless="jboss-ejb3.present">
+        <get dest="${lib.execution}/jboss-ejb3.jar" src="${lib.jboss-ejb3}"/>
+    </target>
+    <target name="jboss-aspect.dl" unless="jboss-aspect.present">
+		<get dest="${lib.execution}/jboss-aspect-library-jdk50.jar" src="${lib.jboss-aspect}"/>
+    </target>
+    <target name="jboss-all.dl" unless="jboss-all.present">
+		<get dest="${lib.execution}/jbossall-client.jar" src="${lib.jboss-all}"/>
+    </target>
+    <target name="lucene.dl" unless="lucene.present">
+		<get dest="${lib.execution}/lucene.jar" src="${lib.lucene}"/>
+    </target>
+    <target name="estexte.dl" unless="estexte.present">
+		<get dest="${lib.both}/estexte.jar" src="${lib.estexte}"/>
+    </target>
+    <!--<target name=".dl" unless=".present">
+    </target>-->
+
+
+	<target name="build-tableview" depends="clean,prepare">
+		<javac srcdir="${tb.src}/java" 
+		       destdir="${tb.classes}"
+			   includes="**/tableview/**"
+			   debug="on"/>
+		<copy todir="${tb.classes}">
+			<fileset dir="${tb.src}/java">
+				<include name="**/tableview/*.gif"/>
+			</fileset>
+			<fileset dir="${tb.changelog}">
+				<include name="*.txt"/>
+			</fileset>
+		</copy>
+		<jar destfile="${tb.archives}/${tb.jar.name}"
+			 basedir="${tb.classes}">
+			<manifest>
+				<attribute name="Built-By" value="BirDy Team"/>
+				<section name="common">
+					<attribute name="Specification-Title" value="BirDy - TableView"/>
+					<attribute name="Specification-Version" value="${tb.release.version}"/>
+					<attribute name="Specification-Vendor" value="BirDy Team"/>
+					<attribute name="Implementation-Title" value="BirDy - TableView"/>
+					<attribute name="Implementation-Version" value="${tb.release.version} ${TODAY}"/>
+					<attribute name="Implementation-Vendor" value="BirDy Team"/>
+				</section>
+			</manifest>
+		</jar>
+	</target>
+
+
+	<!-- ********************************************************************************* -->
+	<target name="init-path">
+		<path id="compilation.path">
+			<fileset dir="${lib.both}">
+				<include name="**/*.jar" />
+			</fileset>
+			<fileset dir="${lib.compilation}">
+				<include name="**/*.jar" />
+			</fileset>
+		</path>
+		<path id="execution.path">
+			<fileset dir="${lib.both}">
+				<include name="**/*.jar" />
+			</fileset>
+			<fileset dir="${lib.execution}">
+				<include name="**/*.jar" />
+			</fileset>
+		</path>
+	</target>
+
+	<!-- clean,prepare, -->
+	<target name="build" depends="prepare,thirdparty,init-path">
+		<javac debug="true"
+			   classpathref="compilation.path" 
+			   destdir="${classes}">
+			<src path="${src}/java"/>
+			<exclude name="**/tableview/**"/>
+		</javac>
+		<copy todir="${classes}">
+			<fileset dir="${src}/mapping">
+				<include name="**/*.xml" />
+			</fileset>
+			<fileset dir="${src}/java">
+			    <include name="**/*.properties" />
+				<include name="*.html"/>
+				<include name="*.txt"/>
+		    </fileset>
+			<fileset dir="${src}/java">
+			   <include name="**/*.gif" />
+				<include name="**/*.png" />
+	        </fileset>
+		</copy>
+		<copy todir="${classes}">
+		    <fileset dir="${changelog}/royal">
+		        <include name="changelog.txt"/>
+		    </fileset>
+		</copy>
+		<jar destfile="${archives}/${ant.project.name}.jar">
+			<fileset dir="${classes}">
+				<exclude name="demo/**"/>
+				<exclude name="tableview/**"/>
+			</fileset>
+			<manifest>
+				<attribute name="Built-By" value="${user.name}"/>
+				<section name="common">
+					<attribute name="Specification-Title" value="Royal"/>
+					<attribute name="Specification-Version" value="${release.version}"/>
+					<attribute name="Specification-Vendor" value="Royal Team"/>
+					<attribute name="Implementation-Title" value="Royal"/>
+					<attribute name="Implementation-Version" value="${release.version} ${TODAY}"/>
+					<attribute name="Implementation-Vendor" value="Royal Team"/>
+				</section>
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="build-test" depends="build">
+		<javac debug="true" 
+		       destdir="${classes}/test"
+			   verbose="true">
+			<src path="${test}/java"/>
+			<exclude name="**/tableview/**"/>
+			<exclude name="**/gui/**"/>
+			<exclude name="demo/**"/>
+			<exclude name="**/*AllTests.java"/>
+			<include name="**/datamodel/**"/>
+			<include name="**/persistency/**"/>
+			<classpath>
+				<path refid="compilation.path"/>
+				<pathelement location="${archives}/${ant.project.name}.jar"/>
+			</classpath>
+		</javac>
+		<jar destfile="${archives}/${ant.project.name}-test.jar" includes="**/*.class">
+			<fileset dir="${classes}/test">
+				<exclude name="demo/**"/>
+				<exclude name="tableview/**"/>
+			</fileset>
+		</jar>
+	</target>
+
+	<target name="run-test" depends="build-test">
+		<antcall target="run-junit"/>
+	</target>
+
+	<target name="run-junit">
+		<junit printsummary="yes" haltonfailure="no" failureproperty="test.failure">
+			<sysproperty key="net.sourceforge.cobertura.datafile" file="${cobertura.ser}" />
+			<classpath>
+				<pathelement path="${archives}/${ant.project.name}-cobertura.jar" />
+				<pathelement path="${archives}/${ant.project.name}.jar" />
+				<pathelement path="${archives}/${ant.project.name}-test.jar" />
+				<pathelement path="${lib.both}/antlr.jar" />
+				<pathelement path="${lib.both}/hibernate.jar" />
+				<pathelement path="${lib.both}/log4j.jar" />
+				<pathelement path="${lib.execution}/cglib.jar" />
+				<pathelement path="${lib.execution}/commons-logging.jar" />
+				<pathelement path="${lib.execution}/commons-collections.jar" />
+				<pathelement path="${lib.execution}/commons-beanutils.jar" />
+				<pathelement path="${lib.execution}/dom4j.jar" />
+				<pathelement path="${lib.execution}/ehcache.jar" />
+				<pathelement path="${lib.execution}/jta.zip" />
+			</classpath>
+			<formatter type="xml" />
+			<batchtest fork="yes" todir="${junit-report}">
+				<fileset dir="${test}/java">
+					<include name="**/*Test.java" />
+					<exclude name="**/*Helper.java" />
+					<exclude name="**/tableview/**" />
+					<exclude name="**/docks/**" />
+					<exclude name="**/gui/**" />
+				</fileset>
+			</batchtest>
+		</junit>
+		<antcall target="junitreport"/>
+		<fail if="${test.failure}" message="Test failed" />
+		<delete>
+			<fileset dir="${junit-report}">
+				<include name="TEST-*.xml" />
+			</fileset>
+		</delete>
+	</target>
+
+	<target name="cobertura-instrument" depends="build-test,init-db">
+		<delete dir="${cobertura}"/>
+		<mkdir dir="${cobertura}"/>
+		<mkdir dir="${instrumented-classes}"/>
+		<cobertura-instrument todir="${instrumented-classes}" datafile="${cobertura.ser}">
+			<ignore regex="org.apache.log4j.*" />
+			<fileset dir="${classes}">
+				<exclude name="**/docks/**"/>
+				<exclude name="**/gui/**"/>
+				<exclude name="tableview/**"/>
+				<exclude name="test/**"/>
+				<exclude name="demo/**"/>
+			</fileset>
+		</cobertura-instrument>
+		<copy todir="${instrumented-classes}">
+			<fileset dir="${src}/mapping">
+				<include name="**/*.xml" />
+			</fileset>
+		</copy>
+		<jar destfile="${archives}/${ant.project.name}-cobertura.jar">
+			<fileset dir="${instrumented-classes}">
+				<exclude name="demo/**"/>
+				<exclude name="tableview/**"/>
+			</fileset>
+		</jar>
+	</target>
+
+	<target name="run-instrument" depends="cobertura-instrument">
+		<antcall target="run-junit"/>
+		<cobertura-report format="html" destdir="${cobertura-reports}" srcdir="${src}/java" datafile="${cobertura.ser}"/>
+	</target>
+	
+	<target name="init-db" depends="init-path">
+		<path id="schemaExport.path">
+			<path refid="execution.path"/>
+			<pathelement location="${classes}" />
+			<!--pathelement location="${src}/mapping"/-->
+		</path>
+		<taskdef name="schemaexport" classname="org.hibernate.tool.hbm2ddl.SchemaExportTask" classpathref="schemaExport.path" />
+		<!--
+		
+		DON'T FORGET THAT THE PATH TO THE DB IS IN ANT_OPTS
+		
+		-->
+		<schemaexport config="${src}/mapping/hibernate.cfg.xml" quiet="no" text="no" delimiter=";" output="${build}/schema-export.sql">
+		</schemaexport>
+	</target>
+		
+	<target name="junitreport" unless="continuous-param">
+		<junitreport todir="${reports}">
+			<fileset dir="${junit-report}">
+				<include name="TEST-*.xml" />
+			</fileset>
+			<report format="noframes" todir="${reports}" />
+		</junitreport>
+	</target>
+
+	<target name="release" depends="" description="Release Royal">
+		<!-- Create runnable jar -->
+		<manifest file="${build}/MANIFEST.MF">
+			<attribute name="Main-Class" value="${main-class}"/>
+			<attribute name="Class-Path" value="${meta-inf}"/>
+			<attribute name="Built-By" value="${user.name}"/>
+				
+			<section name="common">
+				<attribute name="Specification-Title" value="Royal"/>
+				<attribute name="Specification-Vendor" value="Royal Team"/>
+				<attribute name="Implementation-Title" value="Royal"/>
+				<attribute name="Implementation-Version" value="${release.version} ${TODAY}"/>
+				<attribute name="Implementation-Vendor" value="Royal Team"/>
+		    </section>
+		</manifest>
+		
+		<jar destfile="${archives}/${ant.project.name}-${release.version}.jar" manifest="${build}/MANIFEST.MF">
+			<fileset dir="${classes}">
+				<exclude name="demo/**"/>
+				<exclude name="tableview/**"/>
+				<exclude name="**/ant/**"/>
+				<exclude name="test/**"/>
+				<exclude name="*.cfg.xml"/>
+			</fileset>
+			<fileset dir="${src}/installer">
+				<include name="*.cfg.xml"/>
+			</fileset>
+		</jar>
+				
+		<delete dir="${build}/release"/>
+		<mkdir dir="${build}/release"/>
+		<mkdir dir="${build}/release/lib"/>
+		
+		<copy todir="${build}/release" file="${archives}/${ant.project.name}-${release.version}.jar"/>
+	    <copy todir="${build}/release/lib" flatten="true">
+	    	    <fileset dir="${lib.both}">
+	    	    		<include name="*.jar"/>
+	    	    </fileset>
+	      	<fileset dir="${lib.execution}">
+	    		    <include name="*.jar"/>
+    		        <include name="asm/*.jar"/>
+	    		</fileset>
+		</copy>
+		
+		<copy todir="${build}/release" file="LICENSE" />
+		<copy todir="${build}/release">
+			<fileset dir="${src}/installer">
+				<include name="*.xml"/>
+				<exclude name="*install*.xml"/>
+				<exclude name="*.cfg.xml"/>
+				<include name="Royal" />
+			</fileset>
+			
+		</copy>
+		<mkdir dir="${build}/release/resources"/>
+		<copy todir="${build}/release/resources">
+			<fileset dir="${basedir}/resources">
+				<include name="**/*.*"/>
+				<exclude name="**/CVS/**"/>
+			</fileset>
+		</copy>
+		<mkdir dir="${build}/release/install-libs"/>
+		<copy todir="${build}/release/install-libs">
+			<fileset dir="${lib.install}">
+				<include name="*.jar"/>
+			</fileset>
+	    </copy>
+		
+		<copy file="${src}/installer/BirDy.exe" tofile="${build}/release/BirDy.exe"/>
+		<copy file="${src}/installer/Royal.lap" tofile="${build}/release/Royal.lap"/>
+		<copy file="system_win.properties" tofile="${build}/release/system_win.properties"/>
+		<copy file="system_unix.properties" tofile="${build}/release/system_unix.properties"/>
+		
+		<!--antcall target="create-bundle"/>
+		<copy file="${build}/bundle/BirDy-mac.zip" tofile="${build}/release/BirDy-mac.zip"></copy-->
+		
+	</target>
+		
+        <target name="installer" depends="release" description="Create installer (need izpack installed)">
+	
+	    <available file="${lib.install}/izpack-compiler.jar" property="izpack-compiler.present"/>
+	    <antcall target="izpack-compiler.dl"/>
+
+    	<taskdef name="izpack" classpath="${lib.install}/izpack-compiler.jar"
+    	             classname="com.izforge.izpack.ant.IzPackTask"/>
+	
+	
+	    <izpack input="${src}/installer/royal-install.xml" 
+	            output="${archives}/${ant.project.name}-install-${release.version}.jar" 
+	            installerType="standard" 
+				basedir="${build}/release"/>
+    	</target>
+
+		<!--<mkdir dir="${izpackdir}"/>
+	    <unzip dest="${izpackdir}" src="${lib.install}/izpack.zip"/>-->
+	<target name="izpack-compiler.dl" unless="izpack-compiler.present">
+		<get dest="${lib.install}/izpack-compiler.jar" src="${lib.izpack-compiler}"/>
+	</target>
+	
+	<target name="source" description="Create source archive">
+		<mkdir dir="${build}/source"/>
+		<copy todir="${build}/source">
+			<fileset dir="${basedir}">
+				<exclude name="build/**"/>
+				<exclude name="lib/**"/>
+				<exclude name="bin/**"/>
+				<exclude name="**/CVS/**"/>
+				<exclude name="CVS/**"/>
+				<exclude name="*.log"/>
+				<exclude name="database.*"/>
+				<exclude name="databases/**"/>
+				<exclude name="${src}/helpold/**"/>
+				<exclude name="gifs/**"/>
+		    </fileset>
+		</copy>
+		<zip destfile="${archives}/${ant.project.name}-src-${release.version}.zip"
+		     basedir="${build}/source"/>
+		<delete dir="${build}/source"/>
+	</target>
+	
+	<!--target name="create-bundle" description="Create bundle for MAC- need jarbundler anttask">
+		<taskdef name="jarbundler" classname="net.sourceforge.jarbundler.JarBundler"/>
+		<delete dir="${build}/bundle"/>
+		<mkdir dir="${build}/bundle"/>
+		<jarbundler dir="${build}/bundle"
+			        name="BirDy"
+			        mainclass="net.sf.birdy.BirDy"
+			        jar="${archives}/${ant.project.name}-${release.version}.jar"
+			        vmoptions="-D@daffodil"
+			        build="${release.version}"
+			        jvmversion="1.4+"
+			        workingdirectory="$JAVAROOT">
+		</jarbundler>
+		<property name="app-resources" value="${build}/bundle/BirDy.app/Contents/Resources/Java"/>
+		<mkdir dir="${app-resources}/lib"/>
+		<mkdir dir="${app-resources}/resources"/>
+		<mkdir dir="${app-resources}/resources/perspectives"/>
+		<mkdir dir="${app-resources}/resources/images"/>
+		<mkdir dir="${app-resources}/resources/images/cover"/>
+		<mkdir dir="${app-resources}/resources/images/dedication"/>
+		<mkdir dir="${app-resources}/resources/images/gallery"/>
+		<mkdir dir="${app-resources}/resources/images/photo"/>
+		<mkdir dir="${app-resources}/resources/icons"/>
+		<copy todir="${app-resources}/resources/icons">
+			<fileset dir="${build}/release/resources/icons">
+				<include name="*.*"/>
+			</fileset>
+		</copy>
+		<copy todir="${app-resources}">
+			<fileset dir="${build}/release">
+				<include name="lib/*.*"/>
+			</fileset>
+		</copy>
+		<copy todir="${app-resources}/resources/perspectives">
+			<fileset dir="${build}/release/resources/perspectives">
+				<include name="*.*"/>
+			</fileset>
+		</copy>
+		
+		<zip destfile="${build}/bundle/BirDy-mac.zip" basedir="${build}/bundle"></zip>
+	</target-->
+		
+</project>

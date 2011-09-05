@@ -1,0 +1,38 @@
+Informations des auteurs
+========================
+
+Cette fenêtre permet d'associer des auteurs au nouvel album. Si un auteur n'existe pas dans la base de données, il pourra être créé à l'aide de cette fenêtre.
+
+$wizard.img$
+
+Pseudo
+......
+
+* Pseudo de l'auteur.
+* Ce nom doit être unique.
+* Champ obligatoire
+
+Nom
+....
+
+* Nom de l'auteur.
+* Ce nom doit être unique.
+
+
+Prénom
+......
+
+* Prénom de l'auteur.
+
+Dates de Naissance et Décès
+...........................
+
+* Date de naissance et de décès de l'auteur.
+* Cliquer sur le champ pour faire appaitre un calendrier et choisir la date 
+
+$calendar.img$
+
+* Si les deux champs sont remplis, vérifier que la date de naissance soit inférieure à la date de décès
+
+wizard.img := image ../../../images/new_album07.jpg
+calendar.img := image ../../../images/calendar.png

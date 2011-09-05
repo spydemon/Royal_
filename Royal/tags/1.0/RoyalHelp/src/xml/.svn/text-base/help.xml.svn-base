@@ -1,0 +1,19 @@
+<help name="index" fr="Aide de BirDy" en="Help of BirDy"> 
+	<topic name="albums" fr="Ajout d'albums" en="Add albums">
+		<topic name="new_album" fr="Détails" en="Details">
+			<article name="serie_data" fr="Informations de la série" en="Serie data"/>
+			<article name="collection_data" fr="Informations de la collection" en="Collection data"/>
+			<article name="author_data" fr="Informations des auteurs" en="Author data"/>
+		</topic>
+		<article name="add" fr="Ajout d'un album" en="Add album"/>
+		<article name="edit" fr="Edition d'éléments" en="Edit item"/>
+		<article name="delete" fr="Suprresion d'éléments" en="Delete item"/>
+	</topic>
+	<topic name="faq" fr="FAQ" en="FAQ" weight="3">
+		<article name="how_to_contribute" fr="Comment contribuer à l'aide" en="How to contribute to the help"/>
+	</topic>
+	<topic name="utils" fr="Outils" en="Utils">
+		<article name="import" fr="Importation" en="Import"/>
+		<article name="settings" fr="Préférences" en="Settings"/>
+	</topic>
+</help>

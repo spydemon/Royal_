@@ -1,0 +1,75 @@
+How to contribute to the help content ?
+===========================
+
+As you can see, the help content is not exhaustive. In fact, writing a help system is a fully job, and we are already busy with Royal development. 
+
+That is why, we propose you to contribute to the help content of Royal.
+
+Why contribute ?
+----------------
+
+Of course, contribution is not compulsory, but here is a motivation reason list:
+
+* By contributing, your name will appear in the contributor list.
+* You are happy the free use of Royal. Contribution is the best way to pay the authors.
+* It is not a big investment because writing help content file is easy thanks to the project named *EsTexte* (http://estexte.sourceforge.net).
+
+How to contribute ?
+------------------
+
+There are two ways to contribute:
+
+* If you found a spelling mistake. Go to the page http://trac.royal-project.org and post a bug in the *Documentation* category.
+* You know what a version control system is. Checkout the *RoyalHelp* module in order to edit help files.
+
+
+Writing a help file
+-------------------
+
+1. Editing a help file
+......................
+
+After you get the *RoyalHelp* module :
+
+* Edit help file with text editor (open txt fomrat file only). 
+
+    All the files are located in *RoyalHelp/src/wiki*. The directory *fr* contains french files, et and directory *en* contains english one.
+
+* Use the *EsTexte* syntax to write page content. Do not hesitate to look into existing pages or http://estexte.sourceforge.net/guide.html first.
+
+
+* Save modifications.
+     
+
+2. Display the result
+.....................
+
+    You must install *ANT* (http://ant.apache.org/) in order to display the result.
+    
+* Open a DOS command window (or a terminal).
+
+* Go to the *RoyalHelp* directory.
+
+
+* Type these commandes:
+    * _ant thirdparty_ (first time only). 
+    * _ant -Dlocale=&lt;lang&gt; [-Dpage=&lt;page&gt;] dev run-demo_, whose &lt;lang&gt; value is _fr_ or _en_ (french ou english) and &lt;page&gt; value is a page name without html extension.
+* When the result is acceptable, copy/paste file content in the *Help Contribution* of Bidry's forum.
+
+    A thread by help file and its traduction, and do not forget to sign up your post (for the contributor list ;) ). The modifications will be available in the next release of Royal.
+
+
+3. Some simple rules
+....................
+
+If you want that the Royal help system stay useful, you must follow 5 rules :
+
+* Avoid the number of spelling mistakes.
+* Bannish grammatical mistakes.
+* Help content does not SMS language.
+* Respect the common structure of documents (title, subtitle, etc..).
+* The author reserve the right to modify the text, the screenshots, etc..
+
+
+If you read these lines, it means that you want really to help us. Thank you. 
+
