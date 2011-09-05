@@ -1,0 +1,24 @@
+Add a Database
+======
+
+In the "Settings" window, on the "Database" tab, click on the "Add" button. Then, you can fill the fields with the information.
+
+Name
+....
+* The name of the new database
+
+Type
+....
+* You can choose between HSQLDB (local database), PostgreSQL ou MySQL (distant database)
+
+URL
+...
+* Distant database adress
+
+User-name
+.........
+* Your nickname to access to the database
+
+Password
+........
+* Your password ot access to the database

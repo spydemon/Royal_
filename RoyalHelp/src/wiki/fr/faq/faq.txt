@@ -1,0 +1,8 @@
+FAQ du logiciel
+=========
+
+Cette foire aux questions référence les réponses aux questions les plus souvent posées par les utilisateurs.
+
+* $help.link$
+
+help.link := link how_to_contribute.html "Comment contribuer à l'aide"
