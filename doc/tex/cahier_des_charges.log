@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (TeX Live 2010/Arch Linux) (format=pdflatex 2011.6.20)  4 SEP 2011 00:29
+This is pdfTeX, Version 3.1415926-1.40.11 (TeX Live 2010/Arch Linux) (format=pdflatex 2011.6.20)  7 SEP 2011 23:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -374,34 +374,40 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 14.
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./introduction.tex)
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./introduction.tex
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 3.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 3.
+)
 [1
 
-]
-No file cahier_des_charges.toc.
+] (./cahier_des_charges.toc)
 \tf@toc=\write3
 \openout3 = `cahier_des_charges.toc'.
 
-[2
+ [2
 
 ] (./cahier_des_charges.aux) ) 
 Here is how much of TeX's memory you used:
- 1858 strings out of 493772
- 22721 string characters out of 3150564
- 81396 words of memory out of 3000000
- 5164 multiletter control sequences out of 15000+200000
- 10217 words of font info for 28 fonts, out of 3000000 for 9000
+ 1869 strings out of 493772
+ 22872 string characters out of 3150564
+ 83396 words of memory out of 3000000
+ 5170 multiletter control sequences out of 15000+200000
+ 12435 words of font info for 31 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 24i,6n,24p,224b,191s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 26i,6n,24p,224b,191s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf-dist/fonts/enc/dvips/cm-super/c
 m-super-t1.enc}</usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb>
-</usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/tex
-mf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/t
-ype1/public/cm-super/sfrm1728.pfb>
-Output written on cahier_des_charges.pdf (3 pages, 51707 bytes).
+</usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/share/tex
+mf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texmf-dist/fonts/t
+ype1/public/cm-super/sfrm1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-
+super/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1728.
+pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb>
+Output written on cahier_des_charges.pdf (3 pages, 97006 bytes).
 PDF statistics:
- 31 PDF objects out of 1000 (max. 8388607)
- 21 compressed objects within 1 object stream
+ 43 PDF objects out of 1000 (max. 8388607)
+ 30 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
