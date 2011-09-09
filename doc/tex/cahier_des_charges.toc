@@ -1,1 +1,5 @@
 \select@language {french}
+\contentsline {part}{I\hspace {1em}D\IeC {\'e}finition des fonctionnalit\IeC {\'e}s}{3}
+\contentsline {section}{\numberline {0.1}Am\IeC {\'e}lioration du client lourd}{4}
+\contentsline {subsection}{\numberline {0.1.1}V\IeC {\'e}rification du code bar}{4}
+\contentsline {section}{\numberline {0.2}Cr\IeC {\'e}ation du client Andro\IeC {\"\i }d}{4}
