@@ -19,6 +19,7 @@ Cette partie liste toutes les fonctionnalités attendues dans le programme. Cell
 \section{Amélioration du client lourd}
 
 %%%%% ÉLÉMENT DE PRIORITÉ 1
+
 \subsection[Vérification du code bar]{Vérification du code bar — \emph{Priorité 1}}
 Après l'entrée du code barre par l'utilisateur le programme devra executer une verification de ce code barre afin de verifier s'il s'agit bien d'un code par correspondant à un livre ou un autre code barre. Pour effectuer cette verification le programme devra verifier si le code barre commence par 978 ou 979 et s'il est bien composé de 13 chiffres. Si c'est conditions sont bien vérifié le code barre sera validé. 
 
@@ -64,14 +65,26 @@ La fonction de recherche d'image proposé par royal ne propose pas toujours une 
 %Sur mon royal il n'enregistre pas les couverture :s
 
 \subsection[Syncronisation des bandes dessinées déja présentes dans la bases de donnée]{Syncronisation des bandes dessinées déja présentes dans la bases de donnée — \emph{Priorité 4}}
-Afin d'améliorer la fonction du client android verifiant les ISBN deja existant, une fonction de syncronisation avec le client android sera crée afin de lui faire parvenir les SBN des bandes dessinée deja présentes dans le client lourd. Cette syncronisation sera faite par email, bluetooth ou usb.
+Afin d'améliorer la fonction du client android verifiant les ISBN deja existant, une fonction de syncronisation avec le client android sera crée afin de lui faire parvenir les ISBN des bandes dessinée deja présentes dans le client lourd. Cette syncronisation sera faite par email, bluetooth ou usb.
 
 \section{Création du client Androïd}
 
 %%%%% ÉLÉMENT DE PRIORITÉ 1
 
+\subsection[Mise en place de l'interface graphique]{Mise en place de l'interface graphique  — \emph{Priorité 1}}
+Une interface graphique proposant un menu donnant accès au différentes fonction de l'application du client android devra être crée. Cette interface sera modifié tout au long de la creation du client android afin de permettre l'accès au nouvelle fonctions.
+
+\subsection[Récupération et traitement du code barre]{Récupération et traitement du code barre — \emph{Priorité 1}}
+La library open-source ZXING permet le traitement de code barre en Java. Grace à cette library qui à l'aide de la caméra intégrée sur les téléphones mobiles décode les codes-barres sur l'appareil nous pouvont sans communiquer avec un serveur recuperer le code barre des differentes bandes déssinées.
+
+\subsection[Envois du mail contenant l'ISBN via Gmail]{Envois du mail contenant l'ISBN via Gmail — \emph{Priorité 1}}
+Afin de faire parvenir le code ISBN au client lourd l'application android devra apres le décodage du code barre envoyer l'ISBN par mail. On utilisera tout d'abord le compte Gmail car tout utilisateur android en possède un. Le mail aura une syntaxe spécial dans son sujet afin d'etre distingué par le client lourd des autres mail.
+
 %%%%% ÉLÉMENT DE PRIORITÉ 2
 
+\subsection[Vérification de la validitée de l'ISBN]{Vérification de la validitée de l'ISBN — \emph{Priorité 2}}
+L'application vérifiera via internet que le code barre récupéré est bien associé à un livre. Si c'est le cas, le titre de l'ouvrage devra être retourné à l'utilisateur. Mais si aucun livre n'est trouvé, l'utilisateur sera averti que sont livre n'est pas disponible. Un mail sera quand même envoyer au client lourd afin de rappeler a l'utilisateur qu'il doit rentré les information manuellement.
+ 
 %%%%% ÉLÉMENT DE PRIORITÉ 3
 
 %%%%% ÉLÉMENT DE PRIORITÉ 4
