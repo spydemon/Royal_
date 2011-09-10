@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2011.9.8)  10 SEP 2011 18:56
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2011.9.8)  10 SEP 2011 22:11
 entering extended mode
 **C:/Users/Steve/Git/Royal_/doc/tex/cahier_des_charges.tex
 (C:/Users/Steve/Git/Royal_/doc/tex/cahier_des_charges.tex
@@ -395,33 +395,36 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 ] [3
 
 ]
-[4]) [5] (C:\Users\Steve\Git\Royal_\doc\tex\cahier_des_charges.aux) ) 
+[4] [5]) (C:\Users\Steve\Git\Royal_\doc\tex\contraintes.tex [6] [7
+
+]) [8]
+(C:\Users\Steve\Git\Royal_\doc\tex\cahier_des_charges.aux) ) 
 Here is how much of TeX's memory you used:
- 1896 strings out of 494045
- 24390 string characters out of 3145970
- 87446 words of memory out of 3000000
- 5181 multiletter control sequences out of 15000+200000
+ 1901 strings out of 494045
+ 24522 string characters out of 3145970
+ 88446 words of memory out of 3000000
+ 5183 multiletter control sequences out of 15000+200000
  17779 words of font info for 38 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 26i,6n,24p,624b,191s stack positions out of 5000i,500n,10000p,200000b,50000s
- <C:\Users
-\Steve\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbi1200.pk>
- <C:\Users\Steve\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ec
-bx1440.pk> <C:\Users\Steve\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec
-\dpi600\ecbx1000.pk> <C:\Users\Steve\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\j
-knappen\ec\dpi600\ecbx2074.pk> <C:\Users\Steve\AppData\Local\MiKTeX\2.9\fonts\p
-k\ljfour\jknappen\ec\dpi600\ecbx1200.pk> <C:\Users\Steve\AppData\Local\MiKTeX\2
-.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm0800.pk> <C:\Users\Steve\AppData\Loca
-l\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm0700.pk> <C:\Users\Steve\Ap
-pData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecti1000.pk> <C:\User
-s\Steve\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1000.pk
+ 26i,6n,24p,620b,191s stack positions out of 5000i,500n,10000p,200000b,50000s
+ <C:\Users\Steve\Ap
+pData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbi1200.pk> <C:\User
+s\Steve\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1440.pk
 > <C:\Users\Steve\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\e
-cbx2488.pk> <C:\Users\Steve\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\e
-c\dpi600\ecrm1200.pk> <C:\Users\Steve\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\
-jknappen\ec\dpi600\ecrm1728.pk>
-Output written on cahier_des_charges.pdf (6 pages, 116904 bytes).
+cbx1000.pk> <C:\Users\Steve\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\e
+c\dpi600\ecbx2074.pk> <C:\Users\Steve\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\
+jknappen\ec\dpi600\ecbx1200.pk> <C:\Users\Steve\AppData\Local\MiKTeX\2.9\fonts\
+pk\ljfour\jknappen\ec\dpi600\ecrm0800.pk> <C:\Users\Steve\AppData\Local\MiKTeX\
+2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm0700.pk> <C:\Users\Steve\AppData\Loc
+al\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecti1000.pk> <C:\Users\Steve\A
+ppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1000.pk> <C:\Use
+rs\Steve\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx2488.p
+k> <C:\Users\Steve\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\
+ecrm1200.pk> <C:\Users\Steve\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\
+ec\dpi600\ecrm1728.pk>
+Output written on cahier_des_charges.pdf (9 pages, 128309 bytes).
 PDF statistics:
- 352 PDF objects out of 1000 (max. 8388607)
+ 378 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
