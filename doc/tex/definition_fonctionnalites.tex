@@ -27,10 +27,32 @@ Le programme doit etre capable de recuperer des information sur les differents l
 
 \subsection[Complétion automatique des champs]{Complétion automatique des champs — \emph{Priorité 1}}
 Une fonction de complétion auomatique des champs de caractéristiques de la bande déssiné devra ètre créé. Cette fonction remplira automatiquement les differents champs grace a l'objet information créé par la fonction de recherche sur l'API Google book.
- 
+
+\subsection[Ajouts des champs manquants]{Ajouts des champs manquants — \emph{Priorité 1}}
+Royal ayant initialement été prevu pour la gestion des collections personnels il nous faudra ajouter des champs tels que le lieu de l'emprunts, la date de l'emprunts ainsi que la date de retours du livre afin de permettre la gestion de livres empruntés. 
+
+\subsection[Connexion à une adresse Gmail]{Connexion à une adresse Gmail — \emph{Priorité 1}} 
+Sachant que les differents codes barres scanner a l'aide du smartphone sous android seront envoyer via une adresse Gmail, il nous faudra gerer la connexion à cette adresse Gmail afin de récupérer les codes barres.
+
+\subsection[Récupération des mail]{Récupération des mail — \emph{Priorité 1}} 
+Cette fonction de lecture des mail par le client lourd nécessitera une identification des mail ayant été envoyer par le client android. Cette identification se fera à l'aide d'une syntaxe spécifique du sujet du mail. Une fois le mail identifié le logiciel recuperrera l'ISBN et suppimera le message. 
+
 %%%%% ÉLÉMENT DE PRIORITÉ 2
 
+
 %%%%% ÉLÉMENT DE PRIORITÉ 3
+
+\subsection[Connexion à une autre adresse mail]{Connexion à une autre adresse mail — \emph{Priorité 3}}
+Cette fonction aura pour but de permettre à l'utilisateur de choisir entre l'adresse par defaut (l'adresse Gmail liée au compte android) et une autres adresse qu'il choisirait lui-même. Pour permettre de choisir d'autre adresse mail le logiciel devra gerer plusieurs types de comptes de messagerie tels que ceux utilisant des compte POP3 ou encors IMAP.
+
+\subsection[Stocker les lieu d'emprunts dans une Base De Donnée]{Stocker les lieu d'emprunts dans une Base De Donnée — \emph{Priorité 3}}
+Afin d'éviter à l'utilisateur de rajouter le nom du lieu d'emprunts pour chacun des livres empruntés, une base de donnnée stockant des lieux d'emprunts sera créé. L'utilisateur n'oras plus qu'à selectionner sont lieu d'emprunts dans une liste. Si le lieu d'emprunt n'existe pas dans la base de donnée l'utilisateur poura le rajouter.
+
+\subsection[Gestion des ISBN indisponible sur Google Docs]{Gestion des ISBN indisponible sur Google Docs — \emph{Priorité 3}}
+Pour les ouvrage dont l'ISBN n'est associé à aucune information sur Google Docs le logiciel affichera un message informant l'utilisateur que l'ajouts automatique est impossible pour ce livre afin que l'utilisateur puisse les entré manuellement.   
+
+\subsection[Ajout d'un système de rappel de date de retour]{Ajout d'un système de rappel de date de retour — \emph{Priorité 3}}
+Le logiciel devra émettre des alertes à l'utilisateur quand la date de fin d'emprunt d'un livre approche. Cette fonction devra pouvoir etre désactivé par l'utilisateur s'il ne desir pas l'utilisé afin d'évité de le géner.
 
 %%%%% ÉLÉMENT DE PRIORITÉ 4
 
