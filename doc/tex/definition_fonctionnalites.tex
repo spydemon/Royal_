@@ -20,6 +20,9 @@ Cette partie liste toutes les fonctionnalités attendues dans le programme. Cell
 
 %%%%% ÉLÉMENT DE PRIORITÉ 1
 
+\subsection[Ajout d'un code bar]{Ajout d'un code bar — \emph{Priorité 1}}
+Un champs sera ajouter afin que l'utilisateur puisse entré le code barre de sont livre ou l'ISBN à 13 chiffre (celui utilisé dans le reste du logiciel est le code ISBN à 10 chiffre).
+
 \subsection[Vérification du code bar]{Vérification du code bar — \emph{Priorité 1}}
 Après l'entrée du code barre par l'utilisateur le programme devra executer une verification de ce code barre afin de verifier s'il s'agit bien d'un code par correspondant à un livre ou un autre code barre. Pour effectuer cette verification le programme devra verifier si le code barre commence par 978 ou 979 et s'il est bien composé de 13 chiffres. Si c'est conditions sont bien vérifié le code barre sera validé. 
 
@@ -64,8 +67,11 @@ L'affichage des bande dessinée pourra etre gerer en fonction de la serie, de l'
 La fonction de recherche d'image proposé par royal ne propose pas toujours une image adaptée à notre album c'est pourquoi nous allons attribué automatiquement l'image de la couverture de la bande dessinée en fonction de celle présente sur Google Book. Cette image pourra toujours etre changé manuellement par une image personelle comme on pouvait le faire avec royal.
 %Sur mon royal il n'enregistre pas les couverture :s
 
-\subsection[Syncronisation des bandes dessinées déja présentes dans la bases de donnée]{Syncronisation des bandes dessinées déja présentes dans la bases de donnée — \emph{Priorité 4}}
-Afin d'améliorer la fonction du client android verifiant les ISBN deja existant, une fonction de syncronisation avec le client android sera crée afin de lui faire parvenir les ISBN des bandes dessinée deja présentes dans le client lourd. Cette syncronisation sera faite par email, bluetooth ou usb.
+\subsection[Syncronisation des ISBN déja présentes dans la bases de donnée]{Syncronisation des ISBN déja présentes dans la bases de donnée — \emph{Priorité 4}}
+Afin d'améliorer la fonction du client android verifiant les ISBN deja existant, une fonction de syncronisation avec le client android sera crée afin de lui faire parvenir les ISBN des bandes dessinée deja présentes dans le client lourd. Cette syncronisation sera faite par mail ou usb (peut etre bluetooth).
+
+\subsection[Reception de l'ISBN par un autre moyen]{Reception de l'ISBN par un autre moyen — \emph{Priorité 4}}
+Cette fonction permet à l'utilisateur de recevoir les code ISBN par un autre moyen que l'envoi d'un mail. (Solution a etudier: usb, bluetooth, serveur, ??? )
 
 \section{Création du client Androïd}
 
@@ -82,10 +88,24 @@ Afin de faire parvenir le code ISBN au client lourd l'application android devra 
 
 %%%%% ÉLÉMENT DE PRIORITÉ 2
 
-\subsection[Vérification de la validitée de l'ISBN]{Vérification de la validitée de l'ISBN — \emph{Priorité 2}}
-L'application vérifiera via internet que le code barre récupéré est bien associé à un livre. Si c'est le cas, le titre de l'ouvrage devra être retourné à l'utilisateur. Mais si aucun livre n'est trouvé, l'utilisateur sera averti que sont livre n'est pas disponible. Un mail sera quand même envoyer au client lourd afin de rappeler a l'utilisateur qu'il doit rentré les information manuellement.
- 
+\subsection[Vérification de la validitée du code barre récupéré]{Vérification de la validitée du code barre récupéré — \emph{Priorité 2}}
+L'application vérifiera que le code barre récupéré est bien associé à un livre. Si c'est le cas, le titre de l'ouvrage devra être retourné à l'utilisateur. Mais si le code barre ne correspond pas a un livre (le code barre ne commence pas par 978 ou 979, l'utilisateur sera averti que le code barre n'est pas celui d'un livre.
+
 %%%%% ÉLÉMENT DE PRIORITÉ 3
+
+\subsection[Vérification de la validitée de l'ISBN]{Vérification de la validitée de l'ISBN — \emph{Priorité 3}}
+L'application vérifiera via internet que le code ISBN récupéré est bien associé à un livre.Si aucun livre n'est trouvé, l'utilisateur sera averti que les informations sur le livre ne sont pas disponible. Un mail sera quand même envoyer au client lourd afin de rappeler a l'utilisateur qu'il doit rentré les information manuellement.
+ 
+\subsection[Envois du mail contenant l'ISBN via une autre adresse mail]{Vérification de la validitée de l'ISBN — \emph{Priorité 3}}
+Cette fonction aura pour but de permettre à l'utilisateur de choisir entre l'adresse par defaut (l'adresse Gmail liée au compte android) et une autres adresse qu'il choisirait lui-même afin d'envoyer son code ISBN au client lourd. Pour permettre de choisir d'autre adresse mail le logiciel devra gerer plusieurs types de comptes de messagerie tels que ceux utilisant des compte POP3 ou encors IMAP.
 
 %%%%% ÉLÉMENT DE PRIORITÉ 4
 
+\subsection[Gestion des ISBN des bandes déssinées déjà lue]{Gestion des ISBN des bandes déssinées déjà lue — \emph{Priorité 4}}
+Chaque ISBN des bandes déssiné scanné sera conservé dans un fichier sous l'application Androïd afin de gardé un historique des bande dessiné deja lue. Si l'ISBN à déjà été scanné précédemment, un message d'information sera envoyé au client toutefois il lui sera demandé s'il veut quand même réenvoyer le code ISBN au cas ou il aurait suprimer le livre sur le client lourd. 
+
+\subsection[Synchronisation de l'historique des ISBN déja lue]{Synchronisation de l'historique des ISBN déja lue — \emph{Priorité 4}}
+Une syncronisation des ISBN disponible sur le client lourd avec le client android sera possible. L'historique ISBN disponible dans l'application android sera effacé et remplacé par un nouvelle historique contenant tout les ISBN de l'application lourde. On efface l'ancient historique afin de pouvoir rescanner les livre manquant dans le client lourd sans que l'application android nous affiche un message d'information(CF: La fonction de gestion des ISBN déja lue).
+
+\subsection[Envois de l'ISBN par un autre moyen]{Envois de l'ISBN par un autre moyen — \emph{Priorité 4}}
+Cette fonction permet d'envoyer les ISBN des code barre scanné au client lourd par un autre moyen que l'envoi d'un mail. (Solution a etudier: usb, bluetooth, serveur, ???)
