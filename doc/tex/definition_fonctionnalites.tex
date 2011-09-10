@@ -22,6 +22,12 @@ Cette partie liste toutes les fonctionnalités attendues dans le programme. Cell
 \subsection[Vérification du code bar]{Vérification du code bar — \emph{Priorité 1}}
 Après l'entrée du code barre par l'utilisateur le programme devra executer une verification de ce code barre afin de verifier s'il s'agit bien d'un code par correspondant à un livre ou un autre code barre. Pour effectuer cette verification le programme devra verifier si le code barre commence par 978 ou 979 et s'il est bien composé de 13 chiffres. Si c'est conditions sont bien vérifié le code barre sera validé. 
 
+\subsection[Recherche sur l'API Google book]{Recherche sur l'API Google book — \emph{Priorité 1}}
+Le programme doit etre capable de recuperer des information sur les differents livres. Afin de recuperer ces informations nous utiliserons l'API Google book car elle offre un grand nombre d'information grace à L'ISBN du livre (ISBN = code barre sans les trois premiers chiffres). Apres la récupération de ces information le programme les stockeras dans un objet information comptenant les differentes information recolté néccésaire à Royal.  
+
+\subsection[Complétion automatique des champs]{Complétion automatique des champs — \emph{Priorité 1}}
+Une fonction de complétion auomatique des champs de caractéristiques de la bande déssiné devra ètre créé. Cette fonction remplira automatiquement les differents champs grace a l'objet information créé par la fonction de recherche sur l'API Google book.
+ 
 %%%%% ÉLÉMENT DE PRIORITÉ 2
 
 %%%%% ÉLÉMENT DE PRIORITÉ 3
