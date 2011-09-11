@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (TeX Live 2010/Arch Linux) (format=pdflatex 2011.6.20)  11 SEP 2011 12:09
+This is pdfTeX, Version 3.1415926-1.40.11 (TeX Live 2010/Arch Linux) (format=pdflatex 2011.6.20)  11 SEP 2011 15:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -403,13 +403,13 @@ Chapitre 2.
 
 ]) [10] (./cahier_des_charges.aux) ) 
 Here is how much of TeX's memory you used:
- 1891 strings out of 493772
- 23191 string characters out of 3150564
+ 1889 strings out of 493772
+ 23168 string characters out of 3150564
  88396 words of memory out of 3000000
- 5179 multiletter control sequences out of 15000+200000
+ 5177 multiletter control sequences out of 15000+200000
  17781 words of font info for 38 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 26i,6n,24p,586b,191s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 26i,6n,24p,504b,191s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf-dist/fonts/enc/dvips/cm-s
 uper/cm-super-t1.enc}</usr/share/texmf-dist/fonts/type1/public/cm-super/sfbi144
 0.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/sha
@@ -421,7 +421,7 @@ x2488.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr
 st/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf-dist/fonts/type1/
 public/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super
 /sfrm1728.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb>
-Output written on cahier_des_charges.pdf (11 pages, 208537 bytes).
+Output written on cahier_des_charges.pdf (11 pages, 209647 bytes).
 PDF statistics:
  89 PDF objects out of 1000 (max. 8388607)
  63 compressed objects within 1 object stream
