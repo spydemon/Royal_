@@ -1,9 +1,0 @@
-Program FAQ
-=========
-
-This FAQ references all the questions often askes by the users.
-
-* $help.link$
-
-
-help.link := link how_to_contribute.html "How to contribute"
