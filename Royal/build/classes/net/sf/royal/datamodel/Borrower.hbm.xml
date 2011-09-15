@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="net.sf.royal.datamodel.Borrower">
+		<id name="id">
+			<generator class="hilo">
+                <param name="table">hi_value</param>
+                <param name="column">next_value</param>
+                <param name="max_lo">100</param>
+        </generator>
+		</id>
+		
+		<property name="version"/>
+		<property name="name"/>
+		<property name="firstName"/>
+		<property name="phone"/>
+		<property name="creation"/>
+		<property name="email"/>
+		
+		<set name="loans" inverse="true" cascade="all">
+			<key column="borrowerID"/>
+			<one-to-many class="net.sf.royal.datamodel.Loan"/>
+		</set>
+	</class>
+</hibernate-mapping>
