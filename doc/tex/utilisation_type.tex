@@ -99,26 +99,43 @@ J'en déduis que c'est la même adresse que toute à l'heure qui doit être rens
 J'atterris ensuite sur la page centrale du programme. 
 Celle - ci ressemble à une liste sur la quelle tous mes livres sont répertoriés. 
 Elle est vide pour le moment, et les boutons de gestion sont bien visible sur la partie haute de la fenêtre. 
-On y retrouve un bouton pour ajouter un ouvrage, pour en supprimer un, pour l'édition, et enfin pour la synchronisation. 
+On y retrouve un bouton pour ajouter un ouvrage, pour en supprimer un, pour l'édition, et enfin pour l'importation. 
 
-D'instinct, je clique sur le bouton de synchronisation.
-Une autre fenêtre apparait, m'indiquant que la synchronisation d'un élément était en cour d'exécution. 
-On peut voir en dessous une barre de progression, qui prend se remplie, au fur est à mesure de l'avancée des étapes : 
+D'instinct, je clique sur le bouton d'importation.
+Une autre fenêtre apparait, m'indiquant d'attendre pendant l'opération. 
+On peut voir en dessous une barre de progression, qui se remplie, au fur est à mesure de l'avancée des étapes : 
 « Connexion au serveur mail », puis « Identification mail », après « Recherche des fichiers », et enfin « Téléchargement des ISBN ».
+\emph{L'application va en effet se connecter sur la boite email de l'utilisateur et faire une recherche sur le sujet des messages contenus dans la boite de réception.
+	Si un sujet est exactement composé de l'appellation « \textbf{Royal\_} », alors le contenu du message est téléchargé, et la recherche se termine.
+	Le contenu du mail est ensuite traité : dans un premier temps la date de scann du lieux est conservé, puis chaque couple d'information (ISBN \slash{} Titre) pour chaque livre. 
+}
 
 Après ce temps d'attente, la fenêtre disparait, et une nouvelle affiche le récapitulatif des livres importés.
-Le numéro ISBN est marqué dans une colonne, à côté, est écris « Téléchargement des informations », au fur est à mesure que le temps passe, les informations s'affichent pour chaque livre, sauf celui pour le quel un message d'erreur à été émis lors de la prise de photo de l'ISBN. 
+Le numéro ISBN est marqué dans une colonne, à côté, est écris « Téléchargement des informations », au fur est à mesure que le temps passe, les informations s'affichent pour chaque livre, sauf celui pour le quel un message d'erreur a été émis lors de la prise de photo de l'ISBN. 
 C'est pas grave, je peux toujours rentrer moi même les informations dans les champs laissé vide par défaut. 
+\emph{C'est à ce moment que la recherche des informations sur les livres seront effectuées. 
+	L'affichage sera évolutif, et l'API Google Dock sera interrogée pour chaque livre séparément. 
+	Un message d'attente, ou de recherche en cours sera écrit pour les livres en attente de traitement. 
+	Ceux dont une réponse de l'API sera déjà arrivé possèderons des champs éditables contenant par défaut les informations retournées, ou rien, si l'ISBN était introuvable. 
+}
 
 Une fois satisfait de la présentation de livre ,je clique sur « Confirmer les informations des livres ». 
 La prochaine fenêtre me demande si j'ai acheté ces ouvrages ou si je les ais empruntés dans une bibliothèque. 
 J'indique donc l'emprunt.
+
 Le programme me demande ensuite dans quelle bibliothèque je l'ai effectué. 
 Vu que l'installation est toute fraiche, aucune bibliothèque n'est existante pour le moment, la liste est vide.
 Je clique sur le bouton d'ajout, et une autre fenêtre s'ouvre, me demandant de renseigner le nom de la bibliothèque, son numéro de téléphone, la durée maximale de l'emprunt, et ses horaires d'ouverture. 
 Je remplis tous les champs avec une grande attention, puis, valide la bibliothèque. 
+\emph{Les bibliothèques sont présentes dans une table à part de la base de données.
+	À ce niveau, nous pouvons choisir de référer le lot à une bibliothèque déjà existante, ou à en créer une nouvelle
+	(dans ce cas, une entrée sera évidemment créer dans la table des bibliothèques). 
+	Notons que la notion de lot est quelque chose d'abstrait, d'un point de vue technique, aucune relation n'existe entre les livres.
+	Il ne s'agit uniquement que d'un procédé évitant à l'utilisateur de renter des informations redondante pour chacun des livres.
+	Ainsi, un identifiant vers la bibliothèque, et la date d'emprunt est conservé pour chaque livre.
+}
 
-De retour dans sur la page principale de Royal, la liste des ouvrages que j'ai importé est à présent marquée dans la liste. 
+De retour à la page principale de Royal, la liste des ouvrages que j'ai importé est à présent marquée dans la liste. 
 Nous pouvons lire à droite quelques informations sur l'ouvrage sélectionné, dont la date de retour et la bibliothèque concernée. 
 Bien heureux de ce logiciel, je décide d'importer également dans le programme le livre sur le C que j'ai emprunté à l'IUT. 
 
@@ -127,9 +144,17 @@ Bien heureux de ce logiciel, je décide d'importer également dans le programme 
 Je reprend mon bel Xperia® pour photographier le code barre du livre, et choisi cette fois le mode de scann simple, adapté pour un seul livre. 
 L'appareil photo se rallume, je prend la photo du code barre, puis le nom de l'ouvrage réapparait sur l'écran.
 Je confirme, et l'exportation s'effectue apparemment avec succès. 
+\emph{D'un point de vue interne au programme, le comportement est similaire entre le mode de scann par lot et celui par unité, la récursivité en moins.}
 
+\subsubsection {Scann d'un livre unique}
 De retour devant mon écran d'ordinateur, je ré effectue une importation. 
 Encore une fois, une fenêtre s'ouvre devant moi, avec les informations auto - complétées de l'ouvrage, il ne me reste plus qu'à choisir la bibliothèque dans la quelle j'ai effectué l'emprunt, à confirmer, et le livre s'ajoute dans la liste principale !
 
 Heureux de ma découverte et fatigué de cette longue journée, c'est vers mon lit que je me retourne pour m'enfoncer dans les songes et me laisser transporter dans un monde fantastique inconnu par le sens et la rationalité :) 
 
+\subsubsection {Gestion des dates de retour}
+Les dates de retour des ouvrages sont visibles dans les caractéristiques des livres. 
+Un compte à rebours des jours restant avant la date critique sera aussi disponible dans la liste des livres.
+Une alerte sera paramétrable dans les options permettant de rappeler à l'utilisateur les livres dont la date critique est proche, au démarrage de l'application.
+Dans les informations sur l'œuvre, le client pourra, évidemment indiquer avoir rendu le livre.
+Dans ce cas, plus aucune alerte ne sera émis sur le livre, ni d'affichage des jours restant.
