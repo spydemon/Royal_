@@ -38,15 +38,23 @@ Ni d'une, ni de deux, je sors mon Sony Xperia® de la poche, et cherche l'applic
 \subsection{Récupération des ISBN}
 
 Le téléchargement terminé, le programme se lance et me demande quelle adresse mail je veux utiliser pour la synchronisation avec « mon ordinateur ».
+\emph{Au lancement du programme, celui - ci vérifiera l'existence d'un fichier de configuration contenant les caractéristiques de connexion à la boite email.
+	Si ce fichier n'existe pas, il sera directement proposé au client de renseigné ces informations.}
+
 Je ne comprend pas très bien ce qu'on me demande, mais en dessous se trouve un petit bouton « en savoir plus » qui me renseigne d'avantage sur cette chose.
+
+\emph{Un popup sera affiché expliquant à l'utilisateur le fonctionnement de Royal, et du coup, en quoi le mail est utile.}
+
 Après avoir compris à quoi ça servait, j'ai décidé de coché la case « Adresse e-mail par défaut du compte Androïd » plutôt que d'en renseigner une autre. 
 Une fenêtre à deux boutons se présente devant moi.
 Sur le premier est indiqué « Scanner un seul ouvrage », sur le second, « Scanner un lot d'ouvrages ». 
 Vue que j'ai quatre bd devant moi, c'est vers la deuxième option que je me tourne. 
 Un message apparait, me demandant de viser le code barre du livre avec la caméra de mon appareil. J'appuie sur « ok », puis, j'ai l'impression que mon appareil photo s'allume. 
-
+\emph{C'est en fait à ce moment que Royal fait appel à la librairie ZXing afin de récupérer le code barre du livre, et d'en déduire l'ISBN.} 
 Cool, je prend donc en photo le code barre du livre.
 Un message s'affiche à présent à l'écran, avec marqué dessus « Vérification du livre » avec une barre de progression en dessous.
+\emph{Le programme tente en fait d'interroger Google Book pour voir si des informations sur l'ouvrage sont disponible.}
+
 Une fois la barre rempli, un une autre phrase s'affiche : « Ouvrage identifié : XIII — Le Jour du soleil noir » la remplaça.
 Quelle ne fut pas ma stupéfaction quand j'ai aperçu ces quelques mots !
 Seul un puissant sorcier pouvait être capable d'un tel sortilège !
@@ -54,11 +62,21 @@ Une fois mon calme revenu, je décidais de continuer à utiliser ce logiciel fab
 (Un sortilège tellement puissant ne peut qu'être de la magie noir).
 
 Bref, après ce message, un autre apparait me demandant si c'est la fin du lot, ou si, au contraire, d'autres livres restent à scanner. 
+\emph{Les ISBN, avec le nom de la bd sont écrit les un à la suite de l'autre dans un fichier.} 
+
 J'opte donc pour le second cas, afin d'enregistrer mes trois autres bd dans le logiciel. 
 Malheureusement, arrivé au dernier, la machine m'indique que l'ouvrage est introuvable et me demande donc de rentrer à la main le titre du livre. 
+\emph{Le nom du livre est contenu dans le client Androïd, en plus du numéro d'ISBN pour que, une fois sur le client lourd,
+	l'utilisateur sache encore de quel livre il s'agit sans pour autant avoir besoin de comparer l'ISBN.}
 
 Une fois mes quatre bd de scannés, je choisi de terminer l'enregistrement. 
+\emph{À ce moment là, la date du scann est ajoutée au début du fichier contenant les ISBN.}
+
 Peu de temps après, un nouveau message apparait : « Un e-mail de synchronisation a bien été envoyé sur votre boite mail, veuillez effectuer un import depuis votre ordinateur ».
+\emph{Le fichier précédemment créé avec la date du scann, le numéro d'ISBN et le titre du livre est envoyé par email à l'adresse définie pour l'exportation. 
+	Le titre du mail correspond à une chaine identifiable par le client lourd : \textbf{Royal\_}
+}
+
 « Cool alors ! » Pensais - je avec satisfaction, vivement que j'arrive chez moi, que je puisse tester tout ça !
 
 
@@ -72,6 +90,11 @@ Après cela, un installateur apparait, me demandant dans quel répertoire, l'app
 C'est vers le choix par défaut, que je me suis tourné. 
 L'installation est vraiment très rapide, une fois terminée, le programme s'exécute, et je me retrouve de nouveau face à une fenêtre me demandant de choisir quelle adresse email j'allai utiliser pour la synchronisation avec le « client Androïd ». 
 J'en déduis que c'est la même adresse que toute à l'heure qui doit être renseignée ici.
+\emph{À l'exécution du programme, le fichier de sauvegarde de configuration \textbf{resources/royal.properties} est lu. 
+	Si les champs \textbf{email\_address}, \textbf{email\_port} et \textbf{email\_protocol} sont vides, 
+	on propose à l'utilisateur de renseigner ces informations, soit de façon manuelle, 
+	soit en choisissant simplement la configuration de base liée au compte Androïd du téléphone (l'adresse GMail de l'utilisateur, donc).
+}
 
 J'atterris ensuite sur la page centrale du programme. 
 Celle - ci ressemble à une liste sur la quelle tous mes livres sont répertoriés. 
