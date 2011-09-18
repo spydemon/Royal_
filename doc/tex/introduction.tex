@@ -1,15 +1,17 @@
 \part*{Introduction}
-Notre projet consiste en l'amélioration d'un programme open source de gestion de bd nommé \emph{Royal}
-\footnote{Site officiel du projet Royal : www.royal-project.org}.
-Le programme est en effet destiné à fonctionner uniquement avec les bd achetées par le client de l'application.
-On devra se charger d'implémenter des améliorations qui rendent le programme utilisable avec des bd empruntés dans des bibliothèques 
-(Gestions des lieux d'emprunt, et des dates de retour, principalement).
+Notre projet à pour but la gestion informatique des emprunts et achats de bandes dessinées (bd) réalisé par un particulier.
+Pour cela nous allons partir d'une application existante, \emph{Royal}
+\footnote{Site officiel du projet Royal : www.royal-project.org}, qui permet la saisie et l'enregistrement de bandes déssinées, et l'améliorer.
+En effet, Royal ne permet qu'une saisie manuelle de chaque ouvrage, et ne gère ni les bibliothèques d'emprunt ni les dates d'emprunt et de retour. Ainsi nous allons ainsi permettre à un utilisateur de simplifier sa gestions de bd, d'une part en améliorant l'application Royal et d'une autre part en développant une application mobile pour Android.
 
-Une deuxième partie de notre travail consistera à améliorer la saisie des informations dans la base de données du programme : 
-Une application sera développée pour fonctionner sur téléphone Androïd 
-\footnote{Compatibilité à partir de la version 2.2 d'Androïd}
-afin de permettre à l'utilisateur de prendre en photo le code barre du livre.
-Le programme se chargera ensuite, via le numéro ISBN de renseigner à l'application maître les informations disponible sur l'ouvrage.
+L'amélioration consistera en :
+- l'automatisation de l'ajout d'une bd grâce à son code barre qui permettra la recherche et le remplissage automatique de l'ensemble des informations de l'ouvrage,
+- l'ajout d'un système de bibliothèque, de durée d'emprunt, de date d'emprunt, tout cela pour pouvoir notifier à l'utilisateur s'il doit penser à rendre certains de ses ouvrages, d'où proviennent ses ouvrages et combien de temps il lui reste pour les lire,
+- la synchronisation avec l'application Android.
+
+L'application Android doit permettre :
+- La capture des codes barres d'un ensemble de bd
+- l'envoie des codes barres à l'application améliorée de Royal qui grâce à la synchronisation sera capable d'ajouter automatiquement un lot de bd
 
 Le projet est à but personnel, il n'a comme unique objectif que de servir d'aide mémoire à un utilisateur.
 Il ne s'agit par exemple pas d'un système de gestion de bibliothèque ou de stocks des bd restantes dans une librairie.
