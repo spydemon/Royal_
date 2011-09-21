@@ -5,102 +5,51 @@ Les actions de l'utilisateur serons décrites, et les processus techniques (en i
 Notez que cette utilisation type se base sur des fonctionnalités de priorité 3 et 4.
 Il est donc probable que l'application ne permette finalement pas toutes ces fonctionnalités. 
 
-\subsection{Prélude}
-Nous sommes mercredi soir, 17h30, le cour viens de se terminer. 
-Je marche tranquillement vers l'arrêt de tram pour rentrer chez moi.
-Le ciel est bleu, il fait chaud, mais une douce brise venant du nord se fait sentir. 
-Je monte dans le tram, et m'installe tranquillement, comme à mon habitude sur une chaise au fond de celui - ci. 
-Le tram part peut de temps après, et commence sont habituelle trajet…
-
-Quand soudain, un épouvantable drame arriva ! 
-Un camion rempli de machine à laver perd toute sa cargaison en plein milieu du carrefour à Étoile Bourse, évidemment, les voies du tram sont inutilisable. 
-La foule était en panique la plus totale, et criait à la mort tel qu'on eu cru que le ciel nous tombait sur la tête. 
-Moi, dans tout mon désarroi, et toute ma tristesse pensait à ces précieuses minutes de perdu sur mon T3 à attendre que la voie soit de nouveau praticable…
-
-C'est alors que pendant un long soupir, mon regard se posa sur le toit de la bibliothèque Andrée Malraux. 
-Instantanément, j'ai repensé à cette série de bd que mon ami Steve m'avait conseillé quelques heures plus tôt : XIII
-\footnote{Informations sur la BD XIII : http://fr.wikipedia.org/wiki/XIII\_(bande\_dessinée)}. 
-Je décide donc d'abandonner le tram bloqué, et d'oublier le T3 qui m'attendait à la maison, pour me rendre dans la bibliothèque, et voir ce qu'il en est. 
-
-Quelle ne fut pas mon impression quand une fois les portes franchies, je découvris l'immensité du bâtiment !
-Un grand hall s'offrait à moi, dans le quel était présent un grand snack et, en arrière - plan, des djihadistes s'informant des nouvelles de leurs pays en regardant Al - jazeera. 
-Je décide de partir à la conquête de cet amas de béton et de métal, inspirant plus à un bunker anti - atomique qu'à une bibliothèque. 
-La recherche fut longue et périlleuse, mais ma lutte acharnée finira par être récompensée : je trouve enfin ces fameuses bd !
-
-Le numéro un, entre mes mains, c'est dans l'un de ces fauteuils design et coloré que je m'installe. 
-Dès la première page ouverte, mon corps et mon esprit se sont vu téléportés au milieu de cette fabuleuse histoire !
-Quelle émotion !
-Malheureusement, cela ne pouvait durer… Que ne fut pas ma déception, quand une employée, la voie vide est glacée, et venu m'informer que ça allait fermer !
-Je lui fis instantanément part de mon envie d'emprunter quelques unes de ces bd, pour continuer ma lecture chez moi !
-C'est ainsi qu'en grande hâte, je prend ma carte Pass'relle, pour la modique somme de 4\euro{}, et sort tout frétillant avec 4 bd de XIII sous les bras. 
-
-Le chaos s'étant dissipé à l'arrêt de tram, je le rejoignais en ne pouvant m'empêcher de me torturer l'esprit à la recherche d'une solution pouvant me permettre de ne pas rendre ces livres en retard…
-C'est à ce moment que je me suis rappelé de l'application fantastique permettant de gérer les db-thèques dont m'avait parlé l'ami Jean, quelques heures plut tôt.
-Ni d'une, ni de deux, je sors mon Sony Xperia® de la poche, et cherche l'application Royal sur le \emph{market}. 
-
 \subsection{Récupération des ISBN}
 
-Le téléchargement terminé, le programme se lance et me demande quelle adresse mail je veux utiliser pour la synchronisation avec « mon ordinateur ».
+À la première utilisation du programme, l'adresse email à utiliser pour la synchronisation est demandée à l'utilisateur.
 \emph{Au lancement du programme, celui - ci vérifiera l'existence d'un fichier de configuration contenant les caractéristiques de connexion à la boite email.
-	Si ce fichier n'existe pas, il sera directement proposé au client de renseigné ces informations.}
+	Si ce fichier n'existe pas, il sera directement proposé au client de renseigner ces informations.}
 
-Je ne comprend pas très bien ce qu'on me demande, mais en dessous se trouve un petit bouton « en savoir plus » qui me renseigne d'avantage sur cette chose.
-
-\emph{Un popup sera affiché expliquant à l'utilisateur le fonctionnement de Royal, et du coup, en quoi le mail est utile.}
-
-Après avoir compris à quoi ça servait, j'ai décidé de coché la case « Adresse e-mail par défaut du compte Androïd » plutôt que d'en renseigner une autre. 
-Une fenêtre à deux boutons se présente devant moi.
+L'utilisateur pourra aussi choisir d'utiliser l'adresse email liée au compte Android par défaut.
+Ensuite, c'est une fenêtre à deux boutons qui se présente à l'utilisateur. 
 Sur le premier est indiqué « Scanner un seul ouvrage », sur le second, « Scanner un lot d'ouvrages ». 
-Vue que j'ai quatre bd devant moi, c'est vers la deuxième option que je me tourne. 
-Un message apparait, me demandant de viser le code barre du livre avec la caméra de mon appareil. J'appuie sur « ok », puis, j'ai l'impression que mon appareil photo s'allume. 
+Si l'utilisateur se tourne vers la seconde option, 
+un message apparait, demandant de viser le code barre du livre avec la caméra de l'appareil.
+Il faut appuyer sur « ok », puis, l'appareil photo s'allume. 
 \emph{C'est en fait à ce moment que Royal fait appel à la librairie ZXing afin de récupérer le code barre du livre, et d'en déduire l'ISBN.} 
-Cool, je prend donc en photo le code barre du livre.
+L'utilisateur prend donc en photo le code barre du livre.
 Un message s'affiche à présent à l'écran, avec marqué dessus « Vérification du livre » avec une barre de progression en dessous.
 \emph{Le programme tente en fait d'interroger Google Book pour voir si des informations sur l'ouvrage sont disponible.}
 
-Une fois la barre rempli, un une autre phrase s'affiche : « Ouvrage identifié : XIII — Le Jour du soleil noir » la remplaça.
-Quelle ne fut pas ma stupéfaction quand j'ai aperçu ces quelques mots !
-Seul un puissant sorcier pouvait être capable d'un tel sortilège !
-Une fois mon calme revenu, je décidais de continuer à utiliser ce logiciel fabuleux, bien qu'aillant une certaine appréhension due à mon doute sur la légitimité de la magie utilisée. 
-(Un sortilège tellement puissant ne peut qu'être de la magie noir).
+Une fois la barre remplie, une autre phrase s'affiche : « Ouvrage identifié : < Nom de l'ouvrage> » la remplacera.
+Ensuite un autre apparait demandant si c'est la fin du lot, ou si, au contraire, d'autres livres restent à scanner. 
+\emph{Les ISBN, avec le nom de la bd sont écrits les un à la suite de l'autre dans un fichier.} 
 
-Bref, après ce message, un autre apparait me demandant si c'est la fin du lot, ou si, au contraire, d'autres livres restent à scanner. 
-\emph{Les ISBN, avec le nom de la bd sont écrit les un à la suite de l'autre dans un fichier.} 
-
-J'opte donc pour le second cas, afin d'enregistrer mes trois autres bd dans le logiciel. 
-Malheureusement, arrivé au dernier, la machine m'indique que l'ouvrage est introuvable et me demande donc de rentrer à la main le titre du livre. 
+L'utilisateur opte pour le second cas, afin d'enregistrer mes trois autres bd dans le logiciel. 
+Malheureusement, arrivé au dernier, le portable lui indique que l'ouvrage est introuvable et lui demande donc de rentrer à la main le titre du livre. 
 \emph{Le nom du livre est contenu dans le client Androïd, en plus du numéro d'ISBN pour que, une fois sur le client lourd,
 	l'utilisateur sache encore de quel livre il s'agit sans pour autant avoir besoin de comparer l'ISBN.}
 
-Une fois mes quatre bd de scannés, je choisi de terminer l'enregistrement. 
+Une fois toutes les bd de scannés, l'utilisateur choisi de terminer l'enregistrement. 
 \emph{À ce moment là, la date du scann est ajoutée au début du fichier contenant les ISBN.}
 
 Peu de temps après, un nouveau message apparait : « Un e-mail de synchronisation a bien été envoyé sur votre boite mail, veuillez effectuer un import depuis votre ordinateur ».
-\emph{Le fichier précédemment créé avec la date du scann, le numéro d'ISBN et le titre du livre est envoyé par email à l'adresse définie pour l'exportation. 
+\emph{Le fichier précédemment créé avec la date du scann, le numéro d'ISBN et le titre du livre est envoyé par e-mail à l'adresse définie pour l'exportation. 
 	Le titre du mail correspond à une chaine identifiable par le client lourd : \textbf{Royal\_}
 }
 
-« Cool alors ! » Pensais - je avec satisfaction, vivement que j'arrive chez moi, que je puisse tester tout ça !
-
-
 \subsection{Utilisation de l'application sur ordinateur}
-Une fois sorti du tram, c'est en grande hâte que je traverse la rue qui s'obscurcit rapidement avec la tombée de la nuit. 
-Madame Bernard, la concierge était déjà rentrée chez elle, heureusement que j'avais les clefs. 
-La porte ouverte, je profitais du temps de boot de Windows™ Vista® pour me faire couler un café et préparer la gamelle de Gabriel, mon petit chat roux.
-
-Une fois Windows® démarré, je me rendis sur le site officiel de Royal pour télécharger l'application à exécuter sur l'ordinateur. 
-Après cela, un installateur apparait, me demandant dans quel répertoire, l'application devait se voir installer. 
-C'est vers le choix par défaut, que je me suis tourné. 
-L'installation est vraiment très rapide, une fois terminée, le programme s'exécute, et je me retrouve de nouveau face à une fenêtre me demandant de choisir quelle adresse email j'allai utiliser pour la synchronisation avec le « client Androïd ». 
-J'en déduis que c'est la même adresse que toute à l'heure qui doit être renseignée ici.
+Au premier démarrage du client PC, l'utilisateur se retrouve de nouveau face à une fenêtre me demandant de choisir quelle adresse e-mail il allait utiliser pour la synchronisation avec le « client Androïd ». 
+C'est la même adresse que toute à l'heure qui doit être renseignée ici.
 \emph{À l'exécution du programme, le fichier de sauvegarde de configuration \textbf{resources/royal.properties} est lu. 
 	Si les champs \textbf{email\_address}, \textbf{email\_port} et \textbf{email\_protocol} sont vides, 
 	on propose à l'utilisateur de renseigner ces informations, soit de façon manuelle, 
 	soit en choisissant simplement la configuration de base liée au compte Androïd du téléphone (l'adresse GMail de l'utilisateur, donc).
 }
 
-J'atterris ensuite sur la page centrale du programme. 
-Celle - ci ressemble à une liste sur la quelle tous mes livres sont répertoriés. 
+Ensuite nous arrivons sur la page centrale du programme.
+Celle - ci ressemble à une liste sur la quelle tous livres de l'utilisateur sont répertoriés.
 Elle est vide pour le moment, et les boutons de gestion sont bien visible sur la partie haute de la fenêtre. 
 On y retrouve un bouton pour ajouter un ouvrage, pour en supprimer un, pour l'édition, et enfin pour l'importation. 
 
@@ -110,26 +59,27 @@ On peut voir en dessous une barre de progression, qui se remplie, au fur est à 
 « Connexion au serveur mail », puis « Identification mail », après « Recherche des fichiers », et enfin « Téléchargement des ISBN ».
 \emph{L'application va en effet se connecter sur la boite email de l'utilisateur et faire une recherche sur le sujet des messages contenus dans la boite de réception.
 	Si un sujet est exactement composé de l'appellation « \textbf{Royal\_} », alors le contenu du message est téléchargé, et la recherche se termine.
+	Il est à noter que chaque importation n'importera qu'un mail à la fois. 
 	Le contenu du mail est ensuite traité : dans un premier temps la date de scann du lieux est conservé, puis chaque couple d'information (ISBN \slash{} Titre) pour chaque livre. 
 }
 
 Après ce temps d'attente, la fenêtre disparait, et une nouvelle affiche le récapitulatif des livres importés.
 Le numéro ISBN est marqué dans une colonne, à côté, est écris « Téléchargement des informations », au fur est à mesure que le temps passe, les informations s'affichent pour chaque livre, sauf celui pour le quel un message d'erreur a été émis lors de la prise de photo de l'ISBN. 
-C'est pas grave, je peux toujours rentrer moi même les informations dans les champs laissé vide par défaut. 
+L'utilisateur pourra toujours rentrer lui même les informations dans les champs laissés vide par défaut. 
 \emph{C'est à ce moment que la recherche des informations sur les livres seront effectuées. 
 	L'affichage sera évolutif, et l'API Google Dock sera interrogée pour chaque livre séparément. 
 	Un message d'attente, ou de recherche en cours sera écrit pour les livres en attente de traitement. 
 	Ceux dont une réponse de l'API sera déjà arrivé possèderons des champs éditables contenant par défaut les informations retournées, ou rien, si l'ISBN était introuvable. 
 }
 
-Une fois satisfait de la présentation de livre ,je clique sur « Confirmer les informations des livres ». 
+Une fois satisfait de la présentation de livre, il faut cliquer sur « Confirmer les informations des livres ». 
 La prochaine fenêtre me demande si j'ai acheté ces ouvrages ou si je les ais empruntés dans une bibliothèque. 
-J'indique donc l'emprunt.
+On indiquera l'emprunt.
 
-Le programme me demande ensuite dans quelle bibliothèque je l'ai effectué. 
+Le programme demandera ensuite dans quelle bibliothèque l'emprunt aura été effectué. 
 Vu que l'installation est toute fraiche, aucune bibliothèque n'est existante pour le moment, la liste est vide.
-Je clique sur le bouton d'ajout, et une autre fenêtre s'ouvre, me demandant de renseigner le nom de la bibliothèque, son numéro de téléphone, la durée maximale de l'emprunt, et ses horaires d'ouverture. 
-Je remplis tous les champs avec une grande attention, puis, valide la bibliothèque. 
+Un bouton d'ajout sera à ce moment diponible. 
+Un clique dessus produira l'ouverture d'une nouvelle fenêtre, demandant de renseigner le nom de la bibliothèque, son numéro de téléphone, la durée maximale de l'emprunt, et ses horaires d'ouverture. 
 \emph{Les bibliothèques sont présentes dans une table à part de la base de données.
 	À ce niveau, nous pouvons choisir de référer le lot à une bibliothèque déjà existante, ou à en créer une nouvelle
 	(dans ce cas, une entrée sera évidemment créer dans la table des bibliothèques). 
@@ -140,20 +90,17 @@ Je remplis tous les champs avec une grande attention, puis, valide la bibliothè
 
 De retour à la page principale de Royal, la liste des ouvrages que j'ai importé est à présent marquée dans la liste. 
 Nous pouvons lire à droite quelques informations sur l'ouvrage sélectionné, dont la date de retour et la bibliothèque concernée. 
-Bien heureux de ce logiciel, je décide d'importer également dans le programme le livre sur le C que j'ai emprunté à l'IUT. 
 
 \subsection {Autres fonctionnalités}
 
-Je reprend mon bel Xperia® pour photographier le code barre du livre, et choisi cette fois le mode de scann simple, adapté pour un seul livre. 
-L'appareil photo se rallume, je prend la photo du code barre, puis le nom de l'ouvrage réapparait sur l'écran.
-Je confirme, et l'exportation s'effectue apparemment avec succès. 
+\subsubsection {Scann d'un livre unique}
+Nous choisirons cette fois le mode de scann simple, adapté pour un seul livre. 
+L'appareil photo se rallume, on prend la photo du code barre, puis le nom de l'ouvrage réapparait sur l'écran.
+On confirme, et l'exportation s'effectue apparemment avec succès. 
 \emph{D'un point de vue interne au programme, le comportement est similaire entre le mode de scann par lot et celui par unité, la récursivité en moins.}
 
-\subsubsection {Scann d'un livre unique}
-De retour devant mon écran d'ordinateur, je ré effectue une importation. 
-Encore une fois, une fenêtre s'ouvre devant moi, avec les informations auto - complétées de l'ouvrage, il ne me reste plus qu'à choisir la bibliothèque dans la quelle j'ai effectué l'emprunt, à confirmer, et le livre s'ajoute dans la liste principale !
-
-Heureux de ma découverte et fatigué de cette longue journée, c'est vers mon lit que je me retourne pour m'enfoncer dans les songes et me laisser transporter dans un monde fantastique inconnu par le sens et la rationalité :) 
+De retour devant l'ordinateur, nous ré effectuons une importation. 
+Encore une fois, une fenêtre s'ouvre, avec les informations auto - complétées de l'ouvrage, il ne reste plus qu'à choisir la bibliothèque dans la quelle c'est effectué l'emprunt, à confirmer, et le livre s'ajoute dans la liste principale !
 
 \subsubsection {Gestion des dates de retour}
 Les dates de retour des ouvrages sont visibles dans les caractéristiques des livres. 
