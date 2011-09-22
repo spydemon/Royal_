@@ -53,8 +53,15 @@ Celle - ci ressemble à une liste sur la quelle tous livres de l'utilisateur son
 Elle est vide pour le moment, et les boutons de gestion sont bien visible sur la partie haute de la fenêtre. 
 On y retrouve un bouton pour ajouter un ouvrage, pour en supprimer un, pour l'édition, et enfin pour l'importation. 
 
-D'instinct, je clique sur le bouton d'importation.
-Une autre fenêtre apparait, m'indiquant d'attendre pendant l'opération. 
+\begin{figure}
+\begin{center}
+\includegraphics[height=10cm]{../img/principaleModifiee.png}
+\end{center}
+\caption{Page principale de l'application}
+\end{figure}
+
+Après un clique sur le bouton d'importation, 
+une autre fenêtre apparait, indiquant d'attendre pendant l'opération. 
 On peut voir en dessous une barre de progression, qui se remplie, au fur est à mesure de l'avancée des étapes : 
 « Connexion au serveur mail », puis « Identification mail », après « Recherche des fichiers », et enfin « Téléchargement des ISBN ».
 \emph{L'application va en effet se connecter sur la boite email de l'utilisateur et faire une recherche sur le sujet des messages contenus dans la boite de réception.
@@ -91,6 +98,13 @@ Un clique dessus produira l'ouverture d'une nouvelle fenêtre, demandant de rens
 De retour à la page principale de Royal, la liste des ouvrages que j'ai importé est à présent marquée dans la liste. 
 Nous pouvons lire à droite quelques informations sur l'ouvrage sélectionné, dont la date de retour et la bibliothèque concernée. 
 
+\begin{figure}[h]
+\begin{center}
+\includegraphics[height=10cm]{../img/principale.png}
+\end{center}
+\caption{Page principale du programme non vide}
+\end{figure}
+
 \subsection {Autres fonctionnalités}
 
 \subsubsection {Scann d'un livre unique}
@@ -109,3 +123,14 @@ Une alerte sera paramétrable dans les options permettant de rappeler à l'utili
 Dans les informations sur l'œuvre, le client pourra, évidemment indiquer avoir rendu le livre.
 Dans ce cas, plus aucune alerte ne sera émis sur le livre, ni d'affichage des jours restant.
 
+\subsubsection {Modification des informations d'un livre}
+Il suffira de cliquer sur le nom du livre qu'on comptera modifier pour voir un aperçu des informations contenues à son égard.
+À ce moment, un bouton « Modifier » apparait en haut de la fenêtre.
+Un clique sur celui - ci produira l'ouverture d'une nouvelle fenêtre donnant à l'utilisateur la possibilité de modifier toutes les informations.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[height=5cm]{../img/editionAlbum.png}
+\end{center}
+\caption{Fenêtre d'édition des informations d'un livre}
+\end{figure}
