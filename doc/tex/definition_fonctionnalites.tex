@@ -1,5 +1,5 @@
 \part{Définition des fonctionnalités}
-Cette partie liste toutes les fonctionnalités attendues dans le programme. Celle - ci sont classées par priorités.
+Cette partie liste toutes les fonctionnalités attendues dans le programme. Celles-ci sont classées par priorité.
 
 \begin{description}
 \item [Priorité 1 :]
@@ -9,10 +9,10 @@ Cette partie liste toutes les fonctionnalités attendues dans le programme. Cell
 	Élément nécessaire. Il s'agit de l'implémentation réelle des fonctionnalités principales du programme mais nécessitant la mise en place de structures préalables (Les éléments de priorité 1). 
 
 \item [Priorité 3 :]
-	Éléments secondaires, ceux - ci serons effectués dans un second temps. Il s'agit d'améliorations au programme de base, mais pas de fonctionnalités nécessaires.  
+	Éléments secondaires, ceux-ci serons effectués dans un second temps. Il s'agit d'améliorations du programme de base, mais pas de fonctionnalités nécessaires.  
 
 \item [Priorité 4 :]
-	Éléments de « luxe ». Ces fonctions ne sont pas demandés mais rajoutent néenmoins une plu value au programme. Elles serons implémentées uniquement si la vitesse d'avancée dans le projet nous le permet.
+	Éléments de « luxe ». Ces fonctions ne sont pas demandées, mais rajoutent néanmoins une plus-value au programme. Elles serons implémentées uniquement si la vitesse d'avancée dans le projet nous le permet.
 \end{description}
 
 
@@ -24,45 +24,45 @@ Cette partie liste toutes les fonctionnalités attendues dans le programme. Cell
 
 \begin{description}
 \item[Vérification du code barre]
-	Après l'entrée du code barre par l'utilisateur le programme devra exécuter une vérification de ce celui - ci pour voir si il correspond bien à quelque chose se référent à un livre ou non. 
+	Après l'entrée du code barre par l'utilisateur, le programme devra exécuter une vérification de celui-ci pour voir s'il correspond bien à quelque chose se référant à un livre ou non. 
 	Cette vérification sera effectuée sur la syntaxe de l'expression : si le code barre commence par 978 ou 979 et s'il est bien composé de 13 chiffres, il sera considéré comme valide. 
 
 \item[Recherche sur l'API Google book]
 	Le programme doit être capable de récupérer des informations sur les différents livres.
-	Afin de récupérer ces informations nous utiliserons l'API Google Book car elle offre un grand nombre d'informations via l'ISBN du livre.
+	Afin de récupérer ces informations, nous utiliserons l'API Google Book, car elle offre un grand nombre d'informations via l'ISBN du livre.
 
 \item[Complétion automatique des champs]
-	Après la récupération de ces informations le programme auto - complètera tout les champs de caractéristiques de l'ouvrage dont la réponse a été trouvée.
-	Si l'utilisateur souhaite néanmoins utiliser une autre information que celle fournie par Google Books, il pourra toujours modifier la valeur écrite dans le champs automatiquement.
+	Après la récupération de ces informations, le programme auto-complètera tous les champs de caractéristiques de l'ouvrage dont la réponse a été trouvée.
+	Si l'utilisateur souhaite néanmoins utiliser une autre information que celle fournie par Google Books, il pourra toujours modifier la valeur écrite automatiquement dans le champs.
 
 \item[Ajouts des champs manquants]
-	Royal ayant initialement été prévu pour la gestion des collections personnels il nous faudra ajouter des champs tels que le lieu de l'emprunt, la date de l'emprunt ainsi que la date de retours du livre afin de permettre la gestion de livres empruntés. 
+	Royal ayant initialement été prévu pour la gestion des collections personnelles, il nous faudra ajouter des champs tels que le lieu de l'emprunt, la date de l'emprunt ainsi que la date de retour du livre afin de permettre la gestion des livres empruntés. 
 
 \item[Connexion à une adresse Gmail]
 	Le client qui gèrera la capture du code barre étant sous Androïd, la communication entre les deux programmes s'effectuant par mail, la plus simple des méthodes sera de passer par une boite Gmail.
 
 \item[Récupération des mails]
-	Cette fonction de lecture des mails par le client lourd nécessitera une identification des mails ayant été envoyer par le client Androïd. 
-	Cette identification se fera à l'aide d'une syntaxe spécifique du sujet du mail. Une fois le mail identifié le logiciel récupèrera les ISBN présents dans le message puis le supprimera.  
+	Cette fonction de lecture des mails par le client PC nécessitera une identification des mails ayant été envoyés par le client Androïd. 
+	Cette identification se fera à l'aide d'une syntaxe spécifique sur le sujet du mail. Une fois les mails identifiés, le logiciel récupèrera les ISBN présents dans les messages puis les supprimera.  
 
 \end{description}
 \subsection{Relative au client Androïd}
 \begin{description}
 
 \item[Mise en place de l'interface graphique]
-	Une interface graphique proposant un menu donnant accès aux différentes fonctions de l'application du client Androïd devra être créé. 
-	Cette interface sera modifiée tout au long de la création du client Androïd afin de permettre l'accès au nouvelle fonctions.
+	Une interface graphique proposant un menu, donnant accès aux différentes fonctions de l'application du client Androïd, devra être créé. 
+	Cette interface sera modifiée tout au long de la création du client Androïd afin de permettre l'accès au nouvelles fonctions.
 	Elle se devra d'être élégante et ergonomique.
 
 \item[Récupération et traitement du code barre]
-	La librairie open-source : ZXing \footnote{Site officiel de ZXing : http://code.google.com/p/zxing/} 
-	permet le traitement de codes barre en Java. 
-	C'est à dire qu'à l'aide d'une simple photo, elle est capable de repérer le code barre présent sur celle ci et de retourner sa valeur.
+	La librairie libre : ZXing \footnote{Site officiel de ZXing : http://code.google.com/p/zxing/} 
+	permet le traitement de code-barres en Java. 
+	C'est à dire qu'à l'aide d'une simple photo, elle est capable de repérer le code barre présent sur celle-ci et de retourner sa valeur.
 
 \item[Envois du mail contenant l'ISBN via Gmail]
-	Afin de faire parvenir le code ISBN au client lourd l'application Androïd devra, après le décodage du code barre, envoyer l'ISBN correspondant par mail. 
-	On utilisera tout d'abord le compte Gmail, car tout utilisateurs Androïd en possède un. 
-	Le mail aura une syntaxe spéciale dans son sujet afin d'être distingué par le client lourd des autres mails.
+	Afin de faire parvenir le code ISBN au client PC, l'application Androïd devra, après le décodage du code-barres, envoyer l'ISBN correspondant par mail. 
+	On utilisera tout d'abord le compte Gmail, car tout utilisateur Androïd en possède un. 
+	Le mail aura une syntaxe spéciale dans son sujet afin d'être distingué, par le client PC, des autres mails.
 
 \end{description}
 %%%%% ÉLÉMENT DE PRIORITÉ 2
@@ -74,11 +74,11 @@ Cette partie liste toutes les fonctionnalités attendues dans le programme. Cell
 \begin{description}
 
 \item[Vérification de la validité du code barre récupéré]
-	L'application vérifiera que le code barre récupéré est bien associé à un livre. 
+	L'application vérifiera que le code-barres récupéré est bien associé à un livre. 
 	Si le code barre ne correspond pas à un livre (Si il ne commence ni par 978, ni par 979), ou si le code barre n'a pas été reconnu sur la photo, l'utilisateur en sera averti via un message d'erreur.
 
 \item[Connexion à l'API Google Books depuis le client Androïd]
-	Cette connexion a pour but la permission de confirmer, depuis le client Androïd que celui - ci est répertorier dans la base de données Google. 
+	Cette connexion a pour but la permission de confirmer, depuis le client Androïd, que celui-ci est répertorié dans la base de données Google. 
 	Si jamais il n'y est pas, l'utilisateur pourra directement écrire le nom du livre depuis son téléphone, et ainsi, n'aura pas besoin de reconnaitre l'ouvrage ultérieurement par son ISBN.
 
 \end{description}
@@ -94,12 +94,12 @@ Cette partie liste toutes les fonctionnalités attendues dans le programme. Cell
 	Il faudra donc être capable de régler « manuellement » les paramètres de connexion tels que les serveurs IMAP / POP et SMTP à interroger.
 
 \item[Stocker les lieux d'emprunts dans une base de données]
-	Afin d'éviter à l'utilisateur de devoir écrire pour chacun des livres empruntés le non de la bibliothèque dans la quelle l'emprunt a été effectué, une base de données stockant des lieux d'emprunts sera créé. 
-	L'utilisateur n'auras plus qu'à sélectionner son lieu d'emprunts dans une liste. 
-	Si le lieu d'emprunt n'existe pas dans la base de données l'utilisateur pourra le rajouter.
+	Afin d'éviter à l'utilisateur de devoir écrire pour chacun des livres empruntés, le non de la bibliothèque dans laquelle l'emprunt a été effectué, une base de données stockant les lieux d'emprunt sera créé. 
+	L'utilisateur n'auras plus qu'à sélectionner son lieu d'emprunt dans une liste. 
+	Si le lieu d'emprunt n'existe pas dans la base de données, l'utilisateur pourra le rajouter.
 
 \item[Gestion des ISBN indisponible sur Google Books]
-	Pour les ouvrages dont l'ISBN n'est associé à aucune information sur Google Books le logiciel affichera un message informant l'utilisateur que l'ajout automatique est impossible pour ce livre afin que l'utilisateur puisse les entrer manuellement.   
+	Pour les ouvrages dont l'ISBN n'est associé à aucune information sur Google Books, le logiciel affichera un message informant l'utilisateur que l'ajout automatique est impossible pour ce livre, afin que l'utilisateur puisse les entrer manuellement.   
 
 \item[Ajout d'un système de rappel de date de retour]
 	Le logiciel devra émettre des alertes à l'utilisateur quand la date de fin d'emprunt d'un livre approche. 
@@ -111,15 +111,10 @@ Cette partie liste toutes les fonctionnalités attendues dans le programme. Cell
 \end{description}
 \subsection{Relatives au client Androïd}
 \begin{description}
-
-\item[Vérification des éléments disponible via l'ISBN]
-	L'application vérifiera sur internet que le code ISBN récupéré est bien associé à un livre.
-	Si aucun livre n'est trouvé, l'utilisateur sera averti que les informations sur le livre ne sont pas disponible. 
-	Un mail sera quand même envoyé au client lourd afin de rappeler à l'utilisateur qu'il doit rentrer les informations manuellement.
  
-\item[Envois du mail contenant l'ISBN via une autre adresse mail]
+\item[Envoie du mail contenant les ISBNs via une autre adresse mail]
 	Cette fonction aura pour but de permettre à l'utilisateur de choisir entre l'adresse par défaut (l'adresse Gmail liée au compte Androïd) et une autre,
-	qu'il aura choisis de ses propres soins pour l'envoi des ISBN au client lourd. 
+	qu'il aura choisi pour l'envoie des ISBNs au client PC. 
 
 \end{description}
 
@@ -127,40 +122,40 @@ Cette partie liste toutes les fonctionnalités attendues dans le programme. Cell
 \subsection{Relatives au client PC}
 \begin{description}
 
-\item[Tri des bandes dessinée]
-	L'affichage des bandes dessinée pourra être géré en fonction de la série, de l'auteur, de la date de parution ou de la date de lecture. 
-	L'affichage en fonction de l'auteur ou de la collection sont déjà des fonctionnalités présentes sur l'application Royal mais elles sont limitées et propose aussi un affichage en fonction du type alors que le type de l'ouvrage ne fais pas partie des information que l'on peut saisir. 
+\item[Tri des bandes dessinées]
+	L'affichage des bandes dessinées pourra être géré en fonction de la série, de l'auteur, de la date de parution ou de la date de lecture. 
+	L'affichage en fonction de l'auteur ou de la collection est déjà une fonctionnalité présente sur l'application Royal mais elle est limitée et propose aussi un affichage en fonction du type alors que le type de l'ouvrage ne fait pas partie des informations que l'on peut saisir. 
 	Cette révision de l'affichage aura pour principal but de faciliter la recherche de l'utilisateur parmi ses bandes dessinées.
 
 \item[Amélioration de la recherche d'images]
-	La fonction de recherche d'images implantée dans Royal ne propose pas toujours une image adaptée à notre album c'est pourquoi nous allons attribuer automatiquement l'image de la couverture de la bande dessinée en fonction de celle présente sur Google Book. 
+	La fonction de recherche d'images implantée dans Royal ne propose pas toujours une image adaptée à notre album. C'est pourquoi nous allons attribuer automatiquement l'image de la couverture de la bande dessinée en fonction de celle présente sur Google Book. 
 	Cette image pourra toujours être changée manuellement par une image personnelle comme on pouvait déjà le faire sur Royal.
 
-\item[Synchronisation des ISBN présentes dans la base de données]
-	Afin d'améliorer la fonction du client Androïd vérifiant les ISBN déjà existant, 
-	une fonction de synchronisation sera implémentée afin de lui faire parvenir les ISBN des bandes dessinée déjà présentes dans le client lourd susceptibles de manqué 
+\item[Synchronisation des ISBNs présentes dans la base de données]
+	Afin d'améliorer la fonction du client Androïd vérifiant les ISBNs déjà existants, 
+	une fonction de synchronisation sera implémentée afin de lui faire parvenir les ISBNs des bandes dessinées déjà présentes dans le client PC susceptibles de manquer sur le client Android. 
 	(Si le client lourd est utilisé depuis avant la création du client Androïd, ou si l'utilisateur change de téléphone par exemple). 
 	Cette synchronisation sera faite par email ou usb (peut être par bluetooth ou wifi).
 
-\item[Reception de l'ISBN par un autre moyen]
-	Cette fonction permet à l'utilisateur de recevoir les codes ISBN par un autre moyen que l'envoi d'un mail. 
+\item[Réception de l'ISBN par un autre moyen]
+	Cette fonction permet à l'utilisateur de recevoir les codes ISBNs par un autre moyen que l'envoi d'un mail. 
 	(Solutions à étudier: usb, bluetooth, serveur, etc. )
 
 \end{description}
 \subsection{Relatives au client Androïd}
 \begin{description}
 
-\item[Gestion des ISBN des bandes dessinées déjà lues]
-	Tous les ISBN des bandes dessiné scannées seront conservés dans un fichier sous l'application Androïd afin de garder un historique des bandes dessinés déjà lues.
+\item[Gestion des ISBNs des bandes dessinées déjà lues]
+	Tous les ISBNs des bandes dessinées scannées seront conservés dans un fichier sous l'application Androïd afin de garder un historique des bandes dessinées déjà lues.
 	Si l'ISBN a déjà été scanné précédemment, un message d'information sera envoyé au client. 
-	Toutefois il lui sera demandé s'il veut quand même renvoyer le code ISBN au cas ou le livre aurait été supprimé sur le client lourd. 
+	Toutefois il lui sera demandé s'il veut quand même renvoyer le code ISBN au cas ou le livre aurait été supprimé sur le client PC. 
 
-\item[Synchronisation de l'historique des ISBN des livres déja lue]
-	Une synchronisation des ISBN présents sur le client lourd, avec le client Androïd sera possible. 
-	L'historique présent dans l'application Androïd sera effacé et remplacé par ceux importé depuis le client lourd.
+\item[Synchronisation de l'historique des ISBN des livres déja lus]
+	Une synchronisation des ISBN présents sur le client PC, avec le client Androïd sera possible. 
+	L'historique présent dans l'application Androïd sera effacé et remplacé par ceux importé depuis le client PC.
 
 \item[Envois de l'ISBN par un autre moyen]
-	Cette fonction permet d'envoyer les ISBN des livres scannés au client lourd par un autre moyen que l'envoi d'un mail. 
+	Cette fonction permet d'envoyer les ISBNs des livres scannés au client PC par un autre moyen que l'envoi d'un mail. 
 	(Solution à étudier: usb, bluetooth, serveur, etc.)
 
 \end{description}
