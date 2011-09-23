@@ -12,9 +12,28 @@ Il est donc probable que l'application ne permette finalement pas toutes ces fon
 	Si ce fichier n'existe pas, il sera directement proposé au client de renseigner ces informations.}
 
 L'utilisateur pourra aussi choisir d'utiliser l'adresse email liée au compte Android par défaut.
-Ensuite, c'est une fenêtre à deux boutons qui se présente à l'utilisateur. 
-Sur le premier est indiqué « Scanner un seul ouvrage », sur le second, « Scanner un lot d'ouvrages ». 
-Si l'utilisateur se tourne vers la seconde option, 
+\begin{figure}[h]
+\begin{center}
+\includegraphics[height=7cm]{../img/Royal_Scanner_configuepremiermail.png}
+\end{center}
+\caption{Premier démarrage de l'application}
+\end{figure}
+
+Ensuite, c'est une fenêtre à quatre boutons qui se présente à l'utilisateur. 
+Sur le premier est indiqué « Scanner un livre », sur le second, « Scanner une liste de livre », « Configuration de l'adresse E-Mail » et « À propos de Royal\_». 
+
+Le bouton de configuration de l'adresse E-Mail ouvre la même page que précédemment. 
+L'à propos ne consiste qu'en l'affichage d'une simple fenêtre contenant des informations sur les auteurs.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[height=7cm]{../img/Royal_Scanner_menu.png}
+\end{center}
+\caption{Menu de l'application Royal\_Scanner}
+\end{figure}
+
+\subsubsection{Récupération par lot}
+Si l'utilisateur se tourne vers la capture d'une liste, 
 un message apparait, demandant de viser le code barre du livre avec la caméra de l'appareil.
 Il faut appuyer sur « ok », puis, l'appareil photo s'allume. 
 \emph{C'est en fait à ce moment que Royal fait appel à la librairie ZXing afin de récupérer le code barre du livre, et d'en déduire l'ISBN.} 
@@ -38,6 +57,22 @@ Peu de temps après, un nouveau message apparait : « Un e-mail de synchronisati
 \emph{Le fichier précédemment créé avec la date du scann, le numéro d'ISBN et le titre du livre est envoyé par e-mail à l'adresse définie pour l'exportation. 
 	Le titre du mail correspond à une chaine identifiable par le client lourd : \textbf{Royal\_}
 }
+
+\subsubsection {Scann d'un livre unique}
+Nous choisirons cette fois le mode de scann simple, adapté pour un seul livre. 
+L'appareil photo se rallume, on prend la photo du code barre, puis le nom de l'ouvrage réapparait sur l'écran.
+On confirme, et l'exportation s'effectue apparemment avec succès. 
+\emph{D'un point de vue interne au programme, le comportement est similaire entre le mode de scann par lot et celui par unité, la récursivité en moins.}
+
+\begin{figure}
+\begin{center}
+\includegraphics[height=5cm]{../img/Royal_Scanner_prisescanner_1.png}
+\end{center}
+\caption{Capture de l'ISBN}
+\end{figure}
+
+De retour devant l'ordinateur, nous ré effectuons une importation. 
+Encore une fois, une fenêtre s'ouvre, avec les informations auto - complétées de l'ouvrage, il ne reste plus qu'à choisir la bibliothèque dans la quelle c'est effectué l'emprunt, à confirmer, et le livre s'ajoute dans la liste principale !
 
 \subsection{Utilisation de l'application sur ordinateur}
 Au premier démarrage du client PC, l'utilisateur se retrouve de nouveau face à une fenêtre me demandant de choisir quelle adresse e-mail il allait utiliser pour la synchronisation avec le « client Androïd ». 
@@ -106,15 +141,6 @@ Nous pouvons lire à droite quelques informations sur l'ouvrage sélectionné, d
 \end{figure}
 
 \subsection {Autres fonctionnalités}
-
-\subsubsection {Scann d'un livre unique}
-Nous choisirons cette fois le mode de scann simple, adapté pour un seul livre. 
-L'appareil photo se rallume, on prend la photo du code barre, puis le nom de l'ouvrage réapparait sur l'écran.
-On confirme, et l'exportation s'effectue apparemment avec succès. 
-\emph{D'un point de vue interne au programme, le comportement est similaire entre le mode de scann par lot et celui par unité, la récursivité en moins.}
-
-De retour devant l'ordinateur, nous ré effectuons une importation. 
-Encore une fois, une fenêtre s'ouvre, avec les informations auto - complétées de l'ouvrage, il ne reste plus qu'à choisir la bibliothèque dans la quelle c'est effectué l'emprunt, à confirmer, et le livre s'ajoute dans la liste principale !
 
 \subsubsection {Gestion des dates de retour}
 Les dates de retour des ouvrages sont visibles dans les caractéristiques des livres. 
