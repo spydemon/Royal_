@@ -12,8 +12,8 @@
 \contentsline {subsection}{\numberline {4.1}Relatives au client PC}{6}
 \contentsline {subsection}{\numberline {4.2}Relatives au client Andro\IeC {\"\i }d}{7}
 \contentsline {section}{\numberline {5}Utilisation type}{8}
-\contentsline {subsection}{\numberline {5.1}R\IeC {\'e}cup\IeC {\'e}ration des ISBN}{8}
-\contentsline {subsubsection}{\numberline {5.1.1}R\IeC {\'e}cup\IeC {\'e}ration par lot}{9}
+\contentsline {subsection}{\numberline {5.1}R\IeC {\'e}cup\IeC {\'e}ration des ISBNs}{8}
+\contentsline {subsubsection}{\numberline {5.1.1}R\IeC {\'e}cup\IeC {\'e}ration par lot}{8}
 \contentsline {subsubsection}{\numberline {5.1.2}Scann d'un livre unique}{9}
 \contentsline {subsection}{\numberline {5.2}Utilisation de l'application sur ordinateur}{9}
 \contentsline {subsection}{\numberline {5.3}Autres fonctionnalit\IeC {\'e}s}{11}
@@ -31,17 +31,17 @@
 \contentsline {paragraph}{La r\IeC {\'e}daction du dossier d'analyse}{13}
 \contentsline {paragraph}{La r\IeC {\'e}alisation d'un premier prototype}{13}
 \contentsline {paragraph}{La finalisation du projet}{13}
-\contentsline {section}{\numberline {8}\IeC {\'E}stimation du temps n\IeC {\'e}cessaire}{13}
-\contentsline {section}{\numberline {9}Planification des d\IeC {\'e}lais}{14}
-\contentsline {part}{IV\hspace {1em}D\IeC {\'e}finition des contraintes}{15}
-\contentsline {section}{\numberline {10}Contraintes de temps}{15}
-\contentsline {section}{\numberline {11}Contraintes de qualit\IeC {\'e}s}{15}
-\contentsline {subsection}{\numberline {11.1}Charte ergonomique}{15}
-\contentsline {subsection}{\numberline {11.2}Norme d'\IeC {\'e}criture}{15}
+\contentsline {section}{\numberline {8}Estimation du temps n\IeC {\'e}cessaire}{13}
+\contentsline {section}{\numberline {9}Planification des d\IeC {\'e}lais}{13}
+\contentsline {part}{IV\hspace {1em}D\IeC {\'e}finition des contraintes}{14}
+\contentsline {section}{\numberline {10}Contraintes de temps}{14}
+\contentsline {section}{\numberline {11}Contraintes de qualit\IeC {\'e}s}{14}
+\contentsline {subsection}{\numberline {11.1}Charte ergonomique}{14}
+\contentsline {subsection}{\numberline {11.2}Norme d'\IeC {\'e}criture}{14}
 \contentsline {section}{\numberline {12}Contraintes mat\IeC {\'e}rielles et technologiques}{15}
 \contentsline {subsection}{\numberline {12.1}Adaptation aux outils utilis\IeC {\'e}s dans Royal}{15}
 \contentsline {subsection}{\numberline {12.2}Compatibilit\IeC {\'e} du client lourd}{15}
 \contentsline {subsection}{\numberline {12.3}Compatibilit\IeC {\'e} du client mobile}{15}
 \contentsline {section}{\numberline {13}Contraintes de realisation}{15}
 \contentsline {subsection}{\numberline {13.1}Designation des acteurs}{15}
-\contentsline {subsection}{\numberline {13.2}Cycle de vie}{16}
+\contentsline {subsection}{\numberline {13.2}Cycle de vie}{15}
