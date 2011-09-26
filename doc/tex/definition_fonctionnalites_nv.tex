@@ -16,11 +16,7 @@ Cette partie liste toutes les fonctionnalités attendues dans le programme. Cell
 \end{description}
 
 
-\section{Fonctionnalités de priorité 1}
-
-%%%%% ÉLÉMENT DE PRIORITÉ 1
-
-\subsection{Relatives au client PC}
+\section{Relatives au client PC}
 
 \begin{description}
 
@@ -50,24 +46,45 @@ Cette partie liste toutes les fonctionnalités attendues dans le programme. Cell
 
 \end{description}
 
-\subsection{Relatives au client Androïd} 
-
+\section{Relatives au client Androïd} 
 \begin{description}
 
-\item[Système de captation des code barre]
-%Captation unique 
-%Captation multiple
+\paragraph{}
+Afin de faciliter la saisie des code-barres des differents albums une application Android \textit{(le systeme d'exploitation mobile développé par google)} sera dévelloppée afin de capter les différents code-barres et les transmettres au client PC.
 
-\item[Système d'envoi des albums]
-%Envois par mail
-%%Configuration d'une adresse
-%%Système d'envoi par mail
-%Envoi par un autre moyen
 
-\item[Vérification de la validité du code barre]
+\subsection{Système de captation des code barre}
+\paragraph{Captation unique:}
+Afin de récupérer les code-barres sur les différents albums nous développerons une fonction perméttant de capter les code-barres à l'aide de l'appareil photo.
+Pour récupérer ces code-barres il suffirat de placer le code-barre dans l'objectif de l'appareil photo du mobile pour qu'il soit reconnu.
 
-\item[Système d'enregistrement des albums déjà scannés]
-%Enregistrement des albums 
-%Mise en commun avec les blbums du client pc 
+\paragraph{Captation multiple:}
+Tout comme le mode de captation unique cette fonction permettra de capter les code-barre mais cette fois si une serie de code-barres pourra etre capté les un après les autres afin d'etre envoyer en même temps \textit{(Voir fonction Systeme d'envoi des albums)}
 
+\subsection{Système d'envoi des albums}
+\paragraph{Envois par mail:}
+\subparagraph{Configuration d'une adresse:}
+Afin de permettre l'envoi des albums par mail \textit{(voir Système d'envoi par mail)} une fonction permettant de configurer les differentes adresses mail nécessaire à l'envoi du mail sera crée (mail d'envoi utilisé pour envoyer les album ainsi que le mail de récéption commun au client PC).
+
+\subparagraph{Système d'envoi par mail:}
+Une fois les code-barres captés une fonction permettra au client android d'envoyer ces code-barres au clients PC. 
+Le mail aura une syntaxe spécial afin d'ètre reconnu et annalysé plus facilements par le clients PC. 
+
+\paragraph{Envoi par un autre moyen:}
+Certains utilisateurs n'ayant peut-être pas de connexion internet avec leurs forfait mobiles ou n'y ayant pas accès(lieu isolé non désservie par les reseau mobile ou pays étranger) une fonction permettant l'envoi des albums via un autre moyen que l'envoi d'un mail pourra etre développé.
+Exemples de moyen pouvant être étudié afin de permettre cette envoi: Bluetooth, usb...
+
+\subsection{Vérification de la validité du code barre}
+L'application vérifiera si les code-barres capté est bien associé à un livre.
+Si le code-barre correspond à un livre l'ISBN ainsi que le titre du livre seront affiché à l'utilisateur.
+Si le code-barre ne correspond pas à un livre l'utilisateur en sera averti via un message d'erreur.
+
+\subsection{Système d'enregistrement des albums déjà scannés}
+\paragraph{Enregistrement des albums:} 
+Afin d'enpécher l'envoi d'album déja capter, les albums capté seront enregistré après la validation de leurs envois. 
+L'utilisateur en cas de captation d'un album déja envoyé au client PC sera averti, il lui sera cependant permi d'réenvoyer l'album s'il le désir.
+
+\paragraph{Mise en commun avec les albums du client pc:} 
+Comme il sera possible à l'utilisateur d'entré des albums sur le lien PC sans passé par le client mobile et afin d'optimiser l'enregistrement des albums il sera possible de mettre en commun les albums enregisté sur le client Android avec les albums disponibles sur le client PC.
+Lors de cette mise en commun seul les albums présents sur le client PC seront gardé sur le client Android tout autre album non présents sur le clients PC sera supprimé.  
 \end{description}
