@@ -4,36 +4,35 @@
 \contentsline {subsection}{\numberline {1.1}Relatives au client PC}{4}
 \contentsline {subsection}{\numberline {1.2}Relatives au client Andro\IeC {\"\i }d}{4}
 \contentsline {section}{\numberline {2}Utilisation type}{5}
-\contentsline {subsection}{\numberline {2.1}R\IeC {\'e}cup\IeC {\'e}ration des ISBNs}{5}
-\contentsline {subsubsection}{\numberline {2.1.1}R\IeC {\'e}cup\IeC {\'e}ration par lot}{5}
-\contentsline {subsubsection}{\numberline {2.1.2}Scann d'un livre unique}{6}
-\contentsline {subsection}{\numberline {2.2}Utilisation de l'application sur ordinateur}{6}
-\contentsline {subsection}{\numberline {2.3}Autres fonctionnalit\IeC {\'e}s}{8}
-\contentsline {subsubsection}{\numberline {2.3.1}Gestion des dates de retour}{8}
-\contentsline {subsubsection}{\numberline {2.3.2}Modification des informations d'un livre}{8}
-\contentsline {part}{II\hspace {1em}Analyse de l'existant}{9}
-\contentsline {section}{\numberline {3}Fonctionnement de l'application Royal}{9}
-\contentsline {subsection}{\numberline {3.1}Introduction}{9}
-\contentsline {subsection}{\numberline {3.2}Aspect fonctionnel de Royal}{9}
-\contentsline {subsection}{\numberline {3.3}Aspect technique de Royal}{9}
-\contentsline {subsection}{\numberline {3.4}Analyse de la base de donn\IeC {\'e}es d\IeC {\'e}j\IeC {\`a} existante}{9}
-\contentsline {part}{III\hspace {1em}Planning pr\IeC {\'e}visionnel}{10}
-\contentsline {section}{\numberline {4}\IeC {\'E}tapes du projets}{10}
-\contentsline {paragraph}{La r\IeC {\'e}daction du cahier des charges}{10}
-\contentsline {paragraph}{La r\IeC {\'e}daction du dossier d'analyse}{10}
-\contentsline {paragraph}{La r\IeC {\'e}alisation d'un premier prototype}{10}
-\contentsline {paragraph}{La finalisation du projet}{10}
-\contentsline {section}{\numberline {5}Estimation du temps n\IeC {\'e}cessaire}{10}
-\contentsline {section}{\numberline {6}Planification des d\IeC {\'e}lais}{10}
-\contentsline {part}{IV\hspace {1em}D\IeC {\'e}finition des contraintes}{11}
-\contentsline {section}{\numberline {7}Contraintes de temps}{11}
-\contentsline {section}{\numberline {8}Contraintes de qualit\IeC {\'e}s}{11}
-\contentsline {subsection}{\numberline {8.1}Charte ergonomique}{11}
-\contentsline {subsection}{\numberline {8.2}Norme d'\IeC {\'e}criture}{11}
-\contentsline {section}{\numberline {9}Contraintes mat\IeC {\'e}rielles et technologiques}{12}
-\contentsline {subsection}{\numberline {9.1}Adaptation aux outils utilis\IeC {\'e}s dans Royal}{12}
-\contentsline {subsection}{\numberline {9.2}Compatibilit\IeC {\'e} du client lourd}{12}
-\contentsline {subsection}{\numberline {9.3}Compatibilit\IeC {\'e} du client mobile}{12}
-\contentsline {section}{\numberline {10}Contraintes de realisation}{12}
-\contentsline {subsection}{\numberline {10.1}Designation des acteurs}{12}
-\contentsline {subsection}{\numberline {10.2}Cycle de vie}{12}
+\contentsline {subsection}{\numberline {2.1}Lancement de l'application Andro\IeC {\"\i }d}{5}
+\contentsline {paragraph}{Captation d'un unique ouvrage}{5}
+\contentsline {paragraph}{Captation d'un lot d'ouvrages}{5}
+\contentsline {subsection}{\numberline {2.2}Lancement de l'application PC}{5}
+\contentsline {paragraph}{Importation des livres}{5}
+\contentsline {paragraph}{V\IeC {\'e}rification de la date de retour}{5}
+\contentsline {part}{II\hspace {1em}Analyse de l'existant}{6}
+\contentsline {section}{\numberline {3}Fonctionnement de l'application Royal}{6}
+\contentsline {subsection}{\numberline {3.1}Introduction}{6}
+\contentsline {subsection}{\numberline {3.2}Aspect fonctionnel de Royal}{6}
+\contentsline {subsection}{\numberline {3.3}Aspect technique de Royal}{6}
+\contentsline {subsection}{\numberline {3.4}Analyse de la base de donn\IeC {\'e}es d\IeC {\'e}j\IeC {\`a} existante}{6}
+\contentsline {part}{III\hspace {1em}Planning pr\IeC {\'e}visionnel}{7}
+\contentsline {section}{\numberline {4}\IeC {\'E}tapes du projets}{7}
+\contentsline {paragraph}{La r\IeC {\'e}daction du cahier des charges}{7}
+\contentsline {paragraph}{La r\IeC {\'e}daction du dossier d'analyse}{7}
+\contentsline {paragraph}{La r\IeC {\'e}alisation d'un premier prototype}{7}
+\contentsline {paragraph}{La finalisation du projet}{7}
+\contentsline {section}{\numberline {5}Estimation du temps n\IeC {\'e}cessaire}{7}
+\contentsline {section}{\numberline {6}Planification des d\IeC {\'e}lais}{7}
+\contentsline {part}{IV\hspace {1em}D\IeC {\'e}finition des contraintes}{8}
+\contentsline {section}{\numberline {7}Contraintes de temps}{8}
+\contentsline {section}{\numberline {8}Contraintes de qualit\IeC {\'e}s}{8}
+\contentsline {subsection}{\numberline {8.1}Charte ergonomique}{8}
+\contentsline {subsection}{\numberline {8.2}Norme d'\IeC {\'e}criture}{8}
+\contentsline {section}{\numberline {9}Contraintes mat\IeC {\'e}rielles et technologiques}{9}
+\contentsline {subsection}{\numberline {9.1}Adaptation aux outils utilis\IeC {\'e}s dans Royal}{9}
+\contentsline {subsection}{\numberline {9.2}Compatibilit\IeC {\'e} du client lourd}{9}
+\contentsline {subsection}{\numberline {9.3}Compatibilit\IeC {\'e} du client mobile}{9}
+\contentsline {section}{\numberline {10}Contraintes de realisation}{9}
+\contentsline {subsection}{\numberline {10.1}Designation des acteurs}{9}
+\contentsline {subsection}{\numberline {10.2}Cycle de vie}{9}
