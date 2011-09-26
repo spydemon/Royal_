@@ -18,33 +18,49 @@ Cette partie liste toutes les fonctionnalités attendues dans le programme. Cell
 
 \section{Relatives au client PC}
 
-\begin{description}
+\subsection{Système d'ajout et d'édition de bande dessinées}
+\paragraph{}
+C'est une des fonctions sans laquelle le projet n'a pas lieu d'être. Elle est a la base de la gestion des \emph{BDs}. En effet, cette fonctionnalité permet l'ajout, la sauvegarde et l'édition de l'ensemble des informations des albums qui pourront être ajouté dans l'application. Ces informations correspondent par exemple, au titre, à l'auteur, au genre, etc... d'un album.
+\paragraph{}  
+Cette partie devra également être capable d'associer une image à l'album pour permettre de visualer sa couverture.
+\paragraph{}  
+De plus, cette fonction doit permettre de créer des liens entre les différents albums, s'il partage des informations en commun, comme leur auteur, ou leur genre.
 
-\item[Système d'ajout et d'édition de bande dessinée]
+\subsection{Système d'affichage des \emph{BDs} selon certains critères}
+\paragraph{}
+La visualisation d'une liste des albums parrait nécessaire pour l'utilisateur afin gérer sa bibliothèque personnel. Ainsi, l'application devra comporter cette visualisation qui sera paramètrable par l'utilisateur voulant faire une recherche spécifique, par exemple une recherche par auteur ou par genre.
 
-\item[Système d'affichage des \emph{bd} selon certains critères]
+\subsection{Système de recherche d'informations sur une \emph{BD}  grâce au code barre}
+\paragraph{}
+Cette fonctionnalité opère en deux parties.
+\paragraph{}  
+Dans un premier temps elle doit permettre la saisie d'un code barre par l'utilisateur. Le code barre doit être vérifié par l'application. En effet, il est possible d'analyser le code barre pour savoir s'il correspond bien à un livre et dans un second temps en retirer son code ISBN, code représentant de manière internationnale le livre.
+\paragraph{}  
+Un fois le code analyser, l'application effectue une recherche sur un système d'information distant les informations de l'album grâce au code ISBN, et sera capable d'ajouter automatiquement l'album dans l'application avec les informationsqu'elle aura préalablement récupéré.
+\paragraph{}  
+Le système sera capable d'agir en conséquence si le code barre n'est pas valide ou si les informations à récupérer sont inexistantes ou incomplètes.
 
-\item[Système de recherche d'informations sur une \emph{bd}  grâce au code barre]
-% Analyse du code barre
-% Recherche du code barre
+\subsection{Système d'importation des albums}
+\paragraph{}
+L'application devra pouvoir importer des albums, ceci est en étroite liaison avec l'application Android. Il est nécessaire de définir un protocol d'échange entre les deux applications. Nous allons donc présenter cette partie sous l'aspect d'un échange de mail, solution certe non optimale mais qui a l'avantage d'être indépendant de tout autre système distant souvent couteux.
+\paragraph{}  
+Ainsi en considérant l'échange via mail, l'appilcation devra intégrer un système de configuration d'adresse mail pour permettre à l'utilisateur de choisir à partir de quel adresse il souhaite récupérer les albums.
+\paragraph{}  
+L'application devra dans un second temps lire et reconnaitre les mails spécifiques reçu dans la boite mail du compte et pouvoir en retirer les albums qu'ils contiennent.
+\paragraph{}  
+Finalement l'application pourra ajouter automatiquement les albums, un par un ou par lot (voir : Système d'envoi sur Android).
+\paragraph{}  
+Pour le contenu des mails, il pourrait ne s'agir que de leur code ISBN, puis par la suite lors de l'importation, une recherche sur les systèmes d'informations distant permettrait de complèter les informations à insérer.
+\paragraph{}  
+L'ajout d'un autre moyen d'importation est aussi à étudier, par exemple via bluetooth ou via USB avec un smartphone Android.
 
-\item[Insertion d'une \emph{bd} à partir des données trouvées] 
+\subsection{Système de gestion des lieux et dates d'emprunt}
+\paragraph{}
+Que ce soit lors d'un import, ou simplement lors d'un ajout manuel, l'utilisateur pourra ajouter, si son album ou son lot est issus d'un emprunt bibliothéquère, un lieu d'emprunt, et une date de retour directement associés à ou aux album(s). Il pourra par la suite trier ses albums par lieu ou date de retour.
+\paragraph{}  
+De plus, l'application possèdera un système de configuration pour permettre à l'utilisateur d'être notifié s'il doit rendre ses livres. Ces notifications surviendrons (ou non) un certain nombre de jour avant la date de retour, au choix de l'utilisateur.
 
-\item[Système d'ajout des albums]
-%Via mail 
-%% Système de configuration d'une adresse mail
-%% Système de récupération du mail psécifique à l'application]
-%Via un autre moyen que le mail
-% Ajout des \emph{bd} récupérées
 
-\item[Système de gestion des liens et dates d'emprunt]
-%Ajout du lien et de la date de fin d'emprunt 
-%Ajout d'un système de rappel des emprunts 
-
-\item[Système d'ajout et d'édition de \emph{bd}]
-% Gestion des données 
-
-\end{description}
 
 \section{Relatives au client Androïd} 
 
