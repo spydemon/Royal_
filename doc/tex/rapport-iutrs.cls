@@ -57,16 +57,16 @@
 \def\Livrable{Livrable indéfini}
 \def\Projet{Projet indéfinis}
 \def\Auteurs{Auteurs indéfinis}
-\def\Date{Date indéfinie}
-\def\Version{Version indéfini}
+%%%\def\Date{Date indéfinie}
+%%%\def\Version{Version indéfini}
 
 
 \newcommand{\livrable}[1]{\def\Livrable{#1}}
 \newcommand{\projet}[1]{\def\Projet{#1}}
 \newcommand{\groupe}[1]{\def\Groupe{#1}}
 \newcommand{\auteurs}[1]{\def\Auteurs{#1}}
-\renewcommand{\date}[1]{\def\Date{#1}}
-\newcommand{\version}[1]{\def\Version{#1}}
+%%%\renewcommand{\date}[1]{\def\Date{#1}}
+%%%\newcommand{\version}[1]{\def\Version{#1}}
 
 \DeclareOption{WIP}{
 	\renewcommand{\TODO}[2][inline]{\todo[color=blue!10,#1]{\sf \textbf{TODO :} #2}}
@@ -79,7 +79,7 @@
 
 }
 \DeclareOption{T3}{
-	\renewcommand{\PTlogo}{\includegraphics[height=2cm]{figs/logos/icare.png}}
+	%%\renewcommand{\PTlogo}{\includegraphics[height=2cm]{figs/logos/icare.png}}
 	\def\CodeUE{T3}
 }
 \ProcessOptions
@@ -110,10 +110,10 @@
 \vspace{1cm}
 \Large\Auteurs
 
-\vspace{1cm}
-\large\Date
+%%\vspace{1cm}
+%%\large\Date
 
-v\Version
+%%v\Version
 
 
 }
@@ -134,6 +134,8 @@ v\Version
 
 
 \lfoot{\Groupe\ -- \Projet}
-\cfoot{\thepage\ sur \pageref{LastPage}}
-\rfoot{\Livrable\ v\Version}
+\cfoot{}
+\rfoot{\thepage\ sur \pageref{LastPage}}
+%\cfoot{\thepage\ sur \pageref{LastPage}}
+%\rfoot{\Livrable\ v\Version}
 

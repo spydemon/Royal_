@@ -3,61 +3,57 @@ Cette partie liste toutes les fonctionnalités attendues dans le programme. Cell
 
 \begin{description}
 \item [Priorité 1 :]
-	Priorité la plus élevée. Il s'agit des premières fonctionnalités à implémenter.
+	Priorité la plus élevée. Il s'agit des premières fonctionnalités à implémenter permettant au logiciel de repondre à la demande de base de l'utilisateur.
 
 \item [Priorité 2 :]
-	Élément nécessaire. Il s'agit de l'implémentation réelle des fonctionnalités principales du programme mais nécessitant la mise en place de structures préalables (Les éléments de priorité 1). 
+	Éléments nécessaire, ceux-ci serons effectués dans un second temps. Il s'agit d'améliorations du programme de base, qui permettent d'opimiser le programme afin de repondre aux autres demandes du client.  
 
 \item [Priorité 3 :]
-	Éléments secondaires, ceux-ci serons effectués dans un second temps. Il s'agit d'améliorations du programme de base, mais pas de fonctionnalités nécessaires.  
-
-\item [Priorité 4 :]
-	Éléments optionnels. Ces fonctions ne sont pas demandées, mais rajoutent néanmoins une plus-value au programme. Elles serons implémentées uniquement si la vitesse d'avancée dans le projet nous le permet.
+	Éléments secondaire. Ces fonctions ne sont pas demandées, mais rajoutent néanmoins une plus-value au programme. Elles serons implémentées uniquement si la vitesse d'avancée dans le projet nous le permet.
 \end{description}
 
 
 \section{Relatives au client PC}
 
 \subsection{Système d'ajout et d'édition de bande dessinées}
-\paragraph{}
+\paragraph{Ajout des information de bases ---  \textit{Priorité 1}:}
 C'est une des fonctions sans laquelle le projet n'a pas lieu d'être. Elle est a la base de la gestion des \emph{BDs}. En effet, cette fonctionnalité permet l'ajout, la sauvegarde et l'édition de l'ensemble des informations des albums qui pourront être ajouté dans l'application. Ces informations correspondent par exemple, au titre, à l'auteur, au genre, etc... d'un album.
-\paragraph{}  
+\paragraph{Ajout d'une image de couverture ---  \textit{Priorité 2}:}  
 Cette partie devra également être capable d'associer une image à l'album pour permettre de visualer sa couverture.
-\paragraph{}  
+\paragraph{Création de liens entre les albums ---  \textit{Priorité 1}:}  
 De plus, cette fonction doit permettre de créer des liens entre les différents albums, s'il partage des informations en commun, comme leur auteur, ou leur genre.
 
 \subsection{Système d'affichage des \emph{BDs} selon certains critères}
-\paragraph{}
+\paragraph{Affichage des \emph{BDs} ---  \textit{Priorité 2}}
+
 La visualisation d'une liste des albums parrait nécessaire pour l'utilisateur afin gérer sa bibliothèque personnel. Ainsi, l'application devra comporter cette visualisation qui sera paramètrable par l'utilisateur voulant faire une recherche spécifique, par exemple une recherche par auteur ou par genre.
 
 \subsection{Système de recherche d'informations sur une \emph{BD}  grâce au code barre}
-\paragraph{}
-Cette fonctionnalité opère en deux parties.
-\paragraph{}  
+
+\paragraph{Saisie et vérification du code barres ---  \textit{Priorité 1}:}
 Dans un premier temps elle doit permettre la saisie d'un code barre par l'utilisateur. Le code barre doit être vérifié par l'application. En effet, il est possible d'analyser le code barre pour savoir s'il correspond bien à un livre et dans un second temps en retirer son code ISBN, code représentant de manière internationnale le livre.
-\paragraph{}  
+\paragraph{Recherche d'information grâce au code barres ---  \textit{Priorité 1}:}  
 Un fois le code analyser, l'application effectue une recherche sur un système d'information distant les informations de l'album grâce au code ISBN, et sera capable d'ajouter automatiquement l'album dans l'application avec les informationsqu'elle aura préalablement récupéré.
-\paragraph{}  
+\paragraph{Traitement en fonctions des résultats de la recherche ---  \textit{Priorité 1}:}  
 Le système sera capable d'agir en conséquence si le code barre n'est pas valide ou si les informations à récupérer sont inexistantes ou incomplètes.
 
 \subsection{Système d'importation des albums}
-\paragraph{}
+\paragraph{Importation via mail ---  \textit{Priorité 1}:}
 L'application devra pouvoir importer des albums, ceci est en étroite liaison avec l'application Android. Il est nécessaire de définir un protocol d'échange entre les deux applications. Nous allons donc présenter cette partie sous l'aspect d'un échange de mail, solution certe non optimale mais qui a l'avantage d'être indépendant de tout autre système distant souvent couteux.
-\paragraph{}  
+\subparagraph{Configuration du adresse mail :}  
 Ainsi en considérant l'échange via mail, l'appilcation devra intégrer un système de configuration d'adresse mail pour permettre à l'utilisateur de choisir à partir de quel adresse il souhaite récupérer les albums.
-\paragraph{}  
+\subparagraph{Réception des mails spécifiques :}  
 L'application devra dans un second temps lire et reconnaitre les mails spécifiques reçu dans la boite mail du compte et pouvoir en retirer les albums qu'ils contiennent.
-\paragraph{}  
-Finalement l'application pourra ajouter automatiquement les albums, un par un ou par lot (voir : Système d'envoi sur Android).
-\paragraph{}  
+\subparagraph{Ajout automatique des albums récupérés :}  
+Finalement l'application pourra ajouter automatiquement les albums, un par un ou par lot (voir : Système d'envoi sur Android). 
 Pour le contenu des mails, il pourrait ne s'agir que de leur code ISBN, puis par la suite lors de l'importation, une recherche sur les systèmes d'informations distant permettrait de complèter les informations à insérer.
-\paragraph{}  
+\paragraph{Importation via un autre moyen ---  \textit{Priorité 3}:}  
 L'ajout d'un autre moyen d'importation est aussi à étudier, par exemple via bluetooth ou via USB avec un smartphone Android.
 
 \subsection{Système de gestion des lieux et dates d'emprunt}
-\paragraph{}
+\paragraph{Bibliothèques et dates de retour ---  \textit{Priorité 2}:}
 Que ce soit lors d'un import, ou simplement lors d'un ajout manuel, l'utilisateur pourra ajouter, si son album ou son lot est issus d'un emprunt bibliothéquère, un lieu d'emprunt, et une date de retour directement associés à ou aux album(s). Il pourra par la suite trier ses albums par lieu ou date de retour.
-\paragraph{}  
+\paragraph{Système d'alerte pour les dates de retour ---  \textit{Priorité 3}:}  
 De plus, l'application possèdera un système de configuration pour permettre à l'utilisateur d'être notifié s'il doit rendre ses livres. Ces notifications surviendrons (ou non) un certain nombre de jour avant la date de retour, au choix de l'utilisateur.
 
 
@@ -69,23 +65,23 @@ De plus, l'application possèdera un système de configuration pour permettre à
 Afin de faciliter la saisie des code-barres des differents albums une application Android \textit{(le systeme d'exploitation mobile développé par google)} sera dévelloppée afin de capter les différents code-barres et les transmettres au client PC.
 
 \subsection{Système de captation des code barre}
-\paragraph{Captation unique:}
+\paragraph{Captation unique ---  \textit{Priorité 1}:}
 Afin de récupérer les code-barres sur les différents albums nous développerons une fonction perméttant de capter les code-barres à l'aide de l'appareil photo.
 Pour récupérer ces code-barres il suffirat de placer le code-barre dans l'objectif de l'appareil photo du mobile pour qu'il soit reconnu.
 
-\paragraph{Captation multiple:}
+\paragraph{Captation multiple ---  \textit{Priorité 1}:}
 Tout comme le mode de captation unique cette fonction permettra de capter les code-barre mais cette fois si une serie de code-barres pourra etre capté les un après les autres afin d'etre envoyer en même temps \textit{(Voir fonction Systeme d'envoi des albums)}
 
 \subsection{Système d'envoi des albums}
-\paragraph{Envois par mail:}
-\subparagraph{Configuration d'une adresse:}
+\paragraph{Envois par mail ---  \textit{Priorité 1}:}
+\subparagraph{Configuration d'une adresse :}
 Afin de permettre l'envoi des albums par mail \textit{(voir Système d'envoi par mail)} une fonction permettant de configurer les differentes adresses mail nécessaire à l'envoi du mail sera crée (mail d'envoi utilisé pour envoyer les album ainsi que le mail de récéption commun au client PC).
 
-\subparagraph{Système d'envoi par mail:}
+\subparagraph{Système d'envoi par mail :} 
 Une fois les code-barres captés une fonction permettra au client android d'envoyer ces code-barres au clients PC. 
 Le mail aura une syntaxe spécial afin d'ètre reconnu et annalysé plus facilements par le clients PC. 
 
-\paragraph{Envoi par un autre moyen:}
+\paragraph{Envoi par un autre moyen ---  \textit{Priorité 3}:}
 Certains utilisateurs n'ayant peut-être pas de connexion internet avec leurs forfait mobiles ou n'y ayant pas accès(lieu isolé non désservie par les reseau mobile ou pays étranger) une fonction permettant l'envoi des albums via un autre moyen que l'envoi d'un mail pourra etre développé.
 Exemples de moyen pouvant être étudié afin de permettre cette envoi: Bluetooth, usb...
 
@@ -95,11 +91,11 @@ Si le code-barre correspond à un livre l'ISBN ainsi que le titre du livre seron
 Si le code-barre ne correspond pas à un livre l'utilisateur en sera averti via un message d'erreur.
 
 \subsection{Système d'enregistrement des albums déjà scannés}
-\paragraph{Enregistrement des albums:} 
+\paragraph{Enregistrement des albums ---  \textit{Priorité 2}:} 
 Afin d'enpécher l'envoi d'album déja capter, les albums capté seront enregistré après la validation de leurs envois. 
 L'utilisateur en cas de captation d'un album déja envoyé au client PC sera averti, il lui sera cependant permi d'réenvoyer l'album s'il le désir.
 
-\paragraph{Mise en commun avec les albums du client pc:} 
+\paragraph{Mise en commun avec les albums du client PC ---  \textit{Priorité 2}:} 
 Comme il sera possible à l'utilisateur d'entré des albums sur le lien PC sans passé par le client mobile et afin d'optimiser l'enregistrement des albums il sera possible de mettre en commun les albums enregisté sur le client Android avec les albums disponibles sur le client PC.
 Lors de cette mise en commun seul les albums présents sur le client PC seront gardé sur le client Android tout autre album non présents sur le clients PC sera supprimé.  
 
