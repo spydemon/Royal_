@@ -8,10 +8,49 @@ Dans cette partie sera évoqué une description du processus de fonctionnement d
 Si l'utilisateur choisi le mode de captation unique, alors le programme vérifie si l'adresse mail est configurée ou non. 
 Si elle ne l'est pas, alors le programme lance le processus de configuration de l'email. 
 
+\begin{figure}
+\begin{center}
+\includegraphics[height=7cm]{../img/Royal_Scanner_configuepremiermail.png}
+\end{center}
+\caption{Premier démarrage de l'application}
+\end{figure}
+
 Une fois certain que l'adresse email est correctement configurée, la phase de capture réelle est exécutée. 
 Si l'\emph{ISBN} retourné est valide, alors nous envoyons les informations sur le client PC. 
 Si ça n'est pas le cas, alors on proposera à l'utilisateur de reprendre une photographie. 
 
+%\begin{figure}
+%\begin{center}
+%\subfigure{ 
+	%\end{center}
+%	\caption{Menu de l'application Royal\_Scanner}
+%}
+%\subfigure{ 
+%	\caption{Capture de l'ISBN}
+%}
+%\end{center}
+%\end{figure}
+%
+\begin{figure}[htbp]
+  \begin{center}
+    \leavevmode
+    \subfloat[Menu de l'application Royal\_Scanner]{%
+		\label{}
+		\includegraphics[height=7cm]{../img/Royal_Scanner_menu.png}}
+    \hspace{2cm}
+    \subfloat[Non vide]{%
+		\label{Capture de l'ISBN}
+		\includegraphics[height=7cm]{../img/Royal_Scanner_prisescanner_1.png}}
+    \caption{}
+  \end{center}
+\end{figure}
+
+%\begin{figure}
+%\begin{center}
+%\includegraphics[height=5cm]{../img/Royal_Scanner_prisescanner_1.png}
+%\end{center}
+%\caption{Capture de l'ISBN}
+%\end{figure}
 %Lancement de l'application Androïd
 %	Captation Unique 
 %		Si adresse mail non configurée 
@@ -53,6 +92,36 @@ L'utilisateur peut ensuite modifier ses données, puis peut renseigner les infor
 Si la bibliothèque dans la quelle le livre (ou le lot) a été emprunté existe déjà, 
 alors l'utilisateur n'aura qu'à le choisir dans une liste. Si elle n'existe pas encore, elle pourra être rajouté via une fonction disponible. 
 Enfin, l'utilisateur pourra indiquer la date de retour maximale du livre (ou du lot).
+\begin{figure}[htbp]
+  \begin{center}
+    \leavevmode
+    \subfloat[Vide]{%
+		\label{Page principale de l'application}
+		\includegraphics[height=10cm]{../img/principaleModifiee.png}}
+    \hspace{2cm}
+    \subfloat[Non vide]{%
+		\label{Page principale du programme non vide}
+		\includegraphics[height=10cm]{../img/principale.png}}
+    \caption{Page principale de l'application}
+  \end{center}
+\end{figure}
+
+%\begin{figure}
+%\begin{center}
+%\leavevmode 
+%\subfloat[Image 1] {%  
+%\end{center}
+%}
+%\hspace{2cm} 
+%\end{figure}
+
+%\begin{figure}
+%\begin{center}
+%\subfloat[Image 2] {%
+%\end{center}
+%}
+%\end{center}
+%\end{figure}
 
 \paragraph{Vérification de la date de retour}
 À chaque lancement de programme, les dates de tous les ouvrages encore en possetion de l'utilisateur seront testé afin de voir si l'ultimatum restant est plus petit que la valeur fixé par l'utilisateur après le quel un rappel doit être effectué. 
@@ -72,3 +141,10 @@ Si l'utilisateur souhaite modifier des information sur un livre enregistré dans
 Une fois son livre selectionné en cliquant sur le boutton editer l'utilisateur verra apparaitre les différentes informations sur le livre et pourra les modifier.
 Une fois les information modifié l'utilisateur pourra soit valider les modification éfféctué soit les annuler. 
 En cas de validation de la modification le programme enregistrera les nouvelle information dans la base de données.  
+
+\begin{figure}
+\begin{center}
+\includegraphics[height=5cm]{../img/editionAlbum.png}
+\end{center}
+\caption{Fenêtre d'édition des informations d'un livre}
+\end{figure}
