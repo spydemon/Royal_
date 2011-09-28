@@ -3,8 +3,6 @@
 
 \section{Fonctionnement de l'application Royal}
 
-%%Comme nous pouvons l'observer, le MCD existant n'est pas parfaitement optimisé et certaines des informations ne sont jamais utilisées dans l'aplication Royal. 
-
 \subsection{Introduction}
 Nous n'avions pas d'existant imposé à proprement parlé, cependant nous avons été guidé vers Royal, un projet existant réalisé par des étudiants du département informatique de l'an passé.
 Il apparait être une des solutions actuelles la plus en accord avec la demande du client, à savoir, de manière générale : « la facilitation de gestion d'une bédéthèque ».
@@ -28,10 +26,16 @@ Le projet à été développé sous Linux, mais reste néanmoins éxécutable so
 L'ensemble des données stockées est réalisé via \emph{Hibernate}, c'est un framework gérant la persistance des objets en base de données. 
 C'est un outil lourd et complexe mais très puissant que nous allons ré-utiliser étant donné son existence sous Royal, qui permet un transfert simplifié entre objets java et base de données.
 
-%%\subsection{Analyse de la base de données déjà existante}
-%%\begin{figure}[h]
-%%\begin{center}
-%% \includegraphics[height=6cm]{../img/MCD_Royal.png}
-%%\end{center}
-%%\caption{MCD Repris de la documentation déjà existante de Royal}
-%%\end{figure}
+\subsection{Analyse de la base de données}
+
+Comme nous pouvons l'observer, le MCD existant traite un certains nombres d'information néccéssaire pour l'enregistrement des information de notre livre.
+Les tables Emprunteur et Location ne sont actuellement inutilisé dans Royal mais pourrait nous permettre l'enregistrement de la date de retour.
+Néanmoin des tables devrons lui étre ajouté afin de rendre possible la sauvegarde d'information concernant les bibliotèques.. 
+
+
+\begin{figure}[hp]
+ \centering
+ \includegraphics[height=24cm]{../img/MCD_Royal.png}
+ % MCD_Royal.png: 646x1182 pixel, 96dpi, 17.09x31.28 cm, bb=0 0 485 887
+\end{figure}
+
