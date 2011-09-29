@@ -30,11 +30,13 @@ Cette étape sera la dernière de notre projet et devra être effectuée avant l
 Pour la finalisation, nous développerons les fonctions de priorités inférieures afin de répondre aux besoins moins importants. 
 
 \section{Estimation du temps nécessaire}
-Pour la réalisation des estimations de temps nécessaire à la réussite de ce projet,
-nous nous sommes basés sur deux méthodes. 
+
+Pour la réalisation des estimations de temps nécessaire à la réussite de ce projet, nous nous sommes basés sur deux méthodes.
+
+\subsection{Estimation par analogie}
 
 La première méthode choisie est l'\emph{estimation par analogie}.
-Elle correspond à réaliser une proportion entre les différentes étapes du projet. 
+Elle correspond à calculer le temps nécéssaire à l'aide d'une proportion des différentes étapes du projet.  
 
 \begin{tabular}{|l l|l|l|}
 \hline
@@ -52,43 +54,23 @@ Transition & Mise en œuvre & 10\% & 60h \\
 
 Avec cette méthode, nous avons une estimation de travail de $60 + 180 + 300 + 60 = 600$ heures. 
 
-\subsection{Difficultés encourues} 
-Le principal problème se situait au niveau de la prise en main de \emph{MS Project}…
+\subsection{Diagramme de GANTT}
 
-Si non, l'estimation du temps de réalisation des fonctionnalités a aussi été un problème. 
-En effet, le manque d'expérience dans le domaine du travail en équipe nous empêche de bien définir si nos enchainements entre la réalisation des fonctionnalités se  déroulerons bien comme prévu, et si nous arriverons à travailler ensemble efficacement. 
+Pour la planification du projet par fonctions, nous avons utilisé un \emph{diagramme de GANTT} qui correspond a peu près à la methode \emph{analytique} (éxcepter qu'il ne prend en compte que les phase de conception).
+\begin{wrapfigure}[40]{l}{15cm}
+\includegraphics[width=15cm]{../Diagramme_gante.png}
+\end{wrapfigure}
+\clearpage
 
-Le deuxième problème dans l'estimation vient de notre manque d'expérience en tant que programmeur :
-L'instabilité des connaissances acquises nous fera peut être perdre du temps dans l'apprentissage de quelque chose qu'on aura estimé plus simple à assimiler. 
-
-Enfin, le découpage du projet en tâches n'a pas été trop problématique. 
-Si ce n'est qu'au début leurs nombres c'était révélés un peu trop important,
-et que nous avions du en fusionner quelques unes. 
-
-\section{Planification des délais}
-
-Pour la planification des délais, nous avons utilisé la méthode du \emph{diagramme de GANTT}.
-\begin{figure}[h]
-\begin{center}
-\includegraphics[height=12cm]{../repartition_des_taches.png}
-\end{center}
-\caption{Éstimation de notre temps de travail via \emph{MS Project}}
-\end{figure}
-
-\section{Cycle de vie du T3}
-Nous avons choisi d'adapter notre projet au cycle de vie \textbf{ICAR} pour deux principales raisons : 
-
-La première, c'est que la structure même du T3 nous impose presque son utilisation :
-en effet, nous devons livrer un cahier des charges, puis une analyse fonctionnelle, suivie d'un prototype, et enfin de la version finale. 
-Un cycle en V, par exemple aurait été assez difficile à tenir avec ce mode de fonctionnement vu que toutes les étapes « se mélangent » un peu. 
-
-La seconde vient justement de la structure claire qu'elle exige. 
-En effet, tout le projet est hiérarchiser (on doit, par exemple d'abord finir le cahier des charge avant de s'attaquer à l'analyse fonctionnelle). 
-De cette façon, l'effet didactique du projet est amplifié car nous apprenons d'abord à rédiger correctement, puis à coder. 
-De plus le contrôle est plus efficace ce qui permet de nous corriger assez rapidement en cas d'erreur.
-
-\section{Comparaison entre \emph{GANTT} et l'estimation par analogie}
-\emph{MS Project} nous a calculé le temps de développement à \textbf{253h}. 
+\subsection{Comparaison des méthodes}
+\emph{Microsoft Project} nous a calculé le temps de développement à \textbf{253h}. 
 Avec notre estimation par analogie, nous avons trouvé un temps consacré au développement de \textbf{300h}. 
 Nous pouvons donc dire que globalement, les résultat concordent. 
 Ceux-ci peuvent donc être fiable, et le temps réel devrait se situé entre 253 et 300h de codage. 
+
+\subsection{Difficultés encourues} 
+L'estimation du temps de réalisation des fonctionnalités à été un problème. 
+En effet, le manque d'expérience dans le domaine du travail en équipe nous empêche de bien définir si nos enchainements entre la réalisation des fonctionnalités se déroulerons bien comme prévu, et si nous arriverons à travailler ensemble efficacement. 
+
+Le deuxième problème dans l'estimation vient de notre manque d'expérience en tant que programmeur :
+L'instabilité des connaissances acquises nous fera peut être perdre du temps dans l'apprentissage de quelque chose qu'on aura estimé plus simple à assimiler. 

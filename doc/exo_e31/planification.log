@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2011.9.8)  28 SEP 2011 23:29
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2011.9.8)  29 SEP 2011 02:01
 entering extended mode
 **C:/Users/Steve/Git/Royal_/doc/exo_e31/planification.tex
 (C:/Users/Steve/Git/Royal_/doc/exo_e31/planification.tex
@@ -858,20 +858,3 @@ Type X to quit or <RETURN> to proceed,
 or enter new name. (Default extension: sty)
 
 Enter file name: 
-! Emergency stop.
-<read *> 
-         
-l.33 \addtolength
-                 {\topmargin}{15pt}
-End of file on the terminal!
-
- 
-Here is how much of TeX's memory you used:
- 13236 strings out of 494045
- 234849 string characters out of 3145970
- 277402 words of memory out of 3000000
- 16250 multiletter control sequences out of 15000+200000
- 4709 words of font info for 16 fonts, out of 3000000 for 9000
- 715 hyphenation exceptions out of 8191
- 70i,0n,59p,511b,219s stack positions out of 5000i,500n,10000p,200000b,50000s
-!  ==> Fatal error occurred, no output PDF file produced!
