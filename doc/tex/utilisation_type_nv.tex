@@ -5,52 +5,27 @@ Dans cette partie sera évoqué une description du processus de fonctionnement d
 
 \paragraph{Captation d'un unique ouvrage} 
 
+
 Si l'utilisateur choisi le mode de captation unique, alors le programme vérifie si l'adresse mail est configurée ou non. 
 Si elle ne l'est pas, alors le programme lance le processus de configuration de l'email. 
-
-\begin{figure}
-\begin{center}
-\includegraphics[height=7cm]{../img/Royal_Scanner_configuepremiermail.png}
-\end{center}
-\caption{Premier démarrage de l'application}
-\end{figure}
-
 Une fois certain que l'adresse email est correctement configurée, la phase de capture réelle est exécutée. 
 Si l'\emph{ISBN} retourné est valide, alors nous envoyons les informations sur le client PC. 
-Si ça n'est pas le cas, alors on proposera à l'utilisateur de reprendre une photographie. 
+Si ça n'est pas le cas, alors on proposera à l'utilisateur de refaire une capture. 
 
-%\begin{figure}
-%\begin{center}
-%\subfigure{ 
-	%\end{center}
-%	\caption{Menu de l'application Royal\_Scanner}
-%}
-%\subfigure{ 
-%	\caption{Capture de l'ISBN}
-%}
-%\end{center}
-%\end{figure}
-%
+
 \begin{figure}[htbp]
   \begin{center}
     \leavevmode
     \subfloat[Menu de l'application Royal\_Scanner]{%
 		\label{}
 		\includegraphics[height=7cm]{../img/Royal_Scanner_menu.png}}
-    \hspace{2cm}
-    \subfloat[Non vide]{%
-		\label{Capture de l'ISBN}
-		\includegraphics[height=7cm]{../img/Royal_Scanner_prisescanner_1.png}}
-    \caption{}
+    \hspace{4cm}
+    \subfloat[Phase de capture du code barre]{%
+		\label{}
+		\includegraphics[height=7cm]{../img/Royal_Scanner_prisescanner_2.png}}
   \end{center}
 \end{figure}
 
-%\begin{figure}
-%\begin{center}
-%\includegraphics[height=5cm]{../img/Royal_Scanner_prisescanner_1.png}
-%\end{center}
-%\caption{Capture de l'ISBN}
-%\end{figure}
 %Lancement de l'application Androïd
 %	Captation Unique 
 %		Si adresse mail non configurée 
@@ -61,11 +36,10 @@ Si ça n'est pas le cas, alors on proposera à l'utilisateur de reprendre une ph
 %			Alors envois 
 %		Si non 
 %			Propotition de recaptation 
-
-\paragraph{Captation d'un lot d'ouvrages}
-Si l'utilisateur choisi de capturer directement plusieurs bd, alors le programme exécutera en boucle le processus utilisé pour une simple \emph{bd}. 
+\paragraph{Capture d'un lot d'ouvrages}
+Si l'utilisateur choisi de capturer directement plusieurs BD, alors le programme exécutera en boucle le processus utilisé pour une simple \emph{bd}. 
 Le seul changement interviendra après la validation de la bonne captation de l'\emph{ISBN} :
-Il sera en effet demandé à l'utilisateur si celui-ci désire continuer la captation ou y prendre fin. 
+Il sera en effet demandé à l'utilisateur si celui-ci désire continuer la capture ou y prendre fin. 
 
 Si il choisi d'y prendre fin, alors les informations seront transmises au client PC. 
 Si au contraire, il choisi de continuer la capture, alors le programme rebouclera. 
@@ -76,13 +50,24 @@ Si au contraire, il choisi de continuer la capture, alors le programme reboucler
 %			Si fin 
 %				Alors envois des informations sur les livres 
 
+
 \subsection{Lancement de l'application PC}
 
+
+\begin{wrapfigure}[5]{r}[1cm]{5cm}
+\includegraphics[width=5cm]{../img/btn_synchro.png}
+\caption{Boutton de l'importation}
+\end{wrapfigure}
 \paragraph{Importation des livres}
 Si l'utilisateur choisi d'importer les livres. Alors le programme teste si l'adresse email est correctement configurée. Si ce n'est pas le cas, le processus de configuration est exécuté. 
 
 Une fois que le programme a une configuration d'email valide, celui-ci recherche sur la boite email si des messages sont présents à son attention. 
 
+\begin{wrapfigure}[12]{r}[1.5cm]{8cm}
+\includegraphics[width=8cm]{../img/preferenceMail.png}
+\caption{Configue du mail}
+\end{wrapfigure}
+\paragraph{Importation des livres}
 Si c'est le cas, alors la récupération à lieu. 
 Tant qu'il y a des messages à l'attention du programme, celui-ci les lis. 
 Tant que des numéro d'\emph{ISBN} sont présents dans le mail, ils sont récupérés. 
@@ -92,36 +77,6 @@ L'utilisateur peut ensuite modifier ses données, puis peut renseigner les infor
 Si la bibliothèque dans la quelle le livre (ou le lot) a été emprunté existe déjà, 
 alors l'utilisateur n'aura qu'à le choisir dans une liste. Si elle n'existe pas encore, elle pourra être rajouté via une fonction disponible. 
 Enfin, l'utilisateur pourra indiquer la date de retour maximale du livre (ou du lot).
-\begin{figure}[htbp]
-  \begin{center}
-    \leavevmode
-    \subfloat[Vide]{%
-		\label{Page principale de l'application}
-		\includegraphics[height=10cm]{../img/principaleModifiee.png}}
-    \hspace{2cm}
-    \subfloat[Non vide]{%
-		\label{Page principale du programme non vide}
-		\includegraphics[height=10cm]{../img/principale.png}}
-    \caption{Page principale de l'application}
-  \end{center}
-\end{figure}
-
-%\begin{figure}
-%\begin{center}
-%\leavevmode 
-%\subfloat[Image 1] {%  
-%\end{center}
-%}
-%\hspace{2cm} 
-%\end{figure}
-
-%\begin{figure}
-%\begin{center}
-%\subfloat[Image 2] {%
-%\end{center}
-%}
-%\end{center}
-%\end{figure}
 
 \paragraph{Vérification de la date de retour}
 À chaque lancement de programme, les dates de tous les ouvrages encore en possetion de l'utilisateur seront testé afin de voir si l'ultimatum restant est plus petit que la valeur fixé par l'utilisateur après le quel un rappel doit être effectué. 
@@ -136,15 +91,12 @@ Les noms de tous les livres ainsi repérés sont conservés puis affichés à l'
 %			Si des mails sont récupérés 
 %				Alors ajout des albums uniques ou par lot, automatique dans l'application avec possibilité d'ajout d'une bibliothèque et d'une date de retour. 
 
+\begin{wrapfigure}[10]{l}[1cm]{8cm}
+\includegraphics[width=8cm]{../img/editionAlbum.png}
+\caption{Edition d'un Album}
+\end{wrapfigure}
 \paragraph{Modification des information d'un livre}
 Si l'utilisateur souhaite modifier des information sur un livre enregistré dans le programme, il pourra visualiser les album par critere tels que l'auteur, la collection, le type...
 Une fois son livre selectionné en cliquant sur le boutton editer l'utilisateur verra apparaitre les différentes informations sur le livre et pourra les modifier.
 Une fois les information modifié l'utilisateur pourra soit valider les modification éfféctué soit les annuler. 
 En cas de validation de la modification le programme enregistrera les nouvelle information dans la base de données.  
-
-\begin{figure}
-\begin{center}
-\includegraphics[height=5cm]{../img/editionAlbum.png}
-\end{center}
-\caption{Fenêtre d'édition des informations d'un livre}
-\end{figure}
