@@ -20,19 +20,20 @@ Royal permet l'enregistrement de \emph{BDs}, mais aussi d'informations concernan
 On peut aussi importer un ensemble de \emph{BD} à partir d'une base de données existante.
 De plus, Royal intègre un système multi-lingues concernant son interface utilisateur, ainsi que d'une bibliothèque d'aide d'utilisation.
 
-Après cette brève description de Royal, on peut observer que son utilisation permet déjà de répondre à plusieurs fonctionnalités décrites auparavant. Cela permettra de se concentrer sur les fonctions manquantes ici que sur l'amélioration de l'existant.
+Après cette brève description de Royal, on peut observer que son utilisation permet déjà de répondre à plusieurs fonctionnalités décrites auparavant. 
 
 \subsection{Aspect technique de Royal}
 Royal est développé en Java et utilise la bibliothèque \emph{Swing} pour son environnement graphique. 
-Le projet à été développé sous Linux, mais reste néanmoins éxécutable sous d'autres systèmes d'exploitations comme Windows 7 par exemple, avec plus ou moins de succès. 
-L'ensemble des données stockées est réalisé via \emph{Hibernate}, c'est un framework gérant la persistance des objets en base de données. 
-C'est un outil lourd et complexe mais très puissant que nous allons ré-utiliser étant donné son existence sous Royal, qui permet un transfert simplifié entre objets java et base de données.
+Le projet a été développé sous Linux, mais reste néanmoins éxécutable sous d'autres systèmes d'exploitations comme Windows 7 par exemple, avec plus ou moins de succès. 
+Le stockage des données est réalisé avec \emph{Hibernate}, c'est une structure gérant la persistance des objets en base de données. 
+C'est un outil lourd et complexe mais très puissant que nous allons ré-utiliser étant donné son existence sous Royal. 
+Il permet un transfert simplifié entre les objets java et les bases de données.
 
 \subsection{Analyse de la base de données}
 
-Comme nous pouvons l'observer, le MCD existant traite un certains nombres d'information néccéssaire pour l'enregistrement des information de notre livre.
-Les tables Emprunteur et Location ne sont actuellement inutilisé dans Royal mais pourrait nous permettre l'enregistrement de la date de retour.
-Néanmoin des tables devrons lui étre ajouté afin de rendre possible la sauvegarde d'information concernant les bibliotèques.. 
+Comme nous pouvons l'observer, le MCD existant traite un certains nombres d'éléments nécessaires pour l'enregistrement des informations de notre livre.
+Les tables « Emprunteur » et « Location » ne sont actuellement pas utilisé dans Royal mais pourrait nous permettre d'enregister la date de retour et le lieu d'emprunt.
+Néanmoins, des tables devrons être ajouté afin de rendre possible la sauvegarde d'informations concernant les bibliotèques.
 
 
 \begin{figure}[hp]
