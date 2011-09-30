@@ -1,14 +1,14 @@
 \section{Utilisation type}
-Dans cette partie sera évoqué une description du processus de fonctionnement du programme.
+Dans cette partie sera évoquée une description du processus de fonctionnement du programme.
 
 \subsection{Lancement de l'application Androïd}
 
 \paragraph{Captation d'un unique ouvrage} 
 
 
-Si l'utilisateur choisi le mode de capture unique, alors le programme vérifie si l'adresse courriel est configurée ou non. 
+Si l'utilisateur choisit le mode de capture unique, alors le programme vérifie si l'adresse courriel est configurée ou non. 
 Si elle ne l'est pas, alors le programme lance le processus de configuration. 
-Une fois certain que celle-ci est correctement configurée, la phase de capture réelle est exécutée. 
+Une fois que celle-ci est correctement configurée, la phase de capture réelle est exécutée. 
 Si l'\emph{ISBN} retourné est valide, alors le client Android envoie les informations sur le client PC. 
 Si ça n'est pas le cas, il proposera à l'utilisateur de refaire une capture. 
 
@@ -20,7 +20,7 @@ Si ça n'est pas le cas, il proposera à l'utilisateur de refaire une capture.
 		\label{}
 		\includegraphics[height=7cm]{../img/Royal_Scanner_menu.png}}
     \hspace{4cm}
-    \subfloat[Phase de capture du code barre]{%
+    \subfloat[Phase de capture du code-barres]{%
 		\label{}
 		\includegraphics[height=7cm]{../img/Royal_Scanner_prisescanner_2.png}}
   \end{center}
@@ -31,8 +31,8 @@ Si l'utilisateur choisi de capturer directement plusieurs \emph{BDs}, alors le p
 Le seul changement interviendra après la validation de la bonne capture de l'\emph{ISBN} :
 Il sera en effet demandé à l'utilisateur si celui-ci désire continuer la capture ou d'y mettre fin. 
 
-Si il choisi d'y mettre fin, alors les informations seront transmises au client PC. 
-Si au contraire, il choisi de continuer la capture, alors le programme rebouclera. 
+S'il choisit d'y mettre fin, alors les informations seront transmises au client PC. 
+Si au contraire, il choisit de continuer la capture, alors le programme rebouclera. 
 
 \subsection{Lancement de l'application PC}
 
@@ -42,7 +42,7 @@ Si au contraire, il choisi de continuer la capture, alors le programme reboucler
 \caption{Bouton d'importation}
 \end{wrapfigure}
 \paragraph{Importation des livres}
-Si l'utilisateur choisi d'importer les livres. Alors le programme teste si l'adresse courriel est correctement configurée. Si ce n'est pas le cas, le processus de configuration est exécuté. 
+Si l'utilisateur choisit d'importer les livres. Alors, le programme teste si l'adresse courriel est correctement configurée. Si ce n'est pas le cas, le processus de configuration est exécuté. 
 
 Une fois que le programme a une configuration de courriel valide, celui-ci y recherche les messages présents à son attention. 
 
@@ -53,7 +53,7 @@ Une fois que le programme a une configuration de courriel valide, celui-ci y rec
 \paragraph{Importation des livres}
 Tant qu'il y a des messages à l'attention du programme, celui-ci les lit. 
 Tant que des numéros d'\emph{ISBN} sont présents dans le courriel, ils sont récupérés. 
-Une fois tous les \emph{ISBN} récupérés, le programme recherche des informations sûr les livres sûr internet.
+Une fois tous les \emph{ISBN} récupérés, le programme recherche des informations sur les livres sur internet.
 L'utilisateur peut ensuite modifier ces données, puis peut renseigner les informations relatives à la bibliothèque. 
 
 Si la bibliothèque dans là quelle le livre (ou le lot) a été emprunté existe déjà, 
@@ -61,7 +61,7 @@ alors l'utilisateur n'aura qu'à la choisir dans une liste. Si elle n'existe pas
 Enfin, l'utilisateur pourra indiquer la date de retour maximale du livre (ou du lot).
 
 \paragraph{Vérification de la date de retour}
-À chaque lancement de programme, les dates de tous les ouvrages encore en possession de l'utilisateur seront testés afin de voir si l'ultimatum n'est pas arrivé à terme. 
+À chaque lancement de programme, les dates de tous les ouvrages encore en possession de l'utilisateur seront testées afin de voir si l'ultimatum n'est pas arrivé à terme. 
 Les noms de tous les livres ainsi repérés sont conservés puis affichés à l'utilisateur une fois la recherche terminée. 
 
 
@@ -70,7 +70,7 @@ Les noms de tous les livres ainsi repérés sont conservés puis affichés à l'
 \caption{Edition d'un Album}
 \end{wrapfigure}
 
-\paragraph{Modification des information d'un livre}
+\paragraph{Modification des informations d'un livre}
 Si l'utilisateur souhaite modifier des informations sur un livre enregistré dans le programme, il pourra visualiser les albums par critères tels que l'auteur, la collection, le type…
 Une fois le livre sélectionné, il faudra cliquer sur le bouton « éditer ».  
 C'est à ce moment que l'utilisateur verra apparaitre les différentes informations sur le livre et pourra les modifier.

@@ -6,7 +6,7 @@ Cette partie liste toutes les fonctionnalités attendues dans le programme. Cell
 	Priorité la plus élevée. Il s'agit des premières fonctionnalités à implémenter permettant au logiciel de répondre à la demande de base de l'utilisateur.
 
 \item [Priorité 2 :]
-	Éléments nécessaires, ceux-ci serons effectués dans un second temps. Il s'agit d'améliorations du programme de base, qui permettent d'optimiser le programme afin de répondre aux autres demandes du client.  
+	Éléments nécessaires, ceux-ci seront effectués dans un second temps. Il s'agit d'améliorations du programme de base, qui permettent d'optimiser le programme afin de répondre aux autres demandes du client.  
 
 \item [Priorité 3 :]
 	Éléments secondaires. Ces fonctions ne sont pas demandées, mais ajoutent une plus-value au programme. 
@@ -16,8 +16,8 @@ Cette partie liste toutes les fonctionnalités attendues dans le programme. Cell
 \section{Relatives au client PC}
 
 \subsection{Système d'ajout et d'édition de bande dessinées}
-\paragraph{Ajout des information de bases ---  \textit{Priorité 1}:}
-C'est une des fonctions sans laquelle le projet n'a pas lieu d'être. Elle est à la base de la gestion des \emph{BDs}. En effet, cette fonctionnalité permet l'ajout, la sauvegarde et l'édition de l'ensemble des informations des albums qui pourront être ajouté dans l'application. Ces informations correspondent par exemple, au titre, à l'auteur, au genre, etc... d'un album.
+\paragraph{Ajout des informations de bases ---  \textit{Priorité 1}:}
+C'est une des fonctions sans laquelle le projet n'a pas lieu d'être. Elle est à la base de la gestion des \emph{BDs}. En effet, cette fonctionnalité permet l'ajout, la sauvegarde et l'édition de l'ensemble des informations des albums qui pourront être ajoutés dans l'application. Ces informations correspondent par exemple, au titre, à l'auteur, au genre, etc... d'un album.
 
 \paragraph{Création de liens entre les albums ---  \textit{Priorité 1}:}  
 Cette fonction doit permettre de créer des liens entre les différents albums, s'il partage des informations en commun, comme leur auteur, ou leur genre.
@@ -29,32 +29,32 @@ Cette partie devra également être capable d'associer une image à l'album pour
 
 \paragraph{Affichage des \emph{BDs} ---  \textit{Priorité 2}:}
 
-La visualisation d'une liste d'albums parait nécessaire pour l'utilisateur afin gérer sa bibliothèque personnel. Ainsi, l'application devra comporter cette visualisation qui sera paramétrable par l'utilisateur voulant faire une recherche spécifique, par exemple une recherche par auteur ou par genre.
+La visualisation d'une liste d'albums parait nécessaire pour l'utilisateur afin gérer sa bibliothèque personnelle. Ainsi, l'application devra comporter cette visualisation qui sera paramétrable par l'utilisateur voulant faire une recherche spécifique, par exemple une recherche par auteur ou par genre.
 
-\subsection{Système de recherche d'informations sur une \emph{BD}  grâce au code barre}
+\subsection{Système de recherche d'informations sur une \emph{BD}  grâce au code-barres}
 
-\paragraph{Saisie et vérification du code barres ---  \textit{Priorité 1}:}
+\paragraph{Saisie et vérification du code-barres ---  \textit{Priorité 1}:}
 Dans un premier temps, cette fonction doit permettre la saisie d'un code barres par l'utilisateur. 
 Celui-ci doit être vérifié par l'application. En effet, il est possible de l'analyser pour savoir s'il correspond bien à un livre et dans un second temps d'en extraire son code \emph{ISBN}, code représentant de manière internationale le livre.
-\paragraph{Recherche d'informations grâce au code barres ---  \textit{Priorité 1}:}  
-Un fois le code analysé, l'application effectue une recherche sur une base de données externe des informations sur l'album et sera capable de les ajouter automatiquement dans l'application.
-\paragraph{Traitement en fonctions des résultats de la recherche ---  \textit{Priorité 1}:}  
-Le système sera capable de gérer le cas où le code barres n'est pas valide ou si les informations à récupérer sont inexistantes ou incomplètes.
+\paragraph{Recherche d'informations grâce au code-barres ---  \textit{Priorité 1}:}  
+Une fois le code analysé, l'application effectue une recherche sur une base de données externe des informations sur l'album et sera capable de les ajouter automatiquement dans l'application.
+\paragraph{Traitement en fonction des résultats de la recherche ---  \textit{Priorité 1}:}  
+Le système sera capable de gérer le cas où le code-barres n'est pas valide ou si les informations à récupérer sont inexistantes ou incomplètes.
 
 \subsection{Système d'importation des albums}
 \paragraph{Importation via courriel ---  \textit{Priorité 1}:}
 L'application devra pouvoir importer des albums. 
-Ceci est en étroite liaison avec l'application Android. Il est nécessaire de définir un protocole d'échange entre les deux applications. Nous allons donc présenter cette partie sous l'aspect d'un échange de courriel, solution certes non optimale mais qui a l'avantage d'être indépendant de tout autre système distant souvent couteux.
+Ceci est en étroite liaison avec l'application Android. Il est nécessaire de définir un protocole d'échange entre les deux applications. Nous allons donc présenter cette partie sous l'aspect d'un échange de courriel, solution certes non optimale, mais qui a l'avantage d'être indépendant de tout autre système distant souvent couteux.
 
 \subparagraph{Configuration de l'adresse du courriel :}  
-Ainsi en considérant l'échange via mail, l'application devra intégrer un système de configuration d'adresses courriel pour permettre à l'utilisateur de choisir à partir de la quelle il souhaite récupérer les albums.
+Ainsi en considérant l'échange via mail, l'application devra intégrer un système de configuration d'adresses courriel pour permettre à l'utilisateur de choisir à partir de laquelle il souhaite récupérer les albums.
 
 \subparagraph{Réception des courriels spécifiques :}  
 L'application devra dans un second temps lire et reconnaitre les mails spécifiques reçus dans la boite à courriel du compte et pouvoir en retirer les albums qu'elle contient.
 
 \subparagraph{Ajout automatique des albums récupérés :}  
 Finalement l'application pourra ajouter automatiquement les albums, un par un ou par lot (Voir : Système d'envoi sur Android). 
-Pour le contenu des courriels, il pourrait ne s'agir que de leur code \emph{ISBN}, puis par la suite lors de l'importation, une recherche sur les systèmes d'informations distant permettra de compléter les informations à insérer.
+Pour le contenu des courriels, il pourrait ne s'agir que de leur code \emph{ISBN}, puis par la suite lors de l'importation, une recherche sur les systèmes d'informations distantes permettra de compléter les informations à insérer.
 \paragraph{Importation via un autre moyen ---  \textit{Priorité 3}:}  
 L'ajout d'un autre moyen d'importation est aussi à étudier, par exemple via bluetooth ou via USB avec un smartphone Android.
 
@@ -76,11 +76,11 @@ Afin de faciliter la saisie des code barres des différents albums, une applicat
 
 \subsection{Système de capture des code barres}
 \paragraph{Capture unique ---  \textit{Priorité 1}:}
-Afin de récupérer les code barres sur les différents albums nous développerons une fonction permettant de les capter à l'aide de l'appareil photo.
+Afin de récupérer les code barres sur les différents albums, nous développerons une fonction permettant de les capter à l'aide de l'appareil photo.
 Pour les récupérer, il suffira de placer le code-barre devant l'objectif de l'appareil photo du mobile pour qu'il soit reconnu.
 
 \paragraph{Capture multiple ---  \textit{Priorité 1}:}
-Tout comme le mode de capture unique, cette fonction permettra de capter les codes barres mais cette fois ci, c'est toute une série qui pourra être capturée afin d'envoyer tous les codes barres en même temps \textit{(Voir fonction système d'envoi des albums)}
+Tout comme le mode de capture unique, cette fonction permettra de capter les codes-barres mais cette fois-ci, c'est toute une série qui pourra être capturée afin d'envoyer tous les codes-barres en même temps \textit{(Voir fonction système d'envoi des albums)}
 
 \subsection{Système d'envoi des albums}
 \paragraph{Envois par mail ---  \textit{Priorité 1}:}
@@ -88,11 +88,11 @@ Tout comme le mode de capture unique, cette fonction permettra de capter les cod
 Afin de permettre l'envoi des albums par courriel \textit{(voir Système d'envoi par courriel)}, une fonction permettant de configurer les différentes adresses utilisables est nécessaire. (L'adresse utilisée pour l'envoi, sur l'application Android doit être la même que celle du client PC).
 
 \subparagraph{Système d'envoi par courriel :} 
-Une fois les codes barres captés, une fonction permettra au client Android de les envoyer au client PC. 
-Le mail aura une syntaxe spéciale afin d'être reconnue et analysée plus facilement par le client PC. 
+Une fois les codes-barres captés, une fonction permettra au client Android de les envoyer au client PC. 
+Le mail aura une syntaxe spéciale afin d'être reconnu et analysé plus facilement par le client PC. 
 
 \paragraph{Envoi par un autre moyen ---  \textit{Priorité 3}:}
-Certains utilisateurs n'ayant peut-être pas de connexion internet avec leur forfait mobiles ou n'y ayant pas accès (lieu isolé non desservie par les reseau mobile ou pays étranger), une fonction permettant l'envoi des albums via un autre moyen que le courriel pourra être développé.
+Certains utilisateurs n'ayant peut-être pas de connexion internet avec leur forfait mobile ou n'y ayant pas accès (lieu isolé non desservi par les réseaux mobiles ou pays étranger), une fonction permettant l'envoi des albums via un autre moyen que le courriel pourra être développée.
 Exemples de moyen pouvant être étudié afin de permettre cet envoi: Bluetooth, USB…
 
 \subsection{Vérification de la validité du code barres}
@@ -103,10 +103,10 @@ Si le code barres ne correspond pas à un livre, l'utilisateur en sera averti vi
 \subsection{Système d'enregistrement des albums déjà scannés}
 \paragraph{Enregistrement des albums ---  \textit{Priorité 2}:} 
 Afin d'empêcher l'envoi d'albums déjà captés, leurs \emph{ISBN} seront enregistrés dans l'application Android. 
-De cette façon, l'utilisateur pourra être avertis en cas de capture d'un album déjà scanné.
-Il lui sera cependant permit de renvoyer l'album s'il le désir.
+De cette façon, l'utilisateur pourra être averti en cas de capture d'un album déjà scanné.
+Il lui sera cependant permis de renvoyer l'album s'il le désire.
 
 \paragraph{Mise en commun avec les albums du client PC ---  \textit{Priorité 2}:} 
 Comme il sera possible à l'utilisateur d'ajouter des albums sur le client PC sans passer par le client mobile, il sera possible de mettre en commun les albums enregistrés sur le client Android avec les albums disponibles sur le client PC.
-Lors de cette mise en commun seul les albums présents sur le client PC seront gardés sur le client Android et tout autre album non présents sur le clients PC sera supprimé.  
+Lors de cette mise en commun, seuls les albums présents sur le client PC seront gardés sur le client Android et tout autre album non présent sur le client PC sera supprimé.  
 
