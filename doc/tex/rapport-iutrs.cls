@@ -96,7 +96,7 @@
 \noindent
 \begin{tabularx}{\textwidth}{XcR}
 \noindent\includegraphics[height=2cm]{figs/logos/logo_uds} &
-\hfill \PTlogo \ \shortstack[l]{\sc \Huge \CodeUE \\\\ \huge \Groupe} &
+%%\hfill \PTlogo \ \shortstack[l]{\sc \Huge \CodeUE \\\\ \huge \Groupe} &
 \includegraphics[height=2cm]{figs/logos/logo_iut} \\
 \end{tabularx}
 
