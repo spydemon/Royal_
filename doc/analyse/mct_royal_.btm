@@ -1031,8 +1031,8 @@ Shadow=0</a:DisplayPreferences>
 <o:OperationEmissionSymbol Id="o52">
 <a:CreationDate>1318234467</a:CreationDate>
 <a:ModificationDate>1318234565</a:ModificationDate>
-<a:Rect>((-8930,-11355), (-8480,-2278))</a:Rect>
-<a:ListOfPoints>((-8708,-2278),(-8702,-11355))</a:ListOfPoints>
+<a:Rect>((-8931,-11355), (-8481,-2278))</a:Rect>
+<a:ListOfPoints>((-8708,-2278),(-8705,-11355))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>1</a:ArrowStyle>
 <a:LineColor>0</a:LineColor>
