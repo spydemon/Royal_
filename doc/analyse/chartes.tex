@@ -1,1 +1,93 @@
-\section{Chartes à respecter et bonnes pratiques de programmation}
+\section{Chartes à respecter}
+
+\subsection{Charte ergonomique}
+Notre projet visant une utilisation privé il devra être facile d'utilisation afin d'être addapter au plus grand nombres.
+De même comme nous ameliorerons Royal afin de repondre aux demandes de notres projets et que le but du projets Royal était d'amelioré le projet Birdy afin de faciliter son utilisation ainsi que la gestion des livre dans le logiciels.  
+
+Pour ce qui est de l'application Android, nous devrons nous adapter à une utilisation tactile de l'application. 
+C'est pourquoi les éléments de l'écrans devrons être assez grand afin d'être manipulé simplements. 
+
+\subsection{Charte graphique}
+Pour l'apparence graphique de l'aplication Royal\_ nous veillerons à réspecter le thème déja presents dans Royal afin d'être en accord avec ce qui existe déja.
+
+L'application mobile nous permettra une plus grande liberté au point devu de l'apparence. 
+Les fond d'écrans des différentes page de l'application devrons être similaire afin de permettre une certaine homogénéité dans notre application.
+Pour cette apparence nous choisirons tout d'abord un fond rouge s'addaptant avec le logo de Royal mais cette apparence pourra être modifier si elle ne correspond pas au demande du client au differentes remise de prototype.
+
+\subsection{Charte de programmation}
+
+Comme nous reprennons Royal un logiciels existant ils nous faudra adapter notre style programmation a celle déja présentes dans le programme actuellement.
+Tout d'abord pour tout ce qui est commentaire nous les ecrirons en anglais comme c'était le cas dans Royal et pour que le code soit réutilisable facilement par d'autres (vu qu'il s'agit d'un roget open source).
+
+Nous utiliserons aussi les même attribus que ceux déja present c'est à dire:
+
+\begin{flushleft}
+ Attributs obligatoires :
+\end{flushleft}
+
+    @return [détails]
+
+    @param nomDeParam [qu'est-ce ?]
+
+    @throws nomDeException pourquoi?
+
+\begin{flushleft}
+ Attributs facultatifs :
+\end{flushleft}
+
+    @see Classe
+
+    @see Classe\#attribut
+
+    @see Classe\#methode
+
+    autres voir doc :  http://www.oracle.com/technetwork/java/javase/documentation/index-137868.html
+
+\begin{flushleft}
+ Afin d'eviter tout erreur de compilation au niveau de javac nous eviterons tout accent dans notre programme.
+\end{flushleft}
+
+\begin{flushleft}
+ Pour les nom de variable nous commencerons chaque nom de variable par la première lettre de son type
+
+ Exemples:
+\end{flushleft}
+
+   int iVarEntier 
+
+   float fVarReel
+
+   boolean bBooleen
+
+   String sString
+
+\begin{flushleft}
+ Pour les nom d'instances de classes et de fonctions nous les commencerons par une minuscule pouis pour chaque nouveaux mots nous maiterons une majuscule.
+
+ Exemples:
+\end{flushleft}
+
+   Class exDeVariable
+   int nomDeFonction()
+
+\begin{flushleft}
+ Pour la mise en page il ne fudras pas hésiter à faire des retours à la ligne pour pas avoir des lignes à rallonge.
+
+ Exemples :
+
+   - A la place de
+\end{flushleft}
+
+      if((this.attribut.methode() == classe.constante \&\& param.isSomething()) || (this.attribut2.methode() == classe2.constante \&\& param2.isSomething()))
+
+\begin{flushleft}
+    - Nous aurons
+\end{flushleft}
+
+      if((this.attribut.methode() == classe.constante
+
+    	\&\& param.isSomething())
+
+        || (this.attribut2.methode() == classe2.constante
+
+        \&\& param2.isSomething()))
