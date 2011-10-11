@@ -41,7 +41,7 @@
 \setlength{\headheight}{13pt} 	% Haut de page
 \setlength{\headsep}{10pt} 	% Entre le haut de page et le texte
 \setlength{\footskip}{27pt} 	% Bas de page + séparation
-\setlength{\textheight}{670pt} 	% Hauteur de la zone de texte (25cm)
+\setlength{\textheight}{720pt} 	% Hauteur de la zone de texte (25cm)
 
 %%% Gestion des espaces
 \parskip=5pt
