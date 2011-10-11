@@ -41,7 +41,7 @@
 \setlength{\headheight}{13pt} 	% Haut de page
 \setlength{\headsep}{10pt} 	% Entre le haut de page et le texte
 \setlength{\footskip}{27pt} 	% Bas de page + séparation
-\setlength{\textheight}{670pt} 	% Hauteur de la zone de texte (25cm)
+\setlength{\textheight}{720pt} 	% Hauteur de la zone de texte (25cm)
 
 %%% Gestion des espaces
 \parskip=5pt
@@ -96,7 +96,7 @@
 \noindent
 \begin{tabularx}{\textwidth}{XcR}
 \noindent\includegraphics[height=2cm]{figs/logos/logo_uds} &
-%%\hfill \PTlogo \ \shortstack[l]{\sc \Huge \CodeUE \\\\ \huge \Groupe} &
+\hfill \PTlogo \ \shortstack[l]{\sc \Huge \CodeUE \\\\ \huge \Groupe} &
 \includegraphics[height=2cm]{figs/logos/logo_iut} \\
 \end{tabularx}
 
