@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?PowerDesigner AppLocale="UTF16" ID="{9B823AD8-5E3D-4FBD-AFAD-1A3D0C112EF8}" Label="" LastModificationDate="1318237048" Name="ModeleTraitements_1" Objects="48" Symbols="46" Type="{8B5D3680-2056-4280-8B77-FBE8472CB1A8}" signature="MTM_MODEL_XML" version="15.1.0.2850"?>
+<?PowerDesigner AppLocale="UTF16" ID="{9B823AD8-5E3D-4FBD-AFAD-1A3D0C112EF8}" Label="" LastModificationDate="1318351694" Name="ModeleTraitements_1" Objects="48" Symbols="46" Type="{8B5D3680-2056-4280-8B77-FBE8472CB1A8}" signature="MTM_MODEL_XML" version="15.1.0.2850"?>
 <!-- Veuillez ne pas modifier ce fichier -->
 
 <Model xmlns:a="attribute" xmlns:c="collection" xmlns:o="object">
@@ -891,8 +891,8 @@ Shadow=0</a:DisplayPreferences>
 <o:OperationEmissionSymbol Id="o30">
 <a:CreationDate>1318234292</a:CreationDate>
 <a:ModificationDate>1318234309</a:ModificationDate>
-<a:Rect>((11414,-32145), (11864,-25356))</a:Rect>
-<a:ListOfPoints>((11770,-25356),(11770,-28767),(11507,-28767),(11507,-32145))</a:ListOfPoints>
+<a:Rect>((11414,-32145), (11864,-25357))</a:Rect>
+<a:ListOfPoints>((11770,-25357),(11770,-28767),(11507,-28767),(11507,-32145))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>1</a:ArrowStyle>
 <a:LineColor>0</a:LineColor>
@@ -911,8 +911,8 @@ Shadow=0</a:DisplayPreferences>
 <o:OperationEmissionSymbol Id="o34">
 <a:CreationDate>1318234305</a:CreationDate>
 <a:ModificationDate>1318237048</a:ModificationDate>
-<a:Rect>((11770,-30902), (18063,-25356))</a:Rect>
-<a:ListOfPoints>((11770,-25356),(18063,-25356),(18063,-30902))</a:ListOfPoints>
+<a:Rect>((11770,-30902), (18063,-25357))</a:Rect>
+<a:ListOfPoints>((11770,-25357),(18063,-25357),(18063,-30902))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>1</a:ArrowStyle>
 <a:LineColor>0</a:LineColor>
@@ -931,8 +931,8 @@ Shadow=0</a:DisplayPreferences>
 <o:OperationEmissionSymbol Id="o37">
 <a:CreationDate>1318234317</a:CreationDate>
 <a:ModificationDate>1318234320</a:ModificationDate>
-<a:Rect>((1493,-29970), (4570,-25356))</a:Rect>
-<a:ListOfPoints>((4570,-25356),(4570,-27806),(1493,-27806),(1493,-29970))</a:ListOfPoints>
+<a:Rect>((1493,-29970), (4571,-25357))</a:Rect>
+<a:ListOfPoints>((4571,-25357),(4571,-27806),(1493,-27806),(1493,-29970))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>1</a:ArrowStyle>
 <a:LineColor>0</a:LineColor>
@@ -1766,11 +1766,11 @@ ALIA 0 Arial,8,N</a:FontList>
 </o:Event>
 <o:Event Id="o75">
 <a:ObjectID>1D44DA60-22DE-4692-9A28-C2B9CF07D30F</a:ObjectID>
-<a:Name>Demande_d&#39;effectuer_un_synchr_sur_le_client_pc_d&#39;abord*</a:Name>
-<a:Code>DEMANDE_D_EFFECTUER_UN_SYNCHR_SUR_LE_CLIENT_PC_D_ABORD_</a:Code>
+<a:Name>Demande_d&#39;effectuer_un_synchro_sur_le_client_pc_d&#39;abord*</a:Name>
+<a:Code>DEMANDE_D_EFFECTUER_UN_SYNCHRO_SUR_LE_CLIENT_PC_D_ABORD_</a:Code>
 <a:CreationDate>1318232450</a:CreationDate>
 <a:Creator>Steve</a:Creator>
-<a:ModificationDate>1318234261</a:ModificationDate>
+<a:ModificationDate>1318351675</a:ModificationDate>
 <a:Modifier>Steve</a:Modifier>
 <a:Event.Type>1</a:Event.Type>
 </o:Event>
@@ -1785,31 +1785,31 @@ ALIA 0 Arial,8,N</a:FontList>
 </o:Event>
 <o:Event Id="o77">
 <a:ObjectID>FE1B4520-1164-4294-83FA-C213508A14D5</a:ObjectID>
-<a:Name>Suppression_de_l&#39;email_isbn*</a:Name>
-<a:Code>SUPPRESSION_DE_L_EMAIL_ISBN_</a:Code>
+<a:Name>Suppression_du_fichier_isbn*</a:Name>
+<a:Code>SUPPRESSION_DU_FICHIER_ISBN_</a:Code>
 <a:CreationDate>1318232847</a:CreationDate>
 <a:Creator>Steve</a:Creator>
-<a:ModificationDate>1318237039</a:ModificationDate>
+<a:ModificationDate>1318351694</a:ModificationDate>
 <a:Modifier>Steve</a:Modifier>
 <a:Event.Type>1</a:Event.Type>
 </o:Event>
 <o:Event Id="o78">
 <a:ObjectID>EA035B37-CB87-4FF0-842C-CCF229AA7D66</a:ObjectID>
-<a:Name>Demande_d&#39;envoi_email_synchronisation*</a:Name>
-<a:Code>DEMANDE_D_ENVOI_EMAIL_SYNCHRONISATION_</a:Code>
+<a:Name>Demande_de_transfére_fichier_synchronisation*</a:Name>
+<a:Code>DEMANDE_DE_TRANSFERE_FICHIER_SYNCHRONISATION_</a:Code>
 <a:CreationDate>1318232957</a:CreationDate>
 <a:Creator>Steve</a:Creator>
-<a:ModificationDate>1318236922</a:ModificationDate>
+<a:ModificationDate>1318351664</a:ModificationDate>
 <a:Modifier>Steve</a:Modifier>
 <a:Event.Type>1</a:Event.Type>
 </o:Event>
 <o:Event Id="o80">
 <a:ObjectID>16E01778-32F3-46C0-AEDE-CC02A97BE6FA</a:ObjectID>
-<a:Name>Envoi_email_isbn_pour_client_android*</a:Name>
-<a:Code>ENVOI_EMAIL_ISBN_POUR_CLIENT_ANDROID_</a:Code>
+<a:Name>Transfère_isbn_pour_client_android*</a:Name>
+<a:Code>TRANSFERE_ISBN_POUR_CLIENT_ANDROID_</a:Code>
 <a:CreationDate>1318233061</a:CreationDate>
 <a:Creator>Steve</a:Creator>
-<a:ModificationDate>1318237004</a:ModificationDate>
+<a:ModificationDate>1318351653</a:ModificationDate>
 <a:Modifier>Steve</a:Modifier>
 <a:Event.Type>1</a:Event.Type>
 </o:Event>

@@ -1,2 +1,41 @@
 \section{Affermissement des besoins exprimés} 
 
+\subsection{Relative au client Android}
+\subsubsection{Système d'ajout de d'édition de bande dessinées}
+
+\paragraph{Ajout des information de bases}
+Cette partie du programme est déjà implémentée par l'application Royal existante. 
+Il suffira d'ajouter à celui-ci la possibilité d'enregistrer des informations en rapport avec les emprunts (bibliothèques et dates de retours). 
+
+\paragraph{Gestion de l'image de couverture}
+La gestion de l'image de couverture est déjà existante dans l'application Royal actuelle,
+	mais devra subir des améliorations à fin d'importer directement l'image depuis la base de données \emph{Google Books} et non pas depuis \emph{Google Images} comme c'est actuellement le cas,
+	ce qui ne fournit pas toujours des résultats fiables.
+
+\paragraph{Création de liens entre les albums}	
+Le partages des informations présentes dans les albums comme les auteurs fait également partis des fonctionnalités déjà en place dans Royal. 
+Cependant nous devrons l'adapter à la gestion des bibliothèques et des dates. 
+
+\subsubsection{Système d'affichage des \emph{BD}s celons certains critères}
+
+\paragraph{Affichage des \emph{BD}s}
+Cette fonctionnalité est aussi déjà implémentée avec les champs basiques de Royal.
+À nous de l'adapter aux nouvelles données susceptibles d'être des bases de tri 
+(à savoir les bibliothèques et dates de retours). 
+
+\subsubsection{Système de recherche d'informations sur une \emph{BD} grâce au code barres}
+
+\paragraph{Saisie et vérification du code barres}
+La fonction vérifiera la bonne saisie d'un \emph{ISBN} et le mettra en forme dans une file de données qui sera utilisée par la suite. 
+La fonction devra pouvoir traiter l'importation des \emph{ISBN} depuis un email ou depuis l'écriture manuelle de l'utilisateur. 
+
+\paragraph{Recherche d'informations grâce au code barres}
+Une fois la liste d'\emph{ISBNs} de nouveaux livres à insérer dans l'application de réalisée, 
+	 celle-ci sera parcourue par une autre fonction qui se chargera de rechercher toutes les informations relatives à l'ouvrage sur \emph{Google Book}. 
+La recherche s'effectuera livre après livre. 
+Tous les livres en cours d'importation sont affichés dans une seule est même fenêtre. 
+Les informations les concernant s'auto-complèterons en fonction de l'avancée de la recherche.
+L'utilisateur pourra à tout moment les modifier, et confirmera lui même la fin de la saisie.C'est à ce moment que les ouvrages seront sauvegardés.
+
+\subsubsection{Système d'importation des albums}
+
