@@ -1,25 +1,25 @@
 \section{Affermissement des besoins exprimés} 
 
-\subsection{Relative au client Android}
+\subsection{Relative au client PC}
 \subsubsection{Système d'ajout de d'édition de bande dessinées}
 
-\paragraph{Ajout des information de bases}
+\paragraph{Ajout des informations de base}
 Cette partie du programme est déjà implémentée par l'application Royal existante. 
-Il suffira d'ajouter à celui-ci la possibilité d'enregistrer des informations en rapport avec les emprunts (bibliothèques et dates de retours). 
+Il suffira d'ajouter à celle-ci la possibilité d'enregistrer des informations en rapport avec les emprunts (bibliothèques et dates de retours). 
 
 \paragraph{Gestion de l'image de couverture}
 La gestion de l'image de couverture est déjà existante dans l'application Royal actuelle,
-	mais devra subir des améliorations à fin d'importer directement l'image depuis la base de données \emph{Google Books} et non pas depuis \emph{Google Images} comme c'est actuellement le cas,
-	ce qui ne fournit pas toujours des résultats fiables.
+	mais devra subir des améliorations afin d'importer directement l'image depuis la base de données \emph{Google Books} et non pas depuis \emph{Google Images} comme c'est actuellement le cas,
+	et qui ne fournit pas toujours des résultats fiables.
 
 \paragraph{Création de liens entre les albums}	
-Le partages des informations présentes dans les albums comme les auteurs fait également partis des fonctionnalités déjà en place dans Royal. 
+Le partage des informations présentes dans les albums, comme les auteurs fait également partis des fonctionnalités déjà en place dans Royal. 
 Cependant nous devrons l'adapter à la gestion des bibliothèques et des dates. 
 
-\subsubsection{Système d'affichage des \emph{BD}s celons certains critères}
+\subsubsection{Système d'affichage des \emph{BD}s selon certains critères}
 
 \paragraph{Affichage des \emph{BD}s}
-Cette fonctionnalité est aussi déjà implémentée avec les champs basiques de Royal.
+Cette fonctionnalité est aussi implémentée avec les champs basiques de Royal.
 À nous de l'adapter aux nouvelles données susceptibles d'être des bases de tri 
 (à savoir les bibliothèques et dates de retours). 
 
@@ -27,15 +27,66 @@ Cette fonctionnalité est aussi déjà implémentée avec les champs basiques de
 
 \paragraph{Saisie et vérification du code barres}
 La fonction vérifiera la bonne saisie d'un \emph{ISBN} et le mettra en forme dans une file de données qui sera utilisée par la suite. 
-La fonction devra pouvoir traiter l'importation des \emph{ISBN} depuis un email ou depuis l'écriture manuelle de l'utilisateur. 
+La fonction devra pouvoir traiter l'importation des \emph{ISBNs} depuis un courriel ou depuis une entrée manuelle de l'utilisateur. 
 
-\paragraph{Recherche d'informations grâce au code barres}
+\paragraph{Recherche d'informations grâce aux codes barres}
 Une fois la liste d'\emph{ISBNs} de nouveaux livres à insérer dans l'application de réalisée, 
 	 celle-ci sera parcourue par une autre fonction qui se chargera de rechercher toutes les informations relatives à l'ouvrage sur \emph{Google Book}. 
 La recherche s'effectuera livre après livre. 
-Tous les livres en cours d'importation sont affichés dans une seule est même fenêtre. 
+Tous les livres en cours d'importation sont affichés dans une seule et même fenêtre. 
 Les informations les concernant s'auto-complèterons en fonction de l'avancée de la recherche.
 L'utilisateur pourra à tout moment les modifier, et confirmera lui même la fin de la saisie.C'est à ce moment que les ouvrages seront sauvegardés.
 
 \subsubsection{Système d'importation des albums}
 
+\paragraph{Importation via courriel} 
+Le lien entre l'application Android et la PC s'effectuera via une boite courriel. 
+Ainsi, l'application PC devra être en mesure de se connecter à la boite, effectuer une recherche de message, 
+	le télécharger, et enfin le supprimer de la boite. 
+
+\paragraph{Vérification du courriel}
+À chaque lancement de l'application, une vérification sera effectuée afin de savoir si une adresse courriel à été configurée. 
+Si ça n'est pas le cas, on invitera l'utilisateur à renseigner ces informations. 
+
+\paragraph{Ajout automatique des albums importés}
+Une fois un courriel téléchargé, l'application devra être en mesure d'y récupérer les courriels présent de les rendre « traitable » pour les autres fonctions du programme 
+(à savoir, mettre les informations dans une liste de format compatible avec les fonctions de recherche présentées plus haut).  
+
+\subsubsection{Système de gestion des lieux et dates d'emprunt}
+
+\paragraph{Système d'alerte}
+Au démarrage de l'application, une fonction de vérification des dates de retour sera effectuée par défaut. 
+Si l'échéance avant la date buttoir de rendu d'un livre est plus basse qu'un seuil configurable, 
+	alors une alerte sera émise à l'utilisateur. 
+Celle-ci pourra être désactiveable par l'utilisateur si il n'éprouve pas le besoin d'être alerté. 
+
+\section{Relative au client Android}
+
+\subsection{Système de capture des codes barres}
+
+\paragraph{Capture unique}
+La fonction de capture unique se contentera d'appeler une fonction de la bibliothèque \emph{xzing} qui retournera un code barres récupéré via le capteur de l'appareil photo du téléphone.
+
+\paragraph{Capture multiple}
+La capture par lot englobe celle de capture unique.
+La différence notable entre les deux fonctions et qu'après la capture d'un code barres valide, celle-ci donne la possibilité à l'utilisateur d'en scanner un autre à la volé,
+	sans avoir à passer par le menu principal. 
+Une fois que tous les codes seront scannés, l'utilisateur pourra indiquer la fin de l'enregistrement. 
+
+\subsection{Vérification de la validité du code barre}
+Une fois qu'un code barres a bien été scanné par l'application, 
+	 une première vérification (locale) à lieu afin de savoir si il correspond effectivement à l'identification d'un livre, et non pas d'un objet quelconque. 
+Une fois cette vérification passée avec succès, l'application recherche directement sur \emph{Google Book} le titre de l'ouvrage. Si celui-ci est trouvé, il s'affichera à l'utilisateur pour lui confirmer la bonne capture du livre. 
+Si ce n'est pas le cas, l'utilisateur pourra rentrer le titre à la main. 
+
+\subsection{Système d'enregistrement des albums déjà scannés}
+
+\paragraph{Enregistrement des albums}
+Pour lutter contre la redondance d'enregistrement des albums, une basse de données locale sera créée sur le téléphone (un simple fichier texte) qui contiendra tous les \emph{ISBNs} déjà scannés. 
+De cette façon une alerte pourra être émise si l'utilisateur scann un livre qui l'aura déjà été. 
+
+\paragraph{Synchronisation avec le client PC}
+Comme le client Android n'aura pas forcément toutes les \emph{BDs} déjà enregistrées dans l'application PC, 
+il faut ajouter une fonction de synchronisation pour que cette utilité prenne un sens.
+Ainsi l'application Android pourra elle aussi se connecter sur la boite à courriel pour rechercher un éventuel message contenant la liste de tout les \emph{ISBNs} enregistrés sur l'application PC. 
+Si c'est le cas, la liste locale sera effacée et remplacée par celle fraichement téléchargée.
