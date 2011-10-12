@@ -76,3 +76,48 @@ Lors de la configuration de l'adresse email nous aurons à entrer la nouvelle ad
 Le prototype de la page de synchronisation n'est pas tres detailé car il s'agit d'une fonction de priorité 3 que l'on developpera plus tard dans le projet et que l'on definira la methode de transfere la plus performante une fois nos connaissance en developpement android plus grande. 
 Cette page permettra sois la synchronisation par la recherche d'un email contenant tout les Isbn des album contenu dans royal soit la recuperation d'un fichier contenant c'est Isbn (fichier qui sera transmit soit par email soit directement par usb).
 La page à propos permettera à l'utilisateur de trouver plus d'information sur Royal\_Scanner l'application.
+
+\newpage{}
+
+\subsection{Maquette de l'application PC}
+
+  \begin{figure}[htbp]
+  \begin{center}
+    \leavevmode
+    \subfloat[Application Royal\_ : fenêtre principale]{%
+		\label{}
+		\includegraphics[height=8cm]{../img/app_pc_maquette.png}}
+  \end{center}
+\end{figure}
+
+Cette maquette présente une des vrais seul modification visible que va connaitre l'interface de base, c'est à dire le bouton "Importer" et le bouton "Synchroniser", le premier se chargeant de récupérer les mails envoyer depuis Royal\_Scanner et d'ajouter les albums en conséquence, et le second chargé de synchroniser les livres des deux applications (PC et Android) pour qu'elles contiennent les mêmes informations.
+
+\begin{figure}[htbp]
+  \begin{center}
+    \leavevmode
+    \subfloat[Configuration email]{%
+		\label{}
+		\includegraphics[height=5cm]{../img/preferenceMail.png}}
+  \end{center}
+\end{figure}
+
+Dans l'optique de pouvoir récupérer les mails envoyer depuis l'application Android, l'utilisateur pourra, dans le panneau des préférences de l'application, renseigner les informations de sa boite e-mail à partir de laquelle l'import présenté ci-dessus sera effectué.
+
+\newpage{}
+
+\begin{figure}[htbp]
+  \begin{center}
+    \leavevmode
+    \subfloat[Recherche des e-mails]{%
+		\label{}
+		\includegraphics[height=4cm]{../img/import_mail.png}}
+    \hspace{1cm}
+    \leavevmode
+    \subfloat[Importation des lots d'albums]{%
+		\label{}
+		\includegraphics[height=3cm]{../img/ajout_import.png}}
+  \end{center}
+\end{figure}
+
+La première fenêtre s'ouvrent après un clic sur le bouton "Importer" de l'interface principale, si l'adresse e-mail a bien été configuré, sinon l'utilisateur est inviter grâce à une boite de dialogue à entrer ces informations de boite de messagerie dans les préférences du logiciel. Si tout se déroule correctement, l'utilisateur visualise les courriels récupérés et peut choisir ceux qu'il désire traiter. Une fois son choix effectuer, le clic sur suivant déclenche le second volet (deuxième image), où l'utilisateur peut associer les livres récupérés dans chaque mail (correspondant à un lot) à une bilbiothèque, et lui affecter une date de retour.
+
