@@ -1,0 +1,10 @@
+\section{Etude technique des outils utilisé}
+
+\subsection{Etude de ZXing}
+La biblioteque ZXing \textit{(http://code.google.com/p/zxing/)} est un projet open-source multi-format de code-barres 1D/2D de traitement d'images mis en œuvre en Java. Ce projet met l'accent sur l'utilisation de la caméra intégrée sur les téléphones mobiles et de décoder les codes-barres sur l'appareil, sans communiquer avec un serveur.
+De multiples formats pouvant être décodés ce qui nous permettera d'effectuer la capture de code barre sur notre application android.
+
+Afin de faire appel à ZXing il est conseillé (car bien plus facile) de faire appel à l'application BareCodeScanner par le biais d'intent (ensembles de données qui peuvent être passé à un autre composant applicatif de la même application ou non). 
+Mais cette solution ne semble pas être la plus optimal car il serait mieu d'éviter créé une dépendance à BareCodeScanner.
+Pour ne pas avoir à faire appel à une autre application nous aurons à reprendre une partie de l'application BareCodeScanner que nous insererons directement dans notre application. 
+

@@ -5,7 +5,7 @@
 
 \paragraph{Ajout des informations de base}
 Cette partie du programme est déjà implémentée dans l'application Royal existante. 
-Il suffira d'ajouter à celle-ci la possibilité d'enregistrer des informations en rapport avec les emprunts (bibliothèques et dates de retours). 
+Il nous faudra donc ajouter à celle-ci la possibilité d'enregistrer des informations en rapport avec les emprunts (bibliothèques et dates de retours). 
 
 \paragraph{Gestion de l'image de couverture}
 La gestion de l'image de couverture est déjà existante dans l'application Royal actuelle,
@@ -30,12 +30,12 @@ La fonction vérifiera la bonne saisie d'un \emph{ISBN} et le mettra en forme da
 La fonction devra pouvoir traiter l'importation des \emph{ISBNs} depuis un courriel ou depuis une entrée manuelle de l'utilisateur. 
 
 \paragraph{Recherche d'informations grâce aux codes barres}
-Une fois la liste d'\emph{ISBNs} de nouveaux livres à insérer dans l'application de réalisée, 
+Une fois la liste d'\emph{ISBNs} de nouveaux livres à insérer dans l'application réalisée, 
 	 celle-ci sera parcourue par une autre fonction qui se chargera de rechercher toutes les informations relatives à l'ouvrage sur \emph{Google Book}. 
 La recherche s'effectuera livre après livre. 
 Tous les livres en cours d'importation sont affichés dans une seule et même fenêtre. 
 Les informations les concernant s'auto-complèterons en fonction de l'avancée de la recherche.
-L'utilisateur pourra à tout moment les modifier, et confirmera lui-même la fin de la saisie.C'est à ce moment que les ouvrages seront sauvegardés.
+L'utilisateur pourra à tout moment les modifier, et confirmera lui-même la fin de la saisie. C'est à ce moment que les ouvrages seront sauvegardés.
 
 \subsubsection{Système d'importation des albums}
 
@@ -77,7 +77,7 @@ Une fois que tous les codes seront scannés, l'utilisateur pourra indiquer la fi
 Une fois qu'un code barres a bien été scanné par l'application, 
 	 une première vérification (locale) a lieu afin de savoir s'il correspond effectivement à l'identification d'un livre, et non pas d'un objet quelconque. 
 Une fois cette vérification passée avec succès, l'application recherche directement sur \emph{Google Book} le titre de l'ouvrage. Si celui-ci est trouvé, il s'affichera à l'utilisateur pour lui confirmer la bonne capture du livre. 
-Si ce n'est pas le cas, l'utilisateur pourra rentrer le titre à la main. 
+Si ce n'est pas le cas, l'utilisateur pourra rentrer le titre du livre à la main (Ce titre sera transmit au client PC dans le mail). 
 
 \subsection{Système d'enregistrement des albums déjà scannés}
 
