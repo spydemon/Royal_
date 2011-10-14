@@ -8,3 +8,90 @@ Afin de faire appel à ZXing il est conseillé (car bien plus facile) de faire a
 Mais cette solution ne semble pas être la plus optimal car il serait mieu d'éviter créé une dépendance à BareCodeScanner.
 Pour ne pas avoir à faire appel à une autre application nous aurons à reprendre une partie de l'application BareCodeScanner que nous insererons directement dans notre application. 
 
+\subsection{Fonctionnement de l'API Google Books}
+
+\subsubsection{Introduction}
+
+Google a développé des librairies java permettant de communiquer avec son API Books, pour permettre de récupérer des informations sur les ouvrages disponibles dans la base de données de google.
+
+Cette librairie se nomme "Google API Services Books" et nécessite notamment la librairie "Google API Client" nécessaire pour utiliser n'importe quel API provenant de google. De plus d'autre Librairie sont mises à disposition par Google qui permettent entre autres d'établir les connexions adéquates vers l'API (utilisation de protocole spécifique, etc...).
+
+\subsubsection{Fonctionnement des objets de la librairie Google Books}
+
+L'objet depuis lequel tout les demandes d'informations vont être réalisable est \emph{Books}. Cet objet représente la connexion entre l'application et l'API.
+
+A partir de cette connexion, il est possible d'établir deux types de demande de contenus. Une première demande de type \emph{Volumes.List} qui permet d'obtenir une liste de résultat en fonction d'un critère de recherche et un second type de demande qui ne renvoie qu'un seul résultat et qui a pour critère de demande l'ID du livre (identificateur donné de manière arbitraire par google), pour ce second type la demande est un objet de type \emph{Volumes.Get}.
+
+L'exécution d'une demande de liste renvoie une \emph{List\textless Volume\textgreater} qui contient l'ensemble des volumes (comprendre "livres") trouvé avec le critère spécifié.
+
+L'exécution d'une demande de type \emph{Get} renvoie un objet Volume correspondant à l'ouvrage ayant pour ID celle recherché.
+
+L'objet volume possède deux méthodes qui vont ici nous interresser à savoir : \emph{getVolumeInfo()} et \emph{getImageLinks()} qui renvoient respectivement un objet \emph{VolumeVolumeInfo} et un objet \emph{VolumeVolumeInfoImageLinks}.
+
+\emph{VolumeVolumeInfo} possède une multitude de "getteur", méthodes renvoyant les informations sur l'ouvrage en question. les informations obtenus alors sont pour la pluspart de types primitifs (\emph{String}, \emph{Integer}, \emph{double}) et sont donc facilement exploitable pour l'application. Si une information est manquante pour un livre, l'objet renvoi simplement \emph{null}.
+
+\newpage{}
+
+\paragraph{Ensemble des informations que l'objet peut récupérer :}
+\begin{description}
+\item
+Auteurs (\emph{List\textless String\textgreater})
+\item
+- Note moyenne (\emph{Double})
+\item
+- Catégories (\emph{List\textless String\textgreater})
+\item
+- Version du contenu (\emph{String})
+\item
+- Description (\emph{String})
+\item
+- Dimension (\emph{VolumeVolumeDimension})
+\item
+- Identifiant industriel (\emph{List\textless VolumeVolumeInfoIndustry\textgreater})
+\item
+- Lien html vers la page d'information (\emph{String})
+\item
+- Langue de l'ouvrage (\emph{String})
+\item
+- Catégorie principale (\emph{String})
+\item
+- Nombre de page (\emph{Integer})
+\item
+- Lien html vers une page d'aperçu (\emph{String})
+\item
+- Date de publication (\emph{String})
+\item
+- Editeur (\emph{String})
+\item
+- Sous-titre (\emph{String})
+\item
+- Titre (\emph{String})
+\end{description}
+
+\emph{VolumeVolumeImageLinks} permet d'obtenir les liens sous forme de \emph{String} vers l'image de couvertures du livre sous différentes taille. L'image "thumbnail" est l'image la plus souvent existante lors d'une recherche d'image vue qu'elle est utilisé sur le site de Google Books par défaut pour afficher l'image de couverture. Le lien vers cette image s'obtient grâce à la méthide \emph{getThumbnail()}.
+
+\subsubsection{Méthode de recherche d'un livre par son ISBN grâce à la librairie Google Books}
+
+Pour trouver un livre grâce à son code ISBN, il est nécessaire de d'abord faire une recherche de liste de livre avec l'API. En effet, on ne peut effectuer une recherche sur un livre seul qu'en connaissant son "Identificateur Google". Ainsi la recherche se fait en passant l'ISBN comme critère de recherche concaténé à la chaine "isbn:" pour lui indiquer qu'on recherche par ISBN. Partant du fait industriellement établis qu'un code ISBN ne peut pointer que vers un seul livre (réciproque non établis), nous prendrons le premier (et normalement unique) \emph{Volume} de la liste obtenu comme étant le \emph{Volume} en question. Cependant, après plusieurs tests, on peut s'apercevoir que les \emph{Volume}s récupérés dans une liste contiennent généralement moins d'information qu'un \emph{Volume} recherché par une recherche unique. C'est pourquoi il est nécessaire d'effectuer une nouvelle recherche de type unique (\emph{Volumes.Get}) avec comme paramètre l'ID du Volume trouvé dans la recherche de type liste, grâce à la méthode du Volume \emph{getId()}. Ainsi la seconde recherche nous renvoie un objet Volume similaire au précédent mais contenant généralement plus d'informations.
+
+
+\subsection{Principe de fonctionnement d'hibernate}
+
+Hibernate est un framework open source gérant la persistance des objets en base de données relationnelle.
+Il permet de créer une relation forte entre objet Java que l'on souhaite sauvegarder et table de base de données. En effet, a chaque objet java que l'on souhaite sauvegarder, (dans notre cas par exemple, un album) correspond un fichier XML décrivant la table dans laquelle va être stocké l'album. Ce fichier décrit les données, leur type, mais aussi les contraintes sur les tables associées (clée étrangère, etc..).
+L'objet Java en question doit possèder les mêmes attributs que sa table XML et hérite d'un objet abstrait d'hibernate qui va permettre à hibernate de pouvoir sauvegarder/éditer un objet java dans la base de données.
+
+Au lancement de l'application, Hibernate lit les tables XML afin de créer un base de données virtuelle, après quoi il lit un autre fichier contenant les données et remplit ainsi, pendant le lancement, la base de données virtuelle. Pendant l'utilisation de l'application, tout changement du contenu de la base de données virtuelle se répercute sur le fichier contenant les données afin de le modifier pour qu'au prochain lancement Hibernate puisse remplir la base avec les nouvelles données du fichier. A chaque extinction de Royal, la base de données est détruite.
+
+\subsection{Syntaxe des courriels propre à l'application}
+
+Pour que l'application puissent importer les albums contenus dans les courriels de la boite de messagerie configuré dans Royal, ceux-ci devront respecté une norme permettant à Royal de les reconnaitres.
+Ainsi, il est possible d'effectuer en Java grâce à la librairie Oracle "JavaMail" une recherche par sujet des messages. Ainsi pour plus d'efficacité, nous avons choisis d'établir le titre des messages en questions de la manière suivantes :
+
+\emph{ISBN-\textless code\_md5\_de\_l\_adresse\_mail\textgreater}
+
+En effet, nous avons choisi de mettre un hash md5 de l'adresse mail car d'une part ce hash peut être obtenu par les deux applications étant donné qu'elles sont en connaissance de l'adresse sur laquelle elle doivent envoyer ou recevoir les messages, mais d'une autre part du fait qu'un hash md5 est une chaine assez longue et unique qui du coup permet une comparaison plus rapide des mails lors de la recherche par sujet effectué par "JavaMail".
+
+Pour le contenu des messages, celui-ci sera simplement une suite de code ISBN, un par ligne, avec ou non le titre de l'ouvrage à coté (séparé par un "\textpipe") si l'ouvrage n'a pas été trouvé sur l'API GoogleBook lors de sa capture sous Android. exemple : \emph{978-2-351-42369-1\textpipe Soul Eater 5}
+
+
