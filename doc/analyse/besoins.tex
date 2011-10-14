@@ -1,6 +1,6 @@
 \section{Affermissement des besoins exprimés} 
 
-\subsection{Relative au client PC}
+\subsection{Relatifs au client PC}
 \subsubsection{Système d'ajout de d'édition de bande dessinées}
 
 \paragraph{Ajout des informations de base}
@@ -60,9 +60,9 @@ Si l'échéance avant la date buttoir de rendu d'un livre est plus basse qu'un s
 	alors une alerte sera émise à l'utilisateur. 
 Celle-ci pourra être désactivable par l'utilisateur s'il le désir. 
 
-\section{Relative au client Android}
+\subsection{Relatifs au client Android}
 
-\subsection{Système de capture des codes barres}
+\subsubsection{Système de capture des codes barres}
 
 \paragraph{Capture unique}
 La fonction de capture unique se contentera d'appeler une fonction de la bibliothèque \emph{xzing} qui retournera un code barres récupéré via le capteur de l'appareil photo du téléphone.
@@ -73,13 +73,13 @@ La différence notable entre les deux fonctions est qu'après la capture d'un co
 	sans avoir à passer par le menu principal. 
 Une fois que tous les codes seront scannés, l'utilisateur pourra indiquer la fin de l'enregistrement. 
 
-\subsection{Vérification de la validité du code barre}
+\subsubsection{Vérification de la validité du code barre}
 Une fois qu'un code barres a bien été scanné par l'application, 
 	 une première vérification (locale) a lieu afin de savoir s'il correspond effectivement à l'identification d'un livre, et non pas d'un objet quelconque. 
 Une fois cette vérification passée avec succès, l'application recherche directement sur \emph{Google Book} le titre de l'ouvrage. Si celui-ci est trouvé, il s'affichera à l'utilisateur pour lui confirmer la bonne capture du livre. 
 Si ce n'est pas le cas, l'utilisateur pourra rentrer le titre du livre à la main (Ce titre sera transmit au client PC dans le mail). 
 
-\subsection{Système d'enregistrement des albums déjà scannés}
+\subsubsection{Système d'enregistrement des albums déjà scannés}
 
 \paragraph{Enregistrement des albums}
 Pour lutter contre la redondance d'enregistrement des albums, une base de données locale sera créée sur le téléphone qui contiendra tous les \emph{ISBNs} déjà scannés. 

@@ -4,10 +4,12 @@
 Pour permettre l'enregistrement des emprunts ainsi que des lieu d'emprunts il a fallu ajouter une table Location\_E (qui indique le lieu de location) ainsi qu'un table Bilioteque (qui indique le lieu d'emprunt) au MCD déjà existant dans Royal\_.
 De même nous avons rajouté un boolean Enprunté\_A à la table Album afin d'indiquer si un livre est emprunté ou nous appartient.
 
-\begin{wrapfigure}[1]{l}{13.5cm}
-\includegraphics[width=13.5cm]{MCD_Royal_Modif.png}
-\end{wrapfigure}
-\clearpage{}
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=13cm]{MCD_Royal_Modif.png}
+\end{center}
+\end{figure}
+\newpage{} 
 
 \subsection{Modéle Conceptuelle de Traitement}
 
@@ -17,12 +19,20 @@ Ensuit nous pouvons voir que près la synchronisation si les albums sont loués 
 A coté nous pouvons voir le MCT concernant la verification des albums à rendre.
 Enfin les deux derniers MCT traite de la synchronisation des Albums deja présents sur le client pc avec le client android.
 
-\begin{wrapfigure}[1]{l}{14cm}
+%\begin{wrapfigure}[1]{l}{14cm}
+%\includegraphics[width=14cm]{MCT_Royal.pdf}
+%\end{wrapfigure}
+%\clearpage{}
+
+\begin{figure}[h!]
+\begin{center}
 \includegraphics[width=14cm]{MCT_Royal.pdf}
-\end{wrapfigure}
-\clearpage{}
+\end{center}
+\end{figure}
+\newpage{}
 
 \subsection{Diagrammes d'activités}
+\subsubsection{Application PC}
 
 \begin{figure}[h!]
 \begin{center}
@@ -52,5 +62,13 @@ Enfin les deux derniers MCT traite de la synchronisation des Albums deja présen
 \end{figure}
 
 Une version plus lisible est disponible à l'adresse suivante : 
-\emph{www.spyzone.fr/modules/images/pc\_application.png}
+\emph{www.spyzone.fr/modules/images/application\_pc.png}
+\newpage{}
+
+\subsubsection{Application Android}
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=20cm, angle=90]{uml/application_android.pdf}
+\end{center}
+\end{figure}
 
