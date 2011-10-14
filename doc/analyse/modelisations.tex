@@ -1,8 +1,8 @@
 \section{Travaux de modélisations} 
 \subsection{Modification du Modèle Conceptuelle de Donnée}
 
-Pour permettre l'enregistrement des emprunts ainsi que des lieu d'emprunts il a fallu ajouter une table Location\_E (qui indique le lieu de location) ainsi qu'un table Bilioteque (qui indique le lieu d'emprunt) au MCD déjà existant dans Royal\_.
-De même nous avons rajouté un boolean Enprunté\_A à la table Album afin d'indiquer si un livre est emprunté ou nous appartient.
+Pour permettre l'enregistrement des emprunts ainsi que des lieux d'emprunts il a fallu ajouter une table \emph{Location\_E} (qui indique le lieu de location) ainsi qu'un table \emph{Bilioteque} (qui indique le lieu d'emprunt) au MCD déjà existant dans Royal\_.
+De même nous avons rajouté un boolean \emph{Enprunté\_A} à la table \emph{Album} afin d'indiquer si un livre est emprunté ou nous appartient.
 
 \begin{figure}[h!]
 \begin{center}
@@ -11,13 +11,14 @@ De même nous avons rajouté un boolean Enprunté\_A à la table Album afin d'in
 \end{figure}
 \newpage{} 
 
-\subsection{Modéle Conceptuelle de Traitement}
+\subsection{Modèle conceptuel de traitement}
 
-Le MCT ci-dessous montre les différents traitement effectués dans Royal\_. C'est traitement seront présenté en fonction de leurs prioritées.
-Nous pouvons observé tout d'abord la synchronisation d'ISBN (sur le client pc) présent dans la boite mail ainsi que la capture d'ISBN (sur le client android).
-Ensuit nous pouvons voir que près la synchronisation si les albums sont loués une demande d'information sur l'emprut est executé (cette demande d'ajout d'information sur l'emprunt pet aussi etre effectué independament).
-A coté nous pouvons voir le MCT concernant la verification des albums à rendre.
-Enfin les deux derniers MCT traite de la synchronisation des Albums deja présents sur le client pc avec le client android.
+Le MCT ci-dessous montre les différents traitement effectués dans Royal\_. 
+Ces traitements seront présentés en fonction de leurs prioritées.
+Nous pouvons observer tout d'abord la synchronisation d'\emph{ISBN} (sur le client pc) présent dans la boite mail ainsi que la capture d'\emph{ISBNs} (sur le client android).
+Ensuite nous pouvons voir que la synchronisation si les albums sont loués une demande d'informations sur l'emprunt est exécuté (cette demande d'ajout d'informations sur l'emprunt peut aussi etre effectué indépendamment).
+A coté nous pouvons voir le MCT concernant la vérification des albums à rendre.
+Enfin les deux derniers MCT traitent de la synchronisation des Albums déjà présents sur le client pc avec le client android.
 
 %\begin{wrapfigure}[1]{l}{14cm}
 %\includegraphics[width=14cm]{MCT_Royal.pdf}
