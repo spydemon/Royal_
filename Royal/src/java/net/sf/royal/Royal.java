@@ -105,7 +105,7 @@ public class Royal extends JFrame
             }
             
             logger.debug("Creating main window");
-            this.setTitle("Royal MAIL DEV");
+            this.setTitle("Royal MAIL DEV 01");
 			this.north = MainToolBar.getInstance();
             this.bottom = BottomBarPane.getInstance();
 			this.center = MainPane.getInstance();
