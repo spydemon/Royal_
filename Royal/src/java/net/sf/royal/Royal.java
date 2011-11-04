@@ -36,7 +36,6 @@ import net.sf.royal.macos.MacOsManagement;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 
-
 /**
     * Creation of the main window of Royal
     * @author bibounde
