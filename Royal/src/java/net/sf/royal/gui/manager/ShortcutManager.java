@@ -25,6 +25,8 @@ public class ShortcutManager
 	public static char ADD = 'A';
 	public static char EDIT = 'E';
 	public static char DELETE = 'D';
+	public static char SYNC = 'Y';
+	public static char UPDATE = 'U';
 	public static char DELETE_ = KeyEvent.VK_DELETE;
 	
 	/* Wizards action */
