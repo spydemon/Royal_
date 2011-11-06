@@ -20,6 +20,7 @@ import javax.swing.JTextField;
 import net.sf.royal.gui.manager.LocaleManager;
 import net.sf.royal.gui.manager.PropertyManager;
 import net.sf.royal.gui.wizard.settings.ChangeLanguagePanel.ItemChangeListener;
+import net.sf.royal.util.Base64Utils;
 
 /**
  * Tab of the {@SettingsTabbedDialog} containing the stuff to switch the languages.
@@ -55,7 +56,12 @@ public class ChangeEmailPanel extends JPanel implements SettingsTab
 		this.serv.setHorizontalAlignment(JLabel.RIGHT);
 		this.jtflogin.setText(PropertyManager.getInstance().getProperty("mail_login"));
 		this.jtfproto.setSelectedItem(PropertyManager.getInstance().getProperty("mail_protocol"));
-		this.jpfmdp.setText(PropertyManager.getInstance().getProperty("mail_password"));
+		try {
+			this.jpfmdp.setText(Base64Utils.decode(PropertyManager.getInstance().getProperty("mail_password")));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		this.jtfserv.setText(PropertyManager.getInstance().getProperty("mail_server"));
 		this.jtflogin.addKeyListener(new ItemChangeListener());
 		this.jpfmdp.addKeyListener(new ItemChangeListener());
@@ -93,7 +99,12 @@ public class ChangeEmailPanel extends JPanel implements SettingsTab
 		if(isChanged)
 		{
 			PropertyManager.getInstance().changeProperty("mail_login",this.jtflogin.getText());
-			PropertyManager.getInstance().changeProperty("mail_password",new String(this.jpfmdp.getPassword()));
+			try {
+				PropertyManager.getInstance().changeProperty("mail_password",Base64Utils.encode(new String(this.jpfmdp.getPassword())));
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			PropertyManager.getInstance().changeProperty("mail_protocol",this.jtfproto.getSelectedItem().toString());
 			PropertyManager.getInstance().changeProperty("mail_server",this.jtfserv.getText());
 			this.isChanged = false;
@@ -110,16 +121,22 @@ public class ChangeEmailPanel extends JPanel implements SettingsTab
 		@Override
 		public void keyPressed(KeyEvent arg0) {
 			// TODO Auto-generated method stub
-			if(PropertyManager.getInstance().getProperty("mail_login").equals(ChangeEmailPanel.this.jtflogin.getText()) 
-					&& PropertyManager.getInstance().getProperty("mail_password").equals(new String(ChangeEmailPanel.this.jpfmdp.getPassword()))
+			try {		 
+				if(PropertyManager.getInstance().getProperty("mail_login").equals(ChangeEmailPanel.this.jtflogin.getText()) 
+					&& Base64Utils.decode(PropertyManager.getInstance().getProperty("mail_password")).equals(new String(ChangeEmailPanel.this.jpfmdp.getPassword()))
 					&& PropertyManager.getInstance().getProperty("mail_protocol").equals(ChangeEmailPanel.this.jtfproto.getSelectedItem().toString())
 					&& PropertyManager.getInstance().getProperty("mail_server").equals(ChangeEmailPanel.this.jtfserv.getText()))
-			{
-				ChangeEmailPanel.this.isChanged = false;
+				{
+					ChangeEmailPanel.this.isChanged = false;
+				}
+				else
+				{
+					ChangeEmailPanel.this.isChanged = true;
+				}
 			}
-			else
-			{
+			catch (Exception e) {
 				ChangeEmailPanel.this.isChanged = true;
+				
 			}
 		}
 
