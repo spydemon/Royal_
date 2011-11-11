@@ -31,7 +31,7 @@ public class Bibliotheque
 	}
 
 	public void setAddress(String nv_address) {
-		return this.address = nv_address;
+		this.address = nv_address;
 	}
 
 	public String getPhone() {
@@ -39,6 +39,6 @@ public class Bibliotheque
 	}
 
 	public void setPhone(String nv_phone) {
-		return this.phone = nv_phone;
+		this.phone = nv_phone;
 	}
 }
