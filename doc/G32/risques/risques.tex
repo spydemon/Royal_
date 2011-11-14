@@ -34,33 +34,36 @@ Il faudra donc également implémenter tout un processus de synchronisation entr
 
 \section*{Explication du tableau}
 
-\subsection{Détection}
+\begin{description}
+
+\item[Détection]
 Date de détection du risque.
 
-\subsection{Apparition}
+\item[Apparition]
 Correspond à la date où le risque est apparu. Cette date n'est pas toujours indiqué, dans le cas où le risque n'est pas encore survenu.
 
-\subsection{Titre}
+\item[Titre]
 Correspond aux titres des différents risques classés par type.
 
-\subsection{Probabilité}
-Probabilité de survenance du risque. "1" Correspond à une probabilité de survenance situé entre 1\% et 20\%. "2" correspond à un probabilité entre 20\% et 80\% et "5" indique une probabilité supérieur à 80%.
+\item[Probabilité]
+Probabilité de survenance du risque. "1" Correspond à une probabilité de survenance situé entre 1\% et 20\%. "2" correspond à un probabilité entre 20\% et 80\% et "5" indique une probabilité supérieur à 80\%.
 
-\subsection{Gravité}
+\item[Gravité]
 Gravité du risque s'il survenait. La gravité est noté de la même manière que la probabilité. avec "1" pour une gravité faible, "2" pour une gravité moyenne et "5" pour une gravité forte pouvant être fatale pour la bonne réalisation du projet.
 
-\subsection{Indetectabilité}
+\item[Indetectabilité]
 Niveau de détection du risque. Il est noté par les notes "1", "2", ou "4". On définit ici si le risque peut être perçu facilement en avance ou non.
 
-\subsection{Niveau du risque}
+\item[Niveau du risque]
 Le niveau du risque est une note globale pour un risque donné correspondant à la multiplication des trois colonnes précédentes. Elle correspond à un pourcentage d'importance du risque.
 
-\subsection{Actions préventives}
+\item[Action préventives]
 Actions pouvant être mises en place pour éviter l'apparition du risque.
+\end{description}
 
 \begin{landscape}
 
-\begin{longtable}{||l|c|c|c|c|c|c|m{7cm}||}
+\begin{longtable}{||l|c|c|c|c|c|c|m{7cm}|c||}
 \caption{Liste des risques aux quels nous pouvons être soumis}
 \label{Un grand tableau} \\
 \hline 
@@ -68,14 +71,15 @@ Actions pouvant être mises en place pour éviter l'apparition du risque.
 	\textbf{Détection} & 
 	\textbf{Apparition} & 
 	\textbf{Proba} & 
-	\textbf{Gravité} & 
+	\textbf{Gvt} & 
 	\textbf{Indetect.} & 
 	\textbf{Niveau risque} & 
-	\textbf{Action préventive} \\
+	\textbf{Action préventive} &
+	\textbf{Cout} \\
 \hline \hline
 \endhead
 
-	\multicolumn{8}{||c||}{\rowcolor{gray} \color{white}Paramètres généraux} \\
+	\multicolumn{9}{||c||}{\rowcolor{gray} \color{white}Paramètres généraux} \\
 \hline
 
 	\multirow{2}*{Définition imprécise d'un projet }&
@@ -85,15 +89,17 @@ Actions pouvant être mises en place pour éviter l'apparition du risque.
 	\multirow{2}*{1}&
 	\multirow{2}*{1}&
 	\multirow{2}*{1}&
-	Réunion avec le maitre d'ouvrage. \\
-	\cline{8-8}
-	&&&&&&&Multiples livrables. \\
+	Réunion avec le maitre d'ouvrage. &
+	6h\\
+	\cline{8-9}
+	&&&&&&&Multiples livrables. &\\
 \hline
 
 	Taille du projet et durée &
 	Début Septembre &
 	&1&2&2&4&
-	Estimation MS Project. \\
+	Estimation MS Project. &
+	5h \\
 \hline
 
 	\multirow{2}*{Complexité des projets} &
@@ -103,34 +109,40 @@ Actions pouvant être mises en place pour éviter l'apparition du risque.
 	\multirow{2}*{5} &
 	\multirow{2}*{1} &
 	\multirow{2}*{10} &
-	Réunion avec les développeurs du projet initial. \\
-	\cline{8-8}
-	&&&&&&&Analyse en profondeur du code existant. \\
+	Réunion avec les développeurs du projet initial. &
+	3h \\
+	\cline{8-9}
+	&&&&&&&Analyse en profondeur du code existant. &
+	16h \\
 \hline 
 
 	Indépendance des projets &
 	Fin Septembre &
 	&5&2&1&10&
-	Travail collaboratif, dépôt commun, ordre de développement. \\
+	Travail collaboratif, dépôt commun, ordre de développement. &
+	4h \\
 \hline 
 
-	Interface \emph{(Scanner)} &
+	Int erface \emph{(Scanner)} &
 	Début Octobre &
 	Milieu Octobre &
 	2&5&1&10&
-	Intégration de l'interface à l'application. \\ 
+	Intégration de l'interface à l'application. &
+	16h \\ 
 \hline 
 
 	Interface \emph{(BDD ISBN)} &
 	Début Octobre &&
 	1&5&1&5&
-	Choix d'une interface simple ou complexe. \\
+	Choix d'une interface simple ou complexe. &
+	8h \\
 \hline
 
 	Interface \emph{(Email)} &
 	Début Octobre &&
 	1&5&1&5&
-	Mise en place d'une norme pour les emails. \\
+	Mise en place d'une norme pour les emails. &
+	4h \\
 \hline
 
 	\multirow{2}*{Sophistication} &
@@ -140,12 +152,14 @@ Actions pouvant être mises en place pour éviter l'apparition du risque.
 	\multirow{2}*{1}&
 	\multirow{2}*{2}&
 	\multirow{2}*{10}&
-	Réunion avec le maitre d'ouvrage. \\
-	\cline{8-8}
-	&&&&&&&Mise au courant permanent des phases de développement. \\
+	Réunion avec le maitre d'ouvrage. & 
+	6h \\
+	\cline{8-9}
+	&&&&&&&Mise au courant permanent des phases de développement. &
+	4h \\
 \hline 
 
-	\multicolumn{8}{||c||}{\rowcolor{gray} \color{white}Paramètres liés aux utilisateurs} \\
+	\multicolumn{9}{||c||}{\rowcolor{gray} \color{white}Paramètres liés aux utilisateurs} \\
 \hline
 
 	\multirow{2}*{Compétances} &
@@ -154,18 +168,20 @@ Actions pouvant être mises en place pour éviter l'apparition du risque.
 	\multirow{2}*{2} &
 	\multirow{2}*{1} &
 	\multirow{2}*{10} &
-	Manuel utilisateur. \\
-	\cline{8-8}
-	&&&&&&&Appliquer des règles d'ergonomie. \\
+	Manuel utilisateur. &
+	20h \\
+	\cline{8-9}
+	&&&&&&&Appliquer des règles d'ergonomie. &
+	7h \\
 \hline
 
-	\multicolumn{8}{||c||}{\rowcolor{gray} \color{white}Paramètres liés à la maitrise d'ouvrage} \\
+	\multicolumn{9}{||c||}{\rowcolor{gray} \color{white}Paramètres liés à la maitrise d'ouvrage} \\
 \hline
 
 	Décision &
 	Début Septembre &&
 	1&1&1&1&
-	Proposition de solution. \\
+	Proposition de solution. &\\
 \hline
 
 	\multirow{2}*{Coordination maitrise d'ouvrage} &
@@ -175,19 +191,20 @@ Actions pouvant être mises en place pour éviter l'apparition du risque.
 	\multirow{2}*{2} &
 	\multirow{2}*{1} &
 	\multirow{2}*{4} &
-	Privilégier les rapports directs. \\
-	\cline{8-8}
-	&&&&&&&Mise en place de réunions régulières. \\
+	Privilégier les rapports directs. &\\
+	\cline{8-9}
+	&&&&&&&Mise en place de réunions régulières. &
+	6h\\
 \hline
 
 \newpage
-	\multicolumn{8}{||c||}{\rowcolor{gray} \color{white}Paramètres liées à la maitrise d'œuvre} \\
+	\multicolumn{9}{||c||}{\rowcolor{gray} \color{white}Paramètres liées à la maitrise d'œuvre} \\
 \hline
 
 	Maîtrise des demandes &
 	Fin Octobre &&
 	1&2&4&8&
-	Ne pas accepter les demandes non décrites dans le \emph{CDC}. \\
+	Ne pas accepter les demandes non décrites dans le \emph{CDC}. & \\
 \hline
 
 	\multirow{3}*{Répartition des charges} &
@@ -196,17 +213,21 @@ Actions pouvant être mises en place pour éviter l'apparition du risque.
 	\multirow{3}*{2} &
 	\multirow{3}*{2} &
 	\multirow{3}*{8} &
-	Estimation \emph{MS Project}. \\
-	\cline{8-8}
-	&&&&&&&Analyse des compétences de chacun. \\
-	\cline{8-8}
-	&&&&&&&Réunion entre les développeurs. \\
+	Estimation \emph{MS Project}. &
+	5h\\
+	\cline{8-9}
+	&&&&&&&Analyse des compétences de chacun. & 
+	1h \\
+	\cline{8-9}
+	&&&&&&&Réunion entre les développeurs. & 
+	10h \\
 \hline 
 
 	Méthodes \slash{} Normes &
 	Mi Septembre &&
 	1&1&1&1&
-	Utilisation de normes de codage précises. \\
+	Utilisation de normes de codage précises. &
+	1h \\
 \hline
 
 
@@ -216,21 +237,24 @@ Actions pouvant être mises en place pour éviter l'apparition du risque.
 	\multirow{2}*{5} &
 	\multirow{2}*{1} &
 	\multirow{2}*{10} &
-	Choix des coéquipiers. \\
-	\cline{8-8}
-	&&&&&&&Répartition des tâches en fonction des compétences et affinités. \\ 
+	Choix des coéquipiers. & \\
+	\cline{8-9}
+	&&&&&&&Répartition des tâches en fonction des compétences et affinités. & 
+	1h\\ 
 \hline
 
 	Suivi &
 	Mi Septembre &&
 	5&2&1&10&
-	Publier l'avancement du travail en permanence. \\
+	Publier l'avancement du travail en permanence. &
+	\\
 \hline
 
 	Gestion des incidents \slash{} dérives &
 	Début Novembre&&
 	2&2&2&8&
-	Tenir un journal des incidents. \\
+	Tenir un journal des incidents. &
+	2h \\
 \hline
 
 \end{longtable}
