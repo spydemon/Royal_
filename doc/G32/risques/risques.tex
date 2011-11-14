@@ -245,5 +245,26 @@ En effet sans une définition précise de notre projet il y avait un grand risqu
 Afin de répondre à ce risque une mise en place de réunion régulière lors de l’élaboration du cahier des charges ainsi que celle du dossier d'analyse pour bien définir le projet.
 De plus le nombre de livrables à été augmenté par rapport à celui prévu initialement.
 
+\subsection{Taille du projet}
+
+Le risque d'avoir un projet trop conséquent est fortement lié à la définition imprécise du projet. Ce risque, s'il survient peut entrainer à une restitution incomplète du projet, voir à un projet non fonctionnel. Pour palier à ce risque, il est nécéssaire d'avoir un estimation précise du temps nécessaire à la réalisation des différentes fonctionnalités du projet.
+
+\subsection{Compléxité des projets}
+
+Dans notre cas précis, nous devons continuer le développement d'un projet éxistant. Le risque dans ce cas ci est de nous retrouver face à un projet trop complexe que se soit pour la compréhension mais aussi pour la modification. Pour éviter ce problème il est nécessaire de prévoir du temps pour l'analyse du code éxistant et prendre rendez-vous avec l'ancienne équipe de développement pour pouvoir des informations suplémentaires. 
+
+\subsection{Interdépendance des projets}
+
+Etant donné que notre projet peut se développer sur plusieurs fronts à la fois, il est nécessaire d'ordonné le dévellopement des différentes parties, pour ne pas que le développement d'une partie dépende d'une fonctionnalité non développée. C'est pour cela qu'il est nécessaire d'utiliser un système de dépot pour mettre facilement les fichiers en commun.
+
+\subsection{Interface \emph{(Scanner)}}
+
+L'interface \emph{Scanner} est une application indépendante importante pour le projet car elle permet de capturer un code barre grâce à l'appareil photo du téléphone mobile. Dans ce cas-ci, cette application se télécharge au lancement de notre application et communique avec elle le code barre capturé. Le risque est que la version du Scanner diffère et devienne incompatible avec notre application. C'est pour cela qu'il faut intégré directement l'interface Scanner dans notre application.
+
+\subsection{Interface \emph{BDD ISBN}}
+
+Notre application à besoin de communiquer avec une base de données distante afin de récupérer des informations concernant des bandes déssinés. Ce genre de base de données éxiste et son disponible sur le réseau. Plusieurs problématique se pose cependant. Dans un premier temps, il faut choisir la base de données la plus complète, pour cela il est nécessaire de prévoir du temps pour tester ces bases afin de voir laquelle d'entre elle est la plus fournie. Dans un second temps il faut choisir celle qui permet le plus d'accès pour un temps donné. Mais le plus important est l'accès à la base. Il faut choisir un système d'accès simple et complet facilement intégrable au projet et qui ne changera pas dans le temps.
+
+\subsection{Interface \emph{Email}}
 
 \end{document}
