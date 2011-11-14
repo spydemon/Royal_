@@ -5,7 +5,11 @@
 \usepackage{subfig}
 \usepackage{lscape}
 \usepackage{longtable}
+\usepackage[utf8]{inputenc}
 \usepackage{array}
+\usepackage{multirow}
+\usepackage{color}
+\usepackage{colortbl}
 
 \infos{Benedick Steve, Meyblum Jean, Hagner Kevin}{G32}{T306AMAO}
 
@@ -18,7 +22,7 @@
 \section*{Définition du projet}
 
 Notre projet a pour but la gestion informatique des emprunts et achats de bandes dessinées (\emph{BD}) réalisés par un particulier.
-Afin de gérer la saisie et l’enregistrement des bandes dessinées nous allons modifier une application déjà existante : \emph{Royal}
+Afin de gérer la saisie et l'enregistrement des bandes dessinées nous allons modifier une application déjà existante : \emph{Royal}
 \footnote{Site officiel de l'application \emph{Royal} : \url{http://royal-project.org}}.
 
 Les modifications résident notamment dans l'ajout d'informations à stocker pour un album, avec notamment la gestion des bibliothèques dans les-quelles l'emprunt aurait pu être réalisé, et les dates de retour. 
@@ -49,81 +53,165 @@ Le niveau du risque est une note globale pour un risque donné correspondant à 
 
 \begin{landscape}
 
-%\begin{longtable}{||l|m{2cm}|m{2cm}|m{2cm}|m{2cm}|p{9cm}|m{2cm}||}
-\begin{longtable}{||l|c|c|c|c|p{9cm}|c||}
+\begin{longtable}{||>{\columncolor[gray]{0.9} }l|c|c|c|c|c|c|m{7cm}||}
 \caption{Liste des risques aux quels nous pouvons être soumis}
 \label{Un grand tableau} \\
-\hline \textbf{Titre} & \textbf{Proba} & \textbf{Gravité} & \textbf{Indétect.} & \textbf{Niveau de risque} & \textbf{Actions préventives} & \textbf{Coût} \\
+\hline 
+	\textbf{Titre} & 
+	\textbf{Détection} & 
+	\textbf{Apparition} & 
+	\textbf{Proba} & 
+	\textbf{Gravité} & 
+	\textbf{Indetectabilité} & 
+	\textbf{Niveau risque} & 
+	\textbf{Action préventive} \\
 \hline \hline
 \endhead
-Voici un super tableau &
-	60 & 
-	10 &
-	12 & 
-	25 &
-	Un truc bien long pour explique le risque et voir ce que ça va donner. Normalement c'est bon, mais après on ne sais jamais. On verra bien quoi, il faut dire qu'on a pas mal de place quand même. &
-	100 \\
+
+	\multicolumn{8}{||c||}{\rowcolor{gray} \color{white}Paramètres généraux} \\
 \hline
-Une deuxième entrée maintenant & 
-	10 &
-	25 &
-	12 &
-	40 & 
-	Alors là, c'est un peu bizarre comme truc. En fait c'est pas quelque chose de très complèxe mais on ne sait jamais ce qui peut arrivé. Après c'est pas comme si c'était la fin du monde non plus, on devrait survire ^^ &
-	150 \\
+
+	\multirow{2}*{Définition imprécise d'un projet }&
+	\multirow{2}*{ } &
+	\multirow{2}*{Début Septembre} &
+	\multirow{2}*{1}&
+	\multirow{2}*{1}&
+	\multirow{2}*{1}&
+	\multirow{2}*{1}&
+	Réunion avec le maitre d'ouvrage. \\
+	\cline{8-8}
+	&&&&&&&Multiples livrables. \\
 \hline
-Encore un mégatruc &
-	10 &
-	12 &
-	14 &
-	16 &
-	Il va bientôt pleuvoir dehord je crois. Je suis tenté de dire que c'est triste, mais d'un côté, la pluie c'est bien aussi. Ne serait-ce que pour la nappe phréatique qui en a certainement besoin. Et puis, on peut dire ce qu'on veut, mais la pluie a aussi son charme. &
-	100 \\
-\hline 
-Encore un mégatruc &
-	10 &
-	12 &
-	14 &
-	16 &
-	Il va bientôt pleuvoir dehord je crois. Je suis tenté de dire que c'est triste, mais d'un côté, la pluie c'est bien aussi. Ne serait-ce que pour la nappe phréatique qui en a certainement besoin. Et puis, on peut dire ce qu'on veut, mais la pluie a aussi son charme. &
-	100 \\
-\hline 
-Encore un mégatruc &
-	10 &
-	12 &
-	14 &
-	16 &
-	Il va bientôt pleuvoir dehord je crois. Je suis tenté de dire que c'est triste, mais d'un côté, la pluie c'est bien aussi. Ne serait-ce que pour la nappe phréatique qui en a certainement besoin. Et puis, on peut dire ce qu'on veut, mais la pluie a aussi son charme. &
-	100 \\
-\hline 
-Encore un mégatruc &
-	10 &
-	12 &
-	14 &
-	16 &
-	Il va bientôt pleuvoir dehord je crois. Je suis tenté de dire que c'est triste, mais d'un côté, la pluie c'est bien aussi. Ne serait-ce que pour la nappe phréatique qui en a certainement besoin. Et puis, on peut dire ce qu'on veut, mais la pluie a aussi son charme. &
-	100 \\
-\hline 
-Encore un mégatruc &
-	10 &
-	12 &
-	14 &
-	16 &
-	Il va bientôt pleuvoir dehord je crois. Je suis tenté de dire que c'est triste, mais d'un côté, la pluie c'est bien aussi. Ne serait-ce que pour la nappe phréatique qui en a certainement besoin. Et puis, on peut dire ce qu'on veut, mais la pluie a aussi son charme. &
-	100 \\
-\hline 
-Encore un mégatruc &
-	10 &
-	12 &
-	14 &
-	16 &
-	Il va bientôt pleuvoir dehord je crois. Je suis tenté de dire que c'est triste, mais d'un côté, la pluie c'est bien aussi. Ne serait-ce que pour la nappe phréatique qui en a certainement besoin. Et puis, on peut dire ce qu'on veut, mais la pluie a aussi son charme. &
-	100 \\
-\hline 
-C'est magifique &
-Dis donc & 
-:) \\ 
+
+	Taille d'un projet et durée &
+	&&1&2&2&4&
+	Éstimation MS Project. \\
 \hline
+
+	\multirow{2}*{Complexité des projets} &
+	\multirow{2}*{ } &
+	\multirow{2}*{Début septembre} &
+	\multirow{2}*{2} &
+	\multirow{2}*{5} &
+	\multirow{2}*{1} &
+	\multirow{2}*{10} &
+	Réunion avec les développeurs du projet initial. \\
+	\cline{8-8}
+	&&&&&&&Analyse en profondeur du code existant. \\
+\hline 
+
+	Indépendance des projets &&&
+	5&2&1&10&
+	Travail collaboratif, dépôt commun, ordre de développement. \\
+\hline 
+
+	Interface \emph{(Scanner)} &&
+	Milieu Octobre &
+	2&5&1&10&
+	Intégration de l'interface à l'application. \\ 
+\hline 
+
+	Interface \emph{(BDD ISBN)} &&&
+	1&5&1&5&
+	Choix d'une interface simple est complexe. \\
+\hline
+
+	Interface \emph{(Email)} &&&
+	1&5&1&5&
+	Mise en place d'une norme pour les emails. \\
+\hline
+
+	\multirow{2}*{Sophistication} &
+	\multirow{2}*{ } &
+	\multirow{2}*{Début Septembre} &
+	\multirow{2}*{5}&
+	\multirow{2}*{1}&
+	\multirow{2}*{2}&
+	\multirow{2}*{10}&
+	Réunion avec le maitre d'ouvrage. \\
+	\cline{8-8}
+	&&&&&&&Mise au courant permanent des phases de développement. \\
+\hline 
+
+	\multicolumn{8}{||c||}{\rowcolor{gray} \color{white}Paramètres liés aux utilisateurs} \\
+\hline
+
+	\multirow{2}*{Compétances} &&&
+	\multirow{2}*{5} &
+	\multirow{2}*{2} &
+	\multirow{2}*{1} &
+	\multirow{2}*{10} &
+	Manuel utilisateur. \\
+	\cline{8-8}
+	&&&&&&&Appliquer des règles d'ergonomie. \\
+\hline
+
+	\multicolumn{8}{||c||}{\rowcolor{gray} \color{white}Paramètres liés à la maitrise d'ouvrage} \\
+\hline
+
+	Décision &&&
+	1&1&1&1&
+	Proposition de solution. \\
+\hline
+
+	\multirow{2}*{Coordination maitrise d'ouvrage} &&
+	\multirow{2}*{Début novembre} &
+	\multirow{2}*{2} &
+	\multirow{2}*{2} &
+	\multirow{2}*{1} &
+	\multirow{2}*{4} &
+	Privilégier les rapports directs. \\
+	\cline{8-8}
+	&&&&&&&Mise en place de réunions régulières. \\
+\hline
+
+\newpage
+	\multicolumn{8}{||c||}{\rowcolor{gray} \color{white}Paramètres liées à la maitrise d'œuvre} \\
+\hline
+
+	Maîtrise des demandes &&&
+	1&2&4&8&
+	Ne pas accepter les demandes non décrites dans le \emph{CDC}. \\
+\hline
+
+	\multirow{3}*{Répartition des charges} &&&
+	\multirow{3}*{2} &
+	\multirow{3}*{2} &
+	\multirow{3}*{2} &
+	\multirow{3}*{8} &
+	Estimation \emph{MS Project}. \\
+	\cline{8-8}
+	&&&&&&&Analyse des compétences de chacun. \\
+	\cline{8-8}
+	&&&&&&&Réunion entre les développeurs. \\
+\hline 
+
+	Méthodes \slash{} Normes &&&
+	1&1&1&1&
+	Utilisation de normes de codage précises. \\
+\hline
+
+
+	\multirow{2}*{Équipe projet} &&& 
+	\multirow{2}*{2} &
+	\multirow{2}*{5} &
+	\multirow{2}*{1} &
+	\multirow{2}*{10} &
+	Choix des coéquipiers. \\
+	\cline{8-8}
+	&&&&&&&Répartition des tâches en fonction des compétences et affinités. \\ 
+\hline
+
+	Suivi &&&
+	5&2&1&10&
+	Publier l'avancement du travail en permanence. \\
+\hline
+
+	Gestion des incidents \slash{} dérives &&&
+	2&2&2&8&
+	Tenir un journal des incidents. \\
+\hline
+
 \end{longtable}
 
 \end{landscape}
