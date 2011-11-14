@@ -19,6 +19,12 @@
 \begin{document}
 
 \header
+
+\paragraph{}
+Dans ce document nous évaluerons les risques au sein de notre projet T3. 
+Cette évaluation des risques nous permettra d'anticiper et d'évaluer les principaux problèmes susceptible d'arriver dans lors de notre projet.
+Elle aura aussi pour but de nous permettre ne mettre en place des actions préventives afin de ne pas être confronter au différents problèmes.  
+
 \section*{Définition du projet}
 
 Notre projet a pour but la gestion informatique des emprunts et achats de bandes dessinées (\emph{BD}) réalisés par un particulier.
@@ -59,29 +65,34 @@ Le niveau du risque est une note globale pour un risque donné correspondant à 
 
 \item[Action préventives]
 Actions pouvant être mises en place pour éviter l'apparition du risque.
+
+\item[Coûts]
+Indique le coûts des différentes actions préventive que ce soit en volume horaire ou en prix. Dans le cadre de ce projet il ne s'agit que de volume horaire.  
 \end{description}
 
 \begin{landscape}
 
-\begin{longtable}{||l|c|c|c|c|c|c|m{7cm}|c||}
+\begin{longtable}{||l|l|c|c|c|c|c|c|m{6.5cm}|c||}
 \caption{Liste des risques aux quels nous pouvons être soumis}
 \label{Un grand tableau} \\
 \hline 
+	\textbf{No} &
 	\textbf{Risques} & 
 	\textbf{Détection} & 
 	\textbf{Apparition} & 
 	\textbf{Proba} & 
 	\textbf{Gvt} & 
 	\textbf{Indetect.} & 
-	\textbf{Niveau risque} & 
+	\textbf{Nv rsq} & 
 	\textbf{Action préventive} &
 	\textbf{Cout} \\
 \hline \hline
 \endhead
 
-	\multicolumn{9}{||c||}{\rowcolor{gray} \color{white}Paramètres généraux} \\
+	\multicolumn{10}{||c||}{\rowcolor{gray} \color{white}Paramètres généraux} \\
 \hline
 
+	\multirow{2}*{1} &
 	\multirow{2}*{Définition imprécise d'un projet }&
 	\multirow{2}*{03\slash{}09\slash{}2011} &
 	\multirow{2}*{10\slash{}09\slash{}2011} &
@@ -91,10 +102,11 @@ Actions pouvant être mises en place pour éviter l'apparition du risque.
 	\multirow{2}*{1}&
 	Réunion avec le maitre d'ouvrage. &
 	6h\\
-	\cline{8-9}
-	&&&&&&&Multiples livrables. &\\
+	\cline{9-10}
+	&&&&&&&&Multiples livrables. &\\
 \hline
 
+	2 &
 	Taille du projet et durée &
 	15\slash{}09\slash{}2011 &
 	&1&2&2&4&
@@ -102,6 +114,7 @@ Actions pouvant être mises en place pour éviter l'apparition du risque.
 	5h \\
 \hline
 
+	\multirow{2}*{3} &
 	\multirow{2}*{Complexité des projets} &
 	\multirow{2}*{12\slash{}09\slash{}2011} &
 	\multirow{2}*{12\slash{}09\slash{}2011} &
@@ -111,11 +124,12 @@ Actions pouvant être mises en place pour éviter l'apparition du risque.
 	\multirow{2}*{10} &
 	Réunion avec les développeurs du projet initial. &
 	3h \\
-	\cline{8-9}
-	&&&&&&&Analyse en profondeur du code existant. &
+	\cline{9-10}
+	&&&&&&&&Analyse en profondeur du code existant. &
 	16h \\
 \hline 
 
+	4 &
 	Indépendance des projets &
 	15\slash{}09\slash{}2011 &
 	&5&2&1&10&
@@ -123,6 +137,7 @@ Actions pouvant être mises en place pour éviter l'apparition du risque.
 	4h \\
 \hline 
 
+	5 &
 	Int erface \emph{(Scanner)} &
 	10\slash{}10\slash{}2011 &
 	10\slash{}10\slash{}2011 &
@@ -131,6 +146,7 @@ Actions pouvant être mises en place pour éviter l'apparition du risque.
 	16h \\ 
 \hline 
 
+	6 &
 	Interface \emph{(BDD ISBN)} &
 	20\slash{}09\slash{}2011 &&
 	1&5&1&5&
@@ -138,6 +154,7 @@ Actions pouvant être mises en place pour éviter l'apparition du risque.
 	8h \\
 \hline
 
+	7 &
 	Interface \emph{(Email)} &
 	22\slash{}09\slash{}2011 &&
 	1&5&1&5&
@@ -145,6 +162,7 @@ Actions pouvant être mises en place pour éviter l'apparition du risque.
 	4h \\
 \hline
 
+	\multirow{2}*{8} &
 	\multirow{2}*{Sophistication} &
 	\multirow{2}*{10\slash{}09\slash{}2011} &
 	\multirow{2}*{10\slash{}09\slash{}2011} &
@@ -154,14 +172,15 @@ Actions pouvant être mises en place pour éviter l'apparition du risque.
 	\multirow{2}*{10}&
 	Réunion avec le maitre d'ouvrage. & 
 	6h \\
-	\cline{8-9}
-	&&&&&&&Mise au courant permanent des phases de développement. &
+	\cline{9-10}
+	&&&&&&&&Mise au courant permanent des phases de développement. &
 	4h \\
 \hline 
 
-	\multicolumn{9}{||c||}{\rowcolor{gray} \color{white}Paramètres liés aux utilisateurs} \\
+	\multicolumn{10}{||c||}{\rowcolor{gray} \color{white}Paramètres liés aux utilisateurs} \\
 \hline
 
+	\multirow{2}*{9} &
 	\multirow{2}*{Compétances} &
 	\multirow{2}*{10\slash{}09\slash{}2011} &&
 	\multirow{2}*{5} &
@@ -170,20 +189,22 @@ Actions pouvant être mises en place pour éviter l'apparition du risque.
 	\multirow{2}*{10} &
 	Manuel utilisateur. &
 	20h \\
-	\cline{8-9}
-	&&&&&&&Appliquer des règles d'ergonomie. &
+	\cline{9-10}
+	&&&&&&&&Appliquer des règles d'ergonomie. &
 	7h \\
 \hline
 
-	\multicolumn{9}{||c||}{\rowcolor{gray} \color{white}Paramètres liés à la maitrise d'ouvrage} \\
+	\multicolumn{10}{||c||}{\rowcolor{gray} \color{white}Paramètres liés à la maitrise d'ouvrage} \\
 \hline
 
+	10 &
 	Décision &
 	07\slash{}11\slash{}2011 &&
 	1&1&1&1&
 	Proposition de solution. &\\
 \hline
 
+	\multirow{2}*{11} &
 	\multirow{2}*{Coordination maitrise d'ouvrage} &
 	\multirow{2}*{15\slash{}09\slash{}2011} &
 	\multirow{2}*{15\slash{}09\slash{}2011} &
@@ -192,21 +213,23 @@ Actions pouvant être mises en place pour éviter l'apparition du risque.
 	\multirow{2}*{1} &
 	\multirow{2}*{4} &
 	Privilégier les rapports directs. &\\
-	\cline{8-9}
-	&&&&&&&Mise en place de réunions régulières. &
+	\cline{9-10}
+	&&&&&&&&Mise en place de réunions régulières. &
 	6h\\
 \hline
 
 \newpage
-	\multicolumn{9}{||c||}{\rowcolor{gray} \color{white}Paramètres liées à la maitrise d'œuvre} \\
+	\multicolumn{10}{||c||}{\rowcolor{gray} \color{white}Paramètres liées à la maitrise d'œuvre} \\
 \hline
 
+	12 &
 	Maîtrise des demandes &
 	07\slash{}11\slash{}2011 &&
 	1&2&4&8&
 	Ne pas accepter les demandes non décrites dans le \emph{CDC}. & \\
 \hline
 
+	\multirow{3}*{12} & 
 	\multirow{3}*{Répartition des charges} &
 	\multirow{3}*{01\slash{}10\slash{}2011} &&
 	\multirow{3}*{2} &
@@ -215,14 +238,15 @@ Actions pouvant être mises en place pour éviter l'apparition du risque.
 	\multirow{3}*{8} &
 	Estimation \emph{MS Project}. &
 	5h\\
-	\cline{8-9}
-	&&&&&&&Analyse des compétences de chacun. & 
+	\cline{9-10}
+	&&&&&&&&Analyse des compétences de chacun. & 
 	1h \\
-	\cline{8-9}
-	&&&&&&&Réunion entre les développeurs. & 
+	\cline{9-10}
+	&&&&&&&&Réunion entre les développeurs. & 
 	10h \\
 \hline 
 
+	13 &
 	Méthodes \slash{} Normes &
 	10\slash{}10\slash{}2011 &&
 	1&1&1&1&
@@ -231,6 +255,7 @@ Actions pouvant être mises en place pour éviter l'apparition du risque.
 \hline
 
 
+	\multirow{2}*{14} &
 	\multirow{2}*{Équipe projet} &
 	\multirow{2}*{03\slash{}09\slash{}2011} && 
 	\multirow{2}*{2} &
@@ -238,11 +263,12 @@ Actions pouvant être mises en place pour éviter l'apparition du risque.
 	\multirow{2}*{1} &
 	\multirow{2}*{10} &
 	Choix des coéquipiers. & \\
-	\cline{8-9}
-	&&&&&&&Répartition des tâches en fonction des compétences et affinités. & 
+	\cline{9-10}
+	&&&&&&&&Répartition des tâches en fonction des compétences et affinités. & 
 	1h\\ 
 \hline
 
+	15 &
 	Suivi &
 	10\slash{}10\slash{}2011 &&
 	5&2&1&10&
@@ -250,6 +276,7 @@ Actions pouvant être mises en place pour éviter l'apparition du risque.
 	\\
 \hline
 
+	16 &
 	Gestion des incidents \slash{} dérives &
 	15\slash{}10\slash{}2011 &&
 	2&2&2&8&
