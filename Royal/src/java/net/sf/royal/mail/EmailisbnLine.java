@@ -16,4 +16,13 @@ public class EmailisbnLine {
 	public String getTitle(){
 		return this.title;
 	}
+	
+	@Override
+	public String toString(){
+		if(!this.title.isEmpty()){
+			return this.title;
+		}
+		return this.isbn.toString(true);
+		
+	}
 }

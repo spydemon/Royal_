@@ -17,6 +17,7 @@ import net.sf.royal.gui.tree.AlbumTree;
 import net.sf.royal.gui.tree.DeleteActionListener;
 import net.sf.royal.gui.tree.EditActionListener;
 import net.sf.royal.gui.wizard.add_dialog.AlbumAddDialog;
+import net.sf.royal.gui.wizzard.mail_import.MailImportDialog;
 
 /** 
   * @author Soulou
@@ -85,6 +86,14 @@ public class MainToolBar extends JToolBar
 				IconManager.getIcon("import.png"), 
 				LocaleManager.getInstance().getString("fullimport"),
 				  ShortcutManager.UPDATE);
+		
+		this.jbImport.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e)
+			{
+				new MailImportDialog();
+			}
+		});
+		
 		this.jbSync = this.makeButton(LocaleManager.getInstance().getString("sync"),
 				  IconManager.getIcon("sync.png"),
 				  LocaleManager.getInstance().getString("fullsync"),

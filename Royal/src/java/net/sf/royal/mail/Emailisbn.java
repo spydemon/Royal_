@@ -1,5 +1,6 @@
 package net.sf.royal.mail;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
 
 import javax.mail.Flags.Flag;
@@ -24,5 +25,20 @@ public class Emailisbn {
 	
 	public ArrayList<EmailisbnLine> getEmailisbnLine(){
 		return this.lisbn;
+	}
+	
+	public Message getMessage(){
+		return this.msg;
+	}
+	
+	@Override
+	public String toString(){
+		try {
+			return DateFormat.getInstance().format(this.msg.getReceivedDate()).toString();
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "ISBN";
 	}
 }

@@ -1,5 +1,8 @@
 package net.sf.royal.gui.wizzard.mail_import;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dialog;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -9,50 +12,51 @@ import java.awt.Insets;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.util.ArrayList;
 
+import javax.mail.MessagingException;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.JTree;
 import javax.swing.SwingUtilities;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
+import javax.swing.tree.DefaultMutableTreeNode;
 
 import net.sf.royal.datamodel.Album;
 import net.sf.royal.datamodel.Collection;
 import net.sf.royal.datamodel.Editor;
 import net.sf.royal.gui.manager.LocaleManager;
 import net.sf.royal.gui.manager.MessagePaneManager;
+import net.sf.royal.gui.manager.PropertyManager;
 import net.sf.royal.gui.manager.ShortcutManager;
 import net.sf.royal.gui.pane.AlbumPane;
 import net.sf.royal.gui.pane.BottomBarPane;
 import net.sf.royal.gui.util.RegexpTextField;
 import net.sf.royal.gui.wizard.add_dialog.CollectionAddDialog;
 import net.sf.royal.gui.wizard.add_dialog.JEntryPane;
+import net.sf.royal.mail.Emailisbn;
+import net.sf.royal.mail.EmailisbnLine;
+import net.sf.royal.mail.Mail;
+import net.sf.royal.mail.Misbn;
 import net.sf.royal.persistency.PersistencyManager;
 import net.sf.royal.persistency.SaveItemPersistency;
+import net.sf.royal.util.Base64Utils;
+import net.sf.royal.web.ComicNotFoundException;
+import net.sf.royal.web.ConnectionProblemException;
+import net.sf.royal.web.GoogleBook;
 
 public class MailImportDialog extends JDialog {
 		//Fields	
-		/**
-		 * The JTextField for the name of the serie
-		 */
-		private JTextField jtfCollectionName;
-		/**
-		 * The JEntryPane for the name of the editor
-		 */
-		private JEntryPane jepEditor;
-		/**
-		 * Website of the collection
-		 */
-		private RegexpTextField rtfWeb;
-		/**
-		 * The JTextAera for a description of the collection
-		 */
-		private JTextArea jtaDescription;
-		
-		private Collection currentCollection;
-		private Editor editorCollection;
 		
 		/**
 		 * Button to validate the collection
@@ -62,6 +66,8 @@ public class MailImportDialog extends JDialog {
 		 * Button to cancel all modifications
 		 */
 		private JButton jbCancel;
+		private JPanel jpFind;
+		private JPanel jpList;
 		
 	// Constructors
 		/**
@@ -77,11 +83,13 @@ public class MailImportDialog extends JDialog {
 			
 			SwingUtilities.invokeLater(new Runnable()
 			{
+				@Override
 				public void run()
 				{
 					MailImportDialog.this.init();
 					MailImportDialog.this.initListener();
 					MailImportDialog.this.display();
+					MailImportDialog.this.setVisible(true);
 				}
 			});
 		}
@@ -106,9 +114,11 @@ public class MailImportDialog extends JDialog {
 		private void init()
 		{
 			//this.setTitle(this.sTitle);
+			this.jpFind = new JPanel();
 			this.setMinimumSize(new Dimension(400,300));
-			this.setLayout(new GridBagLayout());
-			
+			this.jpFind.setMinimumSize(new Dimension(400,300));
+			this.setLayout(new BorderLayout());
+			this.jpFind.setLayout(new GridBagLayout());
 			Insets iComp = new Insets(5, 5, 5, 5);
 			
 			GridBagConstraints gbc = new GridBagConstraints();
@@ -121,7 +131,14 @@ public class MailImportDialog extends JDialog {
 			gbc.gridy = 1;
 			gbc.gridheight = 1;
 			gbc.gridwidth = 1;
-
+			this.jbOk = new JButton(LocaleManager.getInstance().getString("ok"));
+			this.jbCancel = new JButton(LocaleManager.getInstance().getString("cancel"));
+			gbc.gridwidth = 1;
+			this.jpFind.add(this.jbOk, gbc);
+			gbc.gridx +=1;
+			this.jpFind.add(this.jbCancel, gbc);
+			this.add(jpFind, BorderLayout.CENTER);
+			
 		}
 
 		/**
@@ -148,15 +165,13 @@ public class MailImportDialog extends JDialog {
 		 */
 		public void saveAlbums(Album[] as)
 		{
-			BottomBarPane.getInstance().addAlbum();
-			SaveItemPersistency.saveAlbum(a);
-			AlbumPane.getInstance().refresh();
+			for(Album a : as){
+				BottomBarPane.getInstance().addAlbum();
+				SaveItemPersistency.saveAlbum(a);
+				AlbumPane.getInstance().refresh();
+			}
 		}
 		
-		public Long getID()
-		{
-			return this.currentCollection.getId();
-		}
 		
 		
 	// Classes
@@ -165,7 +180,7 @@ public class MailImportDialog extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent ae)
 			{
-				CollectionAddDialog.this.dispose();
+				MailImportDialog.this.dispose();
 			}
 		}
 
@@ -174,22 +189,71 @@ public class MailImportDialog extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent ae)
 			{
-				if((CollectionAddDialog.this.jtfCollectionName.getText()).isEmpty())
-				{
-					MessagePaneManager.showInfoPane(LocaleManager.getInstance().getString("collection_noname"));
+				try {
+					Misbn m = new Misbn((PropertyManager.getInstance().getProperty("mail_protocol").equals("IMAP")) ? Mail.IMAP : Mail.POP3);
+					String username = PropertyManager.getInstance().getProperty("mail_login");
+					String password = Base64Utils.decode(PropertyManager.getInstance().getProperty("mail_password"));
+					String host = PropertyManager.getInstance().getProperty("mail_server");
+					m.setUserPass(username, password, host);
+					m.connect();
+					m.openFolder("INBOX");					
+					ArrayList<Emailisbn> eisbn = m.getIsbnBySubject("ISBN-",100);
+					GridBagConstraints gbc = new GridBagConstraints();
+					gbc.gridy = 0;
+					MailImportDialog.this.jpList = new JPanel();
+					MailImportDialog.this.jpList.setLayout(new GridBagLayout());
+					MailImportDialog.this.jpList.setMinimumSize(new Dimension(400,300));
+					DefaultMutableTreeNode Jroot = new DefaultMutableTreeNode(LocaleManager.getInstance().getString("get_mail"));
+					for(Emailisbn i : eisbn){
+						DefaultMutableTreeNode top = new DefaultMutableTreeNode(i);
+						ArrayList<EmailisbnLine> eisbnline =  i.getEmailisbnLine();
+						for(EmailisbnLine il : eisbnline){
+							 DefaultMutableTreeNode isbnt = new DefaultMutableTreeNode(il);
+							 top.add(isbnt);
+						}
+						Jroot.add(top);
+					}
+					JTree jtree = new JTree(Jroot);
+					jtree.addTreeSelectionListener(new ShowPrewiewTreeListener());
+					JScrollPane treeView = new JScrollPane(jtree);
+					treeView.setPreferredSize(new Dimension(400,300));
+					MailImportDialog.this.jpList.add(treeView, gbc);
+					MailImportDialog.this.remove(jpFind);
+					MailImportDialog.this.add(jpList, BorderLayout.CENTER);
+					MailImportDialog.this.repaint();
+					MailImportDialog.this.display();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
 				}
-				else if(!CollectionAddDialog.this.rtfWeb.getText().isEmpty() && 
-						CollectionAddDialog.this.rtfWeb.check())
-				{
-					CollectionAddDialog.this.rtfWeb.setIncorrect();
-					MessagePaneManager.showInfoPane(LocaleManager.getInstance().getString("web_invalid"));
-				}
-				else
-				{
-					CollectionAddDialog.this.saveCollection();
-					CollectionAddDialog.this.dispose();
-				}
+
 			}
-		}	
+			class ShowPrewiewTreeListener implements TreeSelectionListener{
+
+				@Override
+				public void valueChanged(TreeSelectionEvent arg0) {
+					DefaultMutableTreeNode dmt = (DefaultMutableTreeNode) arg0.getPath().getLastPathComponent();
+					if(dmt.getUserObject() instanceof EmailisbnLine){
+						EmailisbnLine eil = (EmailisbnLine) dmt.getUserObject();
+						GoogleBook gb = new GoogleBook(eil.getIsbn());
+						try {
+							gb.execute();
+							System.out.println(gb.getVolumeInfo().getTitle()+" - "+gb.getVolumeInfo().getDescription());
+						} catch (ConnectionProblemException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (ComicNotFoundException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					else if(dmt.getUserObject() instanceof Emailisbn){
+
+					}
+				}
+				
+			}
+		}
+		
 
 }

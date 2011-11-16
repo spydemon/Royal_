@@ -21,7 +21,7 @@ public class Misbn extends Mail {
 			Emailisbn ei = new Emailisbn(mgs[i]);
 			String[] lines = Mail.getLines(mgs[i]);
 			for(int j = 0; j<lines.length;j++){
-				String[] l  = lines[0].split("|", 2);
+				String[] l  = lines[j].split("\\|", 2);
 				if(l.length > 0){
 					String title = "";
 					ISBN isbn;
