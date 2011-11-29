@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:weightSum="1" android:background="@drawable/royal_scanner_defaultfontpage2">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_marginTop="20px" android:layout_height="match_parent" android:clickable="true" android:id="@+id/rlSetupMail" android:layout_marginRight="15px" android:layout_marginLeft="15px" android:layout_marginBottom="5px">
+        <TextView android:layout_width="wrap_content" android:textAppearance="?android:attr/textAppearanceMedium" android:layout_height="wrap_content" android:id="@+id/tvSetupMailTitle" android:textColor="#FFFFFF" android:layout_marginRight="30px" android:layout_marginLeft="60px" android:layout_marginTop="30dp" android:text="@string/setup_mail_title"></TextView>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="60px" android:layout_marginRight="30px" android:textColor="#FFFFFF" android:id="@+id/tvSetupEmailTitle" android:layout_marginTop="85dp" android:text="@string/setup_email_title"></TextView>
+        <EditText android:inputType="textEmailAddress" android:id="@+id/etInputEmail" android:layout_marginLeft="60px" android:layout_marginRight="30px" android:layout_height="wrap_content" android:layout_width="match_parent" android:hint="@string/input_adresse" android:layout_marginTop="130dp">
+            <requestFocus></requestFocus>
+        </EditText>
+        <EditText android:inputType="textPassword" android:id="@+id/etInputPassword" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="60px" android:layout_marginRight="30px" android:hint="@string/input_password" android:layout_marginTop="180dp"></EditText>
+        <Button android:id="@+id/btnSetupMail" android:clickable="false" android:layout_height="wrap_content" android:layout_width="240dp" android:layout_centerHorizontal="true" android:layout_marginTop="397dp" android:text="@string/btn_valider"></Button>
+    </RelativeLayout>    
+</LinearLayout>

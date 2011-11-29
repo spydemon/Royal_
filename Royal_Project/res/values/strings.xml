@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?><!DOCTYPE resources SYSTEM "resources.dtd">
+<resources>
+    <string name="app_name">Royal_Scanner</string>
+    <string name="btnScan">Scan a book</string>
+    <string name="btnScanList">Scan a book\'s list \n (from the same place)</string>
+    <string name="btnSetupMail">Set the Email</string>
+    <string name="btnSynchro">Synchronisation of the albums present in Royal_</string>
+    <string name="btnAbout">About Royal_Scanner</string>
+    <string name="btn_valider">Validate</string>
+    <string name="scan_title">ISBN Scanned:</string>
+    <string name="btnSendIsbn">Send ISBN to Royal_</string>
+    <string name="sendIsbn_noEmail">Please first setup your email</string>    
+    <string name="btnScan_reScan">Make a new scan</string>
+    <string name="scan_error">Your barcode isn\'t a book barcode</string>
+    <string name="setup_mail_title">Setup your email:</string>
+    <string name="setup_email_title">Take your Gmail information:</string>
+    <string name="input_adresse">Email</string>
+    <string name="input_password">Password</string>
+    <string name="input_serveur_email">Host</string>   
+    <string name="input_protocole">Chose a prototcole</string>
+	<string name="synchro_title">Synchronisation of the albums présent in Royal_ :</string>
+	<string name="synchro_btn_Start">Lunc the synchronis with Royal_</string>
+	<string name="about_title">About Royal_Scanner</string>
+	<string name="about_info">Royal_Scanner is a Software witch allowed you to scan comics to add them in Royal_ on your PC. The Software Royal_Scanner was développed by Benedick steve, Hagner Kévin and Meyblum Jean</string>
+    <string name="setup_email_test_mail">Test Email send by Royal_Scanner in the email\'s configuration</string>
+	<string name="setup_email_send_ok">Test email sent successfully</string>
+	<string name="setup_email_send_not_ok">Test Email was not sent, please setup your information\'s email again</string>
+	<string name="setup_email_no_info">Please setup correctly your information\'s email</string>
+	<string name="email_sent">Email was sent successfully</string>
+	<string name="email_not_sent">Email was not sent</string>
+	<string name="adQuit_message">Do you really want to quit Royal_Scanner?</string>
+	<string name="btnYes">Yes</string>
+	<string name="btnNo">No</string>
+</resources>
+

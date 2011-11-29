@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:weightSum="1" android:background="@drawable/royal_scanner_defaultfontpage2">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayoutscan"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="15px"
+        android:layout_marginTop="20px"
+        android:clickable="true" >
+
+        <TextView
+            android:id="@+id/tvScanTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="45px"
+            android:layout_marginRight="30px"
+            android:layout_marginTop="35dp"
+            android:text="@string/scan_title"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#FFFFFF" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/tvScanResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="65px"
+            android:layout_marginRight="30px"
+            android:layout_marginTop="85dp"
+            android:textColor="#FFFFFF" >
+        </TextView>
+
+        <Button
+            android:id="@+id/btnScan"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/tvScanTitle"
+            android:layout_below="@+id/tvScanResult"
+            android:layout_marginTop="40dp"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/btnSendIsbn"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/btnScan"
+            android:layout_below="@+id/btnScan"
+            android:layout_marginTop="30dp"
+            android:visibility="invisible" android:text="@string/btnSendIsbn"/>
+
+    </RelativeLayout>
+    
+</LinearLayout>
