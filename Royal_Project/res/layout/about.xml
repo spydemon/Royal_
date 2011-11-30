@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/royal_scanner_defaultfontpage2">
+    <TextView android:layout_width="wrap_content" android:textAppearance="?android:attr/textAppearanceMedium" android:layout_height="wrap_content" android:textColor="#FFFFFF" android:layout_alignParentTop="true" android:layout_marginTop="48dp" android:layout_alignLeft="@+id/tvAPropos" android:id="@+id/tvAboutTitle" android:text="@string/about_title"></TextView>
+    <TextView android:layout_width="wrap_content" android:id="@+id/tvAPropos" android:layout_height="wrap_content" android:textColor="#FFFFFF" android:layout_alignParentLeft="true" android:layout_marginTop="86dp" android:layout_marginLeft="60px" android:layout_marginRight="30px" android:text="@string/about_info"></TextView>  
+       
+</RelativeLayout>

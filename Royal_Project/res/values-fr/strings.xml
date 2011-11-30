@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE resources SYSTEM "resources.dtd">
+<resources>
+    <string name="app_name">Royal_Scanner</string>
+    <string name="btnScan">Scanner un livre</string>
+    <string name="btnScanList">Scanner une liste de livre \n (Provenant de la même bibliotèque)</string>
+    <string name="btnSetupMail">Configuration de l\'adresse Email</string>
+    <string name="btnSynchro">Synchronisation des albums déja présents dans Royal_</string>
+    <string name="btnAbout">À propos de Royal_Scanner</string>
+    <string name="btn_valider">Valider</string>
+    <string name="scan_title">ISBN de la bande déssinée scannée:</string>
+    <string name="btnSendIsbn">Envoyer à Royal_</string>
+    <string name="sendIsbn_noEmail">Veuillez d\'abord configurer votre adresse gmail</string> 
+    <string name="btnScan_reScan">Effectuer un nouveau scan</string>
+    <string name="scan_error">Votre code barre ne correspond pas à une bande déssinée</string>    
+    <string name="setup_mail_title">Configuration de votre adresse email:</string>
+    <string name="setup_email_title">Veuillez saisir les information sur votre adresse Gmail:</string>
+    <string name="input_adresse">Adresse email</string>
+    <string name="input_password">Mots de passe</string>
+    <string name="input_serveur_email">Serveur email</string>   
+    <string name="input_protocole">Choisissez un prototcole</string>
+	<string name="synchro_title">Synchronisation des albums déja présents sur Royal_ :</string>
+	<string name="synchro_btn_Start">Lancer la synchronisation avec Royal_</string>
+	<string name="about_title">À propos de Royal_Scanner</string>
+	<string name="about_info">Royal_Scanner est une application permettant de scanner des bandes déssinées afin de les rajouter au logiciel Royal_ installé sur votre ordinateur. Le logiciel Royal_Scanner à été développé par Benedick steve, Hagner Kévin et Meyblum Jean</string>
+    <string name="setup_email_test_mail">Email de test envoyé par l\'application Royal_Scanner lors de la configuration de l\'adresse email</string>
+	<string name="setup_email_send_ok">Email de test bien envoyé</string>
+	<string name="setup_email_send_not_ok">Erreur lors de l\'envoi de l\'email de test veuillez reconfigurer l\'adresse email</string>
+	<string name="setup_email_no_info">Veuillez saisir correctement les information de votre adresse email</string>
+	<string name="email_sent">Email envoyé</string>
+	<string name="email_not_sent">Erreur lors de l\'envoi de l\'email</string>
+	<string name="adQuit_message">Voulez vous vraiment quitter Royal_Scanner?</string>
+	<string name="btnYes">Oui</string>
+	<string name="btnNo">Non</string>
+</resources>
+
