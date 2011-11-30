@@ -1,56 +1,45 @@
 package net.sf.royal.gui.wizzard.mail_import;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dialog;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Insets;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.io.IOException;
-import java.text.DateFormat;
 import java.util.ArrayList;
 
 import javax.mail.MessagingException;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
 import javax.swing.JTree;
 import javax.swing.SwingUtilities;
-import javax.swing.event.TreeSelectionEvent;
-import javax.swing.event.TreeSelectionListener;
+import javax.swing.ToolTipManager;
 import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.TreeSelectionModel;
+
+import com.google.api.services.books.model.VolumeVolumeInfo;
 
 import net.sf.royal.datamodel.Album;
-import net.sf.royal.datamodel.Collection;
-import net.sf.royal.datamodel.Editor;
 import net.sf.royal.gui.manager.LocaleManager;
-import net.sf.royal.gui.manager.MessagePaneManager;
 import net.sf.royal.gui.manager.PropertyManager;
-import net.sf.royal.gui.manager.ShortcutManager;
 import net.sf.royal.gui.pane.AlbumPane;
 import net.sf.royal.gui.pane.BottomBarPane;
-import net.sf.royal.gui.util.RegexpTextField;
 import net.sf.royal.gui.wizard.add_dialog.CollectionAddDialog;
-import net.sf.royal.gui.wizard.add_dialog.JEntryPane;
 import net.sf.royal.mail.Emailisbn;
 import net.sf.royal.mail.EmailisbnLine;
 import net.sf.royal.mail.Mail;
 import net.sf.royal.mail.Misbn;
-import net.sf.royal.persistency.PersistencyManager;
 import net.sf.royal.persistency.SaveItemPersistency;
 import net.sf.royal.util.Base64Utils;
+import net.sf.royal.util.ISBN;
 import net.sf.royal.web.ComicNotFoundException;
 import net.sf.royal.web.ConnectionProblemException;
 import net.sf.royal.web.GoogleBook;
@@ -68,6 +57,12 @@ public class MailImportDialog extends JDialog {
 		private JButton jbCancel;
 		private JPanel jpFind;
 		private JPanel jpList;
+		private JLabel jlInfo;
+		private String serror;
+		private DefaultMutableTreeNode Jroot;
+		private Misbn mailaccount;
+		private JButton jbImport;
+		private ArrayList<Emailisbn> eisbn;
 		
 	// Constructors
 		/**
@@ -86,10 +81,15 @@ public class MailImportDialog extends JDialog {
 				@Override
 				public void run()
 				{
-					MailImportDialog.this.init();
-					MailImportDialog.this.initListener();
-					MailImportDialog.this.display();
-					MailImportDialog.this.setVisible(true);
+					if(MailImportDialog.this.tryConnection()){
+						MailImportDialog.this.init();
+						MailImportDialog.this.initListener();
+						MailImportDialog.this.display();
+						MailImportDialog.this.setVisible(true);
+					}
+					else{
+						JOptionPane.showMessageDialog(MailImportDialog.this, MailImportDialog.this.serror);
+					}
 				}
 			});
 		}
@@ -113,32 +113,42 @@ public class MailImportDialog extends JDialog {
 		 */
 		private void init()
 		{
-			//this.setTitle(this.sTitle);
-			this.jpFind = new JPanel();
-			this.setMinimumSize(new Dimension(400,300));
-			this.jpFind.setMinimumSize(new Dimension(400,300));
-			this.setLayout(new BorderLayout());
-			this.jpFind.setLayout(new GridBagLayout());
-			Insets iComp = new Insets(5, 5, 5, 5);
-			
-			GridBagConstraints gbc = new GridBagConstraints();
-
-			gbc.anchor = GridBagConstraints.WEST;
-			gbc.fill = GridBagConstraints.HORIZONTAL;
-			gbc.weightx = 0;
-			gbc.weighty = 0;
-			gbc.gridx = 0;
-			gbc.gridy = 1;
-			gbc.gridheight = 1;
-			gbc.gridwidth = 1;
 			this.jbOk = new JButton(LocaleManager.getInstance().getString("ok"));
 			this.jbCancel = new JButton(LocaleManager.getInstance().getString("cancel"));
-			gbc.gridwidth = 1;
-			this.jpFind.add(this.jbOk, gbc);
-			gbc.gridx +=1;
-			this.jpFind.add(this.jbCancel, gbc);
+			this.jbImport = new JButton(LocaleManager.getInstance().getString("import"));
+			this.setLayout(new BorderLayout());
+			this.jpFind = new JPanel();
+			this.jpFind.setMinimumSize(new Dimension(400,300));
+			this.jpFind.setLayout(new BorderLayout());
+			this.jpFind.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+			JPanel jp = new JPanel();
+			jp.setLayout(new GridBagLayout());
+			GridBagConstraints gbc = new GridBagConstraints();
+			gbc.gridx = 0;
+			gbc.gridy = 0;
+			jp.add(this.jbOk, gbc);
+			gbc.gridx += 1;
+			jp.add(this.jbCancel, gbc);				
+			this.jlInfo = new JLabel("Cliquer sur Ok pour procéder à l'inspection de vos mails :"); //TODO LocaleManager
+			this.jpFind.add(jlInfo,BorderLayout.NORTH);
+			this.jpFind.add(jp, BorderLayout.CENTER);
 			this.add(jpFind, BorderLayout.CENTER);
-			
+			gbc = new GridBagConstraints();
+			gbc.gridy = 0;
+			this.jpList = new JPanel();
+			this.jpList.setLayout(new GridBagLayout());
+			this.jpList.setMinimumSize(new Dimension(400,300));
+			this.Jroot = new DefaultMutableTreeNode(LocaleManager.getInstance().getString("get_mail"));
+			JTree jtree = new JTree(Jroot);
+			ToolTipManager.sharedInstance().registerComponent(jtree);
+			jtree.setCellRenderer(new MailTreeRenderer());
+			JScrollPane treeView = new JScrollPane(jtree);
+			treeView.setPreferredSize(new Dimension(400,100));
+			jtree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
+			this.jpList.add(treeView, gbc);
+			gbc.gridy += 1;
+			this.jpList.add(this.jbImport, gbc);
+		
 		}
 
 		/**
@@ -146,8 +156,9 @@ public class MailImportDialog extends JDialog {
 		 */
 		private void initListener()
 		{
-			jbOk.addActionListener(new SaveActionListener());
+			jbOk.addActionListener(new ImportActionListener());
 			jbCancel.addActionListener(new CancelActionListener());
+			jbImport.addActionListener(new SaveAlbumsListener());
 		}
 		
 		/**
@@ -160,16 +171,43 @@ public class MailImportDialog extends JDialog {
 			this.setDefaultCloseOperation(HIDE_ON_CLOSE);
 		}
 		
-		/**
-		 * Save current Collection to in the database
-		 */
-		public void saveAlbums(Album[] as)
-		{
-			for(Album a : as){
-				BottomBarPane.getInstance().addAlbum();
-				SaveItemPersistency.saveAlbum(a);
-				AlbumPane.getInstance().refresh();
+		
+		
+		private boolean tryConnection(){
+			boolean verif = true;
+			if(PropertyManager.getInstance().getProperty("mail_protocol").equals("IMAP") || PropertyManager.getInstance().getProperty("mail_protocol").equals("POP3")){
+				this.mailaccount = new Misbn((PropertyManager.getInstance().getProperty("mail_protocol").equals("IMAP")) ? Mail.IMAP : Mail.POP3);
+				String username = PropertyManager.getInstance().getProperty("mail_login");
+				String host = PropertyManager.getInstance().getProperty("mail_server");
+				String password = null;
+				try {
+					password = Base64Utils.decode(PropertyManager.getInstance().getProperty("mail_password"));
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					serror="Erreur de conversion du mot de passe !";
+					verif = false;
+				}
+				if(verif){
+					this.mailaccount.setUserPass(username, password, host);
+					try {
+						this.mailaccount.connect();
+					} catch (Exception e) {
+						serror="Erreur de connexion !";
+						verif = false;
+					}
+					if(verif){
+						try {
+							this.mailaccount.openFolder("INBOX");
+						} catch (Exception e) {
+							serror="Erreur d'ouverture de votre boite mail !";
+							verif = false;
+						}
+						return verif;
+					}
+				}
+				
 			}
+			return false;		
 		}
 		
 		
@@ -184,61 +222,55 @@ public class MailImportDialog extends JDialog {
 			}
 		}
 
-		class SaveActionListener implements ActionListener
+		class ImportActionListener implements ActionListener
 		{
 			@Override
 			public void actionPerformed(ActionEvent ae)
 			{
-				try {
-					Misbn m = new Misbn((PropertyManager.getInstance().getProperty("mail_protocol").equals("IMAP")) ? Mail.IMAP : Mail.POP3);
-					String username = PropertyManager.getInstance().getProperty("mail_login");
-					String password = Base64Utils.decode(PropertyManager.getInstance().getProperty("mail_password"));
-					String host = PropertyManager.getInstance().getProperty("mail_server");
-					m.setUserPass(username, password, host);
-					m.connect();
-					m.openFolder("INBOX");					
-					ArrayList<Emailisbn> eisbn = m.getIsbnBySubject("ISBN-",100);
-					GridBagConstraints gbc = new GridBagConstraints();
-					gbc.gridy = 0;
-					MailImportDialog.this.jpList = new JPanel();
-					MailImportDialog.this.jpList.setLayout(new GridBagLayout());
-					MailImportDialog.this.jpList.setMinimumSize(new Dimension(400,300));
-					DefaultMutableTreeNode Jroot = new DefaultMutableTreeNode(LocaleManager.getInstance().getString("get_mail"));
-					for(Emailisbn i : eisbn){
-						DefaultMutableTreeNode top = new DefaultMutableTreeNode(i);
-						ArrayList<EmailisbnLine> eisbnline =  i.getEmailisbnLine();
-						for(EmailisbnLine il : eisbnline){
-							 DefaultMutableTreeNode isbnt = new DefaultMutableTreeNode(il);
-							 top.add(isbnt);
-						}
-						Jroot.add(top);
+					MailImportDialog.this.eisbn = null;
+					try {
+						MailImportDialog.this.eisbn = MailImportDialog.this.mailaccount.getIsbnBySubject("ISBN-",100);
+					} catch (MessagingException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
 					}
-					JTree jtree = new JTree(Jroot);
-					jtree.addTreeSelectionListener(new ShowPrewiewTreeListener());
-					JScrollPane treeView = new JScrollPane(jtree);
-					treeView.setPreferredSize(new Dimension(400,300));
-					MailImportDialog.this.jpList.add(treeView, gbc);
-					MailImportDialog.this.remove(jpFind);
-					MailImportDialog.this.add(jpList, BorderLayout.CENTER);
+					GridBagConstraints gbc = new GridBagConstraints();
+					for(Emailisbn i : MailImportDialog.this.eisbn){
+						DefaultMutableTreeNode top = new DefaultMutableTreeNode(i);
+						MailImportDialog.this.Jroot.add(top);
+					}
+					JTree jtree = new JTree(MailImportDialog.this.Jroot);
+					ToolTipManager.sharedInstance().registerComponent(jtree);
+					jtree.setCellRenderer(new MailTreeRenderer());
+					jtree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
+					MailImportDialog.this.remove(MailImportDialog.this.jpFind);
+					MailImportDialog.this.jpList.repaint();
+					MailImportDialog.this.add(MailImportDialog.this.jpList, BorderLayout.NORTH);
 					MailImportDialog.this.repaint();
-					MailImportDialog.this.display();
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-
+					MailImportDialog.this.display();				
 			}
-			class ShowPrewiewTreeListener implements TreeSelectionListener{
+		}
+		
+		class SaveAlbumsListener implements ActionListener{
 
-				@Override
-				public void valueChanged(TreeSelectionEvent arg0) {
-					DefaultMutableTreeNode dmt = (DefaultMutableTreeNode) arg0.getPath().getLastPathComponent();
-					if(dmt.getUserObject() instanceof EmailisbnLine){
-						EmailisbnLine eil = (EmailisbnLine) dmt.getUserObject();
-						GoogleBook gb = new GoogleBook(eil.getIsbn());
+			@Override
+			public void actionPerformed(ActionEvent ae) {
+				for(Emailisbn ei : MailImportDialog.this.eisbn){
+					for(EmailisbnLine eil : ei.getEmailisbnLine()){
+						ISBN is = eil.getIsbn();
+						GoogleBook gb = new GoogleBook(is);
 						try {
 							gb.execute();
-							System.out.println(gb.getVolumeInfo().getTitle()+" - "+gb.getVolumeInfo().getDescription());
+							VolumeVolumeInfo vvi = gb.getVolumeInfo();
+							Album a = new Album();
+							a.setTitle(vvi.getTitle());
+							a.setDimension(vvi.getDimensions().getHeight()+" x "+vvi.getDimensions().getWidth()+" x "+vvi.getDimensions().getThickness());
+							a.setIsbn(is.toString(true));
+							SaveItemPersistency.saveAlbum(a);
+							AlbumPane.getInstance().refresh();						
 						} catch (ConnectionProblemException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -247,12 +279,16 @@ public class MailImportDialog extends JDialog {
 							e.printStackTrace();
 						}
 					}
-					else if(dmt.getUserObject() instanceof Emailisbn){
-
+					try {
+						ei.deleteMessage();
+					} catch (MessagingException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
 					}
 				}
-				
+				MailImportDialog.this.dispose();				
 			}
+			
 		}
 		
 
