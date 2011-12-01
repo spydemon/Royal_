@@ -36,6 +36,7 @@ import net.sf.royal.macos.MacOsManagement;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 
+
 /**
     * Creation of the main window of Royal
     * @author bibounde
@@ -105,7 +106,7 @@ public class Royal extends JFrame
             }
             
             logger.debug("Creating main window");
-            this.setTitle("Royal MAIL DEV 01");
+            this.setTitle("Royal");
 			this.north = MainToolBar.getInstance();
             this.bottom = BottomBarPane.getInstance();
 			this.center = MainPane.getInstance();
