@@ -4,19 +4,16 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@drawable/royal_scanner_font">
-    <RelativeLayout android:id="@+id/rlScan" android:layout_width="fill_parent" android:layout_height="80dp" android:layout_marginTop="25px">
-        <Button android:id="@+id/btnScan" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_marginRight="50px" android:layout_alignParentBottom="true" android:layout_alignParentRight="true" android:layout_alignParentTop="true" android:layout_width="wrap_content" android:textColor="#000000" android:layout_marginLeft="60px" android:textSize="22px" android:text="@string/btnScan"></Button>
+    <RelativeLayout android:id="@+id/rlScan" android:layout_width="fill_parent" android:layout_height="95dp" android:layout_marginTop="35px">
+        <Button android:id="@+id/btnScan" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_marginRight="30px" android:layout_alignParentBottom="true" android:layout_alignParentRight="true" android:layout_alignParentTop="true" android:layout_width="wrap_content" android:textColor="#000000" android:layout_marginLeft="30px" android:textSize="22px" android:text="@string/btnScan"></Button>
     </RelativeLayout>
-    <RelativeLayout android:id="@+id/rlScanList" android:layout_width="fill_parent" android:layout_height="80dp" android:layout_marginTop="20px">
-        <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" android:layout_marginRight="50px" android:id="@+id/btnScanList" android:textColor="#000000" android:layout_marginLeft="60px" android:textSize="22px" android:text="@string/btnScanList"></Button>
+    <RelativeLayout android:id="@+id/rlScanList" android:layout_width="fill_parent" android:layout_height="95dp" android:layout_marginTop="40px">
+        <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" android:layout_marginRight="30px" android:id="@+id/btnScanList" android:textColor="#000000" android:layout_marginLeft="30px" android:textSize="22px" android:text="@string/btnScanList"></Button>
     </RelativeLayout>
-    <RelativeLayout android:id="@+id/rlSetupMail" android:layout_width="fill_parent" android:layout_height="80dp" android:layout_marginTop="20px">
-        <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" android:layout_marginRight="50px" android:id="@+id/btnSetupMail" android:textColor="#000000" android:layout_marginLeft="60px" android:textSize="22px" android:text="@string/btnSetupMail"></Button>
+    <RelativeLayout android:id="@+id/rlSetupMail" android:layout_width="fill_parent" android:layout_height="95dp" android:layout_marginTop="40px">
+        <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" android:layout_marginRight="30px" android:id="@+id/btnSetupMail" android:textColor="#000000" android:layout_marginLeft="30px" android:textSize="22px" android:text="@string/btnSetupMail"></Button>
     </RelativeLayout>
-    <RelativeLayout android:id="@+id/rlSynchro" android:layout_width="match_parent" android:layout_marginTop="20px" android:layout_height="80dp">
-        <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:textSize="22px" android:textColor="#000000" android:layout_alignParentBottom="true" android:layout_alignParentRight="true" android:layout_alignParentTop="true" android:layout_marginLeft="60px" android:layout_marginRight="50px" android:id="@+id/btnSynchro" android:text="@string/btnSynchro"></Button>
-    </RelativeLayout>
-    <RelativeLayout android:id="@+id/rlAbout" android:layout_width="fill_parent" android:layout_height="80dp" android:layout_marginTop="20px">
-        <Button android:text="@string/btnAbout" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentLeft="true" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" android:layout_marginRight="50px" android:id="@+id/btnAbout" android:textColor="#000000" android:layout_marginLeft="60px" android:textSize="22px"></Button>
+    <RelativeLayout android:id="@+id/rlAbout" android:layout_width="fill_parent" android:layout_height="95dp" android:layout_marginTop="40px">
+        <Button android:text="@string/btnAbout" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentLeft="true" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" android:layout_marginRight="30px" android:id="@+id/btnAbout" android:textColor="#000000" android:layout_marginLeft="30px" android:textSize="22px"></Button>
     </RelativeLayout>    
 </LinearLayout>

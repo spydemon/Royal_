@@ -29,9 +29,7 @@ public class ScanPageActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.scan);
-        
-        
-        
+            
         // Récupération des parametres
 		Bundle extras = getIntent().getExtras();
 		if (extras != null) {

@@ -63,19 +63,6 @@ public class RoyalScannerMainActivity extends Activity {
 		}
 	};	
 	
-	public OnClickListener btnSynchroListener = new Button.OnClickListener() 
-	{   
-		public void onClick(View v) 
-		{   
-					      
-		    // Initialisation du bouton synchrnisation albums déja scannés 
-			Intent intentSynchro = new Intent(RoyalScannerMainActivity.this, SynchroActivity.class);
-
-			// On lance l'Activity de synchronisation
-			startActivity(intentSynchro);
-		}
-	};	
-	
 	public OnClickListener btnAboutListener = new Button.OnClickListener() 
 	{   
 		public void onClick(View v) 
@@ -102,14 +89,12 @@ public class RoyalScannerMainActivity extends Activity {
         Button btnScan = (Button) this.findViewById(R.id.btnScan);
         Button btnScanList = (Button) this.findViewById(R.id.btnScanList);
         Button btnSetupEmail = (Button) this.findViewById(R.id.btnSetupMail);
-        Button btnSynchro = (Button) this.findViewById(R.id.btnSynchro);
         Button btnAbout = (Button) this.findViewById(R.id.btnAbout);
         
         // On définit l'evenement click sur le bouton
         btnScan.setOnClickListener(btnScanListener);
         btnScanList.setOnClickListener(btnScanListListener);
         btnSetupEmail.setOnClickListener(btnSetupEmailListener);
-        btnSynchro.setOnClickListener(btnSynchroListener);
         btnAbout.setOnClickListener(btnAboutListener);
         
         // Gestion de l'animation
@@ -119,7 +104,6 @@ public class RoyalScannerMainActivity extends Activity {
         trans1.setDuration(1000);
         btnScan.startAnimation(trans1);
         btnScanList.startAnimation(trans1);
-        btnSynchro.startAnimation(trans1);
         btnSetupEmail.startAnimation(trans1);
         btnAbout.startAnimation(trans1);
         
