@@ -1,0 +1,97 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{stmaryrd}
+%\usepackage{cite}
+\usetheme{moi2}
+\title{Royal -- Le Prototype\\ T306AMAO}
+\author[Jean, Kevin \& Steve]{Jean Meyblum \\ Kevin Hagner \\ Steve Benedick}
+\institute{IUT Robert Schuman}
+\date{\today}
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame} 
+
+\begin{frame}{Les fonctionnalités}
+\begin{columns}
+\begin{column}[c]{5cm}
+\underline{Sur l'application \emph{PC}}
+\pause
+\begin{itemize}
+\pause \item Recherche d'informations grâce au code barres.
+\pause \item Système d'importation des albums via courriel. 
+\pause \item Système d'ajout automatique des albums importés.  
+\end{itemize}
+\end{column}
+
+\begin{column}[c]{5cm}
+\pause
+\underline{Sur l'application \emph{Android}}
+\begin{itemize}
+\pause \item Système de capture des codes barres. 
+\pause \item Système d'envois des albums via courriel.
+\pause \item Vérification de la validité du code barre.
+\end{itemize}
+
+\end{column}
+\end{columns}
+
+\end{frame}
+
+\begin{frame}{L'environnement technique}
+\begin{columns}
+\begin{column}[c]{5cm}
+\pause
+\underline{Sur l'application \emph{PC}}
+\begin{itemize}
+\pause \item Produit multi~-~plateforme.
+\pause \item Traitement de la base de donnée : \emph{Hibernate}.
+\end{itemize}
+\end{column}
+
+\pause 
+
+\begin{column}[c]{5cm}
+\underline{Sur l'application \emph{Android}} 
+\begin{itemize}
+\pause \item Android 2.2
+\pause \item Base de donnée : \emph{SQLite}. 
+\pause \item Utilisation de \emph{ZXing} pour traiter le code barres.
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\textbf{Présentation…}
+\pause
+\textbf{Alors, convaincu ?}
+\end{frame}
+
+\begin{frame}{Ce qu'il reste à faire.}
+\begin{columns}
+\begin{column}[c]{5cm}
+\underline{Sur l'application \emph{PC}}
+\begin{itemize}
+\pause \item Importation par un autre moyen.
+\pause \item Gestion des lieux et dates d'emprunt.
+\pause \item Synchronisation avec le client Android.
+\end{itemize}
+\end{column}
+
+\pause 
+
+\begin{column}[c]{5cm}
+\underline{Sur l'application \emph{Android}}
+\begin{itemize}
+\pause \item Enregistrement des albums déjà scannés.
+\pause \item Synchronisation avec le client PC.
+\end{itemize}
+\end{column}
+
+\end{columns}
+\end{frame}
+
+\end{document}

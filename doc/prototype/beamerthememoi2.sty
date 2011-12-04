@@ -1,0 +1,133 @@
+\ProvidesPackageRCS $Header: /cvsroot/latex-beamer/latex-beamer/themes/theme/monTheme.sty,v 1.0 19/11/2011 0:43:23 G.FALLOURD-M.LEBRETON Exp $
+\mode<presentation>
+\definecolor{sectionColor}{RGB}{0,0,0}
+\definecolor{subsectionColor}{RGB}{51,102,0}
+\definecolor{sectionTextColor}{RGB}{170,170,170}
+\definecolor{subsectionTextColor}{RGB}{51,255,0}
+\definecolor{leftFootlineColor}{RGB}{170,170,170}
+\definecolor{middleFootlineColor}{RGB}{170,170,170}
+\definecolor{rightFootlineColor}{RGB}{170,170,170}
+\definecolor{authorColor}{RGB}{0,0,0}
+\definecolor{footlineTitleColor}{RGB}{0,0,0}
+\definecolor{instituteColor}{RGB}{0,0,0}
+\definecolor{dateColor}{RGB}{0,0,0}
+\definecolor{pageColor}{RGB}{0,0,0}
+\definecolor{titleColor}{RGB}{0,0,0}
+\definecolor{titleTextColor}{RGB}{255,255,255}
+\definecolor{bodyColor}{RGB}{0,0,0}
+\definecolor{normalTextColor}{RGB}{255,255,255}
+\definecolor{exampleTextColor}{RGB}{51,255,0}
+\definecolor{alertTextColor}{RGB}{204,0,0}
+\definecolor{chipColor}{RGB}{0,0,102}
+\definecolor{chipTextColor}{RGB}{255,255,255}
+\definecolor{normalBlockColor}{RGB}{0,0,0}
+\definecolor{normalTitleBlockColor}{RGB}{51,102,0}
+\definecolor{normalBlockTextColor}{RGB}{255,255,255}
+\definecolor{normalBlockTitleTextColor}{RGB}{51,255,0}
+\definecolor{exampleBlockColor}{RGB}{0,204,0}
+\definecolor{exampleTitleBlockColor}{RGB}{51,102,0}
+\definecolor{exampleBlockTextColor}{RGB}{255,255,255}
+\definecolor{exampleBlockTitleTextColor}{RGB}{51,255,0}
+\definecolor{alertBlockColor}{RGB}{255,153,153}
+\definecolor{alertTitleBlockColor}{RGB}{204,51,51}
+\definecolor{alertBlockTextColor}{RGB}{204,0,0}
+\definecolor{alertBlockTitleTextColor}{RGB}{255,255,255}
+\setbeamercolor{section in head/foot}{bg=sectionColor, fg=sectionTextColor}
+\setbeamercolor{subsection in head/foot}{bg=subsectionColor, fg=subsectionTextColor}
+\setbeamercolor*{block title}{fg=normalBlockTitleTextColor,bg=normalTitleBlockColor}
+\setbeamercolor*{block body}{fg=normalBlockTextColor,bg=normalBlockColor}
+\setbeamercolor*{block title alerted}{fg=alertBlockTitleTextColor,bg=alertTitleBlockColor}
+\setbeamercolor*{block body alerted}{fg=alertBlockTextColor,bg=alertBlockColor}
+\setbeamercolor*{block title example}{fg=exampleBlockTitleTextColor,bg=exampleTitleBlockColor}
+\setbeamercolor*{block body example}{fg=exampleBlockTextColor,bg=exampleBlockColor}
+\setbeamerfont{block title}{size={}}
+\setbeamercolor{titlelike}{fg=titleTextColor,bg=titleColor}
+\setbeamercolor*{normal text}{fg=normalTextColor,bg=bodyColor}
+\setbeamercolor*{example text}{fg=exampleTextColor}
+\setbeamercolor*{alerted text}{fg=alertTextColor}
+\useinnertheme{default}
+\setbeamercolor{item projected}{bg=chipColor,fg=chipTextColor}
+\pgfdeclarehorizontalshading[frametitle.bg,frametitle right.bg]{beamer@frametitleshade}{\paperheight}{%
+color(0pt)=(frametitle.bg);
+color(\paperwidth)=(frametitle right.bg)}
+\AtBeginDocument{
+\pgfdeclareverticalshading{beamer@topshade}{\paperwidth}{%
+color(0pt)=(bg);
+color(4pt)=(black!50!bg)}
+}
+\defbeamertemplate*{frametitle}{shadow theme}
+{%
+\nointerlineskip%
+\vskip0pt%
+\hbox{\leavevmode
+\advance\beamer@leftmargin by -12bp%
+\advance\beamer@rightmargin by -12bp%
+\beamer@tempdim=\textwidth%
+\advance\beamer@tempdim by \beamer@leftmargin%
+\advance\beamer@tempdim by \beamer@rightmargin%
+\hskip-\Gm@lmargin\hbox{%
+\setbox\beamer@tempbox=\hbox{\begin{minipage}[b]{\paperwidth}%
+\vbox{}\vskip-.75ex%
+\leftskip0.3cm%
+\rightskip0.3cm plus1fil\leavevmode
+\insertframetitle%
+\ifx\insertframesubtitle\@empty%
+\strut\par%
+\else
+\par{\usebeamerfont*{framesubtitle}{\usebeamercolor[fg]{framesubtitle}\insertframesubtitle}\strut\par}%
+\fi%
+\nointerlineskip
+\vbox{}%
+\end{minipage}}%
+\beamer@tempdim=\ht\beamer@tempbox%
+\advance\beamer@tempdim by 2pt%
+\begin{pgfpicture}{0pt}{0pt}{\paperwidth}{\beamer@tempdim}
+\usebeamercolor{frametitle right}
+\pgfpathrectangle{\pgfpointorigin}{\pgfpoint{\paperwidth}{\beamer@tempdim}}
+\pgfusepath{clip}
+\pgftext[left,base]{\pgfuseshading{beamer@frametitleshade}}
+\end{pgfpicture}
+\hskip-\paperwidth%
+\box\beamer@tempbox%
+}%
+\hskip-\Gm@rmargin%
+}%
+\nointerlineskip
+\vskip-0.2pt
+\hbox to\textwidth{\hskip-\Gm@lmargin\pgfuseshading{beamer@topshade}\hskip-\Gm@rmargin}
+\vskip0pt
+}
+\beamer@compresstrue
+\defbeamertemplate*{headline}{smoothbars theme}
+{%
+\begin{beamercolorbox}[ht=2.125ex,dp=3.150ex]{section in head/foot}
+\insertnavigation{\paperwidth}
+\end{beamercolorbox}%
+\begin{beamercolorbox}[ht=2.125ex,dp=1.125ex,%
+leftskip=.3cm,rightskip=.3cm plus1fil]{subsection in head/foot}
+\usebeamerfont{subsection in head/foot}\insertsubsectionhead
+\end{beamercolorbox}%
+}
+\setbeamercolor{author in head/foot}{bg=leftFootlineColor, fg=authorColor}
+\setbeamercolor{title in head/foot}{bg=middleFootlineColor, fg=footlineTitleColor}
+\setbeamercolor{institute in head/foot}{fg=instituteColor}
+\setbeamercolor{date in head/foot}{bg=rightFootlineColor, fg=dateColor}
+\defbeamertemplate*{footline}{infolines theme}
+{
+\leavevmode%
+\hbox{%
+\begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+\usebeamerfont{author in head/foot}\insertshortauthor~~
+\end{beamercolorbox}%
+\begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+\usebeamerfont{title in head/foot}\insertshorttitle
+\end{beamercolorbox}%
+\begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+\usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+\insertframenumber{} / \inserttotalframenumber\hspace*{2ex}
+\end{beamercolorbox}
+}%
+\vskip0pt%
+}
+\mode
+<all>
