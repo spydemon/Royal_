@@ -1,0 +1,124 @@
+\documentclass[]{support-iutrs} % prof pour produire les notes
+%\usepackage{slashbox}
+%\usepackage{colortbl}
+\setlength{\leftmargin}{0pt}
+
+\setlength{\textheight}{670pt} 	% Hauteur de la zone de texte (25cm)
+\infos{}{Jean Meyblum -- Kevin Hagner -- Steve Benedick}{T306AMAO}
+
+\sujet{-- E31}
+\titre{Suivi du projet}                          %optionnel
+%\objectif{Objectifs du sujet}   %optionnel
+%\notions{Notions importantes}   %optionnel
+
+
+\begin{document}
+	
+\header
+
+\section{Taches accomplies} 
+\begin{tabular}{|l|r|r|r|r|r|}
+\hline 
+\textbf{Fonctionnalités} & \textbf{Jean} & \textbf{Kevin} & \textbf{Steve} & \textbf{Avcmnt} & \textbf{H rstt} \\
+\hline
+Saisie et vérification du code barres & 10 & & & 80\% & 2.00 \\
+			 \hline
+Recherche d'informations grâce au code - barres. & 15 & & & 98\% & 0.3 \\
+\hline
+Traitement en fonction du résultat de la recherche. & 10 & & & 50\% & 5 \\
+				   \hline
+Importation via courriel. & 20 & & & 85\% & 3 \\
+					\hline
+Configuration de l'adresse courriel & 8 & & & 100\% & 0 \\
+					  \hline
+Réception des courriers spécifiques & 20 & & & 100\% & 0 \\
+		\hline
+Ajout automatique des albums récupérés & 15 & & & 50\% & 7.5 \\
+			\hline
+Importation via un autre moyen & & & & 0\% & 0 \\
+					\hline
+Bibliothèque et date de retour & & 25 & & 20\% & 20 \\
+		\hline
+Système d'alerte pour les dates de retour & & 10 & & 10\% & 9.0 \\
+		\hline
+IHM \slash{} Design PC & 20 & & & 35\% & 13.0 \\
+\hline 
+Capture unique & & & 35 & 95 \% & 1.8 \\
+			  \hline
+Capture multiple & & & 2 & 95 \% & 0.1 \\
+			  \hline
+Configuration d'une adresse & & & 8 & 90\% & 0.8 \\
+			\hline
+Système d'envois par courriel & & & 21 & 90\% & 2.1 \\
+		\hline
+Système d'envois via un autre moyen & & & & 0\% & 0 \\
+		\hline
+Vérification de la validité du code barres & & & 3 & 100\% & 0.0 \\
+		\hline
+Affichage du titre d'un album scanné & & & 11 & 5 \% & 10.5 \\
+				 \hline
+Enregistrement des albums & & & & 0\% & 0.0 \\
+						\hline
+Mise en commun avec les albums du client PC & & & & 0\% & 0.0 \\
+		  \hline
+IHM \slash{} Design Android & & & 16 & 95\% & 0.8 \\
+		 \hline
+Optimisation du code & 10 & & 38 & 90\% & 4.8 \\
+					 \hline
+\textbf{Sous-total} & \textbf{128} & \textbf{35} & \textbf{134} & \textbf{59\%} & \textbf{123.1} \\
+	\hline
+\textbf{Organisation et documentation} & \textbf{Jean} & \textbf{Kevin} & \textbf{Steve} & \textbf{Avcmnt} & \textbf{H rstt} \\
+	\hline
+Documentation & & 30 & & 80\% & 6 \\
+\hline
+Gestion projet & & 40 & & 80\% & 8 \\
+			  \hline
+\textbf{Sous-total} & \textbf{0} & \textbf{70} & \textbf{0} & \textbf{80\%} & \textbf{14} \\
+		\hline
+\textbf{Total} & \textbf{128} & \textbf{105} & \textbf{134} & \textbf{60\%} & \textbf{137.1} \\
+		\hline
+
+\end{tabular} 
+
+\section {Synthèse}
+
+\begin{tabular}{|l|r|r|}
+\hline
+& Pourcentage effectué & Heures passées \\
+		\hline
+Fonctions de priorité 1 (Primaire) & 79\% & 203 \\
+				 \hline
+Fonctions de priorité 2 (Secondaire) & 29\% & 84 \\
+				 \hline
+Fonctions de priorité 3 (Facultative) & 10\% & 10 \\
+				 \hline
+\end{tabular} 
+
+\section {La rétrospective}
+\subsection{Ce qui a été fait}
+La plupart les éléments de base ont étés effectués,
+les applications \emph{PC} et \emph{Android} ont toutes les deux les bases nécessaires pour être utilisable. 
+
+Ainsi nous avons réalisé, premièrement, sur l'application \emph{PC} : 
+\begin{description}
+\item [Recherches d'informations sur l'ouvrage -- ] Une recherche en fonction de l' \emph{ISBN} du livre pour importer directement les informations dans le programme comme le nom de l'auteur, la collection, le nombre de pages, etc. depuis internet. 
+\item [Importation des \emph{ISBNs} -- ] L'importation des \emph{ISBNs} scannés depuis l'application \emph{Android} à aussi été implémentée. 
+\end{description}
+
+Et sur l'application \emph{Android} : 
+\begin{description}
+\item [Mise en place de la structure -- ] L'application de base, avec son design est fonctionnelle. 
+\item [Capture des \emph{ISBN} -- ] Les \emph{ISBN} sont capturés par l'application. 
+\item [Exportation des \emph{ISBN} -- ] Les \emph{ISBN} capturés sont correctement transmis à l'application \emph{PC}. 
+\end{description}
+
+\subsection{Ce qui a posé problème} 
+Dans un premier temps, la classe \emph{JavaMail} n'est pas fiable sur \emph{Android} et sa compréhension à posé problème pour le développement du système d'envois des \emph{ISBNs} par email.
+Il en de même pour \emph{zxSwing}, qui initialement mènent pas prévu pour être utilisé comme bibliothèque, mais comme application externe.
+On a donc du réadapter le programme pour pouvoir l'importer dans notre application. 
+
+An niveau de l'application \emph{PC}, la compréhension de \emph{Hibernate} pour la gestion de la base de données a (et est encore en fait) un problème assez complexe à gérer. 
+
+\subsection{Ce qui aurait pu être amélioré}
+Le format d'affichage des informations importés dans l'application du prototype aurait pu être un peu mieux travaillé. La détection du bug lors de l'importation des \emph{ISBNs} depuis le portable aurait aussi permis d'améliorer le prototype. 
+\end{document}
