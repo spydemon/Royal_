@@ -1,0 +1,97 @@
+\documentclass[]{../support-iutrs} % prof pour produire les notes
+\usepackage{slashbox}
+\usepackage{colortbl}
+
+\infos{}{Jean Meyblum -- Kevin Hagner -- Steve Benedick}{T306AMAO}
+
+\sujet{-- G32}
+\titre{Tests du programme}                          %optionnel
+%\objectif{Objectifs du sujet}   %optionnel
+%\notions{Notions importantes}   %optionnel
+
+
+\begin{document}
+	
+\header
+
+\section {Introduction}
+Nous allons consacrer dans ce dossier l'étude des fonctionnalités de notre application \emph{Royal} dans la recherche d'éventuels bogues. 
+Il s'agit d'une application de gestion de \emph{BDs} personnelle écrite en Java. 
+Nous nous basons sur une application déjà existante
+\footnote{La version de base de Royal : \url{www.royal-projet.org}}
+, nous devrons donc veiller à vérifier que les fonctionnalités qui existaient déjà restent fonctionnelles, qu'on ne les a pas «~cassées~», en plus de la vérification des fonctionnalités réellement ajoutées. 
+
+L'application consiste globalement en une fenêtre principale contenant une liste de toutes les \emph{BDs} déjà passées entre les mains de l'utilisateur. 
+Quand un ouvrage est sélectionné, nous pouvons voir les informations détaillées le concernant à droite. 
+Il est aussi possible de modifier ces informations, et, bien sûr de rajouter des nouveaux ouvrages. 
+L'ajout peu s'effectuer soit manuellement, c'est à dire que l'utilisateur rentre lui même les \emph{ISBNs} des livres dans l'application, soit automatiquement via un programme Android qui permet d'ajouter simplement les livres en prenant en photo leur code-barres. 
+Cette application est aussi effectuée par nos soins, et demandera des tests complémentaires. 
+L'application est aussi en mesure de pouvoir aller rechercher sur internet les informations relatives à un livre,
+et l'utilisateur pourra définir si le livre a été acheté ou emprunté dans une bibliothèque.
+Si le livre a été emprunté, une alarme de retour peu être configuré. 
+
+\section{Stratégie de test}
+
+Pour notre projet, nous effectuerons différents types de test su la base de la typologie présentés en cours \textit{(Fonctionnels, IHM/Navigation, Opérabilité, Performances, Charges, Sécurité)}.
+
+\subsection{Fonctionnels}
+Les tests Fonctionnels seront tres nombreux pour notre projet. 
+En effet veiller à l’existence ainsi que le bon fonctionnement des fonctions décrite dans le cahier des charges est une priorité dans notre projet.
+De plus nous aurons à assurer le bon fonctionnement de notre application bien hors de son utilisation type.
+Cependant ayant une utilisation mono-utilisateur et utilisant une base de donnée virtuelle local nous ne traiterons pas de test sur les accès concurrent.
+
+\subsection{IHM / Navigation}
+Notre projet étant utilisé par des personnes de tout type pour une utilisation personnel il faudra veiller à l'ergonomie de celui-ci ainsi qu'à son homogénéité.
+Cette homogénéité concernera aussi les différent message d'erreurs présent dans notre projet. 
+Afin de vérifier ces points il faudra donc effectuer de nombreux test sur l'IHM ainsi que la Navigation.
+
+\subsection{Opérabilité}
+Notre projet comportant une application pc ainsi qu'une application android, il faudra assurer l'interopérabilité des deux applications. 
+De plus l'application pc étant développé en Java il faudra vérifier la compatibilité avec les divers système d’exploitation.
+L'application créé peu de fichier temporaire, de plus si l'application s’arrête inopinément au prochain lancement ces fichier seront écrasés.  
+C'est pourquoi nous effectuerons des test sur l'opérabilité de notre projet.
+
+\subsection{Performances  / Charges}
+Notre projet étant mono-utilisateur et n'utilisant pas de serveur, les tests de charge ne seront pas effectué. 
+Tout-fois des tests de performance seront effectué pour les fonctions d'importation d'ISBN scanné.
+
+\subsection{Sécurité}
+A nouveau, notre projet ne contenant d'habilitation et n'enregistrent pas d'information \textit{(notre projet n'utilise pas de serveur et la base de donné est virtuelle)} il n'y aura pas de tests de sécurité.
+De plus seul la coupure de courant pourrait être tester pour le mode dégrader c'est pourquoi nous n'effectuerons pas de test de sécurité. 
+Pour la sauvegarde, la base de donnée est virtuel et recréé à chaque lancement \textit{(hybernate)} c'est pourquoi il n'y a pas besoin de sauvegarde.  
+
+\section{Matrice fonctionnelle} 
+
+\begin{tabular}{|c|c|c|c|}
+\hline
+\backslashbox{\textbf{Fréquence}}{\textbf{Importance}} & \textbf{Capitale} & \textbf{Forte} & \textbf{Faible} \\
+\hline
+\textbf{Très souvent} &1A -- 1PC -- 5PC -- 6PC & 3A -- 4PC & \cellcolor{black!30}4A \\
+\hline
+\textbf{Moyennement souvent} & 2PC -- 7PC & \cellcolor{black!30}&\cellcolor{black!50}\\
+\hline
+\textbf{Rarement} & \cellcolor{black!30} 2A -- 8PC & \cellcolor{black!50} 5A -- 3PC & \cellcolor{black!50}\\
+\hline
+\end{tabular} 
+\begin{center}
+Les tests obligatoires sont en blanc, recommendés en gris clair, et optionnels en gris foncés.
+\end{center}
+\subsection*{}
+
+\emph{Applications PC : } \\
+1PC --- Ajout des informations de base. \\
+2PC --- Liens entre les albums. \\
+3PC --- Ajout d'une image de couverture. \\
+4PC --- Affichage selon critères. \\
+5PC --- Recherche des informations grâce au code barres. \\
+6PC --- Importation des \emph{ISBN}s via courriel. \\
+7PC --- Ajout automatique des albums. \\
+8PC --- Configuration d'une adresse email. \\
+
+\emph{Application Android : } \\
+1A --- Capture du code barres. \\
+2A --- Configuration d'une adresse email. \\
+3A --- Validité du code barres. \\
+4A --- Enregistrement des albums. \\
+5A --- Syncronisation avec l'application PC. \\
+\end{document}
