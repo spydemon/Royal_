@@ -30,6 +30,7 @@
 		<property name="comment" length="4100"/>
 		<property name="copies"/>
 		<property name="purchaseDate"/>
+		<property name="buy"/>
 		
 		<component name="dedication" class="net.sf.royal.datamodel.Dedication">
 			<property name="imageURL"/>

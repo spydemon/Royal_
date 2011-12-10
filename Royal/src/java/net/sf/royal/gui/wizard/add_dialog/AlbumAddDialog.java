@@ -833,6 +833,14 @@ public class AlbumAddDialog extends JDialog
 		BottomBarPane.getInstance().addAlbum();
 		SaveItemPersistency.saveAlbum(a);
 		japAuthor.saveAuthors(a);
+		
+		//Book buy or borrowed ?
+		Item item = (Item) this.buyOrNot.getSelectedItem();
+		if (item.getId() == 1)
+			a.setBuy(true);
+		else
+			a.setBuy(false);
+		
 	}
 	
 	/**

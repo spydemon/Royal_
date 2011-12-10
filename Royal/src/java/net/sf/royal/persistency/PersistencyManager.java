@@ -485,7 +485,8 @@ public class PersistencyManager {
     @SuppressWarnings("unchecked")
 	public static List<Album> findAlbums(){
         try {
-            String query = "from Album a order by a.title asc";
+            //String query = "from Album a order by a.title asc";
+            String query = "from Album a where a.buy = true order by a.title asc";
             ArrayList<Album> albums = (ArrayList<Album>)HibernateUtil.currentSession().createQuery(query).list();
             return albums;
         } catch (Exception e) {

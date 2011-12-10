@@ -17,6 +17,7 @@ public class Album extends ModelImpl implements Cloneable
     private boolean integral = Boolean.FALSE.booleanValue();
     private boolean original = Boolean.TRUE.booleanValue();
     private boolean special = Boolean.FALSE.booleanValue();
+    private boolean buy = Boolean.FALSE.booleanValue();
     private int pageCount;
     private String comment;
     private int copies;
@@ -41,6 +42,14 @@ public class Album extends ModelImpl implements Cloneable
      */
     public void setWorks(Set<Work> works) {
         this.works = works;
+    }
+    
+    public void setBuy(boolean b) {
+    	this.buy = b;
+    }
+    
+    public boolean getBuy() {
+    	return this.buy;
     }
     
     public void addWork(Work work) {
