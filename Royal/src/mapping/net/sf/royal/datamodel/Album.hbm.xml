@@ -56,5 +56,6 @@
 		
 		<many-to-one name="serie" column="serieID" not-null="false" />
 		<many-to-one name="collection" column="collectionID" />
+		<many-to-one name="bibliotheque" column="bibliothequeID" /> 
 	</class>
 </hibernate-mapping>

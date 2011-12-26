@@ -33,7 +33,7 @@ import net.sf.royal.persistency.SaveItemPersistency;
  * @author Soulou
  */
 
-public class CollectionAddDialog extends JDialog 
+public class BibliothequeAddDialog extends JDialog 
 {
 	//Fields	
 	/**
@@ -72,7 +72,7 @@ public class CollectionAddDialog extends JDialog
 	 * @param parent The parent component of the CollectionAddDialog
 	 * @param isForeground true if the dialog has to stay on the foreground of its parent
 	 */
-	public CollectionAddDialog(Window parent, boolean isForeground)
+	public BibliothequeAddDialog(Window parent, boolean isForeground)
 	{
 		super(parent, LocaleManager.getInstance().getString("add_collection"),
 				isForeground? Dialog.ModalityType.TOOLKIT_MODAL : Dialog.ModalityType.MODELESS);
@@ -82,9 +82,9 @@ public class CollectionAddDialog extends JDialog
 		{
 			public void run()
 			{
-				CollectionAddDialog.this.init();
-				CollectionAddDialog.this.initListener();
-				CollectionAddDialog.this.display();
+				BibliothequeAddDialog.this.init();
+				BibliothequeAddDialog.this.initListener();
+				BibliothequeAddDialog.this.display();
 			}
 		});
 	}
@@ -94,7 +94,7 @@ public class CollectionAddDialog extends JDialog
 	 * The created dialog will be placed at the center of the screen and 
 	 * behave like other window
 	 */
-	public CollectionAddDialog()
+	public BibliothequeAddDialog()
 	{
 		this(null, true);
 	}
@@ -103,7 +103,7 @@ public class CollectionAddDialog extends JDialog
 	 * Constructor called to add a Collection of the Editor e
 	 * @param e : Editor of the Collection
 	 */
-	public CollectionAddDialog(Editor e)
+	public BibliothequeAddDialog(Editor e)
 	{
 		this(null,true);
 		this.setTitle(LocaleManager.getInstance().getString("edit_collection"));
@@ -114,7 +114,7 @@ public class CollectionAddDialog extends JDialog
 			
 			@Override
 			public void run() {
-				CollectionAddDialog.this.jepEditor.setText(CollectionAddDialog.this.editorCollection.getName());
+				BibliothequeAddDialog.this.jepEditor.setText(BibliothequeAddDialog.this.editorCollection.getName());
 			}
 		});
 	}
@@ -123,7 +123,7 @@ public class CollectionAddDialog extends JDialog
 	 * Constructor called to edit a Collection
 	 * @param c Collection to edit
 	 */
-	public CollectionAddDialog(Collection c)
+	public BibliothequeAddDialog(Collection c)
 	{
 		this(null, true);
 		if(!c.getName().isEmpty())
@@ -362,7 +362,7 @@ public class CollectionAddDialog extends JDialog
 		@Override
 		public void actionPerformed(ActionEvent ae)
 		{
-			CollectionAddDialog.this.dispose();
+			BibliothequeAddDialog.this.dispose();
 		}
 	}
 
@@ -371,20 +371,20 @@ public class CollectionAddDialog extends JDialog
 		@Override
 		public void actionPerformed(ActionEvent ae)
 		{
-			if((CollectionAddDialog.this.jtfCollectionName.getText()).isEmpty())
+			if((BibliothequeAddDialog.this.jtfCollectionName.getText()).isEmpty())
 			{
 				MessagePaneManager.showInfoPane(LocaleManager.getInstance().getString("collection_noname"));
 			}
-			else if(!CollectionAddDialog.this.rtfWeb.getText().isEmpty() && 
-					CollectionAddDialog.this.rtfWeb.check())
+			else if(!BibliothequeAddDialog.this.rtfWeb.getText().isEmpty() && 
+					BibliothequeAddDialog.this.rtfWeb.check())
 			{
-				CollectionAddDialog.this.rtfWeb.setIncorrect();
+				BibliothequeAddDialog.this.rtfWeb.setIncorrect();
 				MessagePaneManager.showInfoPane(LocaleManager.getInstance().getString("web_invalid"));
 			}
 			else
 			{
-				CollectionAddDialog.this.saveCollection();
-				CollectionAddDialog.this.dispose();
+				BibliothequeAddDialog.this.saveCollection();
+				BibliothequeAddDialog.this.dispose();
 			}
 		}
 	}

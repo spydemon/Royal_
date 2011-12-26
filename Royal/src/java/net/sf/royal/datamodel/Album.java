@@ -3,6 +3,9 @@ package net.sf.royal.datamodel;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+import net.sf.royal.persistency.SaveItemPersistency;
+
+import org.hibernate.*;
 
 public class Album extends ModelImpl implements Cloneable
 {
@@ -17,7 +20,8 @@ public class Album extends ModelImpl implements Cloneable
     private boolean integral = Boolean.FALSE.booleanValue();
     private boolean original = Boolean.TRUE.booleanValue();
     private boolean special = Boolean.FALSE.booleanValue();
-    private boolean buy = Boolean.FALSE.booleanValue();
+    private boolean buy;
+    //private boolean buy = Boolean.FALSE.booleanValue();
     private int pageCount;
     private String comment;
     private int copies;
@@ -29,6 +33,7 @@ public class Album extends ModelImpl implements Cloneable
     private Set<Work> works = new HashSet<Work>();
     private Set<CommentedImage> gallery = new HashSet<CommentedImage>();
     private Collection collection;
+    private Bibliotheque bibliotheque;
 
     /**
      * @return Returns the works.
@@ -40,8 +45,17 @@ public class Album extends ModelImpl implements Cloneable
     /**
      * @param works The works to set.
      */
+    
     public void setWorks(Set<Work> works) {
         this.works = works;
+    }
+    
+    public void setBibliotheque(Bibliotheque b) {
+    	this.bibliotheque = b;
+    }
+    
+    public Bibliotheque getBibliotheque() {
+    	return this.bibliotheque;
     }
     
     public void setBuy(boolean b) {
@@ -49,6 +63,7 @@ public class Album extends ModelImpl implements Cloneable
     }
     
     public boolean getBuy() {
+    	//System.out.println("On demande buy de " + this.getTitle());
     	return this.buy;
     }
     

@@ -30,6 +30,7 @@ import net.sf.royal.datamodel.Album;
 import net.sf.royal.datamodel.Author;
 import net.sf.royal.datamodel.Collection;
 import net.sf.royal.datamodel.HibernateUtil;
+import net.sf.royal.datamodel.Bibliotheque;
 import net.sf.royal.datamodel.Serie;
 import net.sf.royal.datamodel.Tome;
 import net.sf.royal.datamodel.Work;
@@ -99,6 +100,7 @@ public class AlbumAddDialog extends JDialog
 	private RegexpTextField rtfHeight;
 	private JCheckBox jcbOriginalEd;
 	private JButtonPane jbpCollection;
+	private JButtonPane jbpBibliotheque;
 	private JTextField jtfISBN;
 	private JTextArea jtaComment;
 	private JDatePicker jdpPurchaseDate;
@@ -499,6 +501,9 @@ public class AlbumAddDialog extends JDialog
 		libTextField = new JLibraryPane(this);
 		libTextField.setVisible(false);
 		this.add(libTextField, gbc);
+		jbpBibliotheque = new JButtonPane(JEntryPane.COLLECTION,"-->");
+		jbpBibliotheque.setVisible(false);
+		this.add(jbpBibliotheque, gbc);
 		//*/
 		
 		gbc.gridwidth = GridBagConstraints.REMAINDER;
@@ -579,12 +584,14 @@ public class AlbumAddDialog extends JDialog
 				if (item.getId() == 1) {		
 					libTitle.setVisible(false);
 					libTextField.setVisible(false);
+					jbpBibliotheque.setVisible(false);
 					titreAchat.setText(LocaleManager.getInstance().getString("purchaseDate") + " :");
 				}
 				//Borrowed book
 				else {
 					libTitle.setVisible(true);
 					libTextField.setVisible(true);
+					jbpBibliotheque.setVisible(true);
 					titreAchat.setText(LocaleManager.getInstance().getString("borrowDate") + " :");
 				}
 			}
@@ -612,6 +619,31 @@ public class AlbumAddDialog extends JDialog
 						}
 					}
 				}
+			}
+		});
+		
+		this.jbpBibliotheque.addButtonListener(new ActionListener() 
+		{
+			@Override
+			public void actionPerformed(ActionEvent e) 
+			{
+				Collection c = PersistencyManager.findCollectionByID(AlbumAddDialog.this.jbpCollection.getID());
+				if(c == null)
+				{
+					c = new Collection();
+					c.setName(jbpCollection.getText());
+				}
+				
+				BibliothequeAddDialog cad = new BibliothequeAddDialog(c);
+				cad.setModal(true);
+				cad.setLocationRelativeTo(null);
+				cad.setVisible(true);
+				if(cad.getID() != null)
+				{
+					//AlbumAddDialog.this.jbpCollection.refresh();
+					//AlbumAddDialog.this.jbpCollection.setID(cad.getID());
+				}
+				//AlbumAddDialog.this.toFront();
 			}
 		});
 		
@@ -830,17 +862,27 @@ public class AlbumAddDialog extends JDialog
 		{
 			a.setOriginal(false);
 		}
+
+		//Book buy or borrowed ?
+		Item item = (Item) this.buyOrNot.getSelectedItem();
+		if (item.getId() == 1){
+			a.setBuy(true);
+		}
+		//If the book was borrowed
+		else {
+			a.setBuy(false);
+			//Attribution to a library
+			Bibliotheque b = new Bibliotheque();
+			b.setName(libTextField.getName());
+			System.out.println("libTextField = " + libTextField.getName());
+			a.setBibliotheque(b);
+			SaveItemPersistency.saveBibliotheque(b);
+		}
+		
 		BottomBarPane.getInstance().addAlbum();
 		SaveItemPersistency.saveAlbum(a);
 		japAuthor.saveAuthors(a);
-		
-		//Book buy or borrowed ?
-		Item item = (Item) this.buyOrNot.getSelectedItem();
-		if (item.getId() == 1)
-			a.setBuy(true);
-		else
-			a.setBuy(false);
-		
+		//SaveItemPersistency.saveAlbum(a);
 	}
 	
 	/**
