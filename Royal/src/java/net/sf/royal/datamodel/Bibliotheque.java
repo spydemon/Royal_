@@ -1,12 +1,17 @@
 package net.sf.royal.datamodel;
 
-public class Bibliotheque 
+public class Bibliotheque
 {
 	private long id;
 	private String name;
 	private String address;
 	private String phone;
 
+	@Override 
+	public String toString() {
+		return this.name;
+	}
+	
 	public Bibliotheque() {
 	}
 	

@@ -627,23 +627,7 @@ public class AlbumAddDialog extends JDialog
 			@Override
 			public void actionPerformed(ActionEvent e) 
 			{
-				Collection c = PersistencyManager.findCollectionByID(AlbumAddDialog.this.jbpCollection.getID());
-				if(c == null)
-				{
-					c = new Collection();
-					c.setName(jbpCollection.getText());
-				}
-				
-				BibliothequeAddDialog cad = new BibliothequeAddDialog(c);
-				cad.setModal(true);
-				cad.setLocationRelativeTo(null);
-				cad.setVisible(true);
-				if(cad.getID() != null)
-				{
-					//AlbumAddDialog.this.jbpCollection.refresh();
-					//AlbumAddDialog.this.jbpCollection.setID(cad.getID());
-				}
-				//AlbumAddDialog.this.toFront();
+				BibliothequeAddDialog cad = new BibliothequeAddDialog();
 			}
 		});
 		
@@ -871,12 +855,6 @@ public class AlbumAddDialog extends JDialog
 		//If the book was borrowed
 		else {
 			a.setBuy(false);
-			//Attribution to a library
-			Bibliotheque b = new Bibliotheque();
-			b.setName(libTextField.getName());
-			System.out.println("libTextField = " + libTextField.getName());
-			a.setBibliotheque(b);
-			SaveItemPersistency.saveBibliotheque(b);
 		}
 		
 		BottomBarPane.getInstance().addAlbum();

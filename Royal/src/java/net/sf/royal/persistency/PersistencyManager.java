@@ -15,6 +15,7 @@ import net.sf.royal.datamodel.Author;
 import net.sf.royal.datamodel.AuthorDAO;
 import net.sf.royal.datamodel.Borrower;
 import net.sf.royal.datamodel.BorrowerDAO;
+import net.sf.royal.datamodel.Bibliotheque;
 import net.sf.royal.datamodel.Collection;
 import net.sf.royal.datamodel.CollectionDAO;
 import net.sf.royal.datamodel.CommentedImage;
@@ -49,7 +50,9 @@ import org.hibernate.Query;
 /**
  * @author bibounde
  * @author Soulou Manager of the persistency, using hibernate library
+ * @author Kevin Hagner
  */
+
 public class PersistencyManager {
 
 	public final static boolean SORTED = true;
@@ -409,6 +412,13 @@ public class PersistencyManager {
 		return null;
 	}
 
+	@SuppressWarnings("unchecked")
+	public static List<Bibliotheque> findLibs() {
+		String query = "FROM Bibliotheque ORDER BY id";
+		List<Bibliotheque> libs = (List<Bibliotheque>) HibernateUtil.currentSession().createQuery(query).list();
+		return libs;
+	}
+	
 	/**
 	 * Get a list which contains AuthorObjects order by nickName, name and
 	 * firstName
@@ -1338,6 +1348,12 @@ public class PersistencyManager {
 		return 0;
 	}
 
+	public static void delLib (Bibliotheque b) {
+		String hqlDelete = "delete Bibliotheque where id = :id";
+		HibernateUtil.currentSession().createQuery(hqlDelete).setParameter("id", b.getId()).executeUpdate();
+		System.out.println("Delete bibli");
+	}
+	
 	@SuppressWarnings("unchecked")
 	public static float findLoanAverage(Long borrowerID) {
 		try {
