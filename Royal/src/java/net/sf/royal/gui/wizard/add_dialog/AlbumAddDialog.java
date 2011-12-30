@@ -14,6 +14,7 @@ import java.awt.event.ItemListener;
 import java.io.File;
 import java.util.Date;
 import java.util.Set;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -100,13 +101,16 @@ public class AlbumAddDialog extends JDialog
 	private RegexpTextField rtfHeight;
 	private JCheckBox jcbOriginalEd;
 	private JButtonPane jbpCollection;
-	private JButtonPane jbpBibliotheque;
+	private JButton jbpBibliotheque;
 	private JTextField jtfISBN;
 	private JTextArea jtaComment;
 	private JDatePicker jdpPurchaseDate;
 	private JDatePicker jdpReleaseDate;
 	private JLabel libTitle;
-	private JLibraryPane libTextField;
+	
+	private JComboBox libComboBox;
+	private JPanel libPane;
+	private List<Bibliotheque> libBibli;
 	
 	private Album currentAlbum = null;
 	private Serie albumSerie;
@@ -491,20 +495,28 @@ public class AlbumAddDialog extends JDialog
 		this.add(jdpReleaseDate,gbc);
 		
 		/* Library */
-		//*
 		gbc.gridx++;
 		libTitle = new JLabel(LocaleManager.getInstance().getString("library") + " :");
 		libTitle.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
 		libTitle.setVisible(false);
 		this.add(libTitle, gbc);
 		gbc.gridx++;
-		libTextField = new JLibraryPane(this);
-		libTextField.setVisible(false);
-		this.add(libTextField, gbc);
-		jbpBibliotheque = new JButtonPane(JEntryPane.COLLECTION,"-->");
+		libPane = new JPanel();
+
+		libComboBox = new JComboBox();
+		libComboBox.setVisible(false);
+		libBibli = PersistencyManager.findLibs();
+		
+		for (Bibliotheque b : libBibli)
+			libComboBox.addItem(b);
+
+		libComboBox.setPreferredSize(new Dimension(150, 25));
+		libPane.add(libComboBox);
+		jbpBibliotheque = new JButton("-->");
 		jbpBibliotheque.setVisible(false);
-		this.add(jbpBibliotheque, gbc);
-		//*/
+		libPane.add(jbpBibliotheque);
+
+		this.add(libPane, gbc);
 		
 		gbc.gridwidth = GridBagConstraints.REMAINDER;
 		gbc.gridy++;
@@ -583,14 +595,14 @@ public class AlbumAddDialog extends JDialog
 				//Bought book
 				if (item.getId() == 1) {		
 					libTitle.setVisible(false);
-					libTextField.setVisible(false);
+					libComboBox.setVisible(false);
 					jbpBibliotheque.setVisible(false);
 					titreAchat.setText(LocaleManager.getInstance().getString("purchaseDate") + " :");
 				}
 				//Borrowed book
 				else {
 					libTitle.setVisible(true);
-					libTextField.setVisible(true);
+					libComboBox.setVisible(true);
 					jbpBibliotheque.setVisible(true);
 					titreAchat.setText(LocaleManager.getInstance().getString("borrowDate") + " :");
 				}
@@ -622,7 +634,8 @@ public class AlbumAddDialog extends JDialog
 			}
 		});
 		
-		this.jbpBibliotheque.addButtonListener(new ActionListener() 
+		
+		this.jbpBibliotheque.addActionListener(new ActionListener() 
 		{
 			@Override
 			public void actionPerformed(ActionEvent e) 
@@ -855,6 +868,7 @@ public class AlbumAddDialog extends JDialog
 		//If the book was borrowed
 		else {
 			a.setBuy(false);
+			a.setBibliotheque((Bibliotheque)libComboBox.getSelectedItem());
 		}
 		
 		BottomBarPane.getInstance().addAlbum();
@@ -874,6 +888,19 @@ public class AlbumAddDialog extends JDialog
 		String title = rtfTitle.getText().trim();
 		String serie = jbpSerie.getText().trim();
 		String collection = jbpCollection.getText().trim();
+		
+		//Book buy or borrowed ?
+		Item item = (Item) this.buyOrNot.getSelectedItem();
+		if (item.getId() == 1){
+			a.setBuy(true);
+		}
+		//If the book was borrowed
+		else {
+			a.setBuy(false);
+			a.setBibliotheque((Bibliotheque)libComboBox.getSelectedItem());
+		}
+		//Save the modifications.
+		SaveItemPersistency.saveAlbum(a);
 		
 		/*
 		 * If the title has been modified, we update the album
