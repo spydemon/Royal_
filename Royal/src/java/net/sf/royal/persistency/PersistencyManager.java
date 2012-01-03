@@ -1308,6 +1308,13 @@ public class PersistencyManager {
 	}
 
 	@SuppressWarnings("unchecked")
+	public static Bibliotheque getBibliotheque(int id) {
+		String sQuery = "from Bibliotheque where id=:id";
+		List<Bibliotheque> b = HibernateUtil.currentSession().createQuery(sQuery).setParameter("id", id).list();
+		return b.get(0);
+	}
+	
+	@SuppressWarnings("unchecked")
 	public static int findDelayTotal(Long borrowerID) {
 		try {
 			String sQuery = "from Loan l where l.borrower.id=:id";
@@ -1351,7 +1358,6 @@ public class PersistencyManager {
 	public static void delLib (Bibliotheque b) {
 		String hqlDelete = "delete Bibliotheque where id = :id";
 		HibernateUtil.currentSession().createQuery(hqlDelete).setParameter("id", b.getId()).executeUpdate();
-		System.out.println("Delete bibli");
 	}
 	
 	@SuppressWarnings("unchecked")
