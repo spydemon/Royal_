@@ -32,6 +32,7 @@ import net.sf.royal.persistency.SaveItemPersistency;
  * Dialog to create or to give details about a collection
  * @author Soulou
  */
+
 public class CollectionAddDialog extends JDialog 
 {
 	//Fields	

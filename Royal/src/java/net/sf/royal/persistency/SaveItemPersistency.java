@@ -25,6 +25,7 @@ import net.sf.royal.datamodel.SerieDAO;
 import net.sf.royal.datamodel.Type;
 import net.sf.royal.datamodel.TypeDAO;
 import net.sf.royal.datamodel.Work;
+import net.sf.royal.datamodel.Bibliotheque;
 import net.sf.royal.exception.PersistencyException;
 import net.sf.royal.gui.guimodel.loan.BorrowerGuiObject;
 import net.sf.royal.gui.guimodel.loan.LoanAlbumGuiObject;
@@ -45,9 +46,26 @@ public class SaveItemPersistency
     private static PojoDAO borrowerDAO = new BorrowerDAO();
     private static PojoDAO loanDAO = new LoanDAO();
 	
+    public static void saveBibliotheque(Bibliotheque b) {
+    	try{
+    		HibernateUtil.beginTransaction();
+    		logger.debug("Save " + b.getName() + " (" + b.getId() + ")");
+    		albumDAO.save(b);     
+    		HibernateUtil.commitTransaction();
+    	} catch (PersistencyException e) {
+        try {
+            HibernateUtil.rollbackTransaction();
+        } catch (PersistencyException e1) {
+            e1.manageException();
+        }
+        PersistencyException pe = new PersistencyException(e, PersistencyException.CONTINUE);
+        pe.manageException();
+    }
+    	
+    }
     public static void saveAlbum(Album album) 
     {
-        try{        	
+        try{
             HibernateUtil.beginTransaction();
             logger.debug("Save " + album.getTitle() + " (" + album.getId() + ")");
             albumDAO.save(album);     
