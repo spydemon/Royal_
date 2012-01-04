@@ -16,6 +16,11 @@
 	</natures>
 	<linkedResources>
 		<link>
+			<name>java</name>
+			<type>2</type>
+			<location>/opt/echanges/projets/royal3/Royal_/Royal/src/java</location>
+		</link>
+		<link>
 			<name>mapping</name>
 			<type>2</type>
 			<location>/home/leo/Projet/BirdyProject/trunk/BirDy/src/mapping</location>

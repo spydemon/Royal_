@@ -15,10 +15,7 @@ import net.sf.royal.gui.tree.AlbumTree;
 import net.sf.royal.gui.tree.DeleteActionListener;
 import net.sf.royal.gui.tree.EditActionListener;
 import net.sf.royal.gui.wizard.add_dialog.AlbumAddDialog;
-<<<<<<< HEAD
 import net.sf.royal.gui.wizard.add_dialog.LibraryAddDialog;
-=======
->>>>>>> 01b011e... Ajout des sources
 
 /** 
   * @author Soulou
@@ -53,10 +50,6 @@ public class MainToolBar extends JToolBar
 			}
 		});
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 01b011e... Ajout des sources
 		this.jbDelete = this.makeButton(LocaleManager.getInstance().getString("delete"), 
 										IconManager.getIcon("delete.png"), 
 										LocaleManager.getInstance().getString("fulldelete"), 
