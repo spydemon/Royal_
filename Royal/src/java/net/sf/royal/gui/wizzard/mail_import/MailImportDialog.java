@@ -8,11 +8,17 @@ import java.awt.GridBagLayout;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
+import javax.imageio.ImageIO;
 import javax.mail.MessagingException;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -26,20 +32,27 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreeSelectionModel;
 
 import com.google.api.services.books.model.VolumeVolumeInfo;
+import com.google.api.services.books.model.VolumeVolumeInfoDimensions;
 
 import net.sf.royal.datamodel.Album;
+import net.sf.royal.datamodel.Author;
+import net.sf.royal.datamodel.HibernateUtil;
+import net.sf.royal.datamodel.Work;
 import net.sf.royal.gui.manager.LocaleManager;
 import net.sf.royal.gui.manager.PropertyManager;
 import net.sf.royal.gui.pane.AlbumPane;
 import net.sf.royal.gui.pane.BottomBarPane;
+import net.sf.royal.gui.web.ImageWebGetter;
 import net.sf.royal.gui.wizard.add_dialog.CollectionAddDialog;
 import net.sf.royal.mail.Emailisbn;
 import net.sf.royal.mail.EmailisbnLine;
 import net.sf.royal.mail.Mail;
 import net.sf.royal.mail.Misbn;
+import net.sf.royal.persistency.PersistencyManager;
 import net.sf.royal.persistency.SaveItemPersistency;
 import net.sf.royal.util.Base64Utils;
 import net.sf.royal.util.ISBN;
+import net.sf.royal.util.Md5;
 import net.sf.royal.web.ComicNotFoundException;
 import net.sf.royal.web.ConnectionProblemException;
 import net.sf.royal.web.GoogleBook;
@@ -229,7 +242,7 @@ public class MailImportDialog extends JDialog {
 			{
 					MailImportDialog.this.eisbn = null;
 					try {
-						MailImportDialog.this.eisbn = MailImportDialog.this.mailaccount.getIsbnBySubject("ISBN-",100);
+						MailImportDialog.this.eisbn = MailImportDialog.this.mailaccount.getIsbnBySubject(Md5.encode(PropertyManager.getInstance().getProperty("mail_login")),100);
 					} catch (MessagingException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -259,34 +272,80 @@ public class MailImportDialog extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent ae) {
 				for(Emailisbn ei : MailImportDialog.this.eisbn){
-					for(EmailisbnLine eil : ei.getEmailisbnLine()){
-						ISBN is = eil.getIsbn();
-						GoogleBook gb = new GoogleBook(is);
-						try {
-							gb.execute();
-							VolumeVolumeInfo vvi = gb.getVolumeInfo();
-							Album a = new Album();
-							a.setTitle(vvi.getTitle());
-							a.setDimension(vvi.getDimensions().getHeight()+" x "+vvi.getDimensions().getWidth()+" x "+vvi.getDimensions().getThickness());
-							a.setIsbn(is.toString(true));
-							SaveItemPersistency.saveAlbum(a);
-							AlbumPane.getInstance().refresh();						
-						} catch (ConnectionProblemException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						} catch (ComicNotFoundException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-					}
+					SaveEmail(ei,null,null);
+				}
+				MailImportDialog.this.dispose();				
+			}
+			
+			public void SaveEmail(Emailisbn ei, String date, String Biblio){
+				for(EmailisbnLine eil : ei.getEmailisbnLine()){
+					ISBN is = eil.getIsbn();
+					GoogleBook gb = new GoogleBook(is);
 					try {
-						ei.deleteMessage();
-					} catch (MessagingException e) {
+						gb.execute();
+						VolumeVolumeInfo vvi = gb.getVolumeInfo();
+						Album a = new Album();
+						a.setTitle(vvi.getTitle());						
+						a.setIsbn(is.toString(true));
+						SaveItemPersistency.saveAlbum(a);
+						addAuthors(a, vvi.getAuthors());
+						addDimensions(a,vvi.getDimensions());
+						SaveItemPersistency.saveAlbum(a);
+						AlbumPane.getInstance().refresh();						
+					} catch (ConnectionProblemException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (ComicNotFoundException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				}
-				MailImportDialog.this.dispose();				
+				try {
+					ei.deleteMessage();
+				} catch (MessagingException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+			public void addDimensions(Album a, VolumeVolumeInfoDimensions vvid){
+				if(vvid != null){
+					String h = (vvid.getHeight() == null || vvid.getHeight().equals("null")) ? "?": vvid.getHeight();
+					String w = (vvid.getWidth() == null || vvid.getWidth().equals("null")) ? "?": vvid.getWidth();
+					String t = (vvid.getThickness() == null || vvid.getThickness().equals("null")) ? "?": vvid.getThickness();
+					a.setDimension(h+" x "+w+" x "+t);
+				}
+			}
+			
+			public Author findAuthor(String aut){
+				if(aut == null || aut.equals("null")){
+					return null;
+				}
+				List<Author> laut = PersistencyManager.findAuthors();
+				for(Author a : laut){
+					if(a.getName() != null && a.getName().equals(aut)){
+						return a;
+					}
+				}
+				Author a = new Author();
+				a.setName(aut);
+				SaveItemPersistency.saveAuthor(a);
+				return a;
+			}
+			
+			public void addAuthors(Album a, List<String> lat){
+				if(lat != null){
+					for(String aut : lat){
+						Author au = findAuthor(aut);
+						if(au != null){
+							Work wo = new Work();
+							wo.setAlbum(a);
+							wo.setAuthor(au);
+							SaveItemPersistency.saveWork(wo);
+							a.getWorks().add(wo);
+						}
+					}
+				}
 			}
 			
 		}
