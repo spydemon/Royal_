@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.Icon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JToolBar;
 import javax.swing.tree.DefaultMutableTreeNode;
 
@@ -16,6 +18,7 @@ import net.sf.royal.gui.tree.DeleteActionListener;
 import net.sf.royal.gui.tree.EditActionListener;
 import net.sf.royal.gui.wizard.add_dialog.AlbumAddDialog;
 import net.sf.royal.gui.wizard.add_dialog.LibraryAddDialog;
+import net.sf.royal.gui.wizzard.mail_import.MailImportDialog;
 
 /** 
   * @author Soulou
@@ -26,6 +29,8 @@ public class MainToolBar extends JToolBar
 	/* Fields */
 	private JButton jbAdd;
 	private JButton jbEdit;
+	private JButton jbSync;
+	private JButton jbImport;
 	private JButton jbDelete;
 	private Object userObject;
 	private EditActionListener editListener;
@@ -75,10 +80,29 @@ public class MainToolBar extends JToolBar
 				MainToolBar.this.editListener.actionPerformed(new ActionEvent(this, 0, "edit"));
 			}
 		});
+		
 
+		this.jbImport = this.makeButton(LocaleManager.getInstance().getString("import"), 
+				IconManager.getIcon("import.png"), 
+				LocaleManager.getInstance().getString("fullimport"),
+				  ShortcutManager.UPDATE);
+		
+		this.jbImport.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e)
+			{
+				new MailImportDialog();
+			}
+		});
+		
+		this.jbSync = this.makeButton(LocaleManager.getInstance().getString("sync"),
+				  IconManager.getIcon("sync.png"),
+				  LocaleManager.getInstance().getString("fullsync"),
+				  ShortcutManager.SYNC);
 		this.add(this.jbAdd);
 		this.add(this.jbDelete);
 		this.add(this.jbEdit);
+		this.add(this.jbImport);
+		this.add(this.jbSync);
 	}
 
 	private JButton makeButton(String s, Icon i, String desc, char mnemonic)
