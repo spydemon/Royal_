@@ -13,6 +13,7 @@ import net.sf.royal.datamodel.Album;
 import net.sf.royal.datamodel.Collection;
 import net.sf.royal.datamodel.Serie;
 import net.sf.royal.datamodel.Tome;
+import net.sf.royal.datamodel.Bibliotheque;
 import net.sf.royal.gui.manager.IconManager;
 import net.sf.royal.gui.manager.LocaleManager;
 import net.sf.royal.gui.pane.InfoPane;
@@ -29,6 +30,7 @@ public class AlbumInfoPane extends AbstractInfoPane
 {
 	private Album album;
 	private JTextField jtfTitle;
+	private JTextField jtfLib;
 	private JCheckBox jcbxOriginalEd;
 	private JTextField jtfISBN;
 	private JTextField jtfSerie;
@@ -38,6 +40,9 @@ public class AlbumInfoPane extends AbstractInfoPane
 	private JTextField jtfDimension;
 	private JTextField jtfPurchase;
 	private JTextField jtfRelease;
+	private JLabel jlLibBuy;
+	private JLabel jlLibBorrowed;
+	
 	//private JTextArea jtaDesc;
 	//private JLabel jlStatus;
 	//private BorrowDialog bd;
@@ -49,6 +54,7 @@ public class AlbumInfoPane extends AbstractInfoPane
 	public static final String lend = LocaleManager.getInstance().getString("lend");
 	public static final String lent_by = LocaleManager.getInstance().getString("lent_by") + " : ";
 	public static final String sAvailable = LocaleManager.getInstance().getString("available");
+	
 	
 	public static final Icon available = IconManager.getIcon("icon_check.png");
 	public static final Icon not_available = IconManager.getIcon("red_cross.png");
@@ -74,6 +80,7 @@ public class AlbumInfoPane extends AbstractInfoPane
 		this.gbc.anchor = GridBagConstraints.WEST;
 		this.gbc.insets.set(5,5,5,5);
 		this.jtfTitle = new JTextField();
+		this.jtfLib = new JTextField();
 		
 		/***** The title of the Album *****/
 		this.gbc.gridx = 0;
@@ -86,6 +93,27 @@ public class AlbumInfoPane extends AbstractInfoPane
 		this.jtfTitle.setEditable(false);
 		this.jtfTitle.setBackground(cText);
 		this.add(this.jtfTitle,this.gbc);
+		
+		/***** Book buy or borrow ******/
+		this.gbc.gridx= 0;
+		this.gbc.gridy++;
+		this.changeGridProperties(LABEL);
+		this.jlLibBuy = new JLabel(LocaleManager.getInstance().getString("sentence_buy"));
+		this.jlLibBorrowed = new JLabel(LocaleManager.getInstance().getString("sentence_borrowed"));
+		//this.gbc.gridwidth = 2;
+		this.gbc.weightx = 2;
+		this.gbc.gridwidth = 2;
+		this.add(this.jlLibBuy, this.gbc);
+		//this.gbc.gridwidth = 1;
+		//this.gbc.weightx = 1;
+		this.add(this.jlLibBorrowed, this.gbc);
+		
+		this.gbc.gridx++;
+		this.changeGridProperties(COMPONENT);
+		this.jtfLib.setEditable(false);
+		this.jtfLib.setVisible(false);
+		this.jtfLib.setBackground(cText);
+		this.add(jtfLib, this.gbc);
 		
 		/**** ISBN ****/
 		this.gbc.gridx = 0;
@@ -301,6 +329,20 @@ public class AlbumInfoPane extends AbstractInfoPane
 		else
 		{
 			this.jcbxOriginalEd.setSelected(false);
+		}
+		
+		/**** Buy or Borrow ****/
+		if (this.album.getBuy()) {
+			this.jtfLib.setVisible(false);
+			this.jlLibBuy.setVisible(true);
+			this.jlLibBorrowed.setVisible(false);
+		}
+		else {
+			Bibliotheque b = this.album.getBibliotheque();
+			this.jtfLib.setVisible(true);
+			this.jtfLib.setText(b.getName());
+			this.jlLibBuy.setVisible(false);
+			this.jlLibBorrowed.setVisible(true);
 		}
 		
 		/**** ISBN ****/

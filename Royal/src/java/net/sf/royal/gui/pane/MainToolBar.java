@@ -15,6 +15,7 @@ import net.sf.royal.gui.tree.AlbumTree;
 import net.sf.royal.gui.tree.DeleteActionListener;
 import net.sf.royal.gui.tree.EditActionListener;
 import net.sf.royal.gui.wizard.add_dialog.AlbumAddDialog;
+import net.sf.royal.gui.wizard.add_dialog.LibraryAddDialog;
 
 /** 
   * @author Soulou
@@ -48,7 +49,6 @@ public class MainToolBar extends JToolBar
 				new AlbumAddDialog();
 			}
 		});
-
 
 		this.jbDelete = this.makeButton(LocaleManager.getInstance().getString("delete"), 
 										IconManager.getIcon("delete.png"), 

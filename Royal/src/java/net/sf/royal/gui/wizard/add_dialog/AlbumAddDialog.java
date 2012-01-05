@@ -9,12 +9,16 @@ import java.awt.Insets;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.io.File;
 import java.util.Date;
 import java.util.Set;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
@@ -27,6 +31,7 @@ import net.sf.royal.datamodel.Album;
 import net.sf.royal.datamodel.Author;
 import net.sf.royal.datamodel.Collection;
 import net.sf.royal.datamodel.HibernateUtil;
+import net.sf.royal.datamodel.Bibliotheque;
 import net.sf.royal.datamodel.Serie;
 import net.sf.royal.datamodel.Tome;
 import net.sf.royal.datamodel.Work;
@@ -48,6 +53,8 @@ import net.sf.royal.gui.web.CoverWebChooser;
 import net.sf.royal.persistency.PersistencyManager;
 import net.sf.royal.persistency.SaveItemPersistency;
 
+import net.sf.royal.gui.wizard.add_dialog.JLibraryPane;
+
 import org.apache.log4j.Logger;
 
 
@@ -56,6 +63,7 @@ import org.apache.log4j.Logger;
  * @author Unbekandt Léo
  * @author Steven Nguyen
  * @author Maxime Kientz
+ * @author Kevin Hagner
  *
  */
 
@@ -84,6 +92,7 @@ public class AlbumAddDialog extends JDialog
 	private RegexpTextField rtfTitle;
 	private JButtonPane jbpSerie;
 	private JAuthorPane japAuthor;
+	private JComboBox buyOrNot;
 	private RegexpTextField rtfNumber;
 	private JLabel jlPages;
 	private RegexpTextField rtfPages;
@@ -92,10 +101,16 @@ public class AlbumAddDialog extends JDialog
 	private RegexpTextField rtfHeight;
 	private JCheckBox jcbOriginalEd;
 	private JButtonPane jbpCollection;
+	private JButton jbpBibliotheque;
 	private JTextField jtfISBN;
 	private JTextArea jtaComment;
 	private JDatePicker jdpPurchaseDate;
 	private JDatePicker jdpReleaseDate;
+	private JLabel libTitle;
+	
+	private JComboBox libComboBox;
+	private JPanel libPane;
+	private List<Bibliotheque> libBibli;
 	
 	private Album currentAlbum = null;
 	private Serie albumSerie;
@@ -105,6 +120,28 @@ public class AlbumAddDialog extends JDialog
 	
 	private JButton jbOk;
 	private JButton jbCancel;
+	
+	private JLabel titreAchat;
+	
+	/**
+	 * Item use in the buyOrNot combo box
+	 */
+	public class Item {
+		private String name;
+		private int id;
+		public Item(String n, int i) {
+			this.name = n;
+			this.id = i; 
+		}
+		public String toString() {
+			return name;
+		}
+		public int getId() {
+			return id;
+		}
+	};
+	
+	Item itm[] = new Item[]{new Item(LocaleManager.getInstance().getString("buy"), 1), new Item(LocaleManager.getInstance().getString("borrow"), 2)};
 	
 // Constructors
 	/**
@@ -343,10 +380,11 @@ public class AlbumAddDialog extends JDialog
 				LocaleManager.getInstance().getString("author") + " : ",
 				LocaleManager.getInstance().getString("numero") + " : ", 
 				LocaleManager.getInstance().getString("width") + " : ", 
-				LocaleManager.getInstance().getString("purchaseDate") + " : ",
+				LocaleManager.getInstance().getString("book") + " : ",
+				" ",
 				LocaleManager.getInstance().getString("collection") + " : ", 
 				LocaleManager.getInstance().getString("isbn") + " : ", 
-				LocaleManager.getInstance().getString("comment") + " : "
+				LocaleManager.getInstance().getString("comment") + " : " 
 		};
 		gbc.insets = iLabel;
 		for(int i=0; i< labels.length; i++)
@@ -424,11 +462,27 @@ public class AlbumAddDialog extends JDialog
 		gbc.gridx -= 2;
 		gbc.gridy ++;
 		
+		/* Livre acheté ou emprunté ?*/
+		this.buyOrNot = new JComboBox();
+		this.buyOrNot.setPreferredSize(new Dimension(100, 20));
+		this.buyOrNot.addItem(itm[0]);
+		this.buyOrNot.addItem(itm[1]);
+		this.add(buyOrNot, gbc);
+		
+		//gbc.gridx -= 2;
+		gbc.gridx++;
+		
 		/* Date */
+		titreAchat = new JLabel(LocaleManager.getInstance().getString("purchaseDate") + " :");
+		titreAchat.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+		this.add(titreAchat, gbc);
+		gbc.gridx++;
 		gbc.gridwidth = 1;
 		this.jdpPurchaseDate = new JDatePicker();
 		this.add(this.jdpPurchaseDate, gbc);
 		
+		gbc.gridy++;
+		gbc.gridx-=4;
 		gbc.insets = iLabel;
 		gbc.gridx++;
 		JLabel jlReleaseDate = new JLabel(LocaleManager.getInstance().getString("releaseDate") + " : ");
@@ -439,6 +493,30 @@ public class AlbumAddDialog extends JDialog
 		gbc.gridx++;
 		this.jdpReleaseDate = new JDatePicker();
 		this.add(jdpReleaseDate,gbc);
+		
+		/* Library */
+		gbc.gridx++;
+		libTitle = new JLabel(LocaleManager.getInstance().getString("library") + " :");
+		libTitle.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+		libTitle.setVisible(false);
+		this.add(libTitle, gbc);
+		gbc.gridx++;
+		libPane = new JPanel();
+
+		libComboBox = new JComboBox();
+		libComboBox.setVisible(false);
+		libBibli = PersistencyManager.findLibs();
+		
+		for (Bibliotheque b : libBibli)
+			libComboBox.addItem(b);
+
+		libComboBox.setPreferredSize(new Dimension(150, 25));
+		libPane.add(libComboBox);
+		jbpBibliotheque = new JButton("-->");
+		jbpBibliotheque.setVisible(false);
+		libPane.add(jbpBibliotheque);
+
+		this.add(libPane, gbc);
 		
 		gbc.gridwidth = GridBagConstraints.REMAINDER;
 		gbc.gridy++;
@@ -511,6 +589,26 @@ public class AlbumAddDialog extends JDialog
 			}
 		});
 		
+		this.buyOrNot.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				Item item = (Item) buyOrNot.getSelectedItem();
+				//Bought book
+				if (item.getId() == 1) {		
+					libTitle.setVisible(false);
+					libComboBox.setVisible(false);
+					jbpBibliotheque.setVisible(false);
+					titreAchat.setText(LocaleManager.getInstance().getString("purchaseDate") + " :");
+				}
+				//Borrowed book
+				else {
+					libTitle.setVisible(true);
+					libComboBox.setVisible(true);
+					jbpBibliotheque.setVisible(true);
+					titreAchat.setText(LocaleManager.getInstance().getString("borrowDate") + " :");
+				}
+			}
+		});
+		
 		this.jbpSerie.addActionListener(new ActionListener() 
 		{
 			@Override
@@ -533,6 +631,16 @@ public class AlbumAddDialog extends JDialog
 						}
 					}
 				}
+			}
+		});
+		
+		
+		this.jbpBibliotheque.addActionListener(new ActionListener() 
+		{
+			@Override
+			public void actionPerformed(ActionEvent e) 
+			{
+				BibliothequeAddDialog cad = new BibliothequeAddDialog();
 			}
 		});
 		
@@ -751,9 +859,22 @@ public class AlbumAddDialog extends JDialog
 		{
 			a.setOriginal(false);
 		}
+
+		//Book buy or borrowed ?
+		Item item = (Item) this.buyOrNot.getSelectedItem();
+		if (item.getId() == 1){
+			a.setBuy(true);
+		}
+		//If the book was borrowed
+		else {
+			a.setBuy(false);
+			a.setBibliotheque((Bibliotheque)libComboBox.getSelectedItem());
+		}
+		
 		BottomBarPane.getInstance().addAlbum();
 		SaveItemPersistency.saveAlbum(a);
 		japAuthor.saveAuthors(a);
+		//SaveItemPersistency.saveAlbum(a);
 	}
 	
 	/**
@@ -767,6 +888,19 @@ public class AlbumAddDialog extends JDialog
 		String title = rtfTitle.getText().trim();
 		String serie = jbpSerie.getText().trim();
 		String collection = jbpCollection.getText().trim();
+		
+		//Book buy or borrowed ?
+		Item item = (Item) this.buyOrNot.getSelectedItem();
+		if (item.getId() == 1){
+			a.setBuy(true);
+		}
+		//If the book was borrowed
+		else {
+			a.setBuy(false);
+			a.setBibliotheque((Bibliotheque)libComboBox.getSelectedItem());
+		}
+		//Save the modifications.
+		SaveItemPersistency.saveAlbum(a);
 		
 		/*
 		 * If the title has been modified, we update the album

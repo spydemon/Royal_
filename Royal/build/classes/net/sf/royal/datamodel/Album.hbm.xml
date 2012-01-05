@@ -30,6 +30,7 @@
 		<property name="comment" length="4100"/>
 		<property name="copies"/>
 		<property name="purchaseDate"/>
+		<property name="buy"/>
 		
 		<component name="dedication" class="net.sf.royal.datamodel.Dedication">
 			<property name="imageURL"/>
@@ -55,5 +56,6 @@
 		
 		<many-to-one name="serie" column="serieID" not-null="false" />
 		<many-to-one name="collection" column="collectionID" />
+		<many-to-one name="bibliotheque" column="bibliothequeID" /> 
 	</class>
 </hibernate-mapping>
