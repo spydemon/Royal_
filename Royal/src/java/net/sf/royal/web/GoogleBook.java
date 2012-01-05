@@ -1,6 +1,7 @@
 package net.sf.royal.web;
 
 import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
@@ -17,6 +18,7 @@ import com.google.api.services.books.model.VolumeVolumeInfo;
 import com.google.api.services.books.model.VolumeVolumeInfoImageLinks;
 
 import net.sf.royal.util.ISBN;
+import net.sf.royal.web.ConnectionProblemException;
 
 
 
@@ -75,12 +77,12 @@ public class GoogleBook {
 		return this.volume;
 	}
 	
-	public Image getCoverImage() throws ConnectionProblemException{
+	public BufferedImage getCoverImage() throws ConnectionProblemException{
 		String imagelink = null;
 		try{
 			imagelink = this.vviil.getThumbnail();
 		} catch(NullPointerException e){}
-		Image cover = null;
+		BufferedImage cover = null;
 		if(imagelink != null){
 			URL imageURL;
 			try {
