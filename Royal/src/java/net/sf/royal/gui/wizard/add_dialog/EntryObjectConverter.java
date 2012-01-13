@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.sf.royal.datamodel.Author;
+import net.sf.royal.datamodel.Bibliotheque;
 import net.sf.royal.datamodel.Collection;
 import net.sf.royal.datamodel.Editor;
 import net.sf.royal.datamodel.Serie;
@@ -112,6 +113,25 @@ public class EntryObjectConverter {
 			for(Type t : list)
 			{
 				tmp =  new DefaultEntryObject(t.getId(), new String[] {t.getName()});
+				res.add(tmp);
+			}
+		}
+		else
+		{
+			//res = new ArrayList<EntryPaneObject>();
+		}
+		return res;
+	}
+	
+	public static List<EntryPaneObject> getBibliothequeEntryObjects(List<Bibliotheque> list)
+	{
+		List<EntryPaneObject> res = new ArrayList<EntryPaneObject>();
+		DefaultEntryObject tmp;
+		if(list != null && list.size() != 0)
+		{
+			for(Bibliotheque b : list)
+			{
+				tmp =  new DefaultEntryObject(b.getId(), new String[] {b.getName()});
 				res.add(tmp);
 			}
 		}

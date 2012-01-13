@@ -47,6 +47,8 @@ public class JEntryPane extends JPanel
 	 * Use Types for autocompletion
 	 */
 	public static final int TYPE = 5;
+	
+	public static final int BIBLIO = 6;
 	/**
 	 * For autocompletion<br/>
 	 * Use a custom List of data
@@ -252,6 +254,9 @@ public class JEntryPane extends JPanel
 		else if(this.type == JEntryPane.TYPE)
 		{
 			res = EntryObjectConverter.getTypeEntryObjects(PersistencyManager.findTypes());
+		}
+		else if(this.type == JEntryPane.BIBLIO){
+			res = EntryObjectConverter.getBibliothequeEntryObjects(PersistencyManager.findLibs());
 		}
 		else
 		{

@@ -20,8 +20,8 @@ public class Album extends ModelImpl implements Cloneable
     private boolean integral = Boolean.FALSE.booleanValue();
     private boolean original = Boolean.TRUE.booleanValue();
     private boolean special = Boolean.FALSE.booleanValue();
-    private boolean buy;
-    //private boolean buy = Boolean.FALSE.booleanValue();
+    //private boolean buy;
+    private boolean buy = Boolean.FALSE.booleanValue();
     private int pageCount;
     private String comment;
     private int copies;
