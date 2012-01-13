@@ -72,6 +72,7 @@ public class MailImportDialog extends JDialog {
 		private JButton jbCancel;
 		private JPanel jpFind;
 		private JPanel jpList;
+		private JPanel jp;
 		private JLabel jlInfo;
 		private String serror;
 		private DefaultMutableTreeNode Jroot;
@@ -135,17 +136,17 @@ public class MailImportDialog extends JDialog {
 			this.jpFind.setMinimumSize(new Dimension(400,300));
 			this.jpFind.setLayout(new BorderLayout());
 			this.jpFind.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-			JPanel jp = new JPanel();
-			jp.setLayout(new GridBagLayout());
+			this.jp = new JPanel();
+			this.jp.setLayout(new GridBagLayout());
 			GridBagConstraints gbc = new GridBagConstraints();
 			gbc.gridx = 0;
 			gbc.gridy = 0;
-			jp.add(this.jbOk, gbc);
+			this.jp.add(this.jbOk, gbc);
 			gbc.gridx += 1;
-			jp.add(this.jbCancel, gbc);				
+			this.jp.add(this.jbCancel, gbc);				
 			this.jlInfo = new JLabel("Cliquer sur Ok pour procéder à l'inspection de vos mails :"); //TODO LocaleManager
 			this.jpFind.add(jlInfo,BorderLayout.NORTH);
-			this.jpFind.add(jp, BorderLayout.CENTER);
+			this.jpFind.add(this.jp, BorderLayout.CENTER);
 			this.add(jpFind, BorderLayout.CENTER);
 			gbc = new GridBagConstraints();
 			gbc.gridy = 0;
@@ -273,13 +274,20 @@ public class MailImportDialog extends JDialog {
 					for(int i=0; i< MailImportDialog.this.jtree.getRowCount();i++){
 						MailImportDialog.this.jtree.expandRow(i);
 					}
-					MailImportDialog.this.jtree.setRootVisible(false);
-					MailImportDialog.this.jtree.addMouseListener(new SaveAlbumListener(MailImportDialog.this));
-					MailImportDialog.this.remove(MailImportDialog.this.jpFind);
-					MailImportDialog.this.jpList.repaint();
-					MailImportDialog.this.add(MailImportDialog.this.jpList, BorderLayout.NORTH);
-					MailImportDialog.this.repaint();
-					MailImportDialog.this.display();				
+					if(MailImportDialog.this.Jroot.getChildCount() > 0){
+						MailImportDialog.this.jtree.setRootVisible(false);
+						MailImportDialog.this.jtree.addMouseListener(new SaveAlbumListener(MailImportDialog.this));
+						MailImportDialog.this.remove(MailImportDialog.this.jpFind);
+						MailImportDialog.this.jpList.repaint();
+						MailImportDialog.this.add(MailImportDialog.this.jpList, BorderLayout.NORTH);
+						MailImportDialog.this.repaint();
+						MailImportDialog.this.display();	
+					}
+					else{
+						MailImportDialog.this.jlInfo.setText("Pas de mails à importer !");
+						MailImportDialog.this.jp.remove(MailImportDialog.this.jbOk);
+						MailImportDialog.this.jp.repaint();
+					}
 			}
 		}
 		

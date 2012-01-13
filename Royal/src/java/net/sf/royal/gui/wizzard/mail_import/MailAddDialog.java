@@ -1,14 +1,17 @@
 package net.sf.royal.gui.wizzard.mail_import;
 
 import java.awt.Dialog;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
+import javax.mail.MessagingException;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -21,6 +24,7 @@ import net.sf.royal.datamodel.Author;
 import net.sf.royal.datamodel.Bibliotheque;
 import net.sf.royal.datamodel.Serie;
 import net.sf.royal.datamodel.Work;
+import net.sf.royal.gui.datepicker.JDatePicker;
 import net.sf.royal.gui.manager.LocaleManager;
 import net.sf.royal.gui.pane.AlbumPane;
 import net.sf.royal.gui.wizard.add_dialog.AlbumAddDialog;
@@ -47,6 +51,7 @@ public class MailAddDialog extends JDialog{
 	private MailImportDialog mid;
 	private Emailisbn cur_mail;
 	private JButtonPane bib;
+	private JDatePicker jdpPurchaseDate;
 	private JButton jbOk;
 	private JButton jbCancel;
 	
@@ -89,23 +94,32 @@ public class MailAddDialog extends JDialog{
 		GridBagConstraints gc = new GridBagConstraints();
 		this.bib = new JButtonPane(JEntryPane.BIBLIO, "-->");
 		this.bib.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-		gc.gridx = 0;
-		gc.gridy = 0;
 		JLabel bibtitle = new JLabel("Bibliothèque :");
 		bibtitle.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+		this.jbCancel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+		this.jbOk.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+		JLabel datetitle = new JLabel("Date :");
+		datetitle.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+		this.jdpPurchaseDate = new JDatePicker();
+		this.jdpPurchaseDate.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+		gc.gridx = 0;
+		gc.gridy = 0;
 		this.add(bibtitle, gc);
 		gc.gridx+=1;
 		this.add(this.bib,gc);
 		gc.gridy +=1;
+		gc.gridx = 0;
+		this.add(datetitle,gc);
+		gc.gridx+=1;
+		gc.fill = GridBagConstraints.HORIZONTAL;
+		this.add(this.jdpPurchaseDate,gc);
+		gc.gridy+=1;
 		gc.gridx=0;
 		gc.anchor = GridBagConstraints.EAST;
 		this.add(this.jbOk,gc);
 		gc.gridx +=1;
 		gc.anchor = GridBagConstraints.WEST;
-		this.jbCancel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-		this.jbOk.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 		this.add(this.jbCancel,gc);
-		
 	
 	}
 
@@ -126,7 +140,10 @@ public class MailAddDialog extends JDialog{
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				
+				Date date = null;
+				if(MailAddDialog.this.jdpPurchaseDate.getDate() != null){
+					date = MailAddDialog.this.jdpPurchaseDate.getDate();
+				}
 				if(!MailAddDialog.this.bib.getText().isEmpty()){
 					Bibliotheque biblio;
 					if(MailAddDialog.this.bib.getID() != null){
@@ -137,9 +154,14 @@ public class MailAddDialog extends JDialog{
 						biblio.setName(MailAddDialog.this.bib.getText());
 					}
 					SaveItemPersistency.saveBibliotheque(biblio);
+					if(MailAddDialog.this.jdpPurchaseDate.getDate() != null)
+					MailAddDialog.SaveEmail(MailAddDialog.this.cur_mail, date, biblio);
+				}
+				else{
+					MailAddDialog.SaveEmail(MailAddDialog.this.cur_mail, date, null);
 				}
 				
-				//MailAddDialog.SaveEmail(MailAddDialog.this.cur_mail, "", "");
+				
 				MailAddDialog.this.mid.deleteNode(MailAddDialog.this.cur_mail);
 				MailAddDialog.this.dispose();
 				
@@ -159,7 +181,7 @@ public class MailAddDialog extends JDialog{
 	}
 	
 	
-	public static void SaveEmail(Emailisbn ei, String date, String Biblio){
+	public static void SaveEmail(Emailisbn ei, Date date, Bibliotheque biblio){
 		for(EmailisbnLine eil : ei.getEmailisbnLine()){
 			ISBN is = eil.getIsbn();
 			GoogleBook gb = new GoogleBook(is);
@@ -170,6 +192,16 @@ public class MailAddDialog extends JDialog{
 				a.setTitle(vvi.getTitle());						
 				a.setIsbn(is.toString(true));
 				SaveItemPersistency.saveAlbum(a);
+				if(biblio != null){
+					a.setBibliotheque(biblio);
+					a.setBuy(false);
+				}
+				else{
+					a.setBuy(true);
+				}
+				if(date !=null){
+					a.setPurchaseDate(date);
+				}
 				addAuthors(a, vvi.getAuthors());
 				addDimensions(a,vvi.getDimensions());
 				SaveItemPersistency.saveAlbum(a);
@@ -182,12 +214,12 @@ public class MailAddDialog extends JDialog{
 				e.printStackTrace();
 			}
 		}
-//		try {
-//			ei.deleteMessage();
-//		} catch (MessagingException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		try {
+			ei.deleteMessage();
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public static Author findAuthor(String aut){
