@@ -169,7 +169,6 @@ public class BibliothequeAddDialog extends JDialog
 		button.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Suppression de " + list_lib_view.getSelectedValue().toString());
 				PersistencyManager.delLib((Bibliotheque) list_lib_view.getSelectedValue());
 				displayListOfLibs();
 			}
