@@ -29,6 +29,7 @@ import javax.swing.JTree;
 import javax.swing.SwingUtilities;
 import javax.swing.ToolTipManager;
 import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeSelectionModel;
 
 import com.google.api.services.books.model.VolumeVolumeInfo;
@@ -42,6 +43,7 @@ import net.sf.royal.gui.manager.LocaleManager;
 import net.sf.royal.gui.manager.PropertyManager;
 import net.sf.royal.gui.pane.AlbumPane;
 import net.sf.royal.gui.pane.BottomBarPane;
+import net.sf.royal.gui.tree.AlbumCellRenderer;
 import net.sf.royal.gui.web.ImageWebGetter;
 import net.sf.royal.gui.wizard.add_dialog.CollectionAddDialog;
 import net.sf.royal.mail.Emailisbn;
@@ -73,8 +75,8 @@ public class MailImportDialog extends JDialog {
 		private JLabel jlInfo;
 		private String serror;
 		private DefaultMutableTreeNode Jroot;
+		private JTree jtree;
 		private Misbn mailaccount;
-		private JButton jbImport;
 		private ArrayList<Emailisbn> eisbn;
 		
 	// Constructors
@@ -128,7 +130,6 @@ public class MailImportDialog extends JDialog {
 		{
 			this.jbOk = new JButton(LocaleManager.getInstance().getString("ok"));
 			this.jbCancel = new JButton(LocaleManager.getInstance().getString("cancel"));
-			this.jbImport = new JButton(LocaleManager.getInstance().getString("import"));
 			this.setLayout(new BorderLayout());
 			this.jpFind = new JPanel();
 			this.jpFind.setMinimumSize(new Dimension(400,300));
@@ -152,15 +153,15 @@ public class MailImportDialog extends JDialog {
 			this.jpList.setLayout(new GridBagLayout());
 			this.jpList.setMinimumSize(new Dimension(400,300));
 			this.Jroot = new DefaultMutableTreeNode(LocaleManager.getInstance().getString("get_mail"));
-			JTree jtree = new JTree(Jroot);
-			ToolTipManager.sharedInstance().registerComponent(jtree);
-			jtree.setCellRenderer(new MailTreeRenderer());
-			JScrollPane treeView = new JScrollPane(jtree);
+			this.jtree = new JTree(Jroot);
+			ToolTipManager.sharedInstance().registerComponent(this.jtree);
+			this.jtree.setCellRenderer(new MailTreeRenderer());
+			JScrollPane treeView = new JScrollPane(this.jtree);
 			treeView.setPreferredSize(new Dimension(400,100));
-			jtree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
+			this.jtree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 			this.jpList.add(treeView, gbc);
 			gbc.gridy += 1;
-			this.jpList.add(this.jbImport, gbc);
+
 		
 		}
 
@@ -171,7 +172,7 @@ public class MailImportDialog extends JDialog {
 		{
 			jbOk.addActionListener(new ImportActionListener());
 			jbCancel.addActionListener(new CancelActionListener());
-			jbImport.addActionListener(new SaveAlbumsListener());
+
 		}
 		
 		/**
@@ -223,6 +224,20 @@ public class MailImportDialog extends JDialog {
 			return false;		
 		}
 		
+		public void deleteNode(Emailisbn ei){
+			boolean stop = false;
+			for(int i = 0; i <this.Jroot.getChildCount() && !stop;i++){
+				if(ei == (Emailisbn)((DefaultMutableTreeNode)this.Jroot.getChildAt(i)).getUserObject()){
+					this.Jroot.remove(i);
+					((DefaultTreeModel)this.jtree.getModel()).reload();
+					this.jtree.repaint();
+					stop = true;
+					if(this.Jroot.getChildCount() == 0){
+						this.dispose();
+					}
+				}
+			}
+		}
 		
 		
 	// Classes
@@ -255,10 +270,11 @@ public class MailImportDialog extends JDialog {
 						DefaultMutableTreeNode top = new DefaultMutableTreeNode(i);
 						MailImportDialog.this.Jroot.add(top);
 					}
-					JTree jtree = new JTree(MailImportDialog.this.Jroot);
-					ToolTipManager.sharedInstance().registerComponent(jtree);
-					jtree.setCellRenderer(new MailTreeRenderer());
-					jtree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
+					for(int i=0; i< MailImportDialog.this.jtree.getRowCount();i++){
+						MailImportDialog.this.jtree.expandRow(i);
+					}
+					MailImportDialog.this.jtree.setRootVisible(false);
+					MailImportDialog.this.jtree.addMouseListener(new SaveAlbumListener(MailImportDialog.this));
 					MailImportDialog.this.remove(MailImportDialog.this.jpFind);
 					MailImportDialog.this.jpList.repaint();
 					MailImportDialog.this.add(MailImportDialog.this.jpList, BorderLayout.NORTH);
@@ -267,88 +283,4 @@ public class MailImportDialog extends JDialog {
 			}
 		}
 		
-		class SaveAlbumsListener implements ActionListener{
-
-			@Override
-			public void actionPerformed(ActionEvent ae) {
-				for(Emailisbn ei : MailImportDialog.this.eisbn){
-					SaveEmail(ei,null,null);
-				}
-				MailImportDialog.this.dispose();				
-			}
-			
-			public void SaveEmail(Emailisbn ei, String date, String Biblio){
-				for(EmailisbnLine eil : ei.getEmailisbnLine()){
-					ISBN is = eil.getIsbn();
-					GoogleBook gb = new GoogleBook(is);
-					try {
-						gb.execute();
-						VolumeVolumeInfo vvi = gb.getVolumeInfo();
-						Album a = new Album();
-						a.setTitle(vvi.getTitle());						
-						a.setIsbn(is.toString(true));
-						SaveItemPersistency.saveAlbum(a);
-						addAuthors(a, vvi.getAuthors());
-						addDimensions(a,vvi.getDimensions());
-						SaveItemPersistency.saveAlbum(a);
-						AlbumPane.getInstance().refresh();						
-					} catch (ConnectionProblemException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (ComicNotFoundException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-				try {
-					ei.deleteMessage();
-				} catch (MessagingException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			
-			public void addDimensions(Album a, VolumeVolumeInfoDimensions vvid){
-				if(vvid != null){
-					String h = (vvid.getHeight() == null || vvid.getHeight().equals("null")) ? "?": vvid.getHeight();
-					String w = (vvid.getWidth() == null || vvid.getWidth().equals("null")) ? "?": vvid.getWidth();
-					String t = (vvid.getThickness() == null || vvid.getThickness().equals("null")) ? "?": vvid.getThickness();
-					a.setDimension(h+" x "+w+" x "+t);
-				}
-			}
-			
-			public Author findAuthor(String aut){
-				if(aut == null || aut.equals("null")){
-					return null;
-				}
-				List<Author> laut = PersistencyManager.findAuthors();
-				for(Author a : laut){
-					if(a.getName() != null && a.getName().equals(aut)){
-						return a;
-					}
-				}
-				Author a = new Author();
-				a.setName(aut);
-				SaveItemPersistency.saveAuthor(a);
-				return a;
-			}
-			
-			public void addAuthors(Album a, List<String> lat){
-				if(lat != null){
-					for(String aut : lat){
-						Author au = findAuthor(aut);
-						if(au != null){
-							Work wo = new Work();
-							wo.setAlbum(a);
-							wo.setAuthor(au);
-							SaveItemPersistency.saveWork(wo);
-							a.getWorks().add(wo);
-						}
-					}
-				}
-			}
-			
-		}
-		
-
 }

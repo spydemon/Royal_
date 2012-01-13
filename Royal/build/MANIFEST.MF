@@ -1,8 +1,8 @@
 Manifest-Version: 1.0
 Ant-Version: Apache Ant 1.8.2
-Created-By: 1.7.0-b147 (Oracle Corporation)
+Created-By: 1.6.0_23-b23 (Sun Microsystems Inc.)
 Main-Class: net.sf.royal.Royal
-Built-By: Steve
+Built-By: jean
 Class-Path: lib/asm.jar lib/antlr.jar lib/ccl.jar lib/cobertura.jar li
  b/commons-digester.jar lib/commons-httpclient.jar lib/help.jar lib/hi
  bernate.jar lib/javancss.jar lib/jfreechart-common.jar lib/jfreechart
@@ -17,6 +17,6 @@ Name: common
 Specification-Title: Royal
 Specification-Vendor: Royal Team
 Implementation-Title: Royal
-Implementation-Version: trunk September 15 2011
+Implementation-Version: trunk January 5 2012
 Implementation-Vendor: Royal Team
 

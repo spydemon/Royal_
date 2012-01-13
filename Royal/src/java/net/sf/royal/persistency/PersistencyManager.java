@@ -419,6 +419,25 @@ public class PersistencyManager {
 		return libs;
 	}
 	
+	public static Bibliotheque FindBibliothequeByID(long biID){
+		try {
+			Query query = HibernateUtil.currentSession()
+					.createQuery("from Bibliotheque bi where bi.id=:id")
+					.setLong("id", biID);
+			return (Bibliotheque) query.uniqueResult();
+		} catch (Exception e) {
+			try {
+				HibernateUtil.rollbackTransaction();
+			} catch (PersistencyException e1) {
+				e1.manageException();
+			}
+			PersistencyException pe = new PersistencyException(e,
+					PersistencyException.CONTINUE);
+			pe.manageException();
+		}
+		return null;
+	}
+	
 	/**
 	 * Get a list which contains AuthorObjects order by nickName, name and
 	 * firstName

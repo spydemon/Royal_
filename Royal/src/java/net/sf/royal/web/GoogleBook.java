@@ -39,7 +39,7 @@ public class GoogleBook {
 			gbooks = new Books(new NetHttpTransport(),new  JacksonFactory());
 		}
 		this.isbn = isbn.toString();
-		this.vl = gbooks.volumes.list(this.isbn+"+isbn:");
+		this.vl = gbooks.volumes.list("isbn:"+this.isbn);
 	}
 	
 	public void execute() throws ConnectionProblemException, ComicNotFoundException{
