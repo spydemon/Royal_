@@ -11,6 +11,7 @@ import javax.swing.*;
 
 import net.sf.royal.datamodel.Album;
 import net.sf.royal.gui.manager.LocaleManager;
+import net.sf.royal.gui.manager.PropertyManager;
 import net.sf.royal.persistency.PersistencyManager;
 
 /**
@@ -27,6 +28,7 @@ public class WarningDialog extends JDialog {
 	private DefaultListModel listeLivre;
 	private JList listeLivre_jlist;
 	private JPanel panel;
+	private int days;
 	
 	public WarningDialog(Window v) {
 		super(v, LocaleManager.getInstance().getString("warning") + " :", Dialog.ModalityType.TOOLKIT_MODAL);
@@ -65,6 +67,7 @@ public class WarningDialog extends JDialog {
         lstAlbums = PersistencyManager.findAlbums();
         bookLate = new ArrayList<String>(); 
 		Date mnt = new Date();
+		days = Integer.parseInt(PropertyManager.getInstance().getProperty("days_remaning_before_warning"));
 		
 		this.setMinimumSize(new Dimension(200, 300));
 		
@@ -72,7 +75,7 @@ public class WarningDialog extends JDialog {
         for (Album a : lstAlbums) {
         	if (a.getPurchaseDate() != null && a.getBuy() == false) {
         		long daysLeft = (a.getPurchaseDate().getTime() - mnt.getTime())/(3600*24*1000);
-        		if (daysLeft < 5 && daysLeft > 0)
+        		if (daysLeft < days && daysLeft > 0)
         			bookLate.add(a.toString());
         	}
         }

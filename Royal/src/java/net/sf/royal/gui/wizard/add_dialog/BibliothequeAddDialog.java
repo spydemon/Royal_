@@ -130,15 +130,14 @@ public class BibliothequeAddDialog extends JDialog
 				//If the library hasn't name.
 				if (new_lib_name.getText().isEmpty()) {
 					new_lib_name.setIncorrect();
-					MessagePaneManager.showInfoPane("Il faut un nom à la bibli…");
-					//MessagePaneManager.showInfoPane(LocaleManager.getInstance().getString("missing_height_or_width"));
+					MessagePaneManager.showInfoPane(LocaleManager.getInstance().getString("library_missing_name"));
 					return;
 				}
 				
 				//If the phone numer is invalid
 				if (new_lib_phone.getText().isEmpty() || !new_lib_phone.check()) {
 					new_lib_phone.setIncorrect();
-					MessagePaneManager.showInfoPane("Le numéro de téléphone est invalide.");
+					MessagePaneManager.showInfoPane(LocaleManager.getInstance().getString("library_invalid_tel"));
 					return;
 				}
 				

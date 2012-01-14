@@ -86,6 +86,12 @@ public class SettingsTabbedDialog extends JDialog
 		jtp.addTab(LocaleManager.getInstance().getString("email"), cep);
 		settingsTabs.add(cep);
 		
+		// 4rd tab : Change the time remaining before alert for borrowed book
+		//TimeLeftPanel
+		ChangeTimeRemainingPanel ctmr = new ChangeTimeRemainingPanel();
+		jtp.addTab("Temps restant", ctmr);
+		settingsTabs.add(ctmr);
+		
 		this.add(jtp, BorderLayout.CENTER);
 		this.add(jpButton, BorderLayout.SOUTH);
 
