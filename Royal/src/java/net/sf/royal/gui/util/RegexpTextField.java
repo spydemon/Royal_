@@ -17,6 +17,7 @@ public class RegexpTextField extends JTextField implements Checkable {
     public final static String LOGIN_DB = "logindb";
     public final static String NONEMPTY = "^.*\\S+.*$";//at least one non whitespace char
     public final static String WEB = "^http://.*{32}\\.[a-z0-9]{2,4}$";
+    public final static String PHONE = "\\+?[0-9]*";
     
     /**
      * The regexp to use in this object

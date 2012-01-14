@@ -13,6 +13,12 @@ import net.sf.royal.datamodel.Album;
 import net.sf.royal.gui.manager.LocaleManager;
 import net.sf.royal.persistency.PersistencyManager;
 
+/**
+ * This is the dialog used to print warnings to the user when he will give back a borrowed book soon.
+ * @author Kevin Hagner
+ *
+ */
+
 public class WarningDialog extends JDialog {
 	private boolean display;
 	private List<Album> lstAlbums;
@@ -51,6 +57,7 @@ public class WarningDialog extends JDialog {
 	private void display() {
 		if (this.display)
 			this.setVisible(true);
+		//If no book is to give back soon, the window isn't displayed.
 		else this.setVisible(false);
 	}
 	
@@ -61,6 +68,7 @@ public class WarningDialog extends JDialog {
 		
 		this.setMinimumSize(new Dimension(200, 300));
 		
+		//Make the list of all books to give back soon.
         for (Album a : lstAlbums) {
         	if (a.getPurchaseDate() != null && a.getBuy() == false) {
         		long daysLeft = (a.getPurchaseDate().getTime() - mnt.getTime())/(3600*24*1000);
@@ -68,11 +76,11 @@ public class WarningDialog extends JDialog {
         			bookLate.add(a.toString());
         	}
         }
-		System.out.println("Il y a OK OBJET : " + lstAlbums.size());
 
 		panel = new JPanel();
 		okButton = new JButton(LocaleManager.getInstance().getString("warningIWillThinkOfIt"));
 		
+		//Build of the window only if books are to display.
         if (!bookLate.isEmpty()) {
         	listeLivre = new DefaultListModel();
         	listeLivre_jlist = new JList(listeLivre);
@@ -83,11 +91,8 @@ public class WarningDialog extends JDialog {
             	listeLivre.addElement(s);
         	}
         	panel.add(listeLivre_jlist, BorderLayout.CENTER);
-        	
         	panel.add(okButton, BorderLayout.SOUTH);
-        
         	this.display = true;
-
         }
         else {
         	System.out.println("C'est vide…");

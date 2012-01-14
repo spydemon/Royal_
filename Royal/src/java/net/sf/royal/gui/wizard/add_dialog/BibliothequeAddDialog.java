@@ -16,6 +16,7 @@ import net.sf.royal.gui.util.RegexpTextField;
 import net.sf.royal.persistency.PersistencyManager;
 import net.sf.royal.persistency.SaveItemPersistency;
 import net.sf.royal.persistency.*;
+
 //import net.sf.royal.persistency.PersistencyManager;
 
 /**
@@ -28,9 +29,10 @@ public class BibliothequeAddDialog extends JDialog
 {
 	private JFrame window;
 	private JLabel jlabel;
-	private JTextField new_lib_name;
+	private RegexpTextField new_lib_name;
 	private JTextField new_lib_address;
-	private JTextField new_lib_phone;
+	private RegexpTextField new_lib_phone;
+	//private JTextField new_lib_phone;
 	private GridBagLayout grid;
 	private GridBagConstraints constraints;
 	private JButton button;
@@ -67,7 +69,8 @@ public class BibliothequeAddDialog extends JDialog
 		jlabel = new JLabel(LocaleManager.getInstance().getString("library_new_name") + " :");
 		jlabel.setVisible(true);
 		
-		new_lib_name = new JTextField();
+		//new_lib_name = new JTextField();
+		new_lib_name = new RegexpTextField(20, RegexpTextField.NONEMPTY);
 		new_lib_name.setVisible(true);
 		new_lib_name.setColumns(15);
 		
@@ -98,7 +101,7 @@ public class BibliothequeAddDialog extends JDialog
 
 		//Phone of the library 
 		jlabel = new JLabel(LocaleManager.getInstance().getString("library_new_phone") + " :");
-		new_lib_phone = new JTextField();
+		new_lib_phone = new RegexpTextField(20, RegexpTextField.PHONE);
 		new_lib_phone.setColumns(15);
 		
 		constraints.gridx = 0;
@@ -124,7 +127,24 @@ public class BibliothequeAddDialog extends JDialog
 			@Override
 			public void actionPerformed(ActionEvent ae)
 			{
+				//If the library hasn't name.
+				if (new_lib_name.getText().isEmpty()) {
+					new_lib_name.setIncorrect();
+					MessagePaneManager.showInfoPane("Il faut un nom à la bibli…");
+					//MessagePaneManager.showInfoPane(LocaleManager.getInstance().getString("missing_height_or_width"));
+					return;
+				}
+				
+				//If the phone numer is invalid
+				if (new_lib_phone.getText().isEmpty() || !new_lib_phone.check()) {
+					new_lib_phone.setIncorrect();
+					MessagePaneManager.showInfoPane("Le numéro de téléphone est invalide.");
+					return;
+				}
+				
 				//Attribution to a library
+				new_lib_name.setCorrect();
+				new_lib_phone.setCorrect();
 				Bibliotheque b = new Bibliotheque();
 				b.setName(new_lib_name.getText());
 				b.setAddress(new_lib_address.getText());
