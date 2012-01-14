@@ -126,8 +126,6 @@ public class AuthorAddDialog extends JDialog
 					AuthorAddDialog.this.jdpAuthorBirth.setDate(birth);
 				if(death != null)
 					AuthorAddDialog.this.jdpAuthorDeath.setDate(death);
-				
-
 			}
 		});
 	}

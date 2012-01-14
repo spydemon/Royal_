@@ -11,15 +11,21 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.Locale;
+import java.util.List;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JDialog;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 
 import net.sf.royal.datamodel.HibernateUtil;
+import net.sf.royal.datamodel.Album;
 import net.sf.royal.exception.DefaultException;
 import net.sf.royal.exception.RoyalException;
 import net.sf.royal.gui.manager.ArchiManager;
@@ -31,7 +37,9 @@ import net.sf.royal.gui.pane.AlbumPane;
 import net.sf.royal.gui.pane.BottomBarPane;
 import net.sf.royal.gui.pane.MainPane;
 import net.sf.royal.gui.pane.MainToolBar;
+import net.sf.royal.gui.wizard.add_dialog.WarningDialog;
 import net.sf.royal.macos.MacOsManagement;
+import net.sf.royal.persistency.PersistencyManager;
 
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
@@ -145,6 +153,8 @@ public class Royal extends JFrame
                     e.printStackTrace();
                 }
             }
+            
+            new WarningDialog(this);
     }
 
     /**

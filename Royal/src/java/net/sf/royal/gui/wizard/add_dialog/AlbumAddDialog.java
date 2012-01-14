@@ -222,6 +222,8 @@ public class AlbumAddDialog extends JDialog
 				Date purchaseDate = AlbumAddDialog.this.currentAlbum.getPurchaseDate();
 				Date releaseDate = AlbumAddDialog.this.currentAlbum.getRegistration();
 				boolean isOriginal = AlbumAddDialog.this.currentAlbum.isOriginal();
+				boolean buy = AlbumAddDialog.this.currentAlbum.getBuy();
+				Bibliotheque bibli = AlbumAddDialog.this.currentAlbum.getBibliotheque();
 				
 				if(dimension != null)
 				{
@@ -262,6 +264,21 @@ public class AlbumAddDialog extends JDialog
 					AlbumAddDialog.this.jdpReleaseDate.setDate(releaseDate);
 				
 				AlbumAddDialog.this.jcbOriginalEd.setSelected(isOriginal);
+				
+				/*
+				 * If it's a borrowed book
+				 */
+				if (buy == false) {
+					System.out.println("Ok je suis bien dedans.");
+					libTitle.setVisible(true);
+					libComboBox.setVisible(true);
+					jbpBibliotheque.setVisible(true);
+					titreAchat.setText(LocaleManager.getInstance().getString("borrowDate") + " :");
+					buyOrNot.setSelectedIndex(1);
+					int i = 0;
+					while (bibli.getName() != libComboBox.getSelectedItem().toString())
+						libComboBox.setSelectedIndex(i++);
+				}
 			}
 		});
 	}
