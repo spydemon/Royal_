@@ -20,6 +20,7 @@ public class ShortcutManager
 	public static char ABOUT = 'T';
 	public static char SETTINGS = 'S';
 	public static char IMPORT = 'I';
+	public static char ISBN = 'B';
 
 	/* Album actions */
 	public static char ADD = 'A';

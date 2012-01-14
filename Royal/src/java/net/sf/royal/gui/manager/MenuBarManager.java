@@ -13,6 +13,7 @@ import javax.swing.KeyStroke;
 
 import net.sf.royal.Royal;
 import net.sf.royal.gui.wizard.ImportDatabaseWizard;
+import net.sf.royal.gui.wizard.isbn_import.IsbnAddDialog;
 import net.sf.royal.gui.wizard.settings.SettingsTabbedDialog;
 
 /**
@@ -43,6 +44,7 @@ public class MenuBarManager {
     private JMenu tools;
     private JMenuItem settings;
     private JMenuItem importDatabase;
+    private JMenuItem importIsbn;
     
     /* Constructor */
     private MenuBarManager(){
@@ -68,6 +70,12 @@ public class MenuBarManager {
 		settings.setAccelerator(KeyStroke.getKeyStroke(ShortcutManager.SETTINGS, InputEvent.CTRL_DOWN_MASK));
 		
 		tools.add(settings);
+		
+		importIsbn = new JMenuItem(LocaleManager.getInstance().getString("import_isbn"));
+		importIsbn.setIcon(IconManager.getIcon("import.gif"));
+		importIsbn.setAccelerator(KeyStroke.getKeyStroke(ShortcutManager.ISBN, InputEvent.CTRL_DOWN_MASK));
+		
+		tools.add(importIsbn);
 		
         menuBar.add(tools);
         
@@ -149,6 +157,15 @@ public class MenuBarManager {
 				new ImportDatabaseWizard(Royal.applicationInstance).setVisible(true);
 			}
 		});
+        importIsbn.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				new IsbnAddDialog(Royal.applicationInstance);
+				
+			}
+        	
+        });
     }
 
     /**
