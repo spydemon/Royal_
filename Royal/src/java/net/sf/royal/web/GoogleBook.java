@@ -1,6 +1,5 @@
 package net.sf.royal.web;
 
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
@@ -16,13 +15,15 @@ import com.google.api.services.books.Books.Volumes;
 import com.google.api.services.books.model.Volume;
 import com.google.api.services.books.model.VolumeVolumeInfo;
 import com.google.api.services.books.model.VolumeVolumeInfoImageLinks;
-
 import net.sf.royal.util.ISBN;
 import net.sf.royal.web.ConnectionProblemException;
 
 
 
-
+/**
+ * This object let you find a GoogleBook thanks to its ISBN
+ * @author jean
+ */
 public class GoogleBook {
 	
 	private static Books gbooks = null;
@@ -54,8 +55,7 @@ public class GoogleBook {
 		}
 		this.volumeid = lv.get(0).getId();
 		this.vg = gbooks.volumes.get(this.volumeid);
-		try {
-			
+		try {		
 			this.volume = this.vg.execute();
 		} catch (IOException e) {
 			throw new ConnectionProblemException();
@@ -93,10 +93,8 @@ public class GoogleBook {
 				InputStream urlStream = urlConn.getInputStream();
 				cover = ImageIO.read(urlStream);
 			} catch (MalformedURLException e) {
-					//TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (IOException e) {
-					//TODO Auto-generated catch block
 				throw new ConnectionProblemException(e.getMessage());
 			}
 		}

@@ -8,17 +8,10 @@ import java.awt.GridBagLayout;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-
-import javax.imageio.ImageIO;
 import javax.mail.MessagingException;
 import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -31,34 +24,17 @@ import javax.swing.ToolTipManager;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeSelectionModel;
-
-import com.google.api.services.books.model.VolumeVolumeInfo;
-import com.google.api.services.books.model.VolumeVolumeInfoDimensions;
-
-import net.sf.royal.datamodel.Album;
-import net.sf.royal.datamodel.Author;
-import net.sf.royal.datamodel.HibernateUtil;
-import net.sf.royal.datamodel.Work;
 import net.sf.royal.gui.manager.LocaleManager;
 import net.sf.royal.gui.manager.PropertyManager;
-import net.sf.royal.gui.pane.AlbumPane;
-import net.sf.royal.gui.pane.BottomBarPane;
-import net.sf.royal.gui.tree.AlbumCellRenderer;
-import net.sf.royal.gui.web.ImageWebGetter;
-import net.sf.royal.gui.wizard.add_dialog.CollectionAddDialog;
 import net.sf.royal.mail.Emailisbn;
-import net.sf.royal.mail.EmailisbnLine;
 import net.sf.royal.mail.Mail;
 import net.sf.royal.mail.Misbn;
-import net.sf.royal.persistency.PersistencyManager;
-import net.sf.royal.persistency.SaveItemPersistency;
 import net.sf.royal.util.Base64Utils;
-import net.sf.royal.util.ISBN;
 import net.sf.royal.util.Md5;
-import net.sf.royal.web.ComicNotFoundException;
-import net.sf.royal.web.ConnectionProblemException;
-import net.sf.royal.web.GoogleBook;
-
+/**
+ * This is the dialog used to import the specific emails sended from the Android App.
+ * @author jean
+ */
 public class MailImportDialog extends JDialog {
 		//Fields	
 		
@@ -82,9 +58,9 @@ public class MailImportDialog extends JDialog {
 		
 	// Constructors
 		/**
-		 * Create a new CollectionAddDialog, and tell it to be at the center of the parent.<br/>
+		 * Create a new MailImportDialog, and tell it to be at the center of the parent.<br/>
 		 * The dialog will be created and paint in the SwingUtilities Thread and then be showed.
-		 * @param parent The parent component of the CollectionAddDialog
+		 * @param parent The parent component of the MailImportDialog
 		 * @param isForeground true if the dialog has to stay on the foreground of its parent
 		 */
 		public MailImportDialog(Window parent, boolean isForeground)
@@ -111,7 +87,7 @@ public class MailImportDialog extends JDialog {
 		}
 		
 		/**
-		 * Create a CollectionAddDialog. <br/>
+		 * Create a MailImportDialog. <br/>
 		 * The created dialog will be placed at the center of the screen and 
 		 * behave like other window
 		 */
@@ -125,7 +101,7 @@ public class MailImportDialog extends JDialog {
 		/**
 		 * Initialize the Dialog Components.
 		 * You need to use the method display to make the dialog visible
-		 * @see CollectionAddDialog#display
+		 * @see MailImportDialog#display
 		 */
 		private void init()
 		{
@@ -167,7 +143,7 @@ public class MailImportDialog extends JDialog {
 		}
 
 		/**
-		 * Set all the listeners of the SerieAddDialog
+		 * Set all the listeners of the MailImportDialog
 		 */
 		private void initListener()
 		{
@@ -177,7 +153,7 @@ public class MailImportDialog extends JDialog {
 		}
 		
 		/**
-		 * Use this method to show the SerieAddDialog 
+		 * Use this method to show the MailImportDialog 
 		 */
 		public void display()
 		{
@@ -186,24 +162,29 @@ public class MailImportDialog extends JDialog {
 			this.setDefaultCloseOperation(HIDE_ON_CLOSE);
 		}
 		
-		
-		
+		/**
+		 * This method test your connection to the mail service. 
+		 * It fills the error string to know what's wrong.
+		 * @return boolean true if the connection succeeded 
+		 */		
 		private boolean tryConnection(){
 			boolean verif = true;
+			// Verification if the user has configured his email address
 			if(PropertyManager.getInstance().getProperty("mail_protocol").equals("IMAP") || PropertyManager.getInstance().getProperty("mail_protocol").equals("POP3")){
 				this.mailaccount = new Misbn((PropertyManager.getInstance().getProperty("mail_protocol").equals("IMAP")) ? Mail.IMAP : Mail.POP3);
 				String username = PropertyManager.getInstance().getProperty("mail_login");
 				String host = PropertyManager.getInstance().getProperty("mail_server");
 				String password = null;
+				// No problem with the password
 				try {
 					password = Base64Utils.decode(PropertyManager.getInstance().getProperty("mail_password"));
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					serror="Erreur de conversion du mot de passe !";
 					verif = false;
 				}
 				if(verif){
 					this.mailaccount.setUserPass(username, password, host);
+					// Connecting the email service
 					try {
 						this.mailaccount.connect();
 					} catch (Exception e) {
@@ -211,6 +192,7 @@ public class MailImportDialog extends JDialog {
 						verif = false;
 					}
 					if(verif){
+						// Opening the default folder INBOX
 						try {
 							this.mailaccount.openFolder("INBOX");
 						} catch (Exception e) {
@@ -224,7 +206,11 @@ public class MailImportDialog extends JDialog {
 			}
 			return false;		
 		}
-		
+		/**
+		 * Suppress a Node in the Tree by giving the corresponding Emailisbn. 
+		 * if there are no more branch, dispose the Dialog.
+		 * @param ei the Emailisbn to delete from the Tree
+		 */
 		public void deleteNode(Emailisbn ei){
 			boolean stop = false;
 			for(int i = 0; i <this.Jroot.getChildCount() && !stop;i++){
@@ -242,6 +228,11 @@ public class MailImportDialog extends JDialog {
 		
 		
 	// Classes
+		/**
+		 * Intern class for the CancelButton.
+		 * Dispose the current JDialog.
+		 * @author jean
+		 */
 		class CancelActionListener implements ActionListener
 		{
 			@Override
@@ -250,7 +241,11 @@ public class MailImportDialog extends JDialog {
 				MailImportDialog.this.dispose();
 			}
 		}
-
+		/**
+		 * Import the emails containing the ISBNs
+		 * @see MailImportDialog#tryConnection()
+		 * @author jean
+		 */
 		class ImportActionListener implements ActionListener
 		{
 			@Override
@@ -260,20 +255,21 @@ public class MailImportDialog extends JDialog {
 					try {
 						MailImportDialog.this.eisbn = MailImportDialog.this.mailaccount.getIsbnBySubject(Md5.encode(PropertyManager.getInstance().getProperty("mail_login")),100);
 					} catch (MessagingException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					} catch (IOException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 					GridBagConstraints gbc = new GridBagConstraints();
+					// Adding the email to the Tree
 					for(Emailisbn i : MailImportDialog.this.eisbn){
 						DefaultMutableTreeNode top = new DefaultMutableTreeNode(i);
 						MailImportDialog.this.Jroot.add(top);
 					}
+					// To show the Tree opened
 					for(int i=0; i< MailImportDialog.this.jtree.getRowCount();i++){
 						MailImportDialog.this.jtree.expandRow(i);
 					}
+					// Show the Tree Panel
 					if(MailImportDialog.this.Jroot.getChildCount() > 0){
 						MailImportDialog.this.jtree.setRootVisible(false);
 						MailImportDialog.this.jtree.addMouseListener(new SaveAlbumListener(MailImportDialog.this));
@@ -283,6 +279,7 @@ public class MailImportDialog extends JDialog {
 						MailImportDialog.this.repaint();
 						MailImportDialog.this.display();	
 					}
+					// If no emails 
 					else{
 						MailImportDialog.this.jlInfo.setText("Pas de mails à importer !");
 						MailImportDialog.this.jp.remove(MailImportDialog.this.jbOk);
