@@ -6,7 +6,10 @@ import javax.swing.tree.DefaultTreeCellRenderer;
 
 import net.sf.royal.mail.Emailisbn;
 import net.sf.royal.mail.EmailisbnLine;
-
+/**
+ * Used to let the tree have a Tooltip Text corresponding the isbns that are in the email.
+ * @author jean
+ */
 public class MailTreeRenderer extends DefaultTreeCellRenderer{
 
 	

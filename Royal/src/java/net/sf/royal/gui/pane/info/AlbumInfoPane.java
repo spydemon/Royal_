@@ -98,8 +98,8 @@ public class AlbumInfoPane extends AbstractInfoPane
 		this.gbc.gridx= 0;
 		this.gbc.gridy++;
 		this.changeGridProperties(LABEL);
-		this.jlLibBuy = new JLabel(LocaleManager.getInstance().getString("sentence_buy"));
-		this.jlLibBorrowed = new JLabel(LocaleManager.getInstance().getString("sentence_borrowed"));
+		this.jlLibBuy = new JLabel(LocaleManager.getInstance().getString("buy"));
+		this.jlLibBorrowed = new JLabel(LocaleManager.getInstance().getString("borrow"));
 		//this.gbc.gridwidth = 2;
 		this.gbc.weightx = 2;
 		this.gbc.gridwidth = 2;
