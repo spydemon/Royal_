@@ -16,6 +16,7 @@ import net.sf.royal.datamodel.AuthorDAO;
 import net.sf.royal.datamodel.Borrower;
 import net.sf.royal.datamodel.BorrowerDAO;
 import net.sf.royal.datamodel.Bibliotheque;
+import net.sf.royal.datamodel.BibliothequeDAO;
 import net.sf.royal.datamodel.Collection;
 import net.sf.royal.datamodel.CollectionDAO;
 import net.sf.royal.datamodel.CommentedImage;
@@ -72,6 +73,7 @@ public class PersistencyManager {
 	private static PojoDAO authorDAO = new AuthorDAO();
 	private static PojoDAO workDAO = new WorkDAO();
 	private static PojoDAO borrowerDAO = new BorrowerDAO();
+	private static PojoDAO libDAO = new BibliothequeDAO();
 
 	/**
 	 * Returns the Dedication corresponding to the given ID
@@ -1376,7 +1378,19 @@ public class PersistencyManager {
 
 	public static void delLib (Bibliotheque b) {
 		String hqlDelete = "delete Bibliotheque where id = :id";
-		HibernateUtil.currentSession().createQuery(hqlDelete).setParameter("id", b.getId()).executeUpdate();
+		try {
+			HibernateUtil.beginTransaction();
+			Bibliotheque bi = (Bibliotheque) libDAO.findByPrimaryKey(b.getId());
+			//HibernateUtil.currentSession().createQuery(hqlDelete).setParameter("id", b.getId()).executeUpdate();
+			libDAO.delete(bi);
+			HibernateUtil.commitTransaction();
+		} catch (Exception e) {
+			try {
+				HibernateUtil.rollbackTransaction();
+			} catch (Exception f) {
+				
+			}
+		}
 	}
 	
 	@SuppressWarnings("unchecked")

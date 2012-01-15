@@ -184,6 +184,7 @@ public class BibliothequeAddDialog extends JDialog
 
 		displayListOfLibs();
 		
+		//Remove library button
 		button = new JButton(LocaleManager.getInstance().getString("remove"));
 		button.addActionListener(new ActionListener() {
 			@Override
