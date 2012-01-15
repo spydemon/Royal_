@@ -3,11 +3,13 @@ package net.sf.royal.gui.wizard.add_dialog;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.List;
+import java.util.ArrayList;
 import javax.swing.*;
 
 import net.sf.royal.datamodel.Bibliotheque;
 import net.sf.royal.datamodel.Collection;
 import net.sf.royal.datamodel.Editor;
+import net.sf.royal.datamodel.Album;
 import net.sf.royal.gui.manager.LocaleManager;
 import net.sf.royal.gui.manager.MessagePaneManager;
 import net.sf.royal.gui.manager.ShortcutManager;
@@ -189,8 +191,13 @@ public class BibliothequeAddDialog extends JDialog
 		button.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				PersistencyManager.delLib((Bibliotheque) list_lib_view.getSelectedValue());
-				displayListOfLibs();
+				ArrayList<Album> libUsed = PersistencyManager.findAlbumsInLib((Bibliotheque) list_lib_view.getSelectedValue());
+				if (libUsed.isEmpty()) {
+					PersistencyManager.delLib((Bibliotheque) list_lib_view.getSelectedValue());
+					displayListOfLibs();
+				}
+				else 
+					MessagePaneManager.showInfoPane(LocaleManager.getInstance().getString("library_used_not_deleted"));
 			}
 		});
 		

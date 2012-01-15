@@ -2060,7 +2060,14 @@ public class PersistencyManager {
 			pe.manageException();
 		}
 	}
-
+	
+	public static ArrayList<Album> findAlbumsInLib (Bibliotheque b) {
+		String query = "FROM Album WHERE buy=false AND bibliotheque=:bibli";
+		@SuppressWarnings("unchecked")
+		ArrayList<Album> albums = (ArrayList<Album>) HibernateUtil.currentSession().createQuery(query).setParameter("bibli", b).list();
+		return albums;
+	}
+	
 	private static ArrayList<Work> findWorksByAuthorID(Long id) {
 		try {
 			String query = "from Work where author.id=:id";

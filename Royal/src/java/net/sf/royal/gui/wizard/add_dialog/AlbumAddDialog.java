@@ -269,7 +269,6 @@ public class AlbumAddDialog extends JDialog
 				 * If it's a borrowed book
 				 */
 				if (buy == false) {
-					System.out.println("Ok je suis bien dedans.");
 					libTitle.setVisible(true);
 					libComboBox.setVisible(true);
 					jbpBibliotheque.setVisible(true);
