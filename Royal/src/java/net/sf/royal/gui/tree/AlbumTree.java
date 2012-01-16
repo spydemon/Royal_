@@ -20,6 +20,7 @@ import javax.swing.tree.TreePath;
 
 import net.sf.royal.datamodel.Album;
 import net.sf.royal.datamodel.Author;
+import net.sf.royal.datamodel.Bibliotheque;
 import net.sf.royal.datamodel.Serie;
 import net.sf.royal.datamodel.Type;
 import net.sf.royal.gui.manager.LocaleManager;
@@ -39,6 +40,7 @@ public class AlbumTree extends JTree
 	public static final int SORT_SERIE = 0x00000001;
 	public static final int SORT_AUTHOR = 0x0000010;
 	public static final int SORT_TYPE = 0x00000100;
+	public static final int SORT_LIBRARY = 0x00001000;
 
 	/* Fields */
 	private static AlbumTree instance;
@@ -50,6 +52,7 @@ public class AlbumTree extends JTree
 	private List<Album> listAlbum = null;
 	private List<Author> listAuthor = null;
 	private List<Type> listType = null;
+	private List<Bibliotheque> listBib = null;
 
 	private int currentFlags;
 	
@@ -235,6 +238,15 @@ public class AlbumTree extends JTree
 			for(Author author : this.listAuthor)
 				this.nRoot.add(authorSerieNode(author));
 		}
+		else if(this.currentFlags == SORT_LIBRARY){
+			tmpNode = nullBibliothequeNode();
+			if(!tmpNode.isLeaf())
+				this.nRoot.add(tmpNode);
+			this.listBib = PersistencyManager.findLibs();
+			for(Bibliotheque b : this.listBib){
+				this.nRoot.add(BibliothequeNode(b));
+			}
+		}
 
 		this.tmModel = new DefaultTreeModel(this.nRoot);
 		this.setLargeModel(true);
@@ -304,6 +316,14 @@ public class AlbumTree extends JTree
 		return tmpType;
 	}
 	
+	private DefaultMutableTreeNode BibliothequeNode(Bibliotheque b){
+		DefaultMutableTreeNode tmpbib = new DefaultMutableTreeNode(b);
+		this.listAlbum = PersistencyManager.findAlbumsByBibliothequeID(b.getId());
+		for(Album album : this.listAlbum)
+			tmpbib.add(new DefaultMutableTreeNode(album));
+		return tmpbib;
+	}
+	
 	/**
 	 * @return the node containing all albums without Author
 	 */
@@ -338,6 +358,13 @@ public class AlbumTree extends JTree
 		for(Album album : this.listAlbum)
 			nullTypeNode.add(new DefaultMutableTreeNode(album));
 		return nullTypeNode;
+	}
+	private DefaultMutableTreeNode nullBibliothequeNode(){
+		DefaultMutableTreeNode nullBibliothequeNode = new DefaultMutableTreeNode(LocaleManager.getInstance().getString("no_library"));
+		this.listAlbum = PersistencyManager.findAlbumsBibliothequeNull();
+		for(Album album : this.listAlbum)
+			nullBibliothequeNode.add(new DefaultMutableTreeNode(album));
+		return nullBibliothequeNode;
 	}
 	
 	/**

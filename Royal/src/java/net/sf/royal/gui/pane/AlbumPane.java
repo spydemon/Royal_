@@ -101,6 +101,7 @@ public class AlbumPane extends JPanel
 		String author = Tools.initCap(LocaleManager.getInstance().getString("author"));
 		String serie = Tools.initCap(LocaleManager.getInstance().getString("serie"));
 		String type = Tools.initCap(LocaleManager.getInstance().getString("type"));
+		String bib = Tools.initCap(LocaleManager.getInstance().getString("library"));
 		String sep = " - ";
 		String name = album;
 		this.jcbSort.addItem(new ComboBoxSortItem(name,AlbumTree.SORT_ALBUM));
@@ -114,7 +115,8 @@ public class AlbumPane extends JPanel
 		this.jcbSort.addItem(new ComboBoxSortItem(name,AlbumTree.SORT_TYPE));
 		name = type + sep + serie + sep + album;
 		this.jcbSort.addItem(new ComboBoxSortItem(name,AlbumTree.SORT_TYPE | AlbumTree.SORT_SERIE));
-
+		name = bib + sep + album;
+		this.jcbSort.addItem(new ComboBoxSortItem(name,AlbumTree.SORT_LIBRARY));
 		/* We get the last sort, default = Author - Serie - Album */
 		int sort_flags = Integer.valueOf(PropertyManager.getInstance().getProperty("sort"));
 		/* We select the corresponding combobox item */
