@@ -65,7 +65,7 @@ public class SerieAddDialog extends JDialog
 	private JTextArea jtaDescription;
 	
 	private Serie currentSerie;
-	private Type typeSerie;
+	private net.sf.royal.datamodel.Type typeSerie;
 	
 // Constructors
 	/**
@@ -104,7 +104,7 @@ public class SerieAddDialog extends JDialog
 	 * Constructor called to add a Serie of the Type t
 	 * @param t
 	 */
-	public SerieAddDialog(Type t)
+	public SerieAddDialog(net.sf.royal.datamodel.Type t)
 	{
 		this(null,true);
 		this.typeSerie = t;
@@ -138,7 +138,7 @@ public class SerieAddDialog extends JDialog
 			@Override
 			public void run() {
 				String name = currentSerie.getName();
-				Type type = currentSerie.getType();
+				net.sf.royal.datamodel.Type type = currentSerie.getType();
 				boolean oneshot = currentSerie.isOneShot();
 				String desc = currentSerie.getDescription();
 				
@@ -289,7 +289,7 @@ public class SerieAddDialog extends JDialog
 			hasChanged = true;
 		}
 
-		Type t;
+		net.sf.royal.datamodel.Type t;
 		if(s.getType() == null)
 		{
 			if(jepTypeName.getID() != null)
@@ -299,7 +299,7 @@ public class SerieAddDialog extends JDialog
 			}
 			else if(!jepTypeName.getText().isEmpty() && jepTypeName.getID() == null)
 			{
-				t = new Type();
+				t = new net.sf.royal.datamodel.Type();
 				t.setName(jepTypeName.getText());
 				t.addSerie(s);
 				s.setType(t);
