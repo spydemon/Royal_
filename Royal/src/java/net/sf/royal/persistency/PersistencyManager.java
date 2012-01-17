@@ -917,6 +917,26 @@ public class PersistencyManager {
 		}
 		return null;
 	}
+	@SuppressWarnings("unchecked")
+	public static List<Album> findAlbumsByBibliothequeID(long id) {
+		try {
+			String query = "from Album a where a.bibliotheque.id=:id order by a.tome.number, a.tome.revision asc";
+			ArrayList<Album> albums = (ArrayList<Album>) HibernateUtil
+					.currentSession().createQuery(query).setParameter("id", id)
+					.list();
+			return albums;
+		} catch (Exception e) {
+			try {
+				HibernateUtil.rollbackTransaction();
+			} catch (PersistencyException e1) {
+				e1.manageException();
+			}
+			PersistencyException pe = new PersistencyException(e,
+					PersistencyException.CONTINUE);
+			pe.manageException();
+		}
+		return null;
+	}
 
 	@SuppressWarnings("unchecked")
 	public static List<Album> findAlbumsAuthorNull() {
@@ -977,7 +997,25 @@ public class PersistencyManager {
 		}
 		return null;
 	}
-
+	@SuppressWarnings("unchecked")
+	public static List<Album> findAlbumsBibliothequeNull() {
+		try {
+			String query = "from Album a where a.bibliotheque.id is null order by a.title asc";
+			ArrayList<Album> albums = (ArrayList<Album>) HibernateUtil
+					.currentSession().createQuery(query).list();
+			return albums;
+		} catch (Exception e) {
+			try {
+				HibernateUtil.rollbackTransaction();
+			} catch (PersistencyException e1) {
+				e1.manageException();
+			}
+			PersistencyException pe = new PersistencyException(e,
+					PersistencyException.CONTINUE);
+			pe.manageException();
+		}
+		return null;
+	}
 	@SuppressWarnings("unchecked")
 	public static List<Serie> findSeriesTypeNull() {
 		try {

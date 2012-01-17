@@ -120,7 +120,7 @@ public class IsbnAddDialog extends JDialog{
 			this.setLayout(new BorderLayout());
 			this.add(jtIsbn, BorderLayout.WEST);
 			this.add(jbOk, BorderLayout.EAST);
-
+			this.setResizable(false);
 			this.pack();
 			this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 			this.setVisible(true);
