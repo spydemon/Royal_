@@ -102,7 +102,8 @@ public class MainToolBar extends JToolBar
 		this.add(this.jbDelete);
 		this.add(this.jbEdit);
 		this.add(this.jbImport);
-		this.add(this.jbSync);
+		//Not enought time to implement the sync function :(
+		//this.add(this.jbSync);
 	}
 
 	private JButton makeButton(String s, Icon i, String desc, char mnemonic)
