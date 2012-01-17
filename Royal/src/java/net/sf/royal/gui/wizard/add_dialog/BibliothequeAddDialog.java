@@ -34,7 +34,6 @@ public class BibliothequeAddDialog extends JDialog
 	private RegexpTextField new_lib_name;
 	private JTextField new_lib_address;
 	private RegexpTextField new_lib_phone;
-	//private JTextField new_lib_phone;
 	private GridBagLayout grid;
 	private GridBagConstraints constraints;
 	private JButton button;
@@ -173,16 +172,16 @@ public class BibliothequeAddDialog extends JDialog
 		window.add(jlabel);
 		
 		list_model = new DefaultListModel();
+		list_model.setSize(3);
 		list_lib_view = new JList(list_model);
+		list_lib_view.setSize(new Dimension(300, 300));
 		list_scroller = new JScrollPane(list_lib_view);
-		list_scroller.setSize(new Dimension(300, 300));
 		
 		constraints.gridx = 0;
 		constraints.gridy = 6;
 		constraints.gridwidth = 2;
-		grid.setConstraints(list_lib_view, constraints);
-		
-		window.add(list_lib_view);
+		grid.setConstraints(list_scroller,  constraints);
+		window.add(list_scroller);
 
 		displayListOfLibs();
 		

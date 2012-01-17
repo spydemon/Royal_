@@ -28,6 +28,7 @@ public class WarningDialog extends JDialog {
 	private DefaultListModel listeLivre;
 	private JList listeLivre_jlist;
 	private JPanel panel;
+	private JScrollPane jscroll;
 	private int days;
 	
 	public WarningDialog(Window v) {
@@ -51,7 +52,7 @@ public class WarningDialog extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent e) 
 			{
-				System.out.println("La fenêtre est senser se fermer maintenant.");
+				WarningDialog.this.dispose();
 			}
 		});
 	}
@@ -69,7 +70,7 @@ public class WarningDialog extends JDialog {
 		Date mnt = new Date();
 		days = Integer.parseInt(PropertyManager.getInstance().getProperty("days_remaning_before_warning"));
 		
-		this.setMinimumSize(new Dimension(200, 300));
+		this.setSize(new Dimension(200, 140));
 		
 		//Make the list of all books to give back soon.
         for (Album a : lstAlbums) {
@@ -83,17 +84,21 @@ public class WarningDialog extends JDialog {
 		panel = new JPanel();
 		okButton = new JButton(LocaleManager.getInstance().getString("warningIWillThinkOfIt"));
 		
-		//Build of the window only if books are to display.
+		//Build the window only if books are to display.
         if (!bookLate.isEmpty()) {
         	listeLivre = new DefaultListModel();
+        	listeLivre.setSize(3);
         	listeLivre_jlist = new JList(listeLivre);
+        	listeLivre_jlist.setSize(140,70);
+        	jscroll = new JScrollPane(listeLivre_jlist);
         
         	panel.add(new JLabel(LocaleManager.getInstance().getString("warningBookTitle") + " :"), BorderLayout.NORTH);
         	
         	for (String s : bookLate) {
             	listeLivre.addElement(s);
         	}
-        	panel.add(listeLivre_jlist, BorderLayout.CENTER);
+        	panel.add(jscroll, BorderLayout.CENTER);
+        	//panel.add(listeLivre_jlist, BorderLayout.CENTER);
         	panel.add(okButton, BorderLayout.SOUTH);
         	this.display = true;
         }
