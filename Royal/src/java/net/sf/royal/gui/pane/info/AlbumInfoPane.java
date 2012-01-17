@@ -340,7 +340,9 @@ public class AlbumInfoPane extends AbstractInfoPane
 		else {
 			Bibliotheque b = this.album.getBibliotheque();
 			this.jtfLib.setVisible(true);
-			this.jtfLib.setText(b.getName());
+			if(b != null){
+				this.jtfLib.setText(b.getName()) ;
+			}
 			this.jlLibBuy.setVisible(false);
 			this.jlLibBorrowed.setVisible(true);
 		}

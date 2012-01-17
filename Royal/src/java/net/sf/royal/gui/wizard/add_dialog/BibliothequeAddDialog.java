@@ -15,8 +15,6 @@ import net.sf.royal.gui.manager.MessagePaneManager;
 import net.sf.royal.gui.manager.ShortcutManager;
 import net.sf.royal.gui.pane.AlbumPane;
 import net.sf.royal.gui.util.RegexpTextField;
-import net.sf.royal.persistency.PersistencyManager;
-import net.sf.royal.persistency.SaveItemPersistency;
 import net.sf.royal.persistency.*;
 
 //import net.sf.royal.persistency.PersistencyManager;
@@ -29,12 +27,10 @@ import net.sf.royal.persistency.*;
 
 public class BibliothequeAddDialog extends JDialog 
 {
-	private JFrame window;
 	private JLabel jlabel;
 	private RegexpTextField new_lib_name;
 	private JTextField new_lib_address;
 	private RegexpTextField new_lib_phone;
-	private GridBagLayout grid;
 	private GridBagConstraints constraints;
 	private JButton button;
 	private JList list_lib_view;
@@ -43,13 +39,12 @@ public class BibliothequeAddDialog extends JDialog
 	private List<Bibliotheque> lib_list;
 	
 	public BibliothequeAddDialog() {
-		window = new JFrame();
-		window.setTitle(LocaleManager.getInstance().getString("library_window_title"));
-		window.setSize(400, 500);
-		window.setLocationRelativeTo(null);
+		super(null, LocaleManager.getInstance().getString("library_window_title"),
+				true? Dialog.ModalityType.TOOLKIT_MODAL : Dialog.ModalityType.MODELESS);
+		this.setSize(400, 500);
+		this.setLocationRelativeTo(null);
 		
-		grid = new GridBagLayout();
-		window.setLayout(grid);
+		this.setLayout(new GridBagLayout());
 
 		constraints = new GridBagConstraints();
 		constraints.gridwidth = 2;
@@ -63,8 +58,7 @@ public class BibliothequeAddDialog extends JDialog
 		constraints.gridwidth = 1;
 		constraints.gridx = 0;
 		constraints.gridy = 0;
-		grid.setConstraints(jlabel, constraints);
-		window.add(jlabel);
+		this.add(jlabel, constraints);
 		
 		//Name of the library
 		jlabel = new JLabel(LocaleManager.getInstance().getString("library_new_name") + " :");
@@ -77,13 +71,11 @@ public class BibliothequeAddDialog extends JDialog
 		
 		constraints.gridx = 0;
 		constraints.gridy = 1;
-		grid.setConstraints(jlabel, constraints);
-		window.add(jlabel);
+		this.add(jlabel, constraints);
 
 		constraints.gridx = 1;
 		constraints.gridy = 1;
-		grid.setConstraints(new_lib_name, constraints);
-		window.add(new_lib_name);
+		this.add(new_lib_name, constraints);
 		
 		//Address of the library
 		jlabel = new JLabel(LocaleManager.getInstance().getString("library_new_address") + " :");
@@ -92,13 +84,11 @@ public class BibliothequeAddDialog extends JDialog
 
 		constraints.gridx = 0;
 		constraints.gridy = 2;
-		grid.setConstraints(jlabel, constraints);
-		window.add(jlabel);
+		this.add(jlabel, constraints);
 		
 		constraints.gridx = 1;
 		constraints.gridy = 2;
-		grid.setConstraints(new_lib_address, constraints);
-		window.add(new_lib_address);
+		this.add(new_lib_address, constraints);
 
 		//Phone of the library 
 		jlabel = new JLabel(LocaleManager.getInstance().getString("library_new_phone") + " :");
@@ -107,23 +97,20 @@ public class BibliothequeAddDialog extends JDialog
 		
 		constraints.gridx = 0;
 		constraints.gridy = 3;
-		grid.setConstraints(jlabel, constraints);
-		window.add(jlabel);
+		this.add(jlabel, constraints);
 		
 		constraints.gridx = 1;
 		constraints.gridy = 3;
-		grid.setConstraints(new_lib_phone, constraints);
-		window.add(new_lib_phone);
+		this.add(new_lib_phone, constraints);
 		
 		//Ok button
 		button = new JButton(LocaleManager.getInstance().getString("add"));
 		constraints.gridwidth = 2;
 		constraints.gridx = 0;
 		constraints.gridy = 4;
-		grid.setConstraints(button, constraints);
-		window.add(button);
+		this.add(button, constraints);
 		
-		//Record of the new library with the fucking Hibernate
+		//Record of the new library with Hibernate
 		button.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent ae)
@@ -167,9 +154,8 @@ public class BibliothequeAddDialog extends JDialog
 		constraints.gridx = 0;
 		constraints.gridy = 5;
 		constraints.gridwidth = 1;
-		grid.setConstraints(jlabel, constraints);
 		
-		window.add(jlabel);
+		this.add(jlabel, constraints);
 		
 		list_model = new DefaultListModel();
 		list_model.setSize(3);
@@ -180,8 +166,7 @@ public class BibliothequeAddDialog extends JDialog
 		constraints.gridx = 0;
 		constraints.gridy = 6;
 		constraints.gridwidth = 2;
-		grid.setConstraints(list_scroller,  constraints);
-		window.add(list_scroller);
+		this.add(list_scroller, constraints);
 
 		displayListOfLibs();
 		
@@ -202,10 +187,12 @@ public class BibliothequeAddDialog extends JDialog
 		
 		constraints.gridx = 0;
 		constraints.gridy = 7;
-		grid.setConstraints(button, constraints);
 		
-		window.add(button);
-		window.setVisible(true);
+		this.add(button, constraints);
+		this.pack();
+		this.setLocationRelativeTo(this.getParent());
+		this.setDefaultCloseOperation(HIDE_ON_CLOSE);
+		this.setVisible(true);
 	}
 	
 	//LIST OF EXISTING LIBRARIES

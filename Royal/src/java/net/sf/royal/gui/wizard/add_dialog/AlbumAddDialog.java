@@ -54,6 +54,7 @@ import net.sf.royal.persistency.PersistencyManager;
 import net.sf.royal.persistency.SaveItemPersistency;
 
 import net.sf.royal.gui.wizard.add_dialog.JLibraryPane;
+import net.sf.royal.gui.wizzard.mail_import.MailAddDialog;
 
 import org.apache.log4j.Logger;
 
@@ -91,6 +92,7 @@ public class AlbumAddDialog extends JDialog
 	private ImageViewer ivImage;
 	private RegexpTextField rtfTitle;
 	private JButtonPane jbpSerie;
+	private JButtonPane jbpBibliotheque;
 	private JAuthorPane japAuthor;
 	private JComboBox buyOrNot;
 	private RegexpTextField rtfNumber;
@@ -101,16 +103,14 @@ public class AlbumAddDialog extends JDialog
 	private RegexpTextField rtfHeight;
 	private JCheckBox jcbOriginalEd;
 	private JButtonPane jbpCollection;
-	private JButton jbpBibliotheque;
 	private JTextField jtfISBN;
 	private JTextArea jtaComment;
 	private JDatePicker jdpPurchaseDate;
 	private JDatePicker jdpReleaseDate;
 	private JLabel libTitle;
 	
-	private JComboBox libComboBox;
+
 	private JPanel libPane;
-	private List<Bibliotheque> libBibli;
 	
 	private Album currentAlbum = null;
 	private Serie albumSerie;
@@ -214,6 +214,11 @@ public class AlbumAddDialog extends JDialog
 					AlbumAddDialog.this.jtaComment.setText(comment);
 				}
 				
+				Bibliotheque b = AlbumAddDialog.this.currentAlbum.getBibliotheque();
+				if(b != null)
+				{
+					jbpBibliotheque.setID(b.getId());
+				}
 				String cover = AlbumAddDialog.this.currentAlbum.getCover();
 				String dimension = AlbumAddDialog.this.currentAlbum.getDimension();
 				String isbn = AlbumAddDialog.this.currentAlbum.getIsbn();
@@ -270,13 +275,12 @@ public class AlbumAddDialog extends JDialog
 				 */
 				if (buy == false) {
 					libTitle.setVisible(true);
-					libComboBox.setVisible(true);
 					jbpBibliotheque.setVisible(true);
 					titreAchat.setText(LocaleManager.getInstance().getString("borrowDate") + " :");
 					buyOrNot.setSelectedIndex(1);
 					int i = 0;
-					while (bibli.getName() != libComboBox.getSelectedItem().toString())
-						libComboBox.setSelectedIndex(i++);
+					//while (bibli.getName() != libComboBox.getSelectedItem().toString())
+						//libComboBox.setSelectedIndex(i++);
 				}
 			}
 		});
@@ -519,18 +523,16 @@ public class AlbumAddDialog extends JDialog
 		gbc.gridx++;
 		libPane = new JPanel();
 
-		libComboBox = new JComboBox();
-		libComboBox.setVisible(false);
-		libBibli = PersistencyManager.findLibs();
-		
-		for (Bibliotheque b : libBibli)
-			libComboBox.addItem(b);
-
-		libComboBox.setPreferredSize(new Dimension(150, 25));
-		libPane.add(libComboBox);
-		jbpBibliotheque = new JButton("-->");
+		jbpBibliotheque = new JButtonPane(JButtonPane.BIBLIO, "-->");
 		jbpBibliotheque.setVisible(false);
+		//libBibli = PersistencyManager.findLibs();
+		
+//		for (Bibliotheque b : libBibli)
+//			libComboBox.addItem(b);
+
+		//libComboBox.setPreferredSize(new Dimension(150, 25));
 		libPane.add(jbpBibliotheque);
+
 
 		this.add(libPane, gbc);
 		
@@ -604,22 +606,30 @@ public class AlbumAddDialog extends JDialog
 				AlbumAddDialog.this.toFront();
 			}
 		});
-		
+		this.jbpBibliotheque.addButtonListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				new BibliothequeAddDialog();
+				
+			}
+			
+		});
 		this.buyOrNot.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
 				Item item = (Item) buyOrNot.getSelectedItem();
 				//Bought book
 				if (item.getId() == 1) {		
 					libTitle.setVisible(false);
-					libComboBox.setVisible(false);
 					jbpBibliotheque.setVisible(false);
+
 					titreAchat.setText(LocaleManager.getInstance().getString("purchaseDate") + " :");
 				}
 				//Borrowed book
 				else {
 					libTitle.setVisible(true);
-					libComboBox.setVisible(true);
 					jbpBibliotheque.setVisible(true);
+
 					titreAchat.setText(LocaleManager.getInstance().getString("borrowDate") + " :");
 				}
 			}
@@ -650,16 +660,7 @@ public class AlbumAddDialog extends JDialog
 			}
 		});
 		
-		
-		this.jbpBibliotheque.addActionListener(new ActionListener() 
-		{
-			@Override
-			public void actionPerformed(ActionEvent e) 
-			{
-				BibliothequeAddDialog cad = new BibliothequeAddDialog();
-			}
-		});
-		
+				
 		this.jbpCollection.addButtonListener(new ActionListener() 
 		{
 			@Override
@@ -884,7 +885,20 @@ public class AlbumAddDialog extends JDialog
 		//If the book was borrowed
 		else {
 			a.setBuy(false);
-			a.setBibliotheque((Bibliotheque)libComboBox.getSelectedItem());
+			if(!jbpBibliotheque.getText().isEmpty()){
+				Bibliotheque biblio;
+				if(jbpBibliotheque.getID() != null){
+					biblio = PersistencyManager.FindBibliothequeByID(jbpBibliotheque.getID());
+				}
+				// Create it persistency if it's a new one
+				else{
+					biblio = new Bibliotheque();
+					biblio.setName(jbpBibliotheque.getText());
+				}
+				SaveItemPersistency.saveBibliotheque(biblio);
+				a.setBibliotheque(biblio);
+			}
+
 		}
 		
 		BottomBarPane.getInstance().addAlbum();
@@ -913,7 +927,19 @@ public class AlbumAddDialog extends JDialog
 		//If the book was borrowed
 		else {
 			a.setBuy(false);
-			a.setBibliotheque((Bibliotheque)libComboBox.getSelectedItem());
+			if(!jbpBibliotheque.getText().isEmpty()){
+				Bibliotheque biblio;
+				if(jbpBibliotheque.getID() != null){
+					biblio = PersistencyManager.FindBibliothequeByID(jbpBibliotheque.getID());
+				}
+				// Create it persistency if it's a new one
+				else{
+					biblio = new Bibliotheque();
+					biblio.setName(jbpBibliotheque.getText());
+				}
+				SaveItemPersistency.saveBibliotheque(biblio);
+				a.setBibliotheque(biblio);
+			}
 		}
 		//Save the modifications.
 		SaveItemPersistency.saveAlbum(a);
