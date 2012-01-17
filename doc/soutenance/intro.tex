@@ -1,0 +1,136 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{stmaryrd}
+%\usepackage{cite}
+\usetheme{moi2}
+\title[T3 soutenance -- T306AMOA]{The Royal project -- T3 soutenance}
+\author[Jean, Kevin \& Steve]{Jean Meyblum \\ Kevin Hagner \\ Steve Benedick}
+\institute{IUT Robert Schuman}
+\date{20 January 2012}
+\begin{document}
+
+\section{Introduction}
+\subsection{Royal}
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}[The project]
+\begin{center}
+Globally : 
+\begin{itemize}
+\pause \item A album manager.
+\pause \item A \emph{Java} application.
+\pause \item Make the differance about borrowed and bought books. 
+\end{itemize}
+\end{center}
+\end{frame}
+
+\begin{frame}[The weaknesses]
+\begin{block}{Problems}
+\begin{itemize}
+\pause \item The library notion was missing.
+\pause \item All informations must been take to hand.
+\end{itemize}
+\end{block}
+\pause 
+\begin{block}{Solutions}
+\begin{itemize}
+\pause \item Rebuild of the database.
+\pause \item Add to a alert system.
+\pause \item Creation of an \emph{Android} application.
+\end{itemize}
+\end{block}
+\end{frame}
+
+\section{Job done}
+\subsection{PC application}
+\begin{frame}[Library management system]
+\begin{center}
+A new system was built to allow user to use libraries and interact with it.
+\end{center}
+\end{frame}
+
+\begin{frame}[Alert system]
+\begin{center}
+At lunching, the application will check if you must give back albums in the next-days.
+\end{center}
+\end{frame}
+
+\begin{frame}[E-mail import system]
+\begin{itemize}
+\item Able to import e-mail sent by the \emph{Android} application.
+\pause \item Search \emph{ISBN}s numbers into e-mail.
+\pause \item Information about \emph{ISBN} is search by the application into an online database.
+\pause \item The album is automatically created.
+\pause \item Users can choose from which library the book was borrowed, or editing informations about the album which was automatically imported.
+\end{itemize}
+\end{frame}
+
+\subsection{Android application}
+\begin{frame}[Scanner system]
+\begin{itemize}
+\item The application is able to scan a bar-code trough the camera.
+\pause \item The application search the name of the album and display it to user.
+\pause \item The scan can also be done with a group of albums. 
+\end{itemize}
+\end{frame}
+
+\begin{frame}[Sending system and Database]
+	\begin{block}{E-mail system}
+		\begin{itemize}
+			\item When \emph{ISBN}s are scanned, the application send it by e-mail, just in one click.
+			\pause \item The user can, of course, make the e-mail address that he want.
+		\end{itemize}
+	\end{block}
+	\pause
+	\begin{block}{The database}
+		\pause
+		Album already scanned are register to prevent the user to scan an album twice.
+	\end{block}
+\end{frame}
+
+\section{Difficulties}
+\subsection{Database}
+
+\begin{frame}[Hibernate]
+\begin{itemize}
+\item Still used into the project.
+\pause \item Difficult to understand the concept.
+\pause \item The diffucty was unexpected.
+\end{itemize}
+\end{frame}
+
+\subsection{Libraries and API}
+
+\begin{frame}[Zxing]
+\begin{itemize}
+\item A \emph{Java} library to decode bar-code.
+\pause \item Somes problem with \emph{Android} \pause : We're oblige to use an exteral apps.
+\pause \item Thus : the library was dirrected inclued in the source code.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[Integration with PC]
+\begin{itemize}
+\item Interoperability between the \emph{Android} and \emph{PC} application.
+\pause \item For instance : e-mail libs used to twice applications are different.
+\pause \item Integration of libraries into the project was litle difficult.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[JavaMail]
+\begin{itemize}
+\item Sending e-mail is not very difficult with \emph{Android}.
+\item … But the gestion of e-mail is done by a other application \pause with allow user to modify the content of the e-mail.
+\item → We use \emph{JavaMail} instead of the default \emph{Android} application.
+\end{itemize}
+\end{frame}
+
+
+
+%\begin{frame}[The database]
+%\begin{itemize}
+
+\end{document}
