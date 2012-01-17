@@ -69,7 +69,7 @@
     </target>
 	
 	<target name="build" depends="thirdparty, prepare, prepare-classpath">
-       <javac classpathref="compilation.path" 
+       <javac includeantruntime="false" classpathref="compilation.path" 
 			  debug="true" 
 			  destdir="build/classes">
 			<src path="src/java"/>
