@@ -125,11 +125,11 @@ public class MailAddDialog extends JDialog{
 		GridBagConstraints gc = new GridBagConstraints();
 		this.bib = new JButtonPane(JEntryPane.BIBLIO, "-->");
 		this.bib.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-		JLabel bibtitle = new JLabel("Bibliothèque :");
+		JLabel bibtitle = new JLabel(LocaleManager.getInstance().getString("library")+" :");
 		bibtitle.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 		this.jbCancel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 		this.jbOk.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-		JLabel datetitle = new JLabel("Date :");
+		JLabel datetitle = new JLabel(LocaleManager.getInstance().getString("borrowDate")+" :");
 		datetitle.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 		this.jdpPurchaseDate = new JDatePicker();
 		this.jdpPurchaseDate.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
