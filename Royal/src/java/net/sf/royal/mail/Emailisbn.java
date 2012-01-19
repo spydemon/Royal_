@@ -2,10 +2,13 @@ package net.sf.royal.mail;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.TimeZone;
 
 import javax.mail.Flags.Flag;
 import javax.mail.Message;
 import javax.mail.MessagingException;
+
+import net.sf.birdy.help.core.locale.LocaleManager;
 
 public class Emailisbn {
 
@@ -33,8 +36,8 @@ public class Emailisbn {
 	
 	@Override
 	public String toString(){
-		try {
-			return DateFormat.getInstance().format(this.msg.getReceivedDate()).toString();
+		try {		
+			return DateFormat.getDateInstance(DateFormat.FULL,net.sf.royal.gui.manager.LocaleManager.getInstance().getCurrentLocale()).format(this.msg.getReceivedDate()).toString();
 		} catch (MessagingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

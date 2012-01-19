@@ -120,7 +120,7 @@ public class MailImportDialog extends JDialog {
 			this.jp.add(this.jbOk, gbc);
 			gbc.gridx += 1;
 			this.jp.add(this.jbCancel, gbc);				
-			this.jlInfo = new JLabel("Cliquer sur Ok pour procéder à l'inspection de vos mails :"); //TODO LocaleManager
+			this.jlInfo = new JLabel(LocaleManager.getInstance().getString("fullimport")); //TODO LocaleManager
 			this.jpFind.add(jlInfo,BorderLayout.NORTH);
 			this.jpFind.add(this.jp, BorderLayout.CENTER);
 			this.add(jpFind, BorderLayout.CENTER);
